@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.RegisterPagecontroller">
+    <children>
+        <ImageView fitHeight="1080.0" fitWidth="1920.0" layoutX="-4.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/Frame%2011.png" />
+            </image>
+        </ImageView>
+        <TextField fx:id="passwordTxt" layoutX="1356.0" layoutY="554.0" prefHeight="44.0" prefWidth="356.0" promptText="Password" style="-fx-background-color: trans;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+        <TextField fx:id="confirmPasswordTxt" layoutX="1358.0" layoutY="647.0" prefHeight="44.0" prefWidth="356.0" promptText="Confirm Password" style="-fx-background-color: trans;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+        <JFXButton fx:id="createAccountBtn" layoutX="1342.0" layoutY="739.0" onAction="#createAccountBtnOnAction" prefHeight="51.0" prefWidth="412.0" styleClass="button-with-style" stylesheets="@../style/createNewAcoutButton.css" text="Create new accouunt">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </JFXButton>
+        <TextField fx:id="usernameTxt" layoutX="1360.0" layoutY="273.0" prefHeight="51.0" prefWidth="356.0" promptText="User Name" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+        <TextField fx:id="contacTxt" layoutX="1353.0" layoutY="463.0" prefHeight="44.0" prefWidth="356.0" promptText="Contac" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="useridTxt" layoutX="1360.0" layoutY="364.0" prefHeight="51.0" prefWidth="347.0" promptText="User Id" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+    </children>
+</AnchorPane>

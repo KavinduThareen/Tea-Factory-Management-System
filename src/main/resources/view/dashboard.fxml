@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.DashboardController">
+
+    <children>
+        <ImageView fitHeight="1082.0" fitWidth="1914.0" layoutX="4.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/Rectangle%2037773.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="1084.0" fitWidth="342.0" layoutX="3.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/menu.png" />
+            </image>
+        </ImageView>
+        <JFXButton fx:id="dashbordbtn" layoutX="29.0" layoutY="166.0" onAction="#dashbordbtnOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Dashboard">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font></JFXButton>
+        <ImageView fitHeight="138.0" fitWidth="338.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/GreenLeaf%20Tea-logos_black%204.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="45.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/dashbord%20icon.png" />
+            </image>
+        </ImageView>
+        <JFXButton fx:id="stokebtn" layoutX="26.0" layoutY="253.0" onAction="#stokebtnOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Our Stoke">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="45.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/Stoke%20icon.png" />
+            </image>
+        </ImageView>
+        <JFXButton layoutX="29.0" layoutY="342.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Customer">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="28.0" layoutY="427.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Employee">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="28.0" layoutY="607.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Payment">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="28.0" layoutY="512.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Supplier">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="27.0" layoutY="703.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Repote">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="singoutbtn" layoutX="11.0" layoutY="972.0" onAction="#singoutbtnOnAction" prefHeight="64.0" prefWidth="321.0" styleClass="button-with-style" stylesheets="@../style/Sigoutbutton.css" text="Sigout">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="45.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/image%2066.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="45.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/image%2069.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="45.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/image%2071.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="45.0" layoutY="623.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/image%2054.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="45.0" layoutY="719.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/image%2063.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="21.0" layoutY="988.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/logout%20icon.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="93.0" fitWidth="1574.0" layoutX="345.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/bar.png" />
+            </image>
+        </ImageView>
+        <TextField layoutX="879.0" layoutY="14.0" prefHeight="48.0" prefWidth="478.0" style="-fx-background-color: #DCDCDC;" />
+        <ImageView fitHeight="699.0" fitWidth="736.0" layoutX="363.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/Rectangle%201412.png" />
+            </image>
+        </ImageView>
+        <JFXButton layoutX="421.0" layoutY="455.0" prefHeight="135.0" prefWidth="602.0" styleClass="button-with-style" stylesheets="@../style/toatalEmployeeDashboardButton.css" text="Total Employees">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="423.0" layoutY="619.0" prefHeight="135.0" prefWidth="604.0" styleClass="button-with-style" stylesheets="@../style/totalOrdersDsahboard.css" text="Total Orders">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font></JFXButton>
+        <JFXButton layoutX="427.0" layoutY="798.0" prefHeight="135.0" prefWidth="604.0" styleClass="button-with-style" stylesheets="@../style/totaltokebutton.css" text="Total Stoke">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font></JFXButton>
+        <Label layoutX="960.0" layoutY="334.0" prefHeight="32.0" prefWidth="92.0" text="Today’s ">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="960.0" layoutY="366.0" text="Summery" />
+        <ImageView fitHeight="88.0" fitWidth="90.0" layoutX="901.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/11111111111.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="88.0" fitWidth="90.0" layoutX="903.0" layoutY="649.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/Rectangle%201426.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="88.0" fitWidth="90.0" layoutX="901.0" layoutY="827.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/Rectangle%201429.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="88.0" fitWidth="90.0" layoutX="394.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/Ellipse%204.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="88.0" fitWidth="90.0" layoutX="396.0" layoutY="601.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/Ellipse%205.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="88.0" fitWidth="90.0" layoutX="397.0" layoutY="783.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/Ellipse%206.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="391.0" layoutY="88.0" prefHeight="140.0" prefWidth="286.0" text="Hello, User">
+            <font>
+                <Font name="System Bold" size="48.0" />
+            </font>
+        </Label>
+        <Label layoutX="398.0" layoutY="188.0" prefHeight="48.0" prefWidth="283.0" text="Welcome To GreenLeaf Tea Factory Management">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label layoutX="368.0" layoutY="11.0" prefHeight="48.0" prefWidth="339.0" text="DASHBOARD">
+            <font>
+                <Font name="System Bold" size="36.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
