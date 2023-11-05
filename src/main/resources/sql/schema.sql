@@ -3,7 +3,7 @@ create database if not exists tea_factory_system;
 
 use tea_factory_system;
 
--- auto-generated definition
+
 create table user
 (
     userid   varchar(10) not null
@@ -15,7 +15,7 @@ create table user
         unique (username)
 );
 
--- auto-generated definition
+
 create table login_details
 (
     userid  varchar(10) not null,
@@ -27,7 +27,7 @@ create table login_details
 
 );
 
--- auto-generated definition
+
 create table employee
 (
     user_id       varchar(10) not null,
@@ -40,7 +40,7 @@ create table employee
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- auto-generated definition
+
 create table customer
 (
     customer_id varchar(10) not null
@@ -53,7 +53,7 @@ create table customer
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- auto-generated definition
+
 create table orders
 (
     order_id     varchar(10) not null
@@ -66,7 +66,7 @@ create table orders
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- auto-generated definition
+
 create table packet_stoke
 (
     packet_id    varchar(10) not null
@@ -76,7 +76,7 @@ create table packet_stoke
     s_expiredate date        null
 );
 
--- auto-generated definition
+
 create table order_detailse
 (
     o_id varchar(10) not null,
@@ -86,7 +86,7 @@ create table order_detailse
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- auto-generated definition
+
 create table leaves_stoke
 (
     leaves_s_id    varchar(10) not null
@@ -96,7 +96,7 @@ create table leaves_stoke
     l_s_expiredate date        null
 );
 
--- auto-generated definition
+
 create table stoke_detailse
 (
     p_stoke_id varchar(10) not null,
@@ -106,7 +106,7 @@ create table stoke_detailse
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- auto-generated definition
+
 create table supplier
 (
     supplier_id varchar(10) not null
@@ -116,7 +116,7 @@ create table supplier
     sup_contac  varchar(20) null
 );
 
--- auto-generated definition
+
 create table supplier_orders
 (
     s_orders_id      varchar(10) not null
@@ -128,7 +128,7 @@ create table supplier_orders
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- auto-generated definition
+
 create table suppling_detailse
 (
     s_ord_id   varchar(10) not null,
@@ -138,7 +138,7 @@ create table suppling_detailse
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- auto-generated definition
+
 create table salory
 (
     salory_id varchar(10) not null
