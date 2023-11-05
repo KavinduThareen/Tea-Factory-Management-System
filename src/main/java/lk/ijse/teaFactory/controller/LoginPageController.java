@@ -44,26 +44,21 @@ public class LoginPageController{
         try {
             loginDto dto = model.finduserName();
 
-
             if( dto.getUsername().equals(username) && dto.getPassword().equals(password)) {
 
-                new Alert(Alert.AlertType.INFORMATION, "ok!").show();
+               // new Alert(Alert.AlertType.INFORMATION, "ok!").show();
+                loginroot.getChildren().clear();
+                loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/dashboard.fxml"))));
 
-                System.out.println(dto.getUsername());
 
             } else {
                 new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-
-    }
-
-
-    private void fillFields(loginDto dto) {
-        //usernameTxt.setText(dto.getUsername());
 
     }
 

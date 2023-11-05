@@ -14,28 +14,28 @@
                 <Image url="@../img/Frame%2011.png" />
             </image>
         </ImageView>
-        <TextField fx:id="passwordTxt" layoutX="1356.0" layoutY="554.0" prefHeight="44.0" prefWidth="356.0" promptText="Password" style="-fx-background-color: trans;">
+        <TextField fx:id="passwordTxt" layoutX="1298.0" layoutY="582.0" prefHeight="44.0" prefWidth="356.0" promptText="Password" style="-fx-background-color: trans;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-        <TextField fx:id="confirmPasswordTxt" layoutX="1358.0" layoutY="647.0" prefHeight="44.0" prefWidth="356.0" promptText="Confirm Password" style="-fx-background-color: trans;">
+        <TextField fx:id="confirmPasswordTxt" layoutX="1294.0" layoutY="678.0" prefHeight="39.0" prefWidth="356.0" promptText="Confirm Password" style="-fx-background-color: trans;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-        <JFXButton fx:id="createAccountBtn" layoutX="1342.0" layoutY="739.0" onAction="#createAccountBtnOnAction" prefHeight="51.0" prefWidth="412.0" styleClass="button-with-style" stylesheets="@../style/createNewAcoutButton.css" text="Create new accouunt">
+        <JFXButton fx:id="createAccountBtn" layoutX="1291.0" layoutY="770.0" onAction="#createAccountBtnOnAction" prefHeight="66.0" prefWidth="396.0" styleClass="button-with-style" stylesheets="@../style/createNewAcoutButton.css" text="Create new accouunt">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="24.0" />
             </font>
         </JFXButton>
-        <TextField fx:id="usernameTxt" layoutX="1360.0" layoutY="273.0" prefHeight="51.0" prefWidth="356.0" promptText="User Name" style="-fx-background-color: tra;">
+        <TextField fx:id="usernameTxt" layoutX="1296.0" layoutY="304.0" prefHeight="44.0" prefWidth="356.0" promptText="User Name" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-        <TextField fx:id="contacTxt" layoutX="1353.0" layoutY="463.0" prefHeight="44.0" prefWidth="356.0" promptText="Contac" style="-fx-background-color: tra;">
+        <TextField fx:id="contacTxt" layoutX="1292.0" layoutY="488.0" prefHeight="44.0" prefWidth="356.0" promptText="Contac" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="useridTxt" layoutX="1360.0" layoutY="364.0" prefHeight="51.0" prefWidth="347.0" promptText="User Id" style="-fx-background-color: tra;">
+      <TextField fx:id="useridTxt" layoutX="1295.0" layoutY="398.0" prefHeight="44.0" prefWidth="356.0" promptText="User Id" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>

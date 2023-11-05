@@ -27,28 +27,4 @@ public boolean registerUser(final registerDto dto) throws SQLException {
     return isSaved;
 }
 
-/*
-    public registerDto finduserName(String username) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "SELECT * FROM user WHERE username = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1,username);
-
-        ResultSet resultSet = pstm.executeQuery();
-
-        registerDto  dto =null;
-
-        if (resultSet.next()){
-            String l_username = resultSet.getString(1);
-
-            dto =new registerDto(l_username);
-
-        }
-
-
-        return null;
-    }
-*/
-
 }
