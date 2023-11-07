@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.JFXClippedPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.PacketStokePageController">
+<AnchorPane fx:id="cuspageroot" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.CustomerPageController">
 
     <children>
-        <ImageView fitHeight="1078.0" fitWidth="1916.0" layoutX="2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/Rectangle%2037773.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="1080.0" fitWidth="342.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../img/menu.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="138.0" fitWidth="338.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="138.0" fitWidth="338.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../img/GreenLeaf%20Tea-logos_black%204.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="83.0" fitWidth="1577.0" layoutX="346.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/bar.png" />
             </image>
         </ImageView>
         <JFXButton layoutX="29.0" layoutY="166.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Dashboard">
@@ -50,35 +52,35 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="26.0" layoutY="607.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Payment">
+        <JFXButton layoutX="28.0" layoutY="607.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Payment">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="703.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Repoart">
-            <font>
-                <!--            <Font name="System Bold" size="18.0" />-->
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="972.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/Sigoutbutton.css" text="Singout">
+        <JFXButton layoutX="27.0" layoutY="703.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Repoart">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <ImageView fitHeight="83.0" fitWidth="1581.0" layoutX="340.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/bar.png" />
-            </image>
-        </ImageView>
-      <ImageView fitHeight="960.0" fitWidth="1572.0" layoutX="348.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/Frame%2017.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="520.0" layoutY="77.0" prefHeight="88.0" prefWidth="444.0" text="Add Packet Stoke">
+        <JFXButton layoutX="11.0" layoutY="972.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/Sigoutbutton.css" text="Singout">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </JFXButton>
+        <JFXClippedPane />
+      <TableView layoutX="428.0" layoutY="154.0" prefHeight="861.0" prefWidth="1392.0">
+        <columns>
+          <TableColumn prefWidth="275.0" text="C1" />
+          <TableColumn prefWidth="275.0" text="C2" />
+            <TableColumn prefWidth="275.0" text="C2" />
+            <TableColumn prefWidth="275.0" text="C2" />
+            <TableColumn prefWidth="275.0" text="C2" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="437.0" layoutY="78.0" onAction="#addcusOnAction" prefHeight="44.0" prefWidth="202.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Add New customer">
          <font>
-            <Font name="System Bold" size="48.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
-      </Label>
+      </JFXButton>
     </children>
 </AnchorPane>

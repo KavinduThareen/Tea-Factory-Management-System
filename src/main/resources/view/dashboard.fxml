@@ -8,6 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<!--<?import javafx.scene.text.Font?>-->
+<!---->
+
 <AnchorPane fx:id="dashbordRoot" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.DashboardController">
 
     <children>
@@ -35,7 +38,7 @@
                 <Image url="@../img/dashbord%20icon.png" />
             </image>
         </ImageView>
-        <JFXButton fx:id="stokebtn" layoutX="26.0" layoutY="253.0" onAction="#stokebtnOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Our Stoke">
+        <JFXButton layoutX="26.0" layoutY="253.0" onAction="#stokebtnOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Our Stoke">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -45,12 +48,12 @@
                 <Image url="@../img/Stoke%20icon.png" />
             </image>
         </ImageView>
-        <JFXButton layoutX="29.0" layoutY="342.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Customer">
+        <JFXButton layoutX="29.0" layoutY="342.0" onAction="#customerOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Customer">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="427.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Employee">
+        <JFXButton layoutX="28.0" layoutY="427.0" onAction="#employeeOnBtn" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Employee">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>

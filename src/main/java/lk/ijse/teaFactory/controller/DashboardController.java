@@ -34,6 +34,21 @@ public class DashboardController {
     }
 
     @FXML
+    void customerOnAction(ActionEvent event) throws IOException {
+        dashbordRoot.getChildren().clear();
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customer_page.fxml"))));
+
+    }
+
+    @FXML
+    void employeeOnBtn(ActionEvent event) throws IOException {
+        dashbordRoot.getChildren().clear();
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/employee_page.fxml"))));
+
+
+    }
+
+    @FXML
     void stokebtnOnAction(ActionEvent event) throws IOException {
 
         dashbordRoot.getChildren().clear();

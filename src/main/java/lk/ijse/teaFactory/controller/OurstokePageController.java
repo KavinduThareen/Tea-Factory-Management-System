@@ -3,6 +3,11 @@ package lk.ijse.teaFactory.controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class OurstokePageController {
 
@@ -16,7 +21,12 @@ public class OurstokePageController {
     private JFXButton packetstokebtn;
 
     @FXML
-    void leavesstokebtnOnAction(ActionEvent event) {
+    private AnchorPane ourstokeRoot;
+
+    @FXML
+    void leavesstokebtnOnAction(ActionEvent event) throws IOException {
+        ourstokeRoot.getChildren().clear();
+        ourstokeRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/leves_stoke_page.fxml"))));
 
     }
 
@@ -26,7 +36,10 @@ public class OurstokePageController {
     }
 
     @FXML
-    void packetstokebtnOnAction(ActionEvent event) {
+    void packetstokebtnOnAction(ActionEvent event) throws IOException {
+
+        ourstokeRoot.getChildren().clear();
+        ourstokeRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/packet_stoke_page.fxml"))));
 
     }
 

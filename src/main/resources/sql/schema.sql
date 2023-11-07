@@ -49,7 +49,7 @@ create table customer
     cus_name    varchar(20) null,
     cus_address varchar(30) null,
     cus_cantac  varchar(20) null,
-    constraint foreign key (emp_id) references employee (employeeid)
+        constraint foreign key (emp_id) references employee (employeeid)
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 

@@ -13,6 +13,8 @@ import lk.ijse.teaFactory.model.loginModel;
 import lk.ijse.teaFactory.model.registerModel;
 
 
+import javax.management.Notification;
+import javax.management.remote.NotificationResult;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -54,6 +56,7 @@ public class LoginPageController{
 
             } else {
                 new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
+
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
