@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.EmployeePageController">
+<AnchorPane fx:id="employeeroot" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.EmployeePageController">
     <children>
         <ImageView fitHeight="1080.0" fitWidth="1920.0" layoutX="2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -30,32 +30,32 @@
                 <Image url="@../img/bar.png" />
             </image>
         </ImageView>
-        <JFXButton layoutX="29.0" layoutY="166.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Dashboard">
+        <JFXButton layoutX="29.0" layoutY="166.0" onAction="#E_dashboardOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Dashboard">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="26.0" layoutY="253.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Our Stoke">
+        <JFXButton layoutX="26.0" layoutY="253.0" onAction="#E_ourstokeOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Our Stoke">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="29.0" layoutY="342.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Customer">
+        <JFXButton layoutX="29.0" layoutY="342.0" onAction="#E_customerOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Customer">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="427.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Employee">
+        <JFXButton layoutX="28.0" layoutY="427.0" onAction="#E_empBtnOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Employee">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="512.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Supplier">
+        <JFXButton layoutX="28.0" layoutY="512.0" onAction="#E_supplierBtnOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Supplier">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="607.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Payment">
+        <JFXButton layoutX="28.0" layoutY="607.0" onAction="#E_paymentBtnOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Payment">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -75,27 +75,27 @@
             <Image url="@../img/Frame%2018.png" />
          </image>
       </ImageView>
-      <TextField layoutX="527.0" layoutY="226.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Id" style="-fx-background-color: tra;">
+      <TextField fx:id="employeeIdTxt" layoutX="527.0" layoutY="226.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Id" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="527.0" layoutY="324.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Name " style="-fx-background-color: tra;">
+      <TextField fx:id="empNameTxt" layoutX="527.0" layoutY="324.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Name " style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="527.0" layoutY="524.0" prefHeight="44.0" prefWidth="574.0" promptText="User Id" style="-fx-background-color: tra;">
+      <TextField fx:id="uidTxt" layoutX="527.0" layoutY="524.0" prefHeight="44.0" prefWidth="574.0" promptText="User Id" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="527.0" layoutY="614.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Contac" style="-fx-background-color: tra;">
+      <TextField fx:id="empContacTxt" layoutX="527.0" layoutY="614.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Contac" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="527.0" layoutY="717.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee address" style="-fx-background-color: tra;">
+      <TextField fx:id="empAddressTxt" layoutX="527.0" layoutY="717.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee address" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
@@ -121,17 +121,17 @@
       <Label layoutX="1416.0" layoutY="474.0" prefHeight="69.0" prefWidth="474.0" styleClass="button-with-style" stylesheets="@../style/lablesCss.css" text="Label" />
       <Label layoutX="1417.0" layoutY="559.0" prefHeight="69.0" prefWidth="473.0" styleClass="button-with-style" stylesheets="@../style/lablesCss.css" text="Label" />
       <Label layoutX="1417.0" layoutY="652.0" prefHeight="69.0" prefWidth="473.0" styleClass="button-with-style" stylesheets="@../style/lablesCss.css" text="Label" />
-      <JFXButton layoutX="520.0" layoutY="806.0" prefHeight="81.0" prefWidth="263.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="save Employee">
+      <JFXButton layoutX="520.0" layoutY="806.0" onAction="#saveEmployeeOnAction" prefHeight="81.0" prefWidth="263.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="save Employee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="839.0" layoutY="801.0" prefHeight="81.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/deletebtn.css" text="add Employee">
+      <JFXButton layoutX="839.0" layoutY="801.0" onAction="#addNewEmpOnAction" prefHeight="81.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/deletebtn.css" text="add Employee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="1415.0" layoutY="877.0" prefHeight="70.0" prefWidth="476.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="View All Employee">
+      <JFXButton layoutX="1415.0" layoutY="877.0" onAction="#viewempOnAction" prefHeight="70.0" prefWidth="476.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="View All Employee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -142,5 +142,7 @@
          </font>
       </Label>
       <Label layoutX="1416.0" layoutY="737.0" prefHeight="73.0" prefWidth="474.0" styleClass="button-with-style" stylesheets="@../style/lablesCss.css" text="Label" />
+      <TextField fx:id="empbdTxt" layoutX="527.0" layoutY="421.0" prefHeight="44.0" prefWidth="263.0" />
+      <TextField fx:id="empGenderTxt" layoutX="839.0" layoutY="421.0" prefHeight="44.0" prefWidth="263.0" />
     </children>
 </AnchorPane>

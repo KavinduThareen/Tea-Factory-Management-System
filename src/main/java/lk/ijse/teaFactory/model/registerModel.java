@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class registerModel {
 
-public boolean registerUser(final registerDto dto) throws SQLException {
+public boolean registerUser( registerDto dto) throws SQLException {
     Connection connection = DbConnection.getInstance().getConnection();
 
     String sql = "INSERT INTO user VALUES(?, ?, ?, ?)";

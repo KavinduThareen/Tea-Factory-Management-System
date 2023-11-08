@@ -24,7 +24,7 @@
                 <Image url="@../img/pop%20up%20window.png" />
             </image>
         </ImageView>
-        <JFXButton fx:id="packetstokebtn" layoutX="612.0" layoutY="384.0" onAction="#packetstokebtnOnAction" prefHeight="97.0" prefWidth="574.0" styleClass="button-with-style" stylesheets="@../style/addstokebutton.css" text="Tea Packet Stoke">
+        <JFXButton fx:id="packetstokebtn" layoutX="612.0" layoutY="384.0" onAction="#packetstokebtnOnAction" prefHeight="97.0" prefWidth="574.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Tea Packet Stoke">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>

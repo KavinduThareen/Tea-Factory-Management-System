@@ -55,7 +55,7 @@ public class LoginPageController{
 
 
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
+                new Alert(Alert.AlertType.INFORMATION, "user not found!").show();
 
             }
         } catch (SQLException e) {

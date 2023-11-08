@@ -2,15 +2,12 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="addcusbackBtn" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: trans;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.CustomerAddPageController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.SupplierPageController">
 
     <children>
         <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -69,59 +66,10 @@
             </font>
         </JFXButton>
         <JFXClippedPane />
-        <TableView layoutX="428.0" layoutY="154.0" prefHeight="861.0" prefWidth="1392.0">
-            <columns>
-                <TableColumn prefWidth="275.0" text="C1" />
-                <TableColumn prefWidth="275.0" text="C2" />
-                <TableColumn prefWidth="275.0" text="C2" />
-                <TableColumn prefWidth="275.0" text="C2" />
-                <TableColumn prefWidth="275.0" text="C2" />
-            </columns>
-        </TableView>
-        <JFXButton layoutX="437.0" layoutY="78.0" prefHeight="44.0" prefWidth="202.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Add New customer">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-      <ImageView fitHeight="1068.0" fitWidth="1575.0" layoutX="345.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="980.0" fitWidth="1572.0" layoutX="348.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Frame%2021.png" />
+            <Image url="@../img/Frame%2018.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="880.0" layoutY="644.0" onAction="#cusSaveOnAction" prefHeight="55.0" prefWidth="458.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="Save Customer">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="880.0" layoutY="725.0" onAction="#addnewcusOnAction" prefHeight="55.0" prefWidth="458.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add New Customer">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="1415.0" layoutY="154.0" onAction="#addcusBackeBtn" prefHeight="34.0" prefWidth="73.0" text="Back">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXButton>
-      <TextField fx:id="cusidTxt" layoutX="887.0" layoutY="230.0" prefHeight="44.0" prefWidth="445.0" promptText="Customer Id" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField fx:id="empidTxt" layoutX="887.0" layoutY="317.0" prefHeight="44.0" prefWidth="445.0" promptText="Employee Id" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField fx:id="cusnameTxt" layoutX="887.0" layoutY="405.0" prefHeight="44.0" prefWidth="445.0" promptText="Customer name" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField fx:id="cuscontacTxt" layoutX="887.0" layoutY="491.0" prefHeight="44.0" prefWidth="445.0" promptText="Customer Contac" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField fx:id="cusAddressTxt" layoutX="887.0" layoutY="572.0" prefHeight="44.0" prefWidth="445.0" promptText="Customer Address" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
     </children>
 </AnchorPane>

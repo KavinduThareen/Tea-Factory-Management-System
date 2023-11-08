@@ -33,11 +33,13 @@ create table employee
     user_id       varchar(10) not null,
     employeeid    varchar(10) not null
         primary key,
+    emp_sex       varchar(10) null,
+    emp_bd        date        null,
     employee_name varchar(20) null,
     address       varchar(30) null,
     contac        varchar(20) null,
     constraint foreign key (user_id) references user (userid)
-        ON UPDATE CASCADE ON DELETE CASCADE
+        on update cascade on delete cascade
 );
 
 
