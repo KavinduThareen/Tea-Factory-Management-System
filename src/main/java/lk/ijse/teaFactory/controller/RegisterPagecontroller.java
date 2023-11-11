@@ -65,12 +65,17 @@ public class RegisterPagecontroller {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "You are registerd!").show();
                     clearFields();
+                    registerroot.getChildren().clear();
+                    registerroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
+
                 }
 
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        }
+    }
 
     void clearFields() {
         usernameTxt.setText("");

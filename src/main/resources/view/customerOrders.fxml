@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.ViewEmployeePageController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.CustomerOrdersController">
 
     <children>
         <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -68,18 +68,21 @@
             </font>
         </JFXButton>
         <JFXClippedPane />
-      <TableView fx:id="tblEmployee" layoutX="386.0" layoutY="164.0" prefHeight="846.0" prefWidth="1446.0">
+      <ImageView fitHeight="1038.0" fitWidth="1576.0" layoutX="344.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/customer_oreds.png" />
+         </image>
+      </ImageView>
+      <TableView layoutX="348.0" layoutY="59.0" prefHeight="980.0" prefWidth="904.0">
         <columns>
-          <TableColumn fx:id="colname" maxWidth="-Infinity" prefWidth="200.0" text="employee id" />
-          <TableColumn fx:id="coladdress" prefWidth="200.0" text="employee name" />
-            <TableColumn fx:id="colcantac" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colUid" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colEid" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colbd" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colgender" maxWidth="1000.0" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colname" maxWidth="1000.0" prefWidth="200.0" text="C2" />
+          <TableColumn prefWidth="100.0" text="C1" />
+            <TableColumn prefWidth="100.0" text="C1" />
+            <TableColumn prefWidth="100.0" text="C1" />
+            <TableColumn prefWidth="100.0" text="C1" />
+            <TableColumn prefWidth="100.0" text="C1" />
+            <TableColumn prefWidth="100.0" text="C1" />
         </columns>
       </TableView>
-      <JFXButton fx:id="backBtnOnAction" layoutX="1778.0" layoutY="66.0" onAction="#backBtnOnAction" prefHeight="48.0" prefWidth="92.0" text="Back" />
+      <JFXButton layoutX="1381.0" layoutY="843.0" prefHeight="64.0" prefWidth="423.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" />
     </children>
 </AnchorPane>

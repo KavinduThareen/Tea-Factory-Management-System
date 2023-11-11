@@ -1,10 +1,18 @@
 package lk.ijse.teaFactory.controller;
 
+import com.jfoenix.animation.alert.CenterTransition;
 import com.jfoenix.controls.JFXButton;
+import com.sun.javafx.stage.EmbeddedWindow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -12,24 +20,22 @@ import java.util.Objects;
 public class DashboardController {
 
     @FXML
-    private JFXButton dashboardbtn;
+    private AnchorPane dashbordRoot;
 
     @FXML
     private JFXButton singoutbtn;
 
-    @FXML
-    private JFXButton stokebtn;
 
-    @FXML
-    private AnchorPane dashbordRoot;
 
-    @FXML
-    void dashbordbtnOnAction(ActionEvent event) {
-
+    public AnchorPane getDashbordRoot() {
+        return dashbordRoot;
     }
 
     @FXML
-    void singoutbtnOnAction(ActionEvent event) {
+    void SupplierOnAction(ActionEvent event) throws IOException {
+        dashbordRoot.getChildren().clear();
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/supplier_page.fxml"))));
+
 
     }
 
@@ -45,6 +51,26 @@ public class DashboardController {
         dashbordRoot.getChildren().clear();
         dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/employee_page.fxml"))));
 
+    }
+
+    @FXML
+    void ordersOnAction(ActionEvent event) throws IOException {
+        dashbordRoot.getChildren().clear();
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/orders.fxml"))));
+
+    }
+
+    @FXML
+    void paymentOnAction(ActionEvent event) throws IOException {
+        dashbordRoot.getChildren().clear();
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/payment.fxml"))));
+
+    }
+
+    @FXML
+    void singoutbtnOnAction(ActionEvent event) throws IOException {
+        dashbordRoot.getChildren().clear();
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
 
     }
 
@@ -52,7 +78,8 @@ public class DashboardController {
     void stokebtnOnAction(ActionEvent event) throws IOException {
 
         dashbordRoot.getChildren().clear();
-        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/ourstoke_page.fxml"))));
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/ourStoke.fxml"))));
+
 
     }
 

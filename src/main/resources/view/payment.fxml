@@ -2,14 +2,12 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.ViewEmployeePageController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.PaymentController">
 
     <children>
         <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -68,18 +66,5 @@
             </font>
         </JFXButton>
         <JFXClippedPane />
-      <TableView fx:id="tblEmployee" layoutX="386.0" layoutY="164.0" prefHeight="846.0" prefWidth="1446.0">
-        <columns>
-          <TableColumn fx:id="colname" maxWidth="-Infinity" prefWidth="200.0" text="employee id" />
-          <TableColumn fx:id="coladdress" prefWidth="200.0" text="employee name" />
-            <TableColumn fx:id="colcantac" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colUid" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colEid" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colbd" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colgender" maxWidth="1000.0" prefWidth="200.0" text="C2" />
-            <TableColumn fx:id="colname" maxWidth="1000.0" prefWidth="200.0" text="C2" />
-        </columns>
-      </TableView>
-      <JFXButton fx:id="backBtnOnAction" layoutX="1778.0" layoutY="66.0" onAction="#backBtnOnAction" prefHeight="48.0" prefWidth="92.0" text="Back" />
     </children>
 </AnchorPane>

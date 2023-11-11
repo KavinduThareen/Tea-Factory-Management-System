@@ -15,6 +15,7 @@ public class EmployeeModel {
         Connection connection = DbConnection.getInstance().getConnection();
 
         boolean isSaved = false;
+
         String sql =  "INSERT INTO employee VALUES(?, ?, ?, ?,?,? ,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 

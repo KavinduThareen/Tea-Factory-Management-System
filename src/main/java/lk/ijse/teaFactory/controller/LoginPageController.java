@@ -38,8 +38,12 @@ public class LoginPageController{
 
 
     @FXML
-    void loginbtnOnAction(ActionEvent event) {
+    void loginbtnOnAction(ActionEvent event) throws IOException {
 
+
+        loginroot.getChildren().clear();
+        loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/dashboard.fxml"))));
+/*
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
 
@@ -63,6 +67,8 @@ public class LoginPageController{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+ */
 
     }
 

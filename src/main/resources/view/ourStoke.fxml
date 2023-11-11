@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.OurStokeController">
+
+    <children>
+        <ImageView fitHeight="1080.0" fitWidth="1922.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/cover.png" />
+            </image>
+        </ImageView>
+        <JFXButton layoutX="762.0" layoutY="435.0" onAction="#packetStokeBtnOnAction" prefHeight="59.0" prefWidth="397.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Packet Stoke">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="763.0" layoutY="548.0" onAction="#levesStokeBtnOnAction" prefHeight="59.0" prefWidth="397.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Leves Stoke">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </JFXButton>
+        <JFXButton layoutX="1258.0" layoutY="269.0" onAction="#backOnAction" prefHeight="39.0" prefWidth="76.0" text="Back" />
+    </children>
+</AnchorPane>

@@ -6,43 +6,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ourstokeRoot" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.OurstokePageController">
-
-    <children>
-        <ImageView fitHeight="1076.0" fitWidth="1907.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/Frame%203.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="1077.0" fitWidth="1908.0" layoutX="2.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/cover.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="690.0" fitWidth="1084.0" layoutX="480.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/pop%20up%20window.png" />
-            </image>
-        </ImageView>
-        <JFXButton fx:id="packetstokebtn" layoutX="612.0" layoutY="384.0" onAction="#packetstokebtnOnAction" prefHeight="97.0" prefWidth="574.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Tea Packet Stoke">
-            <font>
-                <Font name="System Bold" size="24.0" />
-            </font>
-        </JFXButton>
-        <JFXButton fx:id="leavesstokebtn" layoutX="610.0" layoutY="563.0" onAction="#leavesstokebtnOnAction" prefHeight="97.0" prefWidth="578.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Tea Leaves Stoke">
-            <font>
-                <Font name="System Bold" size="24.0" />
-            </font>
-        </JFXButton>
-        <ImageView fitHeight="194.0" fitWidth="290.0" layoutX="1184.0" layoutY="662.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/1-06-removebg-preview%201.png" />
-            </image>
-        </ImageView>
-        <JFXButton fx:id="ourstokebackebtn" layoutX="1317.0" layoutY="265.0" onAction="#ourstokebackebtnOnAction" prefHeight="35.0" prefWidth="114.0" text="Back">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: tra;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1922.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/cover.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="762.0" layoutY="435.0" onAction="#packetStokeBtnOnAction" prefHeight="59.0" prefWidth="397.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Packet Stoke">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="763.0" layoutY="548.0" onAction="#levesStokeBtnOnAction" prefHeight="59.0" prefWidth="397.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Leves Stoke">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="1258.0" layoutY="269.0" onAction="#backOnAction" prefHeight="39.0" prefWidth="76.0" text="Back" />
+   </children>
 </AnchorPane>

@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -66,10 +68,24 @@
             </font>
         </JFXButton>
         <JFXClippedPane />
-      <ImageView fitHeight="980.0" fitWidth="1572.0" layoutX="348.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1026.0" fitWidth="1576.0" layoutX="346.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Frame%2018.png" />
+            <Image url="@../img/supplier%20fream.png" />
          </image>
       </ImageView>
+      <TableView layoutX="356.0" layoutY="76.0" prefHeight="958.0" prefWidth="826.0">
+        <columns>
+          <TableColumn prefWidth="167.0" text="C1" />
+            <TableColumn prefWidth="167.0" text="C1" />
+            <TableColumn prefWidth="167.0" text="C1" />
+            <TableColumn prefWidth="167.0" text="C1" />
+            <TableColumn prefWidth="157.0" text="C1" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="1387.0" layoutY="737.0" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Suppliers">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

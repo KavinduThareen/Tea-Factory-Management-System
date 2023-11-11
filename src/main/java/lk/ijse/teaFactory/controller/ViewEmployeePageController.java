@@ -2,16 +2,21 @@ package lk.ijse.teaFactory.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.tm.EmployeeTm;
 import lk.ijse.teaFactory.model.EmployeeModel;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 public class ViewEmployeePageController {
 
@@ -38,6 +43,9 @@ public class ViewEmployeePageController {
 
     @FXML
     private TableView<EmployeeTm> tblEmployee;
+
+    @FXML
+    private AnchorPane root;
 
 
 
@@ -88,6 +96,13 @@ public class ViewEmployeePageController {
         colUid.setCellValueFactory(new PropertyValueFactory<>("uid"));
         colcantac.setCellValueFactory(new PropertyValueFactory<>("empcontac"));
         coladdress.setCellValueFactory(new PropertyValueFactory<>("empaddress"));
+
+    }
+
+    @FXML
+    void backBtnOnAction(ActionEvent event) throws IOException {
+        root.getChildren().clear();
+        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/employee_page.fxml"))));
 
     }
 
