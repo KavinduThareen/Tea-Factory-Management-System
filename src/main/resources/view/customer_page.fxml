@@ -68,13 +68,14 @@
             </font>
         </JFXButton>
         <JFXClippedPane />
-      <TableView layoutX="428.0" layoutY="154.0" prefHeight="861.0" prefWidth="1392.0">
+      <TableView fx:id="tabl" layoutX="428.0" layoutY="154.0" prefHeight="861.0" prefWidth="1392.0">
         <columns>
-          <TableColumn prefWidth="275.0" text="C1" />
-          <TableColumn prefWidth="275.0" text="C2" />
-            <TableColumn prefWidth="275.0" text="C2" />
-            <TableColumn prefWidth="275.0" text="C2" />
-            <TableColumn prefWidth="275.0" text="C2" />
+          <TableColumn fx:id="colid" prefWidth="156.33331298828125" text="Customer ID" />
+            <TableColumn fx:id="colEid" prefWidth="159.0" text="Employee ID" />
+            <TableColumn fx:id="colName" prefWidth="331.0" text="Customer name" />
+            <TableColumn fx:id="colAddress" prefWidth="347.0" text="Customer Address" />
+            <TableColumn fx:id="colContac" prefWidth="259.0" text="Contac" />
+            <TableColumn fx:id="colDelete1" prefWidth="139.3333740234375" text="delete" />
         </columns>
       </TableView>
       <JFXButton layoutX="437.0" layoutY="78.0" onAction="#addcusOnAction" prefHeight="44.0" prefWidth="202.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Add New customer">

@@ -93,7 +93,6 @@ public class EmployeePageController {
          var dto = new EmployeeDto(employeeId,employeeName,empGender,empbd,uId,empContac,empAddress);
          var model = new EmployeeModel();
 
-
          try {
              boolean isSaved = model.employeeSave(dto);
 

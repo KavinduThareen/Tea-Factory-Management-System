@@ -1,4 +1,4 @@
-package lk.ijse.teaFactory.dto.tm;
+package lk.ijse.teaFactory.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+public class CustomerDto {
 
-public class customerTm {
     private String cusid;
     private String empid;
     private String cusname;
     private String cusAddress;
     private String cusCantac;
+    private String isCompleted;
 }

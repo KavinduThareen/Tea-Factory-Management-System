@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.LevesStokePageController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.LevesStokePageController">
 
     <children>
         <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
@@ -66,61 +67,40 @@
             <Image url="@../img/bar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="980.0" fitWidth="1572.0" layoutX="348.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1032.0" fitWidth="1580.0" layoutX="344.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Frame%2017.png" />
+            <Image url="@../img/levesStoke%20page.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="52.0" fitWidth="538.0" layoutX="1382.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/Rectangle%201483.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="523.0" layoutY="69.0" prefHeight="76.0" prefWidth="585.0" text="Add tea leaves stoke">
-         <font>
-            <Font name="System Bold" size="48.0" />
-         </font>
-      </Label>
-      <TextField fx:id="employeeid" layoutX="529.0" layoutY="220.0" prefHeight="52.0" prefWidth="572.0" promptText="Employee Id" style="-fx-background-color: tra;">
+      <TableView fx:id="table" layoutX="1008.0" layoutY="127.0" prefHeight="904.0" prefWidth="906.0" style="-fx-background-color: tra;">
+        <columns>
+          <TableColumn fx:id="colid" prefWidth="156.0" text="id" />
+            <TableColumn fx:id="colWeigth" prefWidth="124.0" text="weigth" />
+            <TableColumn fx:id="colSdate" prefWidth="248.0" text="Supplier Date" />
+            <TableColumn fx:id="colEdate" prefWidth="246.0" text="Expair Date" />
+            <TableColumn fx:id="colDelete" prefWidth="131.0" text="delete" />
+        </columns>
+      </TableView>
+      <TextField fx:id="idTxt" layoutX="488.0" layoutY="266.0" prefHeight="44.0" prefWidth="415.0" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="empnameid" layoutX="529.0" layoutY="324.0" prefHeight="44.0" prefWidth="572.0" promptText="Employee Name" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField fx:id="uid" layoutX="529.0" layoutY="519.0" prefHeight="52.0" prefWidth="572.0" promptText="User Id" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField fx:id="empContacid" layoutX="529.0" layoutY="614.0" prefHeight="52.0" prefWidth="572.0" promptText="Employee Contac" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField fx:id="empaddressid" layoutX="529.0" layoutY="718.0" prefHeight="44.0" prefWidth="572.0" promptText="Employee Address" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <TextField layoutX="1455.0" layoutY="57.0" prefHeight="39.0" prefWidth="429.0" promptText="Search Employee" style="-fx-background-color: tra;">
+      <TextField fx:id="WeigthTxt" layoutX="496.0" layoutY="362.0" prefHeight="52.0" prefWidth="396.0" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton fx:id="saveEmpId" layoutX="521.0" layoutY="812.0" prefHeight="64.0" prefWidth="272.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="Save Emolyee">
+      <TextField fx:id="sDateTxt" layoutX="496.0" layoutY="459.0" prefHeight="52.0" prefWidth="396.0" style="-fx-background-color: tra;">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font size="18.0" />
          </font>
-      </JFXButton>
-      <JFXButton fx:id="addnewempid" layoutX="831.0" layoutY="810.0" prefHeight="64.0" prefWidth="272.0" styleClass="button-with-style" stylesheets="@../style/clearbtn.css" text="Add new Employee">
+      </TextField>
+      <TextField fx:id="eDateTxt" layoutX="496.0" layoutY="564.0" prefHeight="44.0" prefWidth="396.0" style="-fx-background-color: tra;">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font size="18.0" />
          </font>
-      </JFXButton>
-      <JFXButton layoutX="1418.0" layoutY="882.0" prefHeight="75.0" prefWidth="475.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="View Employees List">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
+      </TextField>
+      <JFXButton layoutX="490.0" layoutY="827.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" />
     </children>
 </AnchorPane>

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.OrdersController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.OrdersController">
 
     <children>
         <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -76,7 +76,13 @@
             <Image url="@../img/Frame%2025.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="983.0" layoutY="448.0" prefHeight="64.0" prefWidth="416.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" />
-      <JFXButton layoutX="981.0" layoutY="560.0" prefHeight="64.0" prefWidth="416.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" />
+      <JFXButton layoutX="983.0" layoutY="448.0" onAction="#cusOrdesOnAction" prefHeight="64.0" prefWidth="416.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Customer Orders">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="981.0" layoutY="560.0" onAction="#supOrderOnAction" prefHeight="64.0" prefWidth="416.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Supplier Orders">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></JFXButton>
     </children>
 </AnchorPane>

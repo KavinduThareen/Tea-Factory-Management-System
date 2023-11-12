@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -9,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.CustomerOrdersController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.CustomerOrdersController">
 
     <children>
         <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -68,21 +70,28 @@
             </font>
         </JFXButton>
         <JFXClippedPane />
-      <ImageView fitHeight="1038.0" fitWidth="1576.0" layoutX="344.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/customer_oreds.png" />
-         </image>
-      </ImageView>
-      <TableView layoutX="348.0" layoutY="59.0" prefHeight="980.0" prefWidth="904.0">
+      <TableView fx:id="tbl" layoutX="392.0" layoutY="183.0" prefHeight="856.0" prefWidth="1442.0">
         <columns>
-          <TableColumn prefWidth="100.0" text="C1" />
-            <TableColumn prefWidth="100.0" text="C1" />
-            <TableColumn prefWidth="100.0" text="C1" />
-            <TableColumn prefWidth="100.0" text="C1" />
-            <TableColumn prefWidth="100.0" text="C1" />
-            <TableColumn prefWidth="100.0" text="C1" />
+          <TableColumn fx:id="colId" prefWidth="141.6666259765625" text="Order ID " />
+            <TableColumn fx:id="colCId" prefWidth="156.3333740234375" text="Customer ID" />
+            <TableColumn fx:id="colCatagary" prefWidth="180.66668701171875" text="Catagary" />
+            <TableColumn fx:id="colweigth" prefWidth="187.66668701171875" text="Weigth" />
+            <TableColumn fx:id="colDate" prefWidth="311.333251953125" text="Date" />
+            <TableColumn fx:id="colDes" prefWidth="304.0" text="Descreption" />
+            <TableColumn fx:id="colDelete" prefWidth="164.3333740234375" text="Delete" />
         </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
       </TableView>
-      <JFXButton layoutX="1381.0" layoutY="843.0" prefHeight="64.0" prefWidth="423.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" />
+      <JFXButton layoutX="386.0" layoutY="66.0" onAction="#addOrderOnAction" prefHeight="48.0" prefWidth="285.0" styleClass="button-with-style" stylesheets="@../style/updatebtn.css" text="Add new order">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

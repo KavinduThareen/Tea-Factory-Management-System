@@ -4,12 +4,13 @@
 <?import com.jfoenix.controls.JFXClippedPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.PacketStokePageController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.PacketStokePageController">
 
     <children>
         <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -73,14 +74,39 @@
             <Image url="@../img/packetStoke.png" />
          </image>
       </ImageView>
-      <TableView layoutX="352.0" layoutY="106.0" prefHeight="948.0" prefWidth="856.0">
+      <TableView fx:id="tblView" layoutX="352.0" layoutY="106.0" prefHeight="948.0" prefWidth="856.0">
         <columns>
-          <TableColumn prefWidth="100.0" text="C1" />
-            <TableColumn prefWidth="100.0" text="C1" />
-            <TableColumn prefWidth="100.0" text="C1" />
-            <TableColumn prefWidth="100.0" text="C1" />
-            <TableColumn prefWidth="100.0" text="C1" />
+          <TableColumn fx:id="colid" prefWidth="110.66665649414062" text="id" />
+            <TableColumn fx:id="colCatagary" prefWidth="168.0" text="catogary" />
+            <TableColumn fx:id="colWeigth" prefWidth="167.66668701171875" text="weigth" />
+            <TableColumn fx:id="colEpaieDate" prefWidth="229.0" text="Expair date" />
+            <TableColumn fx:id="colDelet" prefWidth="184.0" text="delete" />
         </columns>
       </TableView>
+      <TextField fx:id="idTxt" layoutX="1388.0" layoutY="224.0" prefHeight="44.0" prefWidth="415.0" promptText="PacketId" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="catagaryTxt" layoutX="1388.0" layoutY="349.0" prefHeight="44.0" prefWidth="415.0" promptText="Catogary" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="weigthTxt" layoutX="1388.0" layoutY="472.0" prefHeight="44.0" prefWidth="415.0" promptText="Weigth" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="expirTxt" layoutX="1388.0" layoutY="595.0" prefHeight="44.0" prefWidth="415.0" promptText="ExpairDate" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <JFXButton layoutX="1388.0" layoutY="728.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Packet">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

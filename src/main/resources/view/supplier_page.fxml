@@ -4,12 +4,13 @@
 <?import com.jfoenix.controls.JFXClippedPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.SupplierPageController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.SupplierPageController">
 
     <children>
         <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -73,19 +74,39 @@
             <Image url="@../img/supplier%20fream.png" />
          </image>
       </ImageView>
-      <TableView layoutX="356.0" layoutY="76.0" prefHeight="958.0" prefWidth="826.0">
+      <TableView fx:id="tbl" layoutX="356.0" layoutY="76.0" prefHeight="958.0" prefWidth="826.0">
         <columns>
-          <TableColumn prefWidth="167.0" text="C1" />
-            <TableColumn prefWidth="167.0" text="C1" />
-            <TableColumn prefWidth="167.0" text="C1" />
-            <TableColumn prefWidth="167.0" text="C1" />
-            <TableColumn prefWidth="157.0" text="C1" />
+          <TableColumn fx:id="cold" prefWidth="131.0" text="ID" />
+            <TableColumn fx:id="colName" prefWidth="203.0" text="Name" />
+            <TableColumn fx:id="colCantac" prefWidth="167.0" text="Contac" />
+            <TableColumn fx:id="colAddress" prefWidth="180.0" text="Address" />
+            <TableColumn fx:id="coldelte" prefWidth="144.0" text="Delete" />
         </columns>
       </TableView>
-      <JFXButton layoutX="1387.0" layoutY="737.0" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Suppliers">
+      <JFXButton layoutX="1387.0" layoutY="737.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Suppliers">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
+      <TextField fx:id="idTxt" layoutX="1396.0" layoutY="222.0" prefHeight="44.0" prefWidth="398.0" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="nameTxt" layoutX="1395.0" layoutY="342.0" prefHeight="54.0" prefWidth="398.0" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Contac" layoutX="1395.0" layoutY="466.0" prefHeight="54.0" prefWidth="398.0" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Address" layoutX="1396.0" layoutY="595.0" prefHeight="44.0" prefWidth="398.0" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
     </children>
 </AnchorPane>

@@ -89,13 +89,13 @@ public class ViewEmployeePageController {
 
     private void setCellValueFactory() {
 
-        colEid.setCellValueFactory(new PropertyValueFactory<>("employeeid"));
-        colname.setCellValueFactory(new PropertyValueFactory<>("employeename"));
+        colEid.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
+        colname.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
         colgender.setCellValueFactory(new PropertyValueFactory<>("empGender"));
         colbd.setCellValueFactory(new PropertyValueFactory<>("empbd"));
-        colUid.setCellValueFactory(new PropertyValueFactory<>("uid"));
-        colcantac.setCellValueFactory(new PropertyValueFactory<>("empcontac"));
-        coladdress.setCellValueFactory(new PropertyValueFactory<>("empaddress"));
+        colUid.setCellValueFactory(new PropertyValueFactory<>("uId"));
+        colcantac.setCellValueFactory(new PropertyValueFactory<>("empContac"));
+        coladdress.setCellValueFactory(new PropertyValueFactory<>("empAddress"));
 
     }
 
@@ -105,6 +105,8 @@ public class ViewEmployeePageController {
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/employee_page.fxml"))));
 
     }
+  
+
 
 
 

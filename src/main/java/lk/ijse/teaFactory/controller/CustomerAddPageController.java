@@ -3,10 +3,11 @@ package lk.ijse.teaFactory.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.customerDto;
-import lk.ijse.teaFactory.model.customerModel;
+import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.model.CustomerModel;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -14,7 +15,7 @@ import java.util.Objects;
 public class CustomerAddPageController {
 
     @FXML
-    private AnchorPane addcusbackBtn;
+    private AnchorPane root;
 
     @FXML
     private TextField cusAddressTxt;
@@ -38,8 +39,8 @@ public class CustomerAddPageController {
 
     @FXML
     void addcusBackeBtn(ActionEvent event) throws IOException {
-        addcusbackBtn.getChildren().clear();
-        addcusbackBtn.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customer_page.fxml"))));
+        root.getChildren().clear();
+        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customer_page.fxml"))));
 
     }
 
@@ -51,18 +52,20 @@ public class CustomerAddPageController {
         String cusname = cusnameTxt.getText();
         String cusAddress = cusAddressTxt.getText();
         String cusCantac = cuscontacTxt.getText();
+        String complete = "0";
 
-        var dto = new customerDto(cusid,empid,cusname,cusAddress,cusCantac);
+        var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac,complete);
 
-        var model = new customerModel();
+        var model = new CustomerModel();
 
         try {
             boolean isSaved = model.customerSaved(dto);
+            if (isSaved){
+                new Alert(Alert.AlertType.CONFIRMATION,"saved").show();
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        // not complet countiniue this
 
 
     }

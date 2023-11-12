@@ -111,20 +111,15 @@
             </image>
         </ImageView>
         <TextField layoutX="879.0" layoutY="14.0" prefHeight="48.0" prefWidth="478.0" style="-fx-background-color: #DCDCDC;" />
-        <Label layoutX="391.0" layoutY="88.0" prefHeight="140.0" prefWidth="286.0" text="Hello, User">
-            <font>
-                <Font name="System Bold" size="48.0" />
-            </font>
-        </Label>
-        <Label layoutX="398.0" layoutY="188.0" prefHeight="48.0" prefWidth="283.0" text="Welcome To GreenLeaf Tea Factory Management">
-            <font>
-                <Font name="System Bold" size="12.0" />
-            </font>
-        </Label>
         <Label layoutX="368.0" layoutY="11.0" prefHeight="48.0" prefWidth="339.0" text="DASHBOARD">
             <font>
                 <Font name="System Bold" size="36.0" />
             </font>
         </Label>
+      <ImageView fitHeight="280.0" fitWidth="1422.0" layoutX="421.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Frame%2035.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
