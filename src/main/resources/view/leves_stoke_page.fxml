@@ -101,6 +101,14 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="490.0" layoutY="827.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" />
+      <JFXButton layoutX="488.0" layoutY="741.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Leves Stoke">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="489.0" layoutY="844.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Stoke">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

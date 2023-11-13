@@ -58,4 +58,32 @@ public class CusOrderModel {
         return dtoList;
     }
 
+    public static boolean deleteItem(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "DELETE FROM orders WHERE order_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        return pstm.executeUpdate() > 0;
+    }
+
+    public boolean update (final CusOrderDto dto) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE customer SET cus_id = ?, o_catogary = ?, o_weigth, o_date, descrreption, isCompleted = ? WHERE order_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, dto.getCId());
+        pstm.setString(2, dto.getCatagary());
+        pstm.setString(3, dto.getWeigth());
+        pstm.setString(4, dto.getDate());
+        pstm.setString(5, dto.getDescreption());
+        pstm.setString(6, "0");
+        pstm.setString(7, dto.getId());
+
+
+        return pstm.executeUpdate() > 0;
+    }
+
 }

@@ -126,7 +126,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="839.0" layoutY="801.0" onAction="#addNewEmpOnAction" prefHeight="81.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/deletebtn.css" text="add Employee">
+      <JFXButton layoutX="839.0" layoutY="801.0" onAction="#updateOnAction" prefHeight="81.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/deletebtn.css" text="add Employee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -142,7 +142,13 @@
          </font>
       </Label>
       <Label layoutX="1416.0" layoutY="737.0" prefHeight="73.0" prefWidth="474.0" styleClass="button-with-style" stylesheets="@../style/lablesCss.css" text="Label" />
-      <TextField fx:id="empbdTxt" layoutX="527.0" layoutY="421.0" prefHeight="44.0" prefWidth="263.0" />
-      <TextField fx:id="empGenderTxt" layoutX="839.0" layoutY="421.0" prefHeight="44.0" prefWidth="263.0" />
+      <TextField fx:id="empbdTxt" layoutX="527.0" layoutY="421.0" prefHeight="44.0" prefWidth="263.0" promptText="Birthday" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="empGenderTxt" layoutX="839.0" layoutY="421.0" prefHeight="44.0" prefWidth="263.0" promptText="Gender" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
     </children>
 </AnchorPane>

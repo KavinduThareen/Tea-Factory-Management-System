@@ -75,7 +75,29 @@ public class EmployeePageController {
     }
 
     @FXML
-    void addNewEmpOnAction(ActionEvent event) {
+    void updateOnAction(ActionEvent event) {
+        String employeeId = employeeIdTxt.getText();
+        String employeeName = empNameTxt.getText();
+        String empGender = empGenderTxt.getText();
+        String empbd= empbdTxt.getText();
+        String uId = uidTxt.getText();
+        String empContac = empContacTxt.getText();
+        String empAddress = empAddressTxt.getText();
+        String delete = "0";
+
+        var dto = new EmployeeDto(employeeId,employeeName,empGender,empbd,uId,empContac,empAddress,delete);
+        var model = new EmployeeModel();
+
+        try {
+            boolean isUpdated = model.update(dto);
+            System.out.println(isUpdated);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
 
     }
 
@@ -89,8 +111,9 @@ public class EmployeePageController {
          String uId = uidTxt.getText();
          String empContac = empContacTxt.getText();
          String empAddress = empAddressTxt.getText();
+         String delete = "0";
 
-         var dto = new EmployeeDto(employeeId,employeeName,empGender,empbd,uId,empContac,empAddress);
+         var dto = new EmployeeDto(employeeId,employeeName,empGender,empbd,uId,empContac,empAddress,delete);
          var model = new EmployeeModel();
 
          try {
@@ -107,6 +130,8 @@ public class EmployeePageController {
          }
 
     }
+
+
 
     @FXML
     void viewempOnAction(ActionEvent event) throws IOException {

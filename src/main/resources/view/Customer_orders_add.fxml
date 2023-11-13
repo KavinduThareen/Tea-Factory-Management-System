@@ -14,7 +14,7 @@
             <Image url="@../img/cuorderADD.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="734.0" layoutY="818.0" onAction="#addOnAction" prefHeight="59.0" prefWidth="452.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add New Orders">
+      <JFXButton layoutX="731.0" layoutY="769.0" onAction="#addOnAction" prefHeight="59.0" prefWidth="452.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add New Orders">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
@@ -45,5 +45,10 @@
             <Font size="18.0" />
          </font></TextField>
       <JFXButton layoutX="1262.0" layoutY="178.0" onAction="#backOnAction" prefHeight="29.0" prefWidth="75.0" text="Back" />
+      <JFXButton layoutX="732.0" layoutY="849.0" onAction="#updateOnAction" prefHeight="60.0" prefWidth="452.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="update">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

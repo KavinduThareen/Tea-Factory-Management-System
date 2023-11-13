@@ -1,22 +1,24 @@
 package lk.ijse.teaFactory.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.tm.EmployeeTm;
+import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.EmployeeModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class ViewEmployeePageController {
 
@@ -42,6 +44,9 @@ public class ViewEmployeePageController {
     private TableColumn<?, ?> colname;
 
     @FXML
+    private TableColumn<?, ?> colDelete;
+
+    @FXML
     private TableView<EmployeeTm> tblEmployee;
 
     @FXML
@@ -62,15 +67,47 @@ public class ViewEmployeePageController {
         try {
             List<EmployeeDto> dtoList =model.getAllEmployee();
             for (EmployeeDto dto : dtoList){
+
+
+                JFXButton btnDelete = new JFXButton("Deleted");
+                btnDelete.setCursor(javafx.scene.Cursor.HAND);
+                btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");
+
+                btnDelete.setPrefWidth(100);
+                btnDelete.setPrefHeight(30);
+
+                //   CusOrderTm tm = new CusOrderTm();
+
+                //   tm.getBtnDelete()
+                btnDelete .setOnAction((e) -> {
+                    ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+                    if(type.orElse(no) == yes) {
+                        int selectedIndex = tblEmployee.getSelectionModel().getSelectedIndex();
+                        String id = (String) colEid.getCellData(selectedIndex);
+
+                        deleteItem(id);   //delete item from the database
+
+                        obList.remove(selectedIndex);   //delete item from the JFX-Table
+                        tblEmployee.refresh();
+                    }
+                });
+
+
+
                 obList.add(
                         new EmployeeTm(
-                                dto.getUId(),
-                                dto.getEmployeeId(),
+                               dto.getEmployeeId(),
+                                dto.getEmployeeName(),
                                 dto.getEmpGender(),
                                 dto.getEmpbd(),
-                                dto.getEmployeeName(),
+                                dto.getUId(),
+                                dto.getEmpContac(),
                                 dto.getEmpAddress(),
-                                dto.getEmpContac()
+                                btnDelete
 
                         )
                 );
@@ -86,6 +123,20 @@ public class ViewEmployeePageController {
 
     }
 
+    private void deleteItem(String id) {
+        try {
+            boolean isDeleted = EmployeeModel.deleteItem(id);
+            if(isDeleted)
+                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+        } catch (SQLException ex) {
+            new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+        }
+    }
+
+
+
+
+
 
     private void setCellValueFactory() {
 
@@ -96,6 +147,7 @@ public class ViewEmployeePageController {
         colUid.setCellValueFactory(new PropertyValueFactory<>("uId"));
         colcantac.setCellValueFactory(new PropertyValueFactory<>("empContac"));
         coladdress.setCellValueFactory(new PropertyValueFactory<>("empAddress"));
+        colDelete.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("btnDelete"));
 
     }
 

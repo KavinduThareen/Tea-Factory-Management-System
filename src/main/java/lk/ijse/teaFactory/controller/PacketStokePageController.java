@@ -1,13 +1,12 @@
 package lk.ijse.teaFactory.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Cursor;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
@@ -17,6 +16,7 @@ import lk.ijse.teaFactory.model.PacketStokeModel;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class PacketStokePageController {
 
@@ -78,6 +78,30 @@ public class PacketStokePageController {
 
     }
 
+    @FXML
+    void updateOnAction(ActionEvent event) {
+
+        String id = idTxt.getText();
+        String catagory = catagaryTxt.getText();
+        String   weigth = weigthTxt.getText();
+        String date = expirTxt.getText();
+        String complete = "0";
+
+        var dto = new PacketStokeDto(id,catagory,weigth,date,complete);
+        var model = new PacketStokeModel();
+
+        try {
+            boolean isUpdated = model.update(dto);
+            System.out.println(isUpdated);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
     public  void loadAll(){
 
     var model = new PacketStokeModel();
@@ -86,12 +110,43 @@ public class PacketStokePageController {
         try {
             List<PacketStokeDto> dtoList = model.loadAll();
             for (PacketStokeDto dto : dtoList){
+
+                JFXButton btnDelete = new JFXButton("Deleted");
+                btnDelete.setCursor(javafx.scene.Cursor.HAND);
+                btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");
+
+                btnDelete.setPrefWidth(100);
+                btnDelete.setPrefHeight(30);
+
+                //   CusOrderTm tm = new CusOrderTm();
+
+                //   tm.getBtnDelete()
+                btnDelete .setOnAction((e) -> {
+                    ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+                    if(type.orElse(no) == yes) {
+                        int selectedIndex = tblView.getSelectionModel().getSelectedIndex();
+                        String id = (String) colid.getCellData(selectedIndex);
+
+                        deleteItem(id);   //delete item from the database
+
+                        obList.remove(selectedIndex);   //delete item from the JFX-Table
+                        tblView .refresh();
+                    }
+                });
+
+
                 obList.add(
                         new CompleteTm(
                                 dto.getId(),
                                 dto.getCatagory(),
                                 dto.getWeigth(),
-                                dto.getDate()
+                                dto.getDate(),
+                                btnDelete
+
 
                         )
                 );
@@ -102,16 +157,11 @@ public class PacketStokePageController {
             throw new RuntimeException(e);
         }
 
-        for (int i = 0; i < obList.size(); i++) {
-            int current = i;
-            obList.get(i).getBtnDelete().setOnAction(event -> {
-                obList.remove(current);
-            });
-        }
 
         tblView.setItems(obList);
 
     }
+
 
     private void setCellValueFactory() {
 
@@ -126,6 +176,16 @@ public class PacketStokePageController {
     public void initialize() {
         setCellValueFactory();
         loadAll();
+    }
+
+    private void deleteItem(String id) {
+        try {
+            boolean isDeleted = PacketStokeModel.delete(id);
+            if(isDeleted)
+                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+        } catch (SQLException ex) {
+            new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+        }
     }
 
 }

@@ -83,7 +83,7 @@
             <TableColumn fx:id="coldelte" prefWidth="144.0" text="Delete" />
         </columns>
       </TableView>
-      <JFXButton layoutX="1387.0" layoutY="737.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Suppliers">
+      <JFXButton layoutX="1381.0" layoutY="688.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Suppliers">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -108,5 +108,10 @@
             <Font size="18.0" />
          </font>
       </TextField>
+      <JFXButton layoutX="1379.0" layoutY="767.0" onAction="#updateOnAction" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Upadate Supplier">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

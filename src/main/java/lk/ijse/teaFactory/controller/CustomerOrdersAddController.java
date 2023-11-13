@@ -1,22 +1,18 @@
 package lk.ijse.teaFactory.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CusOrderDto;
-import lk.ijse.teaFactory.dto.CustomerDto;
-import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.tm.CusOrderTm;
-import lk.ijse.teaFactory.dto.tm.LeaveStokeTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
-import lk.ijse.teaFactory.model.LeavesStokeModel;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class CustomerOrdersAddController {
@@ -33,6 +29,8 @@ public class CustomerOrdersAddController {
     @FXML
     private TextField dateTxt;
 
+
+
     @FXML
     private TextField descreptionTxt;
 
@@ -41,6 +39,8 @@ public class CustomerOrdersAddController {
 
     @FXML
     private AnchorPane root;
+
+
 
     @FXML
     void addOnAction(ActionEvent event) {
@@ -71,5 +71,42 @@ public class CustomerOrdersAddController {
 
 
     }
+/*
+    void csetFields(CusOrderTm dto) {
+        idTxt.setText(dto.getId());
+        cIdTxt.setText(dto.getCId());
+        catagaryTxt.setText(String.valueOf(dto.getCatagary()));
+        WeigthTxt.setText(String.valueOf(dto.getWeigth()));
+        dateTxt.setText(String.valueOf(dto.getDate()));
+        descreptionTxt.setText(String.valueOf(dto.getDescreption()));
+    }
+
+ */
+
+    @FXML
+    void updateOnAction(ActionEvent event) {
+        String id = idTxt.getText();
+        String cId = cIdTxt.getText();
+        String catagary = catagaryTxt.getText();
+        String weigth =  WeigthTxt.getText();
+        String date = dateTxt.getText();
+        String descreption = descreptionTxt.getText();
+        String complete = "0";
+
+        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,complete);
+        var model = new CusOrderModel();
+
+        try {
+            boolean isUpdated = model.update(dto);
+            System.out.println(isUpdated);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
 
 }

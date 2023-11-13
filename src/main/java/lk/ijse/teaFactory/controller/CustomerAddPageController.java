@@ -6,10 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.CusOrderDto;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.model.CustomerModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class CustomerAddPageController {
@@ -71,8 +73,31 @@ public class CustomerAddPageController {
     }
 
     @FXML
-    void addnewcusOnAction(ActionEvent event) {
+    void updateOnAction(ActionEvent event) {
+
+        String cusid = cusidTxt.getText();
+        String empid = empidTxt.getText();
+        String cusname = cusnameTxt.getText();
+        String cusAddress = cusAddressTxt.getText();
+        String cusCantac = cuscontacTxt.getText();
+        String complete = "0";
+
+        var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac,complete);
+
+        var model = new CustomerModel();
+        try {
+            boolean isUpdated = model.updateCustomer(dto);
+            System.out.println(isUpdated);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
     }
+
+
+
 
 }

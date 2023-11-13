@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -66,5 +67,16 @@
             </font>
         </JFXButton>
         <JFXClippedPane />
+      <ImageView fitHeight="1038.0" fitWidth="1578.0" layoutX="344.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/salorypage.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="idTxt" layoutX="1393.0" layoutY="223.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
+      <TextField fx:id="empIdTxt" layoutX="1393.0" layoutY="349.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
+      <TextField fx:id="dateTxt" layoutX="1393.0" layoutY="473.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
+      <TextField fx:id="countTxt" layoutX="1393.0" layoutY="595.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
+      <JFXButton layoutX="1386.0" layoutY="703.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory" />
+      <JFXButton layoutX="1389.0" layoutY="804.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="update" />
     </children>
 </AnchorPane>

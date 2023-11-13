@@ -1,21 +1,24 @@
 package lk.ijse.teaFactory.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.tm.CustomerTm;
 import lk.ijse.teaFactory.model.CustomerModel;
+import lk.ijse.teaFactory.model.LeavesStokeModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class CustomerPageController {
 
@@ -58,13 +61,41 @@ public class CustomerPageController {
             List<CustomerDto> dtoList = model.loadAll();
 
             for(CustomerDto dto : dtoList) {
+
+                JFXButton btnDelete = new JFXButton("Deleted");
+                btnDelete.setCursor(javafx.scene.Cursor.HAND);
+                btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");
+
+                btnDelete.setPrefWidth(100);
+                btnDelete.setPrefHeight(30);
+
+                //   CusOrderTm tm = new CusOrderTm();
+
+                //   tm.getBtnDelete()
+                btnDelete .setOnAction((e) -> {
+                    ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+                    if(type.orElse(no) == yes) {
+                        int selectedIndex = tabl.getSelectionModel().getSelectedIndex();
+                        String id = (String) colid.getCellData(selectedIndex);
+
+                        deleteItem(id);   //delete item from the database
+
+                        obList.remove(selectedIndex);   //delete item from the JFX-Table
+                        tabl.refresh();
+                    }
+                });
                 obList.add(
                         new CustomerTm(
                                 dto.getCusid(),
                                 dto.getEmpid(),
                                 dto.getCusname(),
                                 dto.getCusAddress(),
-                                dto.getCusCantac()
+                                dto.getCusCantac(),
+                                btnDelete
                         )
                 );
             }
@@ -72,12 +103,7 @@ public class CustomerPageController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        for (int i = 0; i < obList.size(); i++) {
-            int current = i;
-            obList.get(i).getBtnDelete().setOnAction(event -> {
-                obList.remove(current);
-            });
-        }
+
         tabl.setItems(obList);
     }
 
@@ -95,6 +121,16 @@ public class CustomerPageController {
     public void initialize() {
         setCellValueFactory();
         loadAll();
+    }
+
+    private void deleteItem(String id) {
+        try {
+            boolean isDeleted = CustomerModel.delete(id);
+            if(isDeleted)
+                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+        } catch (SQLException ex) {
+            new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+        }
     }
 
 

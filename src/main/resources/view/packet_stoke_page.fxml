@@ -103,7 +103,12 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="1388.0" layoutY="728.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Packet">
+      <JFXButton layoutX="1388.0" layoutY="681.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Packet">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="1389.0" layoutY="771.0" onAction="#updateOnAction" prefHeight="64.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Packet">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

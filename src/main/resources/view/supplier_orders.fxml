@@ -2,12 +2,15 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.SupplierOrdersController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.SupplierOrdersController">
 
     <children>
         <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -71,5 +74,28 @@
             <Image url="@../img/Supper_orders.png" />
          </image>
       </ImageView>
+      <TextField fx:id="sOidTxt" layoutX="1390.0" layoutY="228.0" prefHeight="44.0" prefWidth="407.0" style="-fx-background-color: tra;" />
+      <TextField fx:id="sIdTxt" layoutX="1390.0" layoutY="349.0" prefHeight="44.0" prefWidth="407.0" style="-fx-background-color: tra;" />
+      <TextField fx:id="dateTxt" layoutX="1390.0" layoutY="473.0" prefHeight="44.0" prefWidth="407.0" style="-fx-background-color: tra;" />
+      <TextField fx:id="weigthTxt" layoutX="1390.0" layoutY="595.0" prefHeight="44.0" prefWidth="407.0" style="-fx-background-color: tra;" />
+      <JFXButton layoutX="1381.0" layoutY="684.0" onAction="#addOnAction" prefHeight="54.0" prefWidth="429.0" styleClass="button-with-style" stylesheets="@../style/loginbutton.css" text="Add Supply Orders">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="1383.0" layoutY="782.0" onAction="#updateOnAction" prefHeight="54.0" prefWidth="429.0" styleClass="button-with-style" stylesheets="@../style/updatebtn.css" text="Update Orders ">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tbl" layoutX="369.0" layoutY="131.0" prefHeight="898.0" prefWidth="817.0">
+        <columns>
+          <TableColumn fx:id="colSoId" prefWidth="119.0" text="C1" />
+          <TableColumn fx:id="colSid" prefWidth="164.6666259765625" text="C2" />
+            <TableColumn fx:id="colDate" prefWidth="194.3333740234375" text="C2" />
+            <TableColumn fx:id="colWeigth" prefWidth="174.0" text="C2" />
+            <TableColumn fx:id="colDelete" prefWidth="164.33331298828125" text="C2" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>

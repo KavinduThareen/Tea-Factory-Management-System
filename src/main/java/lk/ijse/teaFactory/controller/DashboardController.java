@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class DashboardController {
+public class DashboardController{
 
     @FXML
     private AnchorPane dashbordRoot;
@@ -55,8 +55,10 @@ public class DashboardController {
 
     @FXML
     void ordersOnAction(ActionEvent event) throws IOException {
+
         dashbordRoot.getChildren().clear();
         dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/orders.fxml"))));
+
 
     }
 

@@ -8,12 +8,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
-public class PacketStokeTm {
+public class SupOrderTm {
     private String id;
-    private String catagory;
-    private String  weigth;
+    private String sId;
     private String date;
+    private String weigth;
     private JFXButton btnDelete;
 
+    public SupOrderTm(String id, String sId, String date, String weigth) {
+
+        this.id = id;
+        this.sId = sId;
+        this.date = date;
+        this.weigth = weigth;
+    }
 }

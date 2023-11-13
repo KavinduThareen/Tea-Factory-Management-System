@@ -51,4 +51,29 @@ public class SupplierModel {
         }
         return dtoList;
     }
+    public static boolean deleteItem(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "DELETE FROM supplier WHERE supplier_id= ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        return pstm.executeUpdate() > 0;
+    }
+
+    public boolean update(final SupplierDto dto) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE customer SET sup_name = ?, sup_address = ?, sup_contac = ?,isCompleted = ? WHERE supplier_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+
+        pstm.setString(1, dto.getName());
+        pstm.setString(2, dto.getAddress());
+        pstm.setString(3, dto.getContac());
+        pstm.setString(4, "0");
+        pstm.setString(5, dto.getId());
+
+        return pstm.executeUpdate() > 0;
+    }
 }

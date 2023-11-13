@@ -22,7 +22,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="732.0" layoutY="780.0" onAction="#addnewcusOnAction" prefHeight="55.0" prefWidth="458.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add New Customer">
+      <JFXButton layoutX="732.0" layoutY="780.0" onAction="#updateOnAction" prefHeight="55.0" prefWidth="458.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Customer">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

@@ -1,7 +1,7 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
-import lk.ijse.teaFactory.dto.PacketStokeDto;
+import lk.ijse.teaFactory.dto.SupOrderDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,72 +10,65 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PacketStokeModel {
-    public boolean packetStokeSaved(PacketStokeDto dto) throws SQLException {
+public class SupOrderModel {
+    public boolean SupOrderSaved(SupOrderDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql ="INSERT INTO packet_stoke VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO supplier_orders VALUES(?, ?, ?, ?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getId());
-        pstm.setString(2, dto.getCatagory());
-        pstm.setString(3, dto.getWeigth());
-        pstm.setString(4, dto.getDate());
+        pstm.setString(2, dto.getSId());
+        pstm.setString(3, dto.getDate());
+        pstm.setString(4, dto.getWeigth());
         pstm.setString(5, "0");
 
-
-        boolean isSaved = pstm.executeUpdate() >0;
-
+        boolean isSaved = pstm.executeUpdate() > 0;
         return isSaved;
     }
 
-    public List<PacketStokeDto> loadAll () throws SQLException {
+    public List<SupOrderDto> loadAll() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "SELECT * FROM packet_stoke";
+        String sql = "SELECT * FROM supplier";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        List<PacketStokeDto> dtoList = new ArrayList<>();
+        List<SupOrderDto> dtoList = new ArrayList<>();
 
         ResultSet resultSet = pstm.executeQuery();
 
-        while (resultSet.next()){
-
+        while (resultSet.next()) {
             String id = resultSet.getString(1);
-            String catagary = resultSet.getString(2);
-            String weigth = resultSet.getString(3);
-            String date = resultSet.getString(4);
+            String sId = resultSet.getString(2);
+            String date = resultSet.getString(3);
+            String weigth = resultSet.getString(4);
             String isCompleted = resultSet.getString(5);
 
-
-
-            var dto = new PacketStokeDto(id,catagary,weigth,date,isCompleted);
+            var dto = new SupOrderDto(id, sId, date, weigth, isCompleted);
             dtoList.add(dto);
         }
         return dtoList;
-
     }
 
-    public static boolean delete(String id) throws SQLException {
+    public static boolean deleteItem(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "DELETE FROM packet_stoke WHERE packet_id = ?";
+        String sql = "DELETE FROM supplier_orders WHERE s_orders_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1, id);
 
         return pstm.executeUpdate() > 0;
     }
 
-
-    public boolean update(final PacketStokeDto dto) throws SQLException {
+    public boolean update(final SupOrderDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE packet_stoke SET s_catogary = ?, s_weigth = ?, s_expiredate = ?, isCompleted = ? WHERE packet_id = ?";
+        String sql = "UPDATE customer SET sup_id = ?, sup_date = ?, sup_stoke_weigth, deleted = ? WHERE s_orders_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, dto.getCatagory());
-        pstm.setString(2, dto.getWeigth());
-        pstm.setString(3, dto.getDate());
+        pstm.setString(1, dto.getSId());
+        pstm.setString(2, dto.getDate());
+        pstm.setString(3, dto.getWeigth());
         pstm.setString(4, "0");
         pstm.setString(5, dto.getId());
 

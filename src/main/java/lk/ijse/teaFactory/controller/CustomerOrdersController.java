@@ -1,12 +1,13 @@
 package lk.ijse.teaFactory.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Cursor;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CusOrderDto;
@@ -14,8 +15,10 @@ import lk.ijse.teaFactory.dto.tm.CusOrderTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class CustomerOrdersController {
     @FXML
@@ -59,6 +62,33 @@ public class CustomerOrdersController {
         try {
             List<CusOrderDto> dtoList = model.loadAll();
             for (CusOrderDto dto : dtoList){
+
+             JFXButton btnDelete = new JFXButton("Deleted");
+                btnDelete.setCursor(javafx.scene.Cursor.HAND);
+                btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");
+
+                btnDelete.setPrefWidth(100);
+                btnDelete.setPrefHeight(30);
+
+             //   CusOrderTm tm = new CusOrderTm();
+
+           //   tm.getBtnDelete()
+                btnDelete .setOnAction((e) -> {
+                    ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+                    if(type.orElse(no) == yes) {
+                        int selectedIndex = tbl.getSelectionModel().getSelectedIndex();
+                        String id = (String) colId.getCellData(selectedIndex);
+
+                        deleteItem(id);   //delete item from the database
+
+                        obList.remove(selectedIndex);   //delete item from the JFX-Table
+                        tbl.refresh();
+                    }
+                });
                 obList.add(
                         new CusOrderTm(
                                 dto.getId(),
@@ -66,27 +96,33 @@ public class CustomerOrdersController {
                                 dto.getCatagary(),
                                 dto.getWeigth(),
                                 dto.getDate(),
-                                dto.getDescreption()
+                                dto.getDescreption(),
+                                btnDelete
                         )
                 );
+
             }
+            tbl.setItems(obList);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-        for (int i = 0; i < obList.size(); i++) {
-            int current = i;
-            obList.get(i).getBtnDelete().setOnAction(event -> {
-                obList.remove(current);
-            });
+    }
+
+    private void deleteItem(String id) {
+        try {
+            boolean isDeleted = CusOrderModel.deleteItem(id);
+            if(isDeleted)
+                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+        } catch (SQLException ex) {
+            new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
-        tbl.setItems(obList);
     }
 
     private void setCellValueFactory() {
 
-        colId.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("id"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colCId.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("cId"));
         colCatagary.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("catagary"));
         colweigth.setCellValueFactory(new PropertyValueFactory<>("weigth"));
@@ -99,7 +135,32 @@ public class CustomerOrdersController {
     public void initialize() {
         setCellValueFactory();
         loadAll();
+       // setListener();
     }
+
+    private void setListener() {
+        CustomerOrdersAddController cus = new CustomerOrdersAddController();
+        tbl.getSelectionModel().selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+                    var tm = new CusOrderTm(
+                            newValue.getId(),
+                            newValue.getCId(),
+                            newValue.getCatagary(),
+                            newValue.getWeigth(),
+                            newValue.getDate(),
+                            newValue.getDescreption(),
+                            newValue.getBtnDelete()
+
+
+
+
+
+
+                    );
+                 //  cus.csetFields(tm);
+                });
+    }
+
 
 
 }

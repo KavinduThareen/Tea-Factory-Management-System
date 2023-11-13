@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -110,13 +108,7 @@
                 <Image url="@../img/bar.png" />
             </image>
         </ImageView>
-        <TextField layoutX="879.0" layoutY="14.0" prefHeight="48.0" prefWidth="478.0" style="-fx-background-color: #DCDCDC;" />
-        <Label layoutX="368.0" layoutY="11.0" prefHeight="48.0" prefWidth="339.0" text="DASHBOARD">
-            <font>
-                <Font name="System Bold" size="36.0" />
-            </font>
-        </Label>
-      <ImageView fitHeight="280.0" fitWidth="1422.0" layoutX="421.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="222.0" fitWidth="829.0" layoutX="385.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Frame%2035.png" />
          </image>

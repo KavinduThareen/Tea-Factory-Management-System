@@ -53,4 +53,30 @@ public class LeavesStokeModel {
 
         return dtoList;
     }
+
+    public static boolean delete(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "DELETE FROM leaves_stoke WHERE leaves_s_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        return pstm.executeUpdate() > 0;
+    }
+
+    public boolean update(final LeavesStokeDto dto) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE packet_stoke SET l_weigth = ?, l_suppli_date = ?, l_s_expiredate = ?, isCompleted = ? WHERE leaves_s_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, dto.getWeigth());
+        pstm.setString(2, dto.getSDate());
+        pstm.setString(3, dto.getEDate());
+        pstm.setString(4, "0");
+        pstm.setString(5, dto.getId());
+
+
+        return pstm.executeUpdate() > 0;
+    }
 }
