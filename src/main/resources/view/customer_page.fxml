@@ -68,7 +68,7 @@
             </font>
         </JFXButton>
         <JFXClippedPane />
-      <TableView fx:id="tabl" layoutX="428.0" layoutY="154.0" prefHeight="861.0" prefWidth="1392.0">
+      <TableView fx:id="tabl" layoutX="428.0" layoutY="154.0" prefHeight="861.0" prefWidth="1392.0" stylesheets="@../style/tableCss.css">
         <columns>
           <TableColumn fx:id="colid" prefWidth="156.33331298828125" text="Customer ID" />
             <TableColumn fx:id="colEid" prefWidth="159.0" text="Employee ID" />

@@ -90,12 +90,22 @@ public class CustomerAddPageController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
     }
+
+    void clearFields() {
+        cusidTxt.setText("");
+        empidTxt.setText("");
+        cusnameTxt.setText("");
+        cusAddressTxt.setText("");
+        cuscontacTxt.setText("");
+    }
+
 
 
 

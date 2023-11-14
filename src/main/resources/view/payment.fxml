@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -76,7 +78,22 @@
       <TextField fx:id="empIdTxt" layoutX="1393.0" layoutY="349.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
       <TextField fx:id="dateTxt" layoutX="1393.0" layoutY="473.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
       <TextField fx:id="countTxt" layoutX="1393.0" layoutY="595.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
-      <JFXButton layoutX="1386.0" layoutY="703.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory" />
-      <JFXButton layoutX="1389.0" layoutY="804.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="update" />
+      <JFXButton layoutX="1386.0" layoutY="703.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="1389.0" layoutY="804.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="update">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></JFXButton>
+      <TableView layoutX="356.0" layoutY="83.0" prefHeight="930.0" prefWidth="824.0">
+        <columns>
+          <TableColumn prefWidth="140.33331298828125" text="id" />
+          <TableColumn prefWidth="128.66668701171875" text="employee ID" />
+            <TableColumn prefWidth="213.66668701171875" text="date" />
+            <TableColumn prefWidth="200.0" text="salary Count" />
+            <TableColumn prefWidth="144.3333740234375" text="delete" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>

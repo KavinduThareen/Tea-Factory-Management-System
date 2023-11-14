@@ -168,7 +168,7 @@ public class LevesStokePageController {
 
         String id = idTxt.getText();
         String weigth = WeigthTxt.getText();
-        String   sDate = sDateTxt.getText();
+        String  sDate = sDateTxt.getText();
         String eDate = eDateTxt.getText();
         String complete = "0";
 

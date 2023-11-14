@@ -72,7 +72,7 @@
             <Image url="@../img/levesStoke%20page.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="1008.0" layoutY="127.0" prefHeight="904.0" prefWidth="906.0" style="-fx-background-color: tra;">
+      <TableView fx:id="table" layoutX="1008.0" layoutY="127.0" prefHeight="904.0" prefWidth="906.0" style="-fx-background-color: rgba(212, 204, 244, 1);">
         <columns>
           <TableColumn fx:id="colid" prefWidth="156.0" text="id" />
             <TableColumn fx:id="colWeigth" prefWidth="124.0" text="weigth" />

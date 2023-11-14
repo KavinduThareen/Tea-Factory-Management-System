@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.EmployeeDto;
@@ -43,6 +44,9 @@ public class EmployeePageController {
 
     @FXML
     private AnchorPane employeeroot;
+
+    @FXML
+    private TableView<?> tabl;
 
     @FXML
     void E_customerOnAction(ActionEvent event) {
@@ -93,6 +97,9 @@ public class EmployeePageController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                tabl.refresh();
+
+
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

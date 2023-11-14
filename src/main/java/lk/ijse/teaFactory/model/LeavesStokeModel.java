@@ -67,7 +67,7 @@ public class LeavesStokeModel {
     public boolean update(final LeavesStokeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE packet_stoke SET l_weigth = ?, l_suppli_date = ?, l_s_expiredate = ?, isCompleted = ? WHERE leaves_s_id = ?";
+        String sql = "UPDATE leaves_stoke SET l_weigth = ?, l_suppli_date = ?, l_s_expiredate = ?, isCompleted = ? WHERE leaves_s_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getWeigth());
