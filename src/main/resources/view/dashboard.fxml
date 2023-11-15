@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="dashbordRoot" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.DashboardController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.DashboardController">
 
     <children>
         <ImageView fitHeight="1082.0" fitWidth="1914.0" layoutX="4.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
@@ -108,10 +108,6 @@
                 <Image url="@../img/bar.png" />
             </image>
         </ImageView>
-      <ImageView fitHeight="222.0" fitWidth="829.0" layoutX="385.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/Frame%2035.png" />
-         </image>
-      </ImageView>
+      <AnchorPane fx:id="dashbordRoot" layoutX="346.0" layoutY="44.0" prefHeight="1034.0" prefWidth="1572.0" />
     </children>
 </AnchorPane>

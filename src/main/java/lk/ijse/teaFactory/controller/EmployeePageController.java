@@ -3,10 +3,7 @@ package lk.ijse.teaFactory.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.loginDto;
@@ -49,34 +46,10 @@ public class EmployeePageController {
     private TableView<?> tabl;
 
     @FXML
-    void E_customerOnAction(ActionEvent event) {
-
-    }
+    private TableColumn<?, ?> colSelectEmployeNmaes;
 
     @FXML
-    void E_dashboardOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void E_empBtnOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void E_ourstokeOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void E_paymentBtnOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void E_supplierBtnOnAction(ActionEvent event) {
-
-    }
+    private TableView<?> tbl2;
 
     @FXML
     void updateOnAction(ActionEvent event) {

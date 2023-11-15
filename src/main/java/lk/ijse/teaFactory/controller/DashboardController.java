@@ -25,6 +25,10 @@ public class DashboardController{
     @FXML
     private JFXButton singoutbtn;
 
+    @FXML
+    private AnchorPane root;
+
+
 
 
     public AnchorPane getDashbordRoot() {
@@ -57,7 +61,7 @@ public class DashboardController{
     void ordersOnAction(ActionEvent event) throws IOException {
 
         dashbordRoot.getChildren().clear();
-        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/orders.fxml"))));
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customerOrders.fxml"))));
 
 
     }
@@ -71,8 +75,8 @@ public class DashboardController{
 
     @FXML
     void singoutbtnOnAction(ActionEvent event) throws IOException {
-        dashbordRoot.getChildren().clear();
-        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
+        root.getChildren().clear();
+        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
 
     }
 
@@ -81,7 +85,6 @@ public class DashboardController{
 
         dashbordRoot.getChildren().clear();
         dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/ourStoke.fxml"))));
-
 
     }
 

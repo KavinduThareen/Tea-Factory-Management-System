@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -13,8 +14,10 @@ import lk.ijse.teaFactory.dto.tm.SupplierTm;
 import lk.ijse.teaFactory.model.EmployeeModel;
 import lk.ijse.teaFactory.model.SupplierModel;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class SupplierPageController {
@@ -51,6 +54,14 @@ public class SupplierPageController {
 
     @FXML
     private TableColumn<?, ?> coldelte;
+
+    @FXML
+    void addSDetailOnAction(ActionEvent event) throws IOException {
+        root.getChildren().clear();
+        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/supplier_orders.fxml"))));
+
+
+    }
 
     @FXML
     void addOnAction(ActionEvent event) {

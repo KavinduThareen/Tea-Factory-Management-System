@@ -10,83 +10,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.PaymentController">
+<AnchorPane prefHeight="988.0" prefWidth="1588.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.PaymentController">
 
     <children>
-        <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/menu.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="138.0" fitWidth="338.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/GreenLeaf%20Tea-logos_black%204.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="83.0" fitWidth="1577.0" layoutX="346.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/bar.png" />
-            </image>
-        </ImageView>
-        <JFXButton layoutX="29.0" layoutY="166.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Dashboard">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="26.0" layoutY="253.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Our Stoke">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="29.0" layoutY="342.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Customer">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="427.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Employee">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="512.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Supplier">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="607.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Payment">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="27.0" layoutY="703.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Repoart">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="11.0" layoutY="972.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/Sigoutbutton.css" text="Singout">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
         <JFXClippedPane />
-      <ImageView fitHeight="1038.0" fitWidth="1578.0" layoutX="344.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1034.0" fitWidth="1586.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/salorypage.png" />
          </image>
       </ImageView>
-      <TextField fx:id="idTxt" layoutX="1393.0" layoutY="223.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
-      <TextField fx:id="empIdTxt" layoutX="1393.0" layoutY="349.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
-      <TextField fx:id="dateTxt" layoutX="1393.0" layoutY="473.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
-      <TextField fx:id="countTxt" layoutX="1393.0" layoutY="595.0" prefHeight="44.0" prefWidth="403.0" style="-fx-background-color: tra;" />
-      <JFXButton layoutX="1386.0" layoutY="703.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory">
+      <TextField fx:id="idTxt" layoutX="1058.0" layoutY="183.0" prefHeight="44.0" prefWidth="403.0" promptText="d" style="-fx-background-color: tra;" />
+      <TextField fx:id="empIdTxt" layoutX="1058.0" layoutY="309.0" prefHeight="44.0" prefWidth="403.0" promptText="eid" style="-fx-background-color: tra;" />
+      <TextField fx:id="dateTxt" layoutX="1058.0" layoutY="430.0" prefHeight="44.0" prefWidth="403.0" promptText="d" style="-fx-background-color: tra;" />
+      <TextField fx:id="countTxt" layoutX="1058.0" layoutY="555.0" prefHeight="44.0" prefWidth="403.0" promptText="s" style="-fx-background-color: tra;" />
+      <JFXButton layoutX="1053.0" layoutY="652.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
-      <JFXButton layoutX="1389.0" layoutY="804.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="update">
+      <JFXButton layoutX="1053.0" layoutY="739.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="update">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
-      <TableView layoutX="356.0" layoutY="83.0" prefHeight="930.0" prefWidth="824.0">
+      <TableView layoutX="14.0" layoutY="38.0" prefHeight="930.0" prefWidth="834.0">
         <columns>
           <TableColumn prefWidth="140.33331298828125" text="id" />
           <TableColumn prefWidth="128.66668701171875" text="employee ID" />

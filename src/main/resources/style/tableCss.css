@@ -2,9 +2,9 @@
     -fx-background-color: transparent;
     -fx-border-color: black;
     -fx-border-width: 0.5;
-    -fx-font-size: 28px;
-    -fx-background-radius: 30;
-    -fx-border-radius: 30;
+    -fx-font-size: 15px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10
 }
 
 .table-view .column-header-background .filler {
@@ -25,7 +25,7 @@
 
 .table-view .column-header {
     -fx-background-color: transparent;
-    -fx-border-color: 10;
+    -fx-border-color: 5;
     -fx-border-width: 0.5;
 }
 
@@ -35,7 +35,7 @@
 }
 .table-row-cell:hover {
     -fx-background-color: #93f9b911;
-    -fx-text-background-color: red;
+    -fx-text-background-color: #3f2def;
 }
 .table-row-cell:odd{
     -fx-background-color: #93f9b911;

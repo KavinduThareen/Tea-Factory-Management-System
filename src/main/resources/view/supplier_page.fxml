@@ -10,71 +10,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.SupplierPageController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1598.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.SupplierPageController">
 
     <children>
-        <ImageView fitHeight="1080.0" fitWidth="342.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/menu.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="138.0" fitWidth="338.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/GreenLeaf%20Tea-logos_black%204.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="83.0" fitWidth="1577.0" layoutX="346.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../img/bar.png" />
-            </image>
-        </ImageView>
-        <JFXButton layoutX="29.0" layoutY="166.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Dashboard">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="26.0" layoutY="253.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Our Stoke">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="29.0" layoutY="342.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Customer">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="427.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Employee">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="512.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Supplier">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="28.0" layoutY="607.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Payment">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="27.0" layoutY="703.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Repoart">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
-        <JFXButton layoutX="11.0" layoutY="972.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/Sigoutbutton.css" text="Singout">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </JFXButton>
         <JFXClippedPane />
-      <ImageView fitHeight="1026.0" fitWidth="1576.0" layoutX="346.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1048.0" fitWidth="1575.0" layoutX="10.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/supplier%20fream.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tbl" layoutX="356.0" layoutY="76.0" prefHeight="958.0" prefWidth="826.0">
+      <TableView fx:id="tbl" layoutX="36.0" layoutY="71.0" prefHeight="932.0" prefWidth="826.0" stylesheets="@../style/tableCss.css">
         <columns>
           <TableColumn fx:id="cold" prefWidth="131.0" text="ID" />
             <TableColumn fx:id="colName" prefWidth="203.0" text="Name" />
@@ -83,34 +28,39 @@
             <TableColumn fx:id="coldelte" prefWidth="144.0" text="Delete" />
         </columns>
       </TableView>
-      <JFXButton layoutX="1381.0" layoutY="688.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Suppliers">
+      <JFXButton layoutX="1047.0" layoutY="662.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Suppliers">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="idTxt" layoutX="1396.0" layoutY="222.0" prefHeight="44.0" prefWidth="398.0" style="-fx-background-color: tra;">
+      <TextField fx:id="idTxt" layoutX="1054.0" layoutY="221.0" prefHeight="44.0" prefWidth="398.0" promptText="id" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="nameTxt" layoutX="1395.0" layoutY="342.0" prefHeight="54.0" prefWidth="398.0" style="-fx-background-color: tra;">
+      <TextField fx:id="nameTxt" layoutX="1054.0" layoutY="339.0" prefHeight="54.0" prefWidth="398.0" promptText="name" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="Contac" layoutX="1395.0" layoutY="466.0" prefHeight="54.0" prefWidth="398.0" style="-fx-background-color: tra;">
+      <TextField fx:id="Contac" layoutX="1054.0" layoutY="462.0" prefHeight="54.0" prefWidth="398.0" promptText="no" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="Address" layoutX="1396.0" layoutY="595.0" prefHeight="44.0" prefWidth="398.0" style="-fx-background-color: tra;">
+      <TextField fx:id="Address" layoutX="1061.0" layoutY="590.0" prefHeight="44.0" prefWidth="398.0" promptText="addres" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="1379.0" layoutY="767.0" onAction="#updateOnAction" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Upadate Supplier">
+      <JFXButton layoutX="1047.0" layoutY="749.0" onAction="#updateOnAction" prefHeight="64.0" prefWidth="426.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Upadate Supplier">
          <font>
             <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="1392.0" layoutY="75.0" onAction="#addSDetailOnAction" prefHeight="40.0" prefWidth="168.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="Add Suppling Deteailse">
+         <font>
+            <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
     </children>
