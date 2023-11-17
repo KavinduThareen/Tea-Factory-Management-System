@@ -11,8 +11,7 @@ create table user
     username varchar(10) not null,
     contac   varchar(20) null,
     password varchar(8)  null,
-    constraint username
-        unique (username)
+    constraint unique (username)
 );
 
 
@@ -40,13 +39,8 @@ create table employee
     address       varchar(30) null,
     contac        varchar(20) null,
     delet         tinyint     null,
-    constraint employee_ibfk_1
-        foreign key (user_id) references user (userid)
-            on update cascade on delete cascade
+    constraint foreign key (user_id) references user (userid) on update cascade on delete cascade
 );
-
-create index user_id
-    on employee (user_id);
 
 
 -- auto-generated definition
@@ -59,13 +53,9 @@ create table customer
     cus_address varchar(30) null,
     cus_cantac  varchar(20) null,
     isCompleted tinyint     null,
-    constraint customer_ibfk_1
-        foreign key (emp_id) references employee (employeeid)
+    constraint foreign key (emp_id) references employee (employeeid)
             on update cascade on delete cascade
 );
-
-create index emp_id
-    on customer (emp_id);
 
 
 
@@ -80,14 +70,9 @@ create table orders
     o_date       date        null,
     descrreption varchar(20) null,
     isCompleted  tinyint     null,
-    constraint orders_ibfk_1
-        foreign key (cus_id) references customer (customer_id)
+    constraint foreign key (cus_id) references customer (customer_id)
             on update cascade on delete cascade
 );
-
-create index cus_id
-    on orders (cus_id);
-
 
 -- auto-generated definition
 create table packet_stoke
@@ -137,12 +122,6 @@ create table stoke_detailse
             on update cascade on delete cascade
 );
 
-create index l_id
-    on stoke_detailse (l_id);
-
-create index p_stoke_id
-    on stoke_detailse (p_stoke_id);
-
 
 -- auto-generated definition
 create table supplier
@@ -166,13 +145,9 @@ create table supplier_orders
     sup_date         date        null,
     sup_stoke_weigth double      null,
     deleted          tinyint     null,
-    constraint supplier_orders_ibfk_1
-        foreign key (sup_id) references supplier (supplier_id)
+    constraint foreign key (sup_id) references supplier (supplier_id)
             on update cascade on delete cascade
 );
-
-create index sup_id
-    on supplier_orders (sup_id);
 
 
 
@@ -181,19 +156,11 @@ create table suppling_detailse
 (
     s_ord_id   varchar(10) not null,
     l_stoke_id varchar(10) not null,
-    constraint suppling_detailse_ibfk_1
-        foreign key (l_stoke_id) references leaves_stoke (leaves_s_id)
+    constraint foreign key (l_stoke_id) references leaves_stoke (leaves_s_id)
             on update cascade on delete cascade,
-    constraint suppling_detailse_ibfk_2
-        foreign key (s_ord_id) references supplier_orders (s_orders_id)
+    constraint foreign key (s_ord_id) references supplier_orders (s_orders_id)
             on update cascade on delete cascade
 );
-
-create index l_stoke_id
-    on suppling_detailse (l_stoke_id);
-
-create index s_ord_id
-    on suppling_detailse (s_ord_id);
 
 
 
@@ -206,12 +173,7 @@ create table salory
     Date      date        null,
     s_count   double      null,
     deleted   tinyint     null,
-    constraint salory_ibfk_1
-        foreign key (e_id) references employee (employeeid)
+    constraint foreign key (e_id) references employee (employeeid)
             on update cascade on delete cascade
 );
-
-create index e_id
-    on salory (e_id);
-
 

@@ -1,19 +1,22 @@
 package lk.ijse.teaFactory.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.EmployeeDto;
-import lk.ijse.teaFactory.dto.loginDto;
+import lk.ijse.teaFactory.dto.tm.EmployeeTm;
 import lk.ijse.teaFactory.model.EmployeeModel;
-import lk.ijse.teaFactory.model.loginModel;
-import lk.ijse.teaFactory.model.registerModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class EmployeePageController {
 
@@ -49,7 +52,7 @@ public class EmployeePageController {
     private TableColumn<?, ?> colSelectEmployeNmaes;
 
     @FXML
-    private TableView<?> tbl2;
+    private TableView<EmployeeTm> tbl2;
 
     @FXML
     void updateOnAction(ActionEvent event) {
@@ -95,7 +98,10 @@ public class EmployeePageController {
 
          var dto = new EmployeeDto(employeeId,employeeName,empGender,empbd,uId,empContac,empAddress,delete);
          var model = new EmployeeModel();
+         boolean isValidated = validate();
 
+        if (isValidated) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
          try {
              boolean isSaved = model.employeeSave(dto);
 
@@ -109,6 +115,101 @@ public class EmployeePageController {
              new Alert(Alert.AlertType.CONFIRMATION, "Error").show();
          }
 
+        }
+
+    }
+    private boolean validate() {
+
+        String idText = employeeIdTxt.getText();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        if (!isIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+        String nameText = empNameTxt.getText();
+//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        if (!isNameValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            return false;
+        }
+
+        String genderText = empGenderTxt.getText();
+//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        boolean isGenderValidated = Pattern.matches("(Male)|(Female)", genderText);
+        if (!isGenderValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            return false;
+        }
+
+        String UidText = employeeIdTxt.getText();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
+        if (!isUIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+        String cantacText = empContacTxt.getText();
+//        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
+        if (!isCantacValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+            return false;
+        }
+
+        String addressText = empAddressTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        if (!isAddressValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
+
+
+        return true;
+    }
+
+    public void initialize() {
+        setCellValueFactory();
+        loadAllEmployees();
+    }
+    public void loadAllEmployees(){
+        var model =new EmployeeModel();
+
+        ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
+
+        try {
+            List<EmployeeDto> dtoList =model.getAllEmployee();
+            for (EmployeeDto dto : dtoList){
+
+                obList.add(
+                        new EmployeeTm(
+                                dto.getEmployeeId(),
+                                dto.getEmployeeName(),
+                                dto.getEmpGender(),
+                                dto.getEmpbd(),
+                                dto.getUId(),
+                                dto.getEmpContac(),
+                                dto.getEmpAddress()
+                        )
+                );
+
+            }
+            tbl2.setItems(obList);
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setCellValueFactory() {
+
+        colSelectEmployeNmaes.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
     }
 
 

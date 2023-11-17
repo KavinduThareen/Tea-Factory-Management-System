@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class SupplierPageController {
 
@@ -73,16 +74,59 @@ public class SupplierPageController {
 
         var dto = new SupplierDto(id,name,address,contac,complete);
         var model = new SupplierModel();
+        boolean isValidated = validate();
 
-        try {
-            boolean isSaved = model.supplierSaved(dto);
-            if (isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"saved").show();
+        if (isValidated) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+
+            try {
+                boolean isSaved = model.supplierSaved(dto);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
+
     }
+
+    private boolean validate() {
+
+        String idText = idTxt.getText();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isIDValidated = Pattern.matches("[S][0-9]{3,}", idText);
+        if (!isIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+        String nameText = nameTxt.getText();
+//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        if (!isNameValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            return false;
+        }
+        String cantacText = Contac.getText();
+//        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
+        if (!isCantacValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+            return false;
+        }
+
+        String addressText = Address.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        if (!isAddressValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
+        return true;
+
+    }
+
 
     public void loadAll(){
         var model =new SupplierModel();

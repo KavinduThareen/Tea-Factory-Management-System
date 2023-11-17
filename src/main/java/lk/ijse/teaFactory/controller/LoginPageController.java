@@ -40,7 +40,6 @@ public class LoginPageController{
     @FXML
     void loginbtnOnAction(ActionEvent event) throws IOException {
 
-
         loginroot.getChildren().clear();
        loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/dashboard.fxml"))));
 /*

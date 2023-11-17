@@ -23,7 +23,7 @@ public class Luncher extends Application {
         stage.setScene(scene);
 
         //set title and get center on screen stage
-        stage.setTitle("Login Page");
+        stage.setTitle("GreenLeaf Software");
         stage.centerOnScreen();
 
         //show stage to the crowd

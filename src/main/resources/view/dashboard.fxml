@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.DashboardController">
+<AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.MainController">
 
     <children>
         <ImageView fitHeight="1082.0" fitWidth="1914.0" layoutX="4.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
@@ -19,7 +19,7 @@
                 <Image url="@../img/menu.png" />
             </image>
         </ImageView>
-        <JFXButton layoutX="29.0" layoutY="166.0" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Dashboard">
+        <JFXButton layoutX="29.0" layoutY="166.0" onAction="#dashboardOnAction" prefHeight="64.0" prefWidth="291.0" styleClass="button-with-style" stylesheets="@../style/dashboardAllbutton.css" text="Dashboard">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font></JFXButton>

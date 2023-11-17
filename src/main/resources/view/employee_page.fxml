@@ -10,69 +10,69 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="employeeroot" prefHeight="941.0" prefWidth="1508.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.EmployeePageController">
+<AnchorPane fx:id="employeeroot" prefHeight="1043.0" prefWidth="1615.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.EmployeePageController">
     <children>
-      <ImageView fitHeight="936.0" fitWidth="1505.0" layoutX="-1.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1028.0" fitWidth="1632.0" layoutX="-1.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Frame%2018.png" />
          </image>
       </ImageView>
-      <TextField fx:id="employeeIdTxt" layoutX="168.0" layoutY="140.0" prefHeight="53.0" prefWidth="551.0" promptText="Employee Id" style="-fx-background-color: tra;">
+      <TextField fx:id="employeeIdTxt" layoutX="204.0" layoutY="123.0" prefHeight="53.0" prefWidth="551.0" promptText="Employee Id" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="empNameTxt" layoutX="209.0" layoutY="231.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Name " style="-fx-background-color: tra;">
+      <TextField fx:id="empNameTxt" layoutX="192.0" layoutY="229.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Name " style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="uidTxt" layoutX="155.0" layoutY="435.0" prefHeight="44.0" prefWidth="574.0" promptText="User Id" style="-fx-background-color: tra;">
+      <TextField fx:id="uidTxt" layoutX="181.0" layoutY="437.0" prefHeight="44.0" prefWidth="574.0" promptText="User Id" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="empContacTxt" layoutX="168.0" layoutY="519.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Contac" style="-fx-background-color: tra;">
+      <TextField fx:id="empContacTxt" layoutX="193.0" layoutY="531.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Contac" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="empAddressTxt" layoutX="162.0" layoutY="615.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee address" style="-fx-background-color: tra;">
+      <TextField fx:id="empAddressTxt" layoutX="192.0" layoutY="635.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee address" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="162.0" layoutY="755.0" onAction="#saveEmployeeOnAction" prefHeight="81.0" prefWidth="263.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="save Employee">
+      <JFXButton layoutX="170.0" layoutY="840.0" onAction="#saveEmployeeOnAction" prefHeight="81.0" prefWidth="263.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="save Employee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="449.0" layoutY="755.0" onAction="#updateOnAction" prefHeight="81.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/deletebtn.css" text="add Employee">
+      <JFXButton layoutX="510.0" layoutY="838.0" onAction="#updateOnAction" prefHeight="81.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/deletebtn.css" text="add Employee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="1007.0" layoutY="798.0" onAction="#viewempOnAction" prefHeight="70.0" prefWidth="476.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="View All Employee">
+      <JFXButton layoutX="1056.0" layoutY="902.0" onAction="#viewempOnAction" prefHeight="70.0" prefWidth="516.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="View All Employee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <Label layoutX="67.0" layoutY="41.0" prefHeight="82.0" prefWidth="431.0" text="Add Employee ">
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="82.0" prefWidth="431.0" text="Add Employee ">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <TextField fx:id="empbdTxt" layoutX="162.0" layoutY="336.0" prefHeight="44.0" prefWidth="263.0" promptText="Birthday" style="-fx-background-color: tra;">
+      <TextField fx:id="empbdTxt" layoutX="192.0" layoutY="331.0" prefHeight="44.0" prefWidth="263.0" promptText="Birthday" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="empGenderTxt" layoutX="479.0" layoutY="331.0" prefHeight="44.0" prefWidth="263.0" promptText="Gender" style="-fx-background-color: tra;">
+      <TextField fx:id="empGenderTxt" layoutX="514.0" layoutY="331.0" prefHeight="44.0" prefWidth="263.0" promptText="Gender" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TableView fx:id="tbl2" layoutX="996.0" layoutY="41.0" prefHeight="744.0" prefWidth="503.0">
+      <TableView fx:id="tbl2" layoutX="1062.0" layoutY="35.0" prefHeight="856.0" prefWidth="510.0" stylesheets="@../style/tableCss.css">
         <columns>
-          <TableColumn fx:id="colSelectEmployeNmaes" prefWidth="501.0" text="C1" />
+          <TableColumn fx:id="colSelectEmployeNmaes" prefWidth="571.0" text="Names" />
         </columns>
       </TableView>
     </children>

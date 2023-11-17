@@ -1,23 +1,16 @@
 package lk.ijse.teaFactory.controller;
 
-import com.jfoenix.animation.alert.CenterTransition;
 import com.jfoenix.controls.JFXButton;
-import com.sun.javafx.stage.EmbeddedWindow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class DashboardController{
+public class MainController {
 
     @FXML
     private AnchorPane dashbordRoot;
@@ -34,6 +27,23 @@ public class DashboardController{
     public AnchorPane getDashbordRoot() {
         return dashbordRoot;
     }
+
+    public void initialize() throws IOException {
+        initializeDashboard();
+    }
+
+    private void initializeDashboard() throws IOException {
+        Parent node = FXMLLoader.load(this.getClass().getResource("/view/dashboard1.fxml"));
+
+        this.dashbordRoot.getChildren().clear();
+        this.dashbordRoot.getChildren().add(node);
+    }
+
+    @FXML
+    void dashboardOnAction(ActionEvent event) throws IOException {
+        initializeDashboard();
+    }
+
 
     @FXML
     void SupplierOnAction(ActionEvent event) throws IOException {

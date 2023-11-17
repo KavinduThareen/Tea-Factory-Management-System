@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="988.0" prefWidth="1588.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.PaymentController">
+<AnchorPane fx:id="root" prefHeight="988.0" prefWidth="1588.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.PaymentController">
 
     <children>
         <JFXClippedPane />
@@ -21,7 +21,7 @@
       </ImageView>
       <TextField fx:id="idTxt" layoutX="1058.0" layoutY="183.0" prefHeight="44.0" prefWidth="403.0" promptText="d" style="-fx-background-color: tra;" />
       <TextField fx:id="empIdTxt" layoutX="1058.0" layoutY="309.0" prefHeight="44.0" prefWidth="403.0" promptText="eid" style="-fx-background-color: tra;" />
-      <TextField fx:id="dateTxt" layoutX="1058.0" layoutY="430.0" prefHeight="44.0" prefWidth="403.0" promptText="d" style="-fx-background-color: tra;" />
+      <TextField fx:id="dateTxt" layoutX="1058.0" layoutY="434.0" prefHeight="44.0" prefWidth="403.0" promptText="d" style="-fx-background-color: tra;" />
       <TextField fx:id="countTxt" layoutX="1058.0" layoutY="555.0" prefHeight="44.0" prefWidth="403.0" promptText="s" style="-fx-background-color: tra;" />
       <JFXButton layoutX="1053.0" layoutY="652.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory">
          <font>
@@ -31,13 +31,13 @@
          <font>
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
-      <TableView layoutX="14.0" layoutY="38.0" prefHeight="930.0" prefWidth="834.0">
+      <TableView fx:id="tbl" layoutX="14.0" layoutY="38.0" prefHeight="930.0" prefWidth="834.0" stylesheets="@../style/tableCss.css">
         <columns>
-          <TableColumn prefWidth="140.33331298828125" text="id" />
-          <TableColumn prefWidth="128.66668701171875" text="employee ID" />
-            <TableColumn prefWidth="213.66668701171875" text="date" />
-            <TableColumn prefWidth="200.0" text="salary Count" />
-            <TableColumn prefWidth="144.3333740234375" text="delete" />
+          <TableColumn fx:id="colid" prefWidth="140.33331298828125" text="id" />
+          <TableColumn fx:id="colempId" prefWidth="128.66668701171875" text="employee ID" />
+            <TableColumn fx:id="coldate" prefWidth="213.66668701171875" text="date" />
+            <TableColumn fx:id="colsCount" prefWidth="200.0" text="salary Count" />
+            <TableColumn fx:id="coldelete" prefWidth="144.3333740234375" text="delete" />
         </columns>
       </TableView>
     </children>
