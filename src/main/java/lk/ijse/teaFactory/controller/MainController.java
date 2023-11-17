@@ -44,6 +44,14 @@ public class MainController {
         initializeDashboard();
     }
 
+    @FXML
+    void profileOnAction(ActionEvent event) throws IOException {
+        dashbordRoot.getChildren().clear();
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/userProfile.fxml"))));
+
+    }
+
+
 
     @FXML
     void SupplierOnAction(ActionEvent event) throws IOException {

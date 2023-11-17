@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -109,5 +110,17 @@
             </image>
         </ImageView>
       <AnchorPane fx:id="dashbordRoot" layoutX="346.0" layoutY="44.0" prefHeight="1034.0" prefWidth="1572.0" />
+      <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="758.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/image%2090.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="803.0" layoutY="4.0" prefHeight="29.0" prefWidth="403.0" promptText="Search" style="-fx-background-color: tra;" />
+      <JFXButton layoutX="1796.0" layoutY="-1.0" onAction="#profileOnAction" prefHeight="43.0" prefWidth="119.0" text="You Profile" />
+      <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="1804.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/image%2066.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
