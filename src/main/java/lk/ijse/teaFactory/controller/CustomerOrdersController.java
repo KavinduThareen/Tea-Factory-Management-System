@@ -151,11 +151,6 @@ public class CustomerOrdersController {
                             newValue.getDescreption(),
                             newValue.getBtnDelete()
 
-
-
-
-
-
                     );
                  //  cus.csetFields(tm);
                 });
