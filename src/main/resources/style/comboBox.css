@@ -1,48 +1,71 @@
-/* styles.css */
+/* Add more styles to yourComboBox or customize existing ones */
 
+/* Set a drop shadow effect */
 #yourComboBox {
-    -fx-background-color: lightblue;
-    -fx-text-fill: darkblue;
-    -fx-border-color: darkblue;
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
-    -fx-pref-width: 150px; /* Set preferred width */
-    /* Add more styles as needed */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
 }
 
-/* Hover effect for the ComboBox */
-#yourComboBox:hover {
-    -fx-background-color: lightcyan;
-}
-
-/* Modify the arrow button */
-#yourComboBox .arrow-button {
-    -fx-background-color: darkblue;
-    -fx-shape: null;
-}
-
-/* Style the text field inside the ComboBox */
+/* Add padding to the text field */
 #yourComboBox .text-field {
-    -fx-background-color: lightblue;
+    -fx-padding: 5;
+}
+
+/* Customize the arrow button on hover */
+#yourComboBox .arrow-button:hover {
+    -fx-background-color: darkcyan;
+}
+
+/* Style the scrollbar in the list view */
+#yourComboBox .scroll-bar:vertical {
+    -fx-background-color: darkblue;
+}
+
+/* Style the increment and decrement buttons in the scrollbar */
+#yourComboBox .increment-button, #yourComboBox .decrement-button {
+    -fx-background-color: darkcyan;
+}
+
+/* Customize the inner background of the list view */
+#yourComboBox .list-view .viewport {
+    -fx-background-color: lightgray;
+}
+
+/* Add a border to the selected item in the list view */
+#yourComboBox .list-view .list-cell:selected {
     -fx-border-color: darkblue;
-    -fx-border-width: 0 0 1 0; /* bottom border only */
+    -fx-border-width: 0 0 1 0;
 }
 
-/* Modify the list view */
-#yourComboBox .list-view {
+/* Customize the prompt text */
+#yourComboBox .prompt-text {
+    -fx-text-fill: darkgray;
+    -fx-font-style: italic;
+}
+
+/* Set a different color for the focus border */
+#yourComboBox:focused {
+    -fx-border-color: #ff7f50; /* Coral color */
+}
+
+/* Style the combo box popup */
+#yourComboBox .combo-box-popup {
+    -fx-background-color: lightgray;
+}
+
+/* Customize the combo box popup border */
+#yourComboBox .combo-box-popup-border {
+    -fx-border-color: darkblue;
+    -fx-border-width: 1;
+}
+
+/* Style the combo box popup list cell */
+#yourComboBox .combo-box-popup .list-view .list-cell {
     -fx-background-color: lightgray;
     -fx-font-size: 12px;
-    /* Add more styles as needed */
 }
 
-/* Style the list cell in the ComboBox */
-#yourComboBox .list-cell {
-    -fx-background-color: lightgray;
-    -fx-font-size: 12px;
-}
-
-/* Style the selected item in the list view */
-#yourComboBox .list-cell:selected {
+/* Style the combo box popup selected item */
+#yourComboBox .combo-box-popup .list-view .list-cell:selected {
     -fx-background-color: darkblue;
     -fx-text-fill: white;
 }

@@ -77,6 +77,7 @@ public class EmployeePageController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                clearFields();
                 tabl.refresh();
 
 
@@ -111,6 +112,7 @@ public class EmployeePageController {
                  if (isSaved) {
 
                      new Alert(Alert.AlertType.CONFIRMATION, "Emplooyee Saved").show();
+                     clearFields();
                  }
 
          } catch (SQLException e) {
@@ -241,7 +243,7 @@ public class EmployeePageController {
 
     private void setCellValueFactory() {
 
-        colSelectEmployeNmaes.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
+        colSelectEmployeNmaes.setCellValueFactory(new PropertyValueFactory<>("uId"));
     }
 
 
@@ -252,6 +254,17 @@ public class EmployeePageController {
         employeeroot.getChildren().clear();
         employeeroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/view_employee_page.fxml"))));
 
+
+    }
+
+    void clearFields() {
+
+        employeeIdTxt.setText("");
+        empNameTxt.setText("");
+        empGenderTxt.setText("");
+        empbdTxt.setText("");
+        empContacTxt.setText("");
+        empAddressTxt.setText("");
 
     }
 }

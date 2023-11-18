@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.RegisterDto;
+import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.RegisterModel;
 
 import java.io.IOException;
@@ -86,7 +87,19 @@ public class RegisterPagecontroller {
         registerroot.getChildren().clear();
         registerroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
 
+    }
 
+    private void generateNextCusOrderId() {
+        try {
+            String orderId = RegisterModel.generateNextUserId();
+            useridTxt.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void initialize() {
+       generateNextCusOrderId();
     }
 
 }

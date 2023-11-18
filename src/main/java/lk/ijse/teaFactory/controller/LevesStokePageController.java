@@ -154,7 +154,18 @@ public class LevesStokePageController {
     public void initialize() {
         setCellValueFactory();
         loadAll();
+        generateNextCusId();
     }
+
+    private void generateNextCusId() {
+        try {
+            String orderId = LeavesStokeModel.generateNextLeavesId();
+            idTxt.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     private void clearFields() {
         idTxt.setText("");
@@ -180,12 +191,15 @@ public class LevesStokePageController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+             clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
     }
+
+
 
 
 

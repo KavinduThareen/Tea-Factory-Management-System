@@ -72,6 +72,7 @@ public class CustomerOrdersAddController {
             try {
                 boolean isSaved = model.cusOrdersSaved(dto);
                 new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                clearFields();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -203,10 +204,21 @@ public class CustomerOrdersAddController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+
+    }
+
+    void clearFields() {
+
+        idTxt.setText("");
+      catagaryTxt.setText("");
+      WeigthTxt.setText("");
+      dateTxt.setText("");
+      descreptionTxt.setText("");
 
     }
 

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -21,6 +22,8 @@ public class MainController {
     @FXML
     private AnchorPane root;
 
+    @FXML
+    private TextField searchTxt;
 
 
 

@@ -4,11 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.loginDto;
+import lk.ijse.teaFactory.model.LoginModel;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class LoginPageController{
@@ -29,40 +35,40 @@ public class LoginPageController{
     private TextField usernameTxt;
 
 
+
+
+    @FXML
+    void keyOnAction(KeyEvent event) throws IOException {
+        if (event.getCode() == KeyCode.ENTER) {
+            performLoginAction();
+        }
+    }
+
     @FXML
     void loginbtnOnAction(ActionEvent event) throws IOException {
+        performLoginAction();
+    }
 
-        loginroot.getChildren().clear();
-       loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/dashboard.fxml"))));
-/*
+    private void performLoginAction() throws IOException {
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
 
-        var model = new loginModel();
+        var model = new LoginModel();
         try {
             loginDto dto = model.finduserName();
 
-            if( dto.getUsername().equals(username) && dto.getPassword().equals(password)) {
-
-               // new Alert(Alert.AlertType.INFORMATION, "ok!").show();
+            if (dto != null && dto.getUsername().equals(username) && dto.getPassword().equals(password)) {
+                // new Alert(Alert.AlertType.INFORMATION, "ok!").show();
                 loginroot.getChildren().clear();
-                loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/dashboard.fxml"))));
-
-
+                loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "user not found!").show();
-
+                new Alert(Alert.AlertType.INFORMATION, "User not found or invalid credentials!").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
- */
-
-
-
     }
 
     @FXML

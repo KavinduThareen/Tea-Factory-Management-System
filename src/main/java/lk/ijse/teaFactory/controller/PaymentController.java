@@ -77,6 +77,7 @@ public class PaymentController {
             boolean isSaved = model.salarySaved(dto);
             if (isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,"saved").show();
+                clearFields();
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -101,6 +102,7 @@ public class PaymentController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                clearFields();
                 //clearFields();
             }
         } catch (SQLException e) {
@@ -215,6 +217,12 @@ public class PaymentController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void clearFields() {
+        idTxt.setText("");
+        dateTxt.setText("");
+        countTxt .setText("");
     }
 
 

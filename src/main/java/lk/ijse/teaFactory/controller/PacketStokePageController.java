@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.tm.CompleteTm;
 import lk.ijse.teaFactory.dto.tm.PacketStokeTm;
+import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
 
 import java.sql.SQLException;
@@ -71,6 +72,7 @@ public class PacketStokePageController {
             boolean isSaved = model.packetStokeSaved(dto);
             if (isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,"saved").show();
+                clearFields();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -95,6 +97,7 @@ public class PacketStokePageController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -176,7 +179,18 @@ public class PacketStokePageController {
     public void initialize() {
         setCellValueFactory();
         loadAll();
+        generateNextCusId();
     }
+
+    private void generateNextCusId() {
+        try {
+            String orderId = PacketStokeModel.generateNextOrderId();
+            idTxt.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     private void deleteItem(String id) {
         try {
@@ -186,6 +200,13 @@ public class PacketStokePageController {
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
+    }
+
+    private void clearFields() {
+        idTxt.setText("");
+        catagaryTxt.setText("");
+        weigthTxt .setText("");
+        expirTxt.setText("");
     }
 
 }

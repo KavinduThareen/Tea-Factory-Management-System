@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="1124.0" prefWidth="1970.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.UserProfileController">
    <children>
-      <ImageView fitHeight="1030.0" fitWidth="1810.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="996.0" fitWidth="1808.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/Frame%2041.png" />
          </image>
       </ImageView>
+      <TextField fx:id="idTxt" layoutX="82.0" layoutY="386.0" prefHeight="53.0" prefWidth="510.0" promptText="User ID" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="uNameTxt" layoutX="91.0" layoutY="492.0" prefHeight="53.0" prefWidth="494.0" promptText="User Name" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="cantcTxt" layoutX="91.0" layoutY="604.0" prefHeight="53.0" prefWidth="494.0" promptText="Cantac" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TableView fx:id="tbl" layoutX="719.0" layoutY="55.0" prefHeight="865.0" prefWidth="744.0" stylesheets="@../style/tableCss.css">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="138.0" text="User ID" />
+          <TableColumn fx:id="colIntime" prefWidth="231.0" text="InTime" />
+            <TableColumn fx:id="colOutTime" prefWidth="198.3333740234375" text="Out Time" />
+            <TableColumn fx:id="colDate" prefWidth="177.0" text="Date" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="81.0" layoutY="840.0" onAction="#UpdateOnAction" prefHeight="73.0" prefWidth="504.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Detailse">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="pwTxt" layoutX="88.0" layoutY="708.0" prefHeight="63.0" prefWidth="495.0" style="-fx-background-color: tra;" />
    </children>
 </AnchorPane>

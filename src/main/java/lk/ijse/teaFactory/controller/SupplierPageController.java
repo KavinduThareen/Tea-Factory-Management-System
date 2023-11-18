@@ -84,6 +84,7 @@ public class SupplierPageController {
                 if (isSaved) {
                     tbl.refresh();
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    clearFields();
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -241,11 +242,19 @@ public class SupplierPageController {
             if(isUpdated) {
                 tbl.refresh();
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
+    }
+
+    private void clearFields() {
+        idTxt.setText("");
+        nameTxt.setText("");
+        Address .setText("");
+        Contac.setText("");
     }
 
 

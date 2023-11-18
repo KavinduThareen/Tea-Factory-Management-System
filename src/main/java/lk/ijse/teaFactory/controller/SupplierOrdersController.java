@@ -68,6 +68,7 @@ public class SupplierOrdersController {
             if (isSaved){
                 tbl.refresh();
                 new Alert(Alert.AlertType.CONFIRMATION,"saved").show();
+                clearFields();
 
             }
         } catch (Exception e) {
@@ -178,7 +179,12 @@ public class SupplierOrdersController {
         weigthTxt.setText((dto.getWeigth()));
     }
 
-
+    private void clearFields() {
+        sOidTxt.setText("");
+        sIdTxt  .setText("");
+        dateTxt .setText("");
+        weigthTxt.setText("");
+    }
 
 
 
@@ -198,6 +204,7 @@ public class SupplierOrdersController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

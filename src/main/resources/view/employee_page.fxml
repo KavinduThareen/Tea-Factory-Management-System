@@ -48,7 +48,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="1056.0" layoutY="902.0" onAction="#viewempOnAction" prefHeight="70.0" prefWidth="516.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="View All Employee">
+      <JFXButton layoutX="1031.0" layoutY="902.0" onAction="#viewempOnAction" prefHeight="70.0" prefWidth="516.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="View All Employee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -66,11 +66,11 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TableView fx:id="tbl2" layoutX="1062.0" layoutY="35.0" prefHeight="856.0" prefWidth="510.0" stylesheets="@../style/tableCss.css">
+      <TableView fx:id="tbl2" layoutX="1025.0" layoutY="35.0" prefHeight="856.0" prefWidth="524.0" stylesheets="@../style/employeenameTable.css">
         <columns>
           <TableColumn fx:id="colSelectEmployeNmaes" prefWidth="571.0" text="Names" />
         </columns>
       </TableView>
-      <JFXComboBox fx:id="uidTxt" layoutX="184.0" layoutY="429.0" prefHeight="53.0" prefWidth="594.0" />
+      <JFXComboBox fx:id="uidTxt" layoutX="184.0" layoutY="429.0" prefHeight="53.0" prefWidth="594.0" stylesheets="@../style/comboBox.css" />
     </children>
 </AnchorPane>
