@@ -78,4 +78,30 @@ public class SalaryModel {
         return pstm.executeUpdate() > 0;
     }
 
+    public static String generateNextOrderId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT salory_id FROM salory ORDER BY salory_id DESC LIMIT 1";
+        ResultSet resultSet = connection.prepareStatement(sql).executeQuery();
+
+        String currentCusId = null;
+
+        if (resultSet.next()) {
+            currentCusId = resultSet.getString(1);
+            return splitOrderId(currentCusId);
+        }
+        return splitOrderId(null);
+    }
+
+    private static String splitOrderId(String currentCusId) {    //O008
+        if (currentCusId != null) {
+            String[] split = currentCusId.split("S");
+            int id = Integer.parseInt(split[1]);    //008
+            id++;  //9
+            return "S00" + id;
+        }
+        return "S001";
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package lk.ijse.teaFactory.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,9 +9,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.SalaryDto;
 import lk.ijse.teaFactory.dto.tm.SalaryTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
+import lk.ijse.teaFactory.model.CustomerModel;
+import lk.ijse.teaFactory.model.EmployeeModel;
 import lk.ijse.teaFactory.model.SalaryModel;
 
 import java.sql.SQLException;
@@ -42,7 +46,7 @@ public class PaymentController {
     private TextField dateTxt;
 
     @FXML
-    private TextField empIdTxt;
+    private JFXComboBox<String > empIdTxt;
 
     @FXML
     private TextField idTxt;
@@ -60,7 +64,7 @@ public class PaymentController {
     @FXML
     void addOnAction(ActionEvent event) {
          String id = idTxt.getText();
-         String empId = empIdTxt.getText();
+         String empId = (String) empIdTxt.getValue();
          String date = dateTxt.getText();
          String count = countTxt.getText();
          String delete = "0";
@@ -84,7 +88,7 @@ public class PaymentController {
     void updateOnAction(ActionEvent event) {
 
         String id = idTxt.getText();
-        String empId = empIdTxt.getText();
+        String empId = (String) empIdTxt.getValue();
         String date = dateTxt.getText();
         String count = countTxt.getText();
         String delete = "0";
@@ -108,6 +112,8 @@ public class PaymentController {
     public void initialize() {
         setCellValueFactory();
         loadAllEmployees();
+        loadEmpId();
+        generateNextPaymentId();
     }
 
     public void loadAllEmployees(){
@@ -186,6 +192,31 @@ public class PaymentController {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
+
+    private void loadEmpId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<EmployeeDto> empList = EmployeeModel.loadAllItems();
+
+            for (EmployeeDto empDto : empList) {
+                obList.add(empDto.getEmployeeName());
+            }
+
+            empIdTxt.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void generateNextPaymentId() {
+        try {
+            String orderId = SalaryModel.generateNextOrderId();
+            idTxt.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 
