@@ -74,14 +74,15 @@ public class SupplierPageController {
 
         var dto = new SupplierDto(id,name,address,contac,complete);
         var model = new SupplierModel();
-        boolean isValidated = validate();
+     //   boolean isValidated = validate();
 
-        if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+     //   if (isValidated) {
+    //        new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
 
             try {
                 boolean isSaved = model.supplierSaved(dto);
                 if (isSaved) {
+                    tbl.refresh();
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                 }
             } catch (Exception e) {
@@ -89,7 +90,9 @@ public class SupplierPageController {
             }
         }
 
-    }
+ //   }
+
+    /*
 
     private boolean validate() {
 
@@ -127,6 +130,17 @@ public class SupplierPageController {
 
     }
 
+     */
+
+    private void generateNextSupId() {
+        try {
+            String orderId = SupplierModel.generateNextOrderId();
+            idTxt.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void loadAll(){
         var model =new SupplierModel();
@@ -159,7 +173,7 @@ public class SupplierPageController {
 
                     deleteItem(id);   //delete item from the database
 
-                    obList.remove(selectedIndex);   //delete item from the JFX-Table
+                    obList.remove(selectedIndex);//delete item from the JFX-Table
                     tbl.refresh();
                 }
             });
@@ -207,6 +221,7 @@ public class SupplierPageController {
     public void initialize() {
         setCellValueFactory();
         loadAll();
+        generateNextSupId();
     }
 
     @FXML
@@ -224,6 +239,7 @@ public class SupplierPageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
+                tbl.refresh();
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
             }
         } catch (SQLException e) {

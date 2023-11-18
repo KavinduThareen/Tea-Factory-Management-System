@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,11 +20,6 @@
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
       <TextField fx:id="idTxt" layoutX="734.0" layoutY="255.0" prefHeight="45.0" prefWidth="452.0" promptText="Order ID" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="cIdTxt" layoutX="734.0" layoutY="343.0" prefHeight="45.0" prefWidth="452.0" promptText="Customer ID" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
@@ -50,5 +46,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
+      <JFXComboBox fx:id="cIdTxt" layoutX="734.0" layoutY="341.0" prefHeight="45.0" prefWidth="452.0" />
    </children>
 </AnchorPane>

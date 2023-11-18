@@ -1,5 +1,8 @@
 package lk.ijse.teaFactory.controller;
 
+import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,11 +11,16 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CusOrderDto;
+import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.tm.CusOrderTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
+import lk.ijse.teaFactory.model.CustomerModel;
+import lk.ijse.teaFactory.model.EmployeeModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -22,7 +30,7 @@ public class CustomerOrdersAddController {
     private TextField WeigthTxt;
 
     @FXML
-    private TextField cIdTxt;
+    private JFXComboBox<String > cIdTxt;
 
     @FXML
     private TextField catagaryTxt;
@@ -46,7 +54,7 @@ public class CustomerOrdersAddController {
     @FXML
     void addOnAction(ActionEvent event) {
         String id = idTxt.getText();
-        String cId = cIdTxt.getText();
+        String cId = (String) cIdTxt.getValue();
         String catagary = catagaryTxt.getText();
         String weigth =  WeigthTxt.getText();
         String date = dateTxt.getText();
@@ -55,21 +63,22 @@ public class CustomerOrdersAddController {
 
         var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,complete);
         var model = new CusOrderModel();
-        boolean isValidated = validate();
+      // boolean isValidated = validate();
 
-        if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+     //   if (isValidated) {
+       //     new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
 
 
             try {
                 boolean isSaved = model.cusOrdersSaved(dto);
+                new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
 
-    }
-
+   // }
+/*
     private boolean validate() {
 
         String idText = idTxt.getText();
@@ -124,6 +133,37 @@ public class CustomerOrdersAddController {
         return true;
     }
 
+ */
+
+    private void loadCusOrdersId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<CustomerDto> empList = CustomerModel.loadAllItems();
+
+            for (CustomerDto cusODto : empList) {
+                obList.add(cusODto.getCusid());
+            }
+
+            cIdTxt.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void generateNextCusOrderId() {
+        try {
+            String orderId = CusOrderModel.generateNextOrderId();
+            idTxt.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void initialize() {
+        loadCusOrdersId();
+      generateNextCusOrderId();
+    }
+
 
 
     @FXML
@@ -148,7 +188,7 @@ public class CustomerOrdersAddController {
     @FXML
     void updateOnAction(ActionEvent event) {
         String id = idTxt.getText();
-        String cId = cIdTxt.getText();
+        String cId = (String) cIdTxt.getValue();
         String catagary = catagaryTxt.getText();
         String weigth =  WeigthTxt.getText();
         String date = dateTxt.getText();

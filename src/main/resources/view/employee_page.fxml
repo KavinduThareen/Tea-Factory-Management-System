@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -23,11 +24,6 @@
          </font>
       </TextField>
       <TextField fx:id="empNameTxt" layoutX="192.0" layoutY="229.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Name " style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="uidTxt" layoutX="181.0" layoutY="437.0" prefHeight="44.0" prefWidth="574.0" promptText="User Id" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
@@ -57,7 +53,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="82.0" prefWidth="431.0" text="Add Employee ">
+      <Label layoutX="14.0" layoutY="22.0" prefHeight="82.0" prefWidth="431.0" text="Add Employee ">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
@@ -75,5 +71,6 @@
           <TableColumn fx:id="colSelectEmployeNmaes" prefWidth="571.0" text="Names" />
         </columns>
       </TableView>
+      <JFXComboBox fx:id="uidTxt" layoutX="184.0" layoutY="429.0" prefHeight="53.0" prefWidth="594.0" />
     </children>
 </AnchorPane>

@@ -1,17 +1,26 @@
 package lk.ijse.teaFactory.controller;
 
+import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CusOrderDto;
 import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.dto.EmployeeDto;
+import lk.ijse.teaFactory.dto.tm.CustomerTm;
+import lk.ijse.teaFactory.dto.tm.EmployeeTm;
 import lk.ijse.teaFactory.model.CustomerModel;
+import lk.ijse.teaFactory.model.EmployeeModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -29,11 +38,18 @@ public class CustomerAddPageController {
     @FXML
     private TextField cusidTxt;
 
+
+/*
+    @FXML
+    private Label cusidTxt;
+
+ */
+
     @FXML
     private TextField cusnameTxt;
 
     @FXML
-    private TextField empidTxt;
+    private JFXComboBox<String> empidTxt;
 
     @FXML
     void addNewCusOnAction(ActionEvent event) {
@@ -51,7 +67,7 @@ public class CustomerAddPageController {
     void cusSaveOnAction(ActionEvent event) {
 
         String cusid = cusidTxt.getText();
-        String empid = empidTxt.getText();
+        String empid = (String) empidTxt.getValue();
         String cusname = cusnameTxt.getText();
         String cusAddress = cusAddressTxt.getText();
         String cusCantac = cuscontacTxt.getText();
@@ -60,10 +76,10 @@ public class CustomerAddPageController {
         var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac,complete);
 
         var model = new CustomerModel();
-        boolean isValidated = validate();
+     //   boolean isValidated = validate();
 
-        if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+      //  if (isValidated) {
+          //  new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
 
             try {
                 boolean isSaved = model.customerSaved(dto);
@@ -75,8 +91,9 @@ public class CustomerAddPageController {
             }
         }
 
-    }
+ //   }
 
+    /*
     private boolean validate() {
 
         String idText = cusidTxt.getText();
@@ -87,7 +104,7 @@ public class CustomerAddPageController {
             return false;
         }
 
-        String UidText = empidTxt.getText();
+        String UidText = empidTxt.get;
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
         if (!isUIDValidated) {
@@ -123,6 +140,34 @@ public class CustomerAddPageController {
         return true;
     }
 
+     */
+
+    private void loadEmpId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<EmployeeDto> empList = EmployeeModel.loadAllItems();
+
+            for (EmployeeDto empDto : empList) {
+                obList.add(empDto.getEmployeeName());
+            }
+
+            empidTxt.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void generateNextCusId() {
+        try {
+            String orderId = CustomerModel.generateNextOrderId();
+            cusidTxt.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 
 
 
@@ -130,7 +175,7 @@ public class CustomerAddPageController {
     void updateOnAction(ActionEvent event) {
 
         String cusid = cusidTxt.getText();
-        String empid = empidTxt.getText();
+        String empid = (String) empidTxt.getValue();
         String cusname = cusnameTxt.getText();
         String cusAddress = cusAddressTxt.getText();
         String cusCantac = cuscontacTxt.getText();
@@ -152,9 +197,14 @@ public class CustomerAddPageController {
 
     }
 
+    public void initialize() {
+        loadEmpId();
+       generateNextCusId();
+    }
+
     void clearFields() {
         cusidTxt.setText("");
-        empidTxt.setText("");
+        empidTxt.setValue("");
         cusnameTxt.setText("");
         cusAddressTxt.setText("");
         cuscontacTxt.setText("");

@@ -1,6 +1,7 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
+import lk.ijse.teaFactory.dto.CusOrderDto;
 import lk.ijse.teaFactory.dto.CustomerDto;
 
 import java.sql.Connection;
@@ -82,5 +83,65 @@ public class CustomerModel {
 
         return pstm.executeUpdate() > 0;
     }
+
+
+    public static String generateNextOrderId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT customer_id FROM customer ORDER BY  customer_id DESC LIMIT 1";
+        ResultSet resultSet = connection.prepareStatement(sql).executeQuery();
+
+        String currentCusId = null;
+
+        if (resultSet.next()) {
+            currentCusId = resultSet.getString(1);
+            return splitOrderId(currentCusId);
+        }
+        return splitOrderId(null);
+    }
+
+    private static String splitOrderId(String currentCusId) {    //O008
+        if (currentCusId != null) {
+            String[] split = currentCusId.split("C");
+            int id = Integer.parseInt(split[1]);    //008
+            id++;  //9
+            return "C00" + id;
+        }
+        return "C001";
+    }
+
+    public static List<CustomerDto> loadAllItems() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM customer";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<CustomerDto> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            var dto = new CustomerDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6)
+
+
+            );
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
+
+
+
+
+
 
 }

@@ -1,21 +1,17 @@
 package lk.ijse.teaFactory.controller;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.registerDto;
-import lk.ijse.teaFactory.dto.tm.registerTm;
-import lk.ijse.teaFactory.model.registerModel;
+import lk.ijse.teaFactory.dto.RegisterDto;
+import lk.ijse.teaFactory.model.RegisterModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -56,9 +52,9 @@ public class RegisterPagecontroller {
         String password = passwordTxt.getText();
 
 
-            var dto = new registerDto(userid, username, contac, password);
+            var dto = new RegisterDto(userid, username, contac, password);
 
-            var model = new registerModel();
+            var model = new RegisterModel();
 
             try {
                 boolean isSaved = model.registerUser(dto);

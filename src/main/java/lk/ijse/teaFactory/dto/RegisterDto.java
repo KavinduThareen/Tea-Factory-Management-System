@@ -1,15 +1,22 @@
-package lk.ijse.teaFactory.dto.tm;
+package lk.ijse.teaFactory.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+public class RegisterDto {
 
-public class registerTm {
+
     private String userid;
     private String username;
     private String contac;
     private String password;
    // private String confirmpassword;
+
+
+
+
 }

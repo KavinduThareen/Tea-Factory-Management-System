@@ -2,13 +2,13 @@ package lk.ijse.teaFactory.dto.tm;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.Cursor;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Setter
+@Getter
 public class SalaryTm {
     private String id;
     private String empId;
@@ -17,7 +17,7 @@ public class SalaryTm {
     private JFXButton btnDelete;
 
 
-
+/*
     public SalaryTm(String id, String empId, String date, String count) {
 
         this.id = id;
@@ -25,4 +25,6 @@ public class SalaryTm {
         this.date = date;
         this.count = count;
     }
+
+ */
 }

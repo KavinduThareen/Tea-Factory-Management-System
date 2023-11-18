@@ -4,13 +4,13 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Data
+@Getter
+@Setter
 
 public class CusOrderTm {
     private String id;
@@ -19,7 +19,6 @@ public class CusOrderTm {
     private String weigth;
     private String date;
     private String descreption;
-
     private JFXButton btnDelete;
 
    /* {
@@ -35,7 +34,7 @@ public class CusOrderTm {
 
     }*/
 
-
+/*
     public CusOrderTm(String id, String cId, String catagary, String weigth, String date, String descreption,JFXButton btnDelete) {
 
         this.id = id;
@@ -46,5 +45,7 @@ public class CusOrderTm {
         this.descreption = descreption;
         this.btnDelete = btnDelete;
     }
+
+ */
 
 }

@@ -1,5 +1,6 @@
 package lk.ijse.teaFactory.controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,8 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.EmployeeDto;
+import lk.ijse.teaFactory.dto.RegisterDto;
 import lk.ijse.teaFactory.dto.tm.EmployeeTm;
+import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.EmployeeModel;
+import lk.ijse.teaFactory.model.RegisterModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,7 +37,7 @@ public class EmployeePageController {
     private TextField employeeIdTxt;
 
     @FXML
-    private TextField uidTxt;
+    private JFXComboBox<String> uidTxt;
 
 
     @FXML
@@ -60,7 +64,7 @@ public class EmployeePageController {
         String employeeName = empNameTxt.getText();
         String empGender = empGenderTxt.getText();
         String empbd= empbdTxt.getText();
-        String uId = uidTxt.getText();
+        String uId = (String) uidTxt.getValue();
         String empContac = empContacTxt.getText();
         String empAddress = empAddressTxt.getText();
         String delete = "0";
@@ -80,8 +84,6 @@ public class EmployeePageController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
-
     }
 
     @FXML
@@ -91,17 +93,17 @@ public class EmployeePageController {
          String employeeName = empNameTxt.getText();
          String empGender = empGenderTxt.getText();
          String empbd= empbdTxt.getText();
-         String uId = uidTxt.getText();
+         String uId = (String) uidTxt.getValue();
          String empContac = empContacTxt.getText();
          String empAddress = empAddressTxt.getText();
          String delete = "0";
 
          var dto = new EmployeeDto(employeeId,employeeName,empGender,empbd,uId,empContac,empAddress,delete);
          var model = new EmployeeModel();
-         boolean isValidated = validate();
+     //    boolean isValidated = validate();
 
-        if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+      //  if (isValidated) {
+         //   new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
          try {
              boolean isSaved = model.employeeSave(dto);
 
@@ -117,7 +119,33 @@ public class EmployeePageController {
 
         }
 
+  //  }
+
+    private void loadUserId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<RegisterDto> empList = RegisterModel.loadAllItems();
+
+            for (RegisterDto regDto : empList) {
+                obList.add(regDto.getUserid());
+            }
+
+            uidTxt.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    private void generateNextEmpId() {
+        try {
+            String orderId = EmployeeModel.generateNextOrderId();
+            employeeIdTxt.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /*
     private boolean validate() {
 
         String idText = employeeIdTxt.getText();
@@ -172,9 +200,13 @@ public class EmployeePageController {
         return true;
     }
 
+     */
+
     public void initialize() {
         setCellValueFactory();
         loadAllEmployees();
+        loadUserId();
+        generateNextEmpId();
     }
     public void loadAllEmployees(){
         var model =new EmployeeModel();

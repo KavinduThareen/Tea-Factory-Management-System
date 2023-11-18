@@ -4,19 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.loginDto;
-import lk.ijse.teaFactory.dto.registerDto;
-import lk.ijse.teaFactory.model.loginModel;
-import lk.ijse.teaFactory.model.registerModel;
 
 
-import javax.management.Notification;
-import javax.management.remote.NotificationResult;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Objects;
 
 public class LoginPageController{

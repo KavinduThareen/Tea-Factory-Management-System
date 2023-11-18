@@ -1,0 +1,48 @@
+/* styles.css */
+
+#yourComboBox {
+    -fx-background-color: lightblue;
+    -fx-text-fill: darkblue;
+    -fx-border-color: darkblue;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 150px; /* Set preferred width */
+    /* Add more styles as needed */
+}
+
+/* Hover effect for the ComboBox */
+#yourComboBox:hover {
+    -fx-background-color: lightcyan;
+}
+
+/* Modify the arrow button */
+#yourComboBox .arrow-button {
+    -fx-background-color: darkblue;
+    -fx-shape: null;
+}
+
+/* Style the text field inside the ComboBox */
+#yourComboBox .text-field {
+    -fx-background-color: lightblue;
+    -fx-border-color: darkblue;
+    -fx-border-width: 0 0 1 0; /* bottom border only */
+}
+
+/* Modify the list view */
+#yourComboBox .list-view {
+    -fx-background-color: lightgray;
+    -fx-font-size: 12px;
+    /* Add more styles as needed */
+}
+
+/* Style the list cell in the ComboBox */
+#yourComboBox .list-cell {
+    -fx-background-color: lightgray;
+    -fx-font-size: 12px;
+}
+
+/* Style the selected item in the list view */
+#yourComboBox .list-cell:selected {
+    -fx-background-color: darkblue;
+    -fx-text-fill: white;
+}

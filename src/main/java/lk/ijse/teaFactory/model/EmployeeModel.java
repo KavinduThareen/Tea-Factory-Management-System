@@ -96,6 +96,61 @@ public class EmployeeModel {
     }
 
 
+    public static List<EmployeeDto> loadAllItems() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM employee";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<EmployeeDto> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            var dto = new EmployeeDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6),
+                    resultSet.getString(7),
+                    resultSet.getString(8)
+
+
+            );
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
+    public static String generateNextOrderId() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT employeeid FROM employee ORDER BY  employeeid DESC LIMIT 1";
+        ResultSet resultSet = connection.prepareStatement(sql).executeQuery();
+
+        String currentCusId = null;
+
+        if (resultSet.next()) {
+            currentCusId = resultSet.getString(1);
+            return splitOrderId(currentCusId);
+        }
+        return splitOrderId(null);
+    }
+
+    private static String splitOrderId(String currentCusId) {    //O008
+        if (currentCusId != null) {
+            String[] split = currentCusId.split("E");
+            int id = Integer.parseInt(split[1]);    //008
+            id++;  //9
+            return "E00" + id;
+        }
+        return "E001";
+    }
+
 
 
 }
