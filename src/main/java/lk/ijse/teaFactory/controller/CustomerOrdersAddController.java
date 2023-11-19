@@ -15,10 +15,10 @@ import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -56,19 +56,19 @@ public class CustomerOrdersAddController {
 
     @FXML
     void addOnAction(ActionEvent event) {
+
+
         String id = idTxt.getText();
         String cId = (String) cIdTxt.getValue();
         String catagary = (String) catagaryTxt.getValue();
         String weigth =  WeigthTxt.getText();
         String date = dateTxt.getText();
         String descreption = descreptionTxt.getText();
-       // Double payment = Double.valueOf(paymentTxt.getText());
         Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
-
         String complete = "0";
 
+        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,payment, complete);
 
-        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,payment,complete);
         var model = new CusOrderModel();
 
       // boolean isValidated = validate();
@@ -85,7 +85,14 @@ public class CustomerOrdersAddController {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+
+
+
         }
+
+
+
+
 
 
 

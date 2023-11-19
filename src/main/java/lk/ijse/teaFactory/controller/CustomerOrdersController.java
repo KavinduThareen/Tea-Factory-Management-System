@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -58,16 +59,17 @@ public class CustomerOrdersController {
 
     }
 
-    public void loadAll(){
+
+    public void loadAll() {
         var model = new CusOrderModel();
         ObservableList<CusOrderTm> obList = FXCollections.observableArrayList();
 
         try {
             List<CusOrderDto> dtoList = model.loadAll();
-            for (CusOrderDto dto : dtoList){
+           for (CusOrderDto dto : dtoList){
 
              JFXButton btnDelete = new JFXButton("Deleted");
-                btnDelete.setCursor(javafx.scene.Cursor.HAND);
+                btnDelete.setCursor(Cursor.HAND);
                 btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");
 
                 btnDelete.setPrefWidth(100);
@@ -77,6 +79,7 @@ public class CustomerOrdersController {
 
            //   tm.getBtnDelete()
                 btnDelete .setOnAction((e) -> {
+
                     ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
 
@@ -105,14 +108,18 @@ public class CustomerOrdersController {
                         )
                 );
 
-            }
+          }
             tbl.setItems(obList);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
+
     }
+
+
+
 
     private void deleteItem(String id) {
         try {
