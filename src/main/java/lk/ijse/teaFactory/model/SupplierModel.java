@@ -2,6 +2,7 @@ package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.dto.SupOrderDto;
 import lk.ijse.teaFactory.dto.SupplierDto;
 
 import java.sql.Connection;
@@ -101,5 +102,33 @@ public class SupplierModel {
         }
         return "S001";
     }
+
+    public static List<SupplierDto> loadAllItems() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM supplier";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<SupplierDto> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            var dto = new SupplierDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5)
+
+            );
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
+
 
 }

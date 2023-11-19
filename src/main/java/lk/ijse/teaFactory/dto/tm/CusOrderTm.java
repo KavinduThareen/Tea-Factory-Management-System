@@ -19,6 +19,7 @@ public class CusOrderTm {
     private String weigth;
     private String date;
     private String descreption;
+    private double payment;
     private JFXButton btnDelete;
 
    /* {

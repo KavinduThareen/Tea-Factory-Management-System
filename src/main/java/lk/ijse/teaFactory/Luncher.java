@@ -3,6 +3,7 @@ package lk.ijse.teaFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -25,6 +26,8 @@ public class Luncher extends Application {
         //set title and get center on screen stage
         stage.setTitle("GreenLeaf Software");
         stage.centerOnScreen();
+        stage.isFullScreen();
+
 
         //show stage to the crowd
         stage.show();

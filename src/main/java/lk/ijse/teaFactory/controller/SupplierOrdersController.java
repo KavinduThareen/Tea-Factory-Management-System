@@ -1,6 +1,7 @@
 package lk.ijse.teaFactory.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,10 +9,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.SupOrderDto;
+import lk.ijse.teaFactory.dto.SupplierDto;
 import lk.ijse.teaFactory.dto.tm.SupOrderTm;
 import lk.ijse.teaFactory.model.EmployeeModel;
 import lk.ijse.teaFactory.model.SupOrderModel;
+import lk.ijse.teaFactory.model.SupplierModel;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -35,13 +39,21 @@ public class SupplierOrdersController {
     private TableColumn<?, ?> colWeigth;
 
     @FXML
+    private TableColumn<?, ?> colPayment;
+
+
+    @FXML
     private TextField dateTxt;
+
+    @FXML
+    private TextField paymentTxt;
+
 
     @FXML
     private AnchorPane root;
 
     @FXML
-    private TextField sIdTxt;
+    private JFXComboBox<String > sIdTxt;
 
     @FXML
     private TextField sOidTxt;
@@ -55,12 +67,13 @@ public class SupplierOrdersController {
     @FXML
     void addOnAction(ActionEvent event) {
        String id = sOidTxt.getText();
-       String sId = sIdTxt.getText();
+       String sId = sIdTxt.getValue();
        String date = dateTxt.getText();
        String weigth = weigthTxt.getText();
+       int payment = (int) (Double.valueOf(paymentTxt.getText()) * Double.valueOf(weigthTxt.getText()));
        String isDelete = "0";
 
-       var dto = new SupOrderDto(id,sId,date,weigth,isDelete);
+       var dto = new SupOrderDto(id,sId,date,weigth,payment,isDelete);
         var model = new SupOrderModel();
 
         try {
@@ -118,6 +131,7 @@ public class SupplierOrdersController {
                                 dto.getSId(),
                                 dto.getDate(),
                                 dto.getWeigth(),
+                                dto.getPayment(),
                                 btnDelete
 
 
@@ -148,6 +162,7 @@ public class SupplierOrdersController {
         colSid.setCellValueFactory(new PropertyValueFactory<>("sId"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colWeigth.setCellValueFactory(new PropertyValueFactory<>("weigth"));
+        colPayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
         colDelete.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("btnDelete"));
 
     }
@@ -155,9 +170,11 @@ public class SupplierOrdersController {
     public void initialize() {
         setCellValueFactory();
         loadAll();
-        setListener();
+       // setListener();
+        generateNextId();
+        loadSupId();
     }
-
+/*
     private void setListener() {
         tbl.getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
@@ -172,16 +189,20 @@ public class SupplierOrdersController {
                 });
     }
 
+ */
+/*
     private void setFields(SupOrderDto dto) {
         sOidTxt.setText(dto.getId());
-        sIdTxt.setText(dto.getSId());
+       // sIdTxt.setText(dto.getSId());
         dateTxt.setText((dto.getDate()));
         weigthTxt.setText((dto.getWeigth()));
     }
 
+ */
+
     private void clearFields() {
         sOidTxt.setText("");
-        sIdTxt  .setText("");
+       // sIdTxt  .setText("");
         dateTxt .setText("");
         weigthTxt.setText("");
     }
@@ -191,12 +212,13 @@ public class SupplierOrdersController {
     @FXML
     void updateOnAction(ActionEvent event) {
         String id = sOidTxt.getText();
-        String sId = sIdTxt.getText();
+        String sId = sIdTxt.getValue();
         String date = dateTxt.getText();
         String weigth = weigthTxt.getText();
+        int payment = Integer.parseInt(paymentTxt.getText());
         String isDelete = "0";
 
-        var dto = new SupOrderDto(id,sId,date,weigth,isDelete);
+        var dto = new SupOrderDto(id,sId,date,weigth,payment,isDelete);
         var model = new SupOrderModel();
 
         try {
@@ -211,5 +233,30 @@ public class SupplierOrdersController {
         }
 
     }
+
+    private void generateNextId() {
+        try {
+            String orderId = SupOrderModel.generateNextOrderId();
+            sOidTxt.setText(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void loadSupId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<SupplierDto> empList = SupplierModel.loadAllItems();
+
+            for (SupplierDto empDto : empList) {
+                obList.add(empDto.getId());
+            }
+
+            sIdTxt.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

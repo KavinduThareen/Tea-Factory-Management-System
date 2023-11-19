@@ -1,5 +1,6 @@
 package lk.ijse.teaFactory.controller;
 
+import com.sun.javafx.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -83,15 +84,15 @@ public class UserProfileController {
     }
 
 
-
-
-
     public void initialize() {
         generateId();
-       // setCellValueFactory();
     }
 
 
+     @FXML
+    void UpdateOnAction(ActionEvent event) {
+
+    }
 
 
 }

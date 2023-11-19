@@ -7,22 +7,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CusOrderDto;
 import lk.ijse.teaFactory.dto.CustomerDto;
-import lk.ijse.teaFactory.dto.EmployeeDto;
-import lk.ijse.teaFactory.dto.tm.CusOrderTm;
+import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
-import lk.ijse.teaFactory.model.EmployeeModel;
+import lk.ijse.teaFactory.model.PacketStokeModel;
+import org.w3c.dom.ls.LSOutput;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class CustomerOrdersAddController {
 
@@ -32,8 +30,7 @@ public class CustomerOrdersAddController {
     @FXML
     private JFXComboBox<String > cIdTxt;
 
-    @FXML
-    private TextField catagaryTxt;
+
 
     @FXML
     private TextField dateTxt;
@@ -46,37 +43,51 @@ public class CustomerOrdersAddController {
     @FXML
     private TextField idTxt;
 
+
     @FXML
     private AnchorPane root;
 
+    @FXML
+    private TextField paymentTxt;
+
+    @FXML
+    private JFXComboBox<String > catagaryTxt;
 
 
     @FXML
     void addOnAction(ActionEvent event) {
         String id = idTxt.getText();
         String cId = (String) cIdTxt.getValue();
-        String catagary = catagaryTxt.getText();
+        String catagary = (String) catagaryTxt.getValue();
         String weigth =  WeigthTxt.getText();
         String date = dateTxt.getText();
         String descreption = descreptionTxt.getText();
+       // Double payment = Double.valueOf(paymentTxt.getText());
+        Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
+
         String complete = "0";
 
-        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,complete);
+
+        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,payment,complete);
         var model = new CusOrderModel();
+
       // boolean isValidated = validate();
 
      //   if (isValidated) {
        //     new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
 
-
             try {
                 boolean isSaved = model.cusOrdersSaved(dto);
-                new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
-                clearFields();
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    clearFields();
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
+
+
 
    // }
 /*
@@ -136,6 +147,21 @@ public class CustomerOrdersAddController {
 
  */
 
+    private void loadCatagary() {
+       ObservableList<String> obList = FXCollections.observableArrayList();
+       try {
+           List<PacketStokeDto> empList = PacketStokeModel.loadAllcatagary();
+
+           for (PacketStokeDto cusODto : empList) {
+               obList.add(cusODto.getCatagory());
+           }
+
+           catagaryTxt.setItems(obList);
+       } catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
+   }
+
     private void loadCusOrdersId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
@@ -163,6 +189,8 @@ public class CustomerOrdersAddController {
     public void initialize() {
         loadCusOrdersId();
       generateNextCusOrderId();
+      loadCatagary();
+
     }
 
 
@@ -174,29 +202,23 @@ public class CustomerOrdersAddController {
 
 
     }
-/*
-    void csetFields(CusOrderTm dto) {
-        idTxt.setText(dto.getId());
-        cIdTxt.setText(dto.getCId());
-        catagaryTxt.setText(String.valueOf(dto.getCatagary()));
-        WeigthTxt.setText(String.valueOf(dto.getWeigth()));
-        dateTxt.setText(String.valueOf(dto.getDate()));
-        descreptionTxt.setText(String.valueOf(dto.getDescreption()));
-    }
 
- */
-
+String a=null;
     @FXML
     void updateOnAction(ActionEvent event) {
         String id = idTxt.getText();
         String cId = (String) cIdTxt.getValue();
-        String catagary = catagaryTxt.getText();
+        String catagary = (String) catagaryTxt.getValue();
         String weigth =  WeigthTxt.getText();
         String date = dateTxt.getText();
         String descreption = descreptionTxt.getText();
+        Double payment = Double.valueOf(paymentTxt.getText());
         String complete = "0";
 
-        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,complete);
+        a= weigth + 2;
+        System.out.println(a);
+
+        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,payment,complete);
         var model = new CusOrderModel();
 
         try {
@@ -210,17 +232,25 @@ public class CustomerOrdersAddController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
+
     }
+
+
+
+
 
     void clearFields() {
 
         idTxt.setText("");
-      catagaryTxt.setText("");
+    //  catagaryTxt.setText("");
       WeigthTxt.setText("");
       dateTxt.setText("");
       descreptionTxt.setText("");
+      paymentTxt.setText("");
 
     }
+
+
 
 
 }

@@ -19,7 +19,7 @@ public class CusOrderModel {
     public boolean cusOrdersSaved (CusOrderDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO orders VALUES(?, ?, ?, ?, ?,?,?)";
+        String sql = "INSERT INTO orders VALUES(?, ?, ?, ?, ?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getId());
@@ -28,7 +28,8 @@ public class CusOrderModel {
         pstm.setString(4, dto.getWeigth());
         pstm.setString(5, dto.getDate());
         pstm.setString(6, dto.getDescreption());
-        pstm.setString(7,"0");
+        pstm.setDouble(7,dto.getPayment());
+        pstm.setString(8,"0");
 
         boolean isSaved = pstm.executeUpdate() >0;
 
@@ -53,9 +54,10 @@ public class CusOrderModel {
             String weigth = resultSet.getString(4);
             String date = resultSet.getString(5);
             String descreption = resultSet.getString(6);
-            String isCompleted = resultSet.getString(7);
+            double payment = resultSet.getDouble(7);
+            String isCompleted = resultSet.getString(8);
 
-            var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,isCompleted);
+            var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,payment,isCompleted);
             dtoList.add(dto);
         }
         return dtoList;
@@ -71,10 +73,11 @@ public class CusOrderModel {
         return pstm.executeUpdate() > 0;
     }
 
+
     public boolean update (final CusOrderDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE customer SET cus_id = ?, o_catogary = ?, o_weigth, o_date, descrreption, isCompleted = ? WHERE order_id = ?";
+        String sql = "UPDATE customer SET cus_id = ?, o_catogary = ?, o_weigth, o_date = ?, descrreption = ?,payment = ?, isCompleted = ? WHERE order_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getCId());
@@ -82,8 +85,9 @@ public class CusOrderModel {
         pstm.setString(3, dto.getWeigth());
         pstm.setString(4, dto.getDate());
         pstm.setString(5, dto.getDescreption());
-        pstm.setString(6, "0");
-        pstm.setString(7, dto.getId());
+        pstm.setDouble(6,dto.getPayment());
+        pstm.setString(7, "0");
+        pstm.setString(8, dto.getId());
 
 
         return pstm.executeUpdate() > 0;

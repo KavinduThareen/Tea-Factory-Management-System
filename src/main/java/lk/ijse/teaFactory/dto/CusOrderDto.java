@@ -14,5 +14,6 @@ public class CusOrderDto {
     private String weigth;
     private String date;
     private String descreption;
+    private double payment;
     private String isCompleted;
 }

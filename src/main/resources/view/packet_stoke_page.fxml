@@ -19,7 +19,7 @@
             <Image url="@../img/packetStoke.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblView" layoutX="30.0" layoutY="93.0" prefHeight="902.0" prefWidth="830.0">
+      <TableView fx:id="tblView" layoutX="30.0" layoutY="93.0" prefHeight="902.0" prefWidth="830.0" stylesheets="@../style/tableCss.css">
         <columns>
           <TableColumn fx:id="colid" prefWidth="110.66665649414062" text="id" />
             <TableColumn fx:id="colCatagary" prefWidth="168.0" text="catogary" />

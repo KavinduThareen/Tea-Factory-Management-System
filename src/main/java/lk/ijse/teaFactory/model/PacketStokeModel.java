@@ -2,6 +2,7 @@ package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
+import lk.ijse.teaFactory.dto.SupplierDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -106,4 +107,33 @@ public class PacketStokeModel {
         }
         return "P001";
     }
+
+
+    public static List<PacketStokeDto> loadAllcatagary() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM packet_stoke";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<PacketStokeDto> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            var dto = new PacketStokeDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5)
+
+            );
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
+
 }

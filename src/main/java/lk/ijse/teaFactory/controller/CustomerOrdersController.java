@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -41,6 +40,10 @@ public class CustomerOrdersController {
 
     @FXML
     private TableColumn<?, ?> colweigth;
+
+    @FXML
+    private TableColumn<?, ?> colPayment;
+
 
     @FXML
     private AnchorPane root;
@@ -97,6 +100,7 @@ public class CustomerOrdersController {
                                 dto.getWeigth(),
                                 dto.getDate(),
                                 dto.getDescreption(),
+                                dto.getPayment(),
                                 btnDelete
                         )
                 );
@@ -128,16 +132,21 @@ public class CustomerOrdersController {
         colweigth.setCellValueFactory(new PropertyValueFactory<>("weigth"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colDes.setCellValueFactory(new PropertyValueFactory<>("descreption"));
+        colPayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
         colDelete.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("btnDelete"));
 
     }
+
+
+
 
     public void initialize() {
         setCellValueFactory();
         loadAll();
        // setListener();
-    }
 
+    }
+/*
     private void setListener() {
         CustomerOrdersAddController cus = new CustomerOrdersAddController();
         tbl.getSelectionModel().selectedItemProperty()
@@ -149,6 +158,7 @@ public class CustomerOrdersController {
                             newValue.getWeigth(),
                             newValue.getDate(),
                             newValue.getDescreption(),
+                            newValue.getPayment(),
                             newValue.getBtnDelete()
 
                     );
@@ -156,6 +166,7 @@ public class CustomerOrdersController {
                 });
     }
 
+ */
 
 
 }

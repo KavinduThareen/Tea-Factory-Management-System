@@ -18,10 +18,11 @@
           <TableColumn fx:id="colId" prefWidth="141.6666259765625" text="Order ID " />
             <TableColumn fx:id="colCId" prefWidth="156.3333740234375" text="Customer ID" />
             <TableColumn fx:id="colCatagary" prefWidth="180.66668701171875" text="Catagary" />
-            <TableColumn fx:id="colweigth" prefWidth="187.66668701171875" text="Weigth" />
-            <TableColumn fx:id="colDate" prefWidth="311.333251953125" text="Date" />
-            <TableColumn fx:id="colDes" prefWidth="304.0" text="Descreption" />
-            <TableColumn fx:id="colDelete" prefWidth="164.3333740234375" text="Delete" />
+            <TableColumn fx:id="colweigth" prefWidth="180.0" text="Weigth" />
+            <TableColumn fx:id="colDate" prefWidth="258.0" text="Date" />
+            <TableColumn fx:id="colDes" prefWidth="232.0" text="Descreption" />
+            <TableColumn fx:id="colPayment" prefWidth="188.0" text="payment" />
+            <TableColumn fx:id="colDelete" prefWidth="153.0" text="Delete" />
         </columns>
          <contextMenu>
             <ContextMenu>
