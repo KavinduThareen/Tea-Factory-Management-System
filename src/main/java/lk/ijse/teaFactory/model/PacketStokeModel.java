@@ -3,6 +3,7 @@ package lk.ijse.teaFactory.model;
 import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.SupplierDto;
+import lk.ijse.teaFactory.dto.tm.CusOrderTm;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -136,4 +137,28 @@ public class PacketStokeModel {
     }
 
 
+    public boolean updateItem(List<CusOrderTm> cartTmList) throws SQLException {
+        for(CusOrderTm tm : cartTmList) {
+            System.out.println("Item: " + tm);
+            if(!update(tm.getId(), tm.getWeigth())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean update(String id, String weigth) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE packet_stoke SET qty_on_hand = qty_on_hand - ? WHERE code = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setInt(1, Integer.parseInt(weigth));
+        pstm.setString(2, id);
+
+        return pstm.executeUpdate() > 0; //false
+    }
 }
+
+
+

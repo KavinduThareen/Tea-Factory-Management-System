@@ -1,20 +1,19 @@
 package lk.ijse.teaFactory.model;
 
-import com.jfoenix.controls.JFXButton;
 import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.CusOrderDto;
-import lk.ijse.teaFactory.dto.CustomerDto;
-import lk.ijse.teaFactory.dto.EmployeeDto;
-import lk.ijse.teaFactory.dto.tm.CusOrderTm;
+import lk.ijse.teaFactory.dto.PaseOrderDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CusOrderModel {
+
 
     public boolean cusOrdersSaved (CusOrderDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
@@ -93,6 +92,8 @@ public class CusOrderModel {
         return pstm.executeUpdate() > 0;
     }
 
+
+
     public static String generateNextOrderId() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -117,5 +118,44 @@ public class CusOrderModel {
         }
         return "O001";
     }
+
+
+/*
+
+    private CustomerModel orderModel = new CustomerModel();
+    private PacketStokeModel itemModel = new PacketStokeModel();
+    private OrderDetailModel orderDetailModel = new OrderDetailModel();
+
+    public static boolean placeOrder(PaseOrderDto placeOrderDto) throws SQLException {
+        System.out.println(placeOrderDto);
+
+        String orderId = placeOrderDto.getOrderId();
+        String customerId = placeOrderDto.getCustomerId();
+        LocalDate date = placeOrderDto.getDate();
+
+        Connection connection = null;
+        try {
+            connection = DbConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
+
+            boolean isOrderSaved = orderModel.saveOrder(orderId, customerId, date);
+            if (isOrderSaved) {
+                boolean isUpdated = itemModel.updateItem(placeOrderDto.getCartTmList());
+                if (isUpdated) {
+                    boolean isOrderDetailSaved = orderDetailModel.saveOrderDetails(placeOrderDto.getOrderId(), placeOrderDto.getCartTmList());
+                    if (isOrderDetailSaved) {
+                        connection.commit();
+                    }
+                }
+            }
+            connection.rollback();
+        } finally {
+            connection.setAutoCommit(true);
+        }
+        return true;
+    }
+
+
+ */
 
 }

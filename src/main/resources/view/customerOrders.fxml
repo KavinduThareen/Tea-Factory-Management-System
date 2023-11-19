@@ -2,10 +2,15 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -13,10 +18,10 @@
 
     <children>
         <JFXClippedPane />
-      <TableView fx:id="tbl" layoutX="26.0" layoutY="109.0" prefHeight="856.0" prefWidth="1494.0" stylesheets="@../style/tableCss.css">
+      <TableView fx:id="tbl" layoutX="26.0" layoutY="525.0" prefHeight="440.0" prefWidth="1498.0" stylesheets="@../style/tableCss.css">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="141.6666259765625" text="Order ID " />
-            <TableColumn fx:id="colCId" prefWidth="156.3333740234375" text="Customer ID" />
+          <TableColumn fx:id="colId" prefWidth="118.0" text="Order ID " />
+            <TableColumn fx:id="colCId" prefWidth="181.0" text="Customer ID" />
             <TableColumn fx:id="colCatagary" prefWidth="180.66668701171875" text="Catagary" />
             <TableColumn fx:id="colweigth" prefWidth="180.0" text="Weigth" />
             <TableColumn fx:id="colDate" prefWidth="258.0" text="Date" />
@@ -32,9 +37,46 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <JFXButton layoutX="22.0" layoutY="28.0" onAction="#addOrderOnAction" prefHeight="48.0" prefWidth="285.0" styleClass="button-with-style" stylesheets="@../style/updatebtn.css" text="Add new order">
+      <ImageView fitHeight="382.0" fitWidth="1496.0" layoutX="24.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/customerOrders.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="idTxt" layoutX="90.0" layoutY="141.0" prefHeight="40.0" prefWidth="261.0" promptText="ID" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="paymentTxt" layoutX="98.0" layoutY="225.0" prefHeight="51.0" prefWidth="276.0" promptText="1Kg Price" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="WeigthTxt" layoutX="405.0" layoutY="225.0" prefHeight="51.0" prefWidth="306.0" promptText="Weigth" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField fx:id="dateTxt" layoutX="753.0" layoutY="225.0" prefHeight="51.0" prefWidth="285.0" promptText="Date" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <JFXComboBox fx:id="cIdTxt" layoutX="393.0" layoutY="137.0" prefHeight="51.0" prefWidth="276.0" promptText="Customer ID" unFocusColor="WHITE" />
+      <JFXComboBox fx:id="catagaryTxt" layoutX="727.0" layoutY="135.0" prefHeight="51.0" prefWidth="335.0" promptText="Catagary" unFocusColor="WHITE" />
+      <JFXButton layoutX="79.0" layoutY="393.0" onAction="#addOnAction" prefHeight="57.0" prefWidth="221.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Add Order">
          <font>
             <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="329.0" layoutY="392.0" onAction="#updateOnAction" prefHeight="57.0" prefWidth="229.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Order">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <TextArea fx:id="descreptionTxt" layoutX="1097.0" layoutY="136.0" prefHeight="135.0" prefWidth="405.0" promptText="Descreption" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font></TextArea>
+      <JFXButton layoutX="579.0" layoutY="390.0" onAction="#plaseOrderOnAction" prefHeight="57.0" prefWidth="235.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Plase Order">
+         <font>
+            <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
     </children>
