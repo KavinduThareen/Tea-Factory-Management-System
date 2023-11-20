@@ -136,6 +136,7 @@ public class CustomerModel {
         return dtoList;
     }
 
+    /*
     public boolean saveOrder(String orderId, String customerId, LocalDate date) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -147,6 +148,8 @@ public class CustomerModel {
 
         return pstm.executeUpdate() > 0;
     }
+
+     */
 
 
 

@@ -18,7 +18,7 @@
 
     <children>
         <JFXClippedPane />
-      <TableView fx:id="tbl" layoutX="26.0" layoutY="525.0" prefHeight="440.0" prefWidth="1498.0" stylesheets="@../style/tableCss.css">
+      <TableView fx:id="tbl" layoutX="26.0" layoutY="525.0" prefHeight="440.0" prefWidth="1498.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="118.0" text="Order ID " />
             <TableColumn fx:id="colCId" prefWidth="181.0" text="Customer ID" />

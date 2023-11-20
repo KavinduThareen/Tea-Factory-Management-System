@@ -19,10 +19,10 @@ import lk.ijse.teaFactory.dto.tm.CusOrderTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
+import lk.ijse.teaFactory.model.PlaseOrderModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -58,10 +58,10 @@ public class CustomerOrdersController {
     private AnchorPane root;
 
     @FXML
-    private JFXComboBox<String > cIdTxt;
+    private JFXComboBox<String> cIdTxt;
 
     @FXML
-    private JFXComboBox<String > catagaryTxt;
+    private JFXComboBox<String> catagaryTxt;
 
     @FXML
     private TextField dateTxt;
@@ -94,6 +94,7 @@ public class CustomerOrdersController {
     @FXML
     void addOnAction(ActionEvent event) {
 
+
         String id = idTxt.getText();
         String cId = (String) cIdTxt.getValue();
         String catagary = (String) catagaryTxt.getValue();
@@ -101,7 +102,37 @@ public class CustomerOrdersController {
         String date = dateTxt.getText();
         String descreption = descreptionTxt.getText();
         Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
-       // String complete = "0";
+        String complete = "0";
+
+        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,payment,complete);
+
+        var model = new CusOrderModel();
+        //   boolean isValidated = validate();
+
+        //  if (isValidated) {
+        //  new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+
+        try {
+            boolean isSaved = model.cusOrdersSaved(dto);
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+         /*
+
+
+        String id = idTxt.getText();
+        String cId = (String) cIdTxt.getValue();
+        String catagary = (String) catagaryTxt.getValue();
+        String weigth = WeigthTxt.getText();
+        String date = dateTxt.getText();
+        String descreption = descreptionTxt.getText();
+        Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
+        // String complete = "0";
         JFXButton btnDelete = new JFXButton("Deleted");
         btnDelete.setCursor(Cursor.HAND);
         btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");
@@ -112,18 +143,18 @@ public class CustomerOrdersController {
         //   CusOrderTm tm = new CusOrderTm();
 
         //   tm.getBtnDelete()
-        btnDelete .setOnAction((e) -> {
+        btnDelete.setOnAction((e) -> {
 
             ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
             ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
 
             Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
 
-            if(type.orElse(no) == yes) {
+            if (type.orElse(no) == yes) {
                 int selectedIndex = tbl.getSelectionModel().getSelectedIndex();
                 String cid = (String) colId.getCellData(selectedIndex);
 
-                  deleteItem(cid);   //delete item from the database
+                deleteItem(cid);   //delete item from the database
 
                 obList2.remove(selectedIndex);   //delete item from the JFX-Table
                 tbl.refresh();
@@ -147,14 +178,18 @@ public class CustomerOrdersController {
                 }
             }
         }
-        var cartTm = new CusOrderTm(id, cId, catagary, weigth, date, descreption,payment,btnDelete);
+        var cartTm = new CusOrderTm(id, cId, catagary, weigth, date, descreption, payment, btnDelete);
 
         obList2.add(cartTm);
 
         tbl.setItems(obList2);
         calculateTotal();
-       // we.clear();
+        // we.clear();
+        */
     }
+
+
+
 
     private void calculateTotal() {
         double total = 0;
@@ -163,6 +198,7 @@ public class CustomerOrdersController {
         }
         paymentTxt.setText(String.valueOf(total));
     }
+
 
     private void loadCusOrdersId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -195,7 +231,7 @@ public class CustomerOrdersController {
         generateNextCusOrderId();
         loadCatagary();
         setCellValueFactory();
-       // loadAll();
+        loadAll();
 
     }
 
@@ -214,9 +250,11 @@ public class CustomerOrdersController {
         }
     }
 
+
     @FXML
     void updateOnAction(ActionEvent event) {
 
+        /*
         String id = idTxt.getText();
         String cId = (String) cIdTxt.getValue();
         String catagary = (String) catagaryTxt.getValue();
@@ -225,9 +263,6 @@ public class CustomerOrdersController {
         String descreption = descreptionTxt.getText();
         Double payment = Double.valueOf(paymentTxt.getText());
         String complete = "0";
-
-
-
 
 
         var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,payment,complete);
@@ -244,6 +279,8 @@ public class CustomerOrdersController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
+         */
+
 
 
     }
@@ -258,6 +295,7 @@ public class CustomerOrdersController {
         paymentTxt.setText("");
 
     }
+
 
     public void loadAll() {
         var model = new CusOrderModel();
@@ -288,7 +326,7 @@ public class CustomerOrdersController {
                         int selectedIndex = tbl.getSelectionModel().getSelectedIndex();
                         String id = (String) colId.getCellData(selectedIndex);
 
-                     //   deleteItem(id);   //delete item from the database
+                        deleteItem(id);   //delete item from the database
 
                         obList.remove(selectedIndex);   //delete item from the JFX-Table
                         tbl.refresh();
@@ -322,6 +360,10 @@ public class CustomerOrdersController {
 
 
 
+
+
+
+
     private void deleteItem(String id) {
         try {
             boolean isDeleted = CusOrderModel.deleteItem(id);
@@ -331,6 +373,8 @@ public class CustomerOrdersController {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
+
+
 
 
 
@@ -347,38 +391,51 @@ public class CustomerOrdersController {
 
     }
 
+
+
     @FXML
-    void plaseOrderOnAction(ActionEvent event) {
-/*
-        String orderId = idTxt.getText();
-        LocalDate date = LocalDate.parse(dateTxt.getText());
-        String customerId = cIdTxt.getValue();
+    void plaseOrderOnAction(ActionEvent event) throws SQLException {
+        /*
+        // Check if an item is selected in the table
+        if (tbl.getSelectionModel().getSelectedItem() != null) {
+           // CusOrderTm selectedOrder = tbl.getSelectionModel().getSelectedItem();
 
-        List<CusOrderTm> cartTmList = new ArrayList<>();
-        for (int i = 0; i < tbl.getItems().size(); i++) {
-            CusOrderTm cartTm = obList2.get(i);
+            String id = idTxt.getText();
+            String cId = (String) cIdTxt.getValue();
+            String catagary = (String) catagaryTxt.getValue();
+            String weigth =  WeigthTxt.getText();
+            String date = dateTxt.getText();
+            String descreption = descreptionTxt.getText();
+            Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
+            String complete = "0";
 
-            cartTmList.add(cartTm);
-        }
+            List<CusOrderTm> cartTmList = new ArrayList<>();
+            for (int i = 0; i < tbl.getItems().size(); i++) {
+                CusOrderTm cartTm = obList2.get(i);
 
-        System.out.println("Place order form controller: " + cartTmList);
-        var PaseOrderDto = new PaseOrderDto(orderId, date, customerId, cartTmList);
-        try {
-            boolean isSuccess = CusOrderModel.placeOrder(PaseOrderDto);
+                cartTmList.add(cartTm);
+            }
+
+            System.out.println("Place order from controller: " + cartTmList);
+            var paseOrderDto = new PaseOrderDto(id, cId, catagary, weigth, date, descreption,payment,complete, cartTmList);
+            boolean isSuccess = PlaseOrderModel.placeOrder(paseOrderDto);
             if (isSuccess) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Order Success!").show();
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } else {
+            // Show an alert or handle the case where no item is selected in the table
+            new Alert(Alert.AlertType.WARNING, "Please select an item in the table.").show();
         }
 
- */
-
+         */
     }
 
 
-
-
-
-
 }
+
+
+
+
+
+
+
