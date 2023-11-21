@@ -90,14 +90,13 @@ public class PacketStokeModel {
     public boolean update(final PacketStokeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE packet_stoke SET s_catogary = ?, s_weigth = ?, s_expiredate = ?, isCompleted = ? WHERE packet_id = ?";
+        String sql = "UPDATE packet_stoke SET s_catogary = ?, s_weigth = ?, s_expiredate = ? WHERE packet_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getCatagory());
         pstm.setString(2, dto.getWeigth());
         pstm.setString(3, dto.getDate());
-        pstm.setString(4, "0");
-        pstm.setString(5, dto.getId());
+        pstm.setString(4, dto.getId());
 
         return pstm.executeUpdate() > 0;
     }

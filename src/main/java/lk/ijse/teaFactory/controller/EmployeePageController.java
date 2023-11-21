@@ -8,7 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.RegisterDto;
 import lk.ijse.teaFactory.dto.tm.EmployeeTm;
@@ -60,16 +63,16 @@ public class EmployeePageController {
 
     @FXML
     void updateOnAction(ActionEvent event) {
+        String uId =  uidTxt.getValue();
         String employeeId = employeeIdTxt.getText();
-        String employeeName = empNameTxt.getText();
         String empGender = empGenderTxt.getText();
         String empbd= empbdTxt.getText();
-        String uId = (String) uidTxt.getValue();
-        String empContac = empContacTxt.getText();
+        String employeeName = empNameTxt.getText();
         String empAddress = empAddressTxt.getText();
+        String empContac = empContacTxt.getText();
         String delete = "0";
 
-        var dto = new EmployeeDto(employeeId,employeeName,empGender,empbd,uId,empContac,empAddress,delete);
+        var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac,delete);
         var model = new EmployeeModel();
 
         try {
@@ -90,16 +93,16 @@ public class EmployeePageController {
     @FXML
     void saveEmployeeOnAction(ActionEvent event) {
 
-         String employeeId = employeeIdTxt.getText();
-         String employeeName = empNameTxt.getText();
-         String empGender = empGenderTxt.getText();
-         String empbd= empbdTxt.getText();
-         String uId = (String) uidTxt.getValue();
-         String empContac = empContacTxt.getText();
-         String empAddress = empAddressTxt.getText();
-         String delete = "0";
+        String uId =  uidTxt.getValue();
+        String employeeId = employeeIdTxt.getText();
+        String empGender = empGenderTxt.getText();
+        String empbd= empbdTxt.getText();
+        String employeeName = empNameTxt.getText();
+        String empAddress = empAddressTxt.getText();
+        String empContac = empContacTxt.getText();
+        String delete = "0";
 
-         var dto = new EmployeeDto(employeeId,employeeName,empGender,empbd,uId,empContac,empAddress,delete);
+        var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac,delete);
          var model = new EmployeeModel();
      //    boolean isValidated = validate();
 
@@ -116,7 +119,7 @@ public class EmployeePageController {
                  }
 
          } catch (SQLException e) {
-             new Alert(Alert.AlertType.CONFIRMATION, "Error").show();
+             new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
          }
 
         }
@@ -210,6 +213,8 @@ public class EmployeePageController {
         loadUserId();
         generateNextEmpId();
     }
+
+
     public void loadAllEmployees(){
         var model =new EmployeeModel();
 
@@ -219,15 +224,17 @@ public class EmployeePageController {
             List<EmployeeDto> dtoList =model.getAllEmployee();
             for (EmployeeDto dto : dtoList){
 
+
                 obList.add(
                         new EmployeeTm(
+                              dto.getUId(),
                                 dto.getEmployeeId(),
-                                dto.getEmployeeName(),
                                 dto.getEmpGender(),
                                 dto.getEmpbd(),
-                                dto.getUId(),
-                                dto.getEmpContac(),
-                                dto.getEmpAddress()
+                                dto.getEmployeeName(),
+                                dto.getEmpAddress(),
+                                dto.getEmpContac()
+
                         )
                 );
 
@@ -243,7 +250,7 @@ public class EmployeePageController {
 
     private void setCellValueFactory() {
 
-        colSelectEmployeNmaes.setCellValueFactory(new PropertyValueFactory<>("uId"));
+        colSelectEmployeNmaes.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
     }
 
 
@@ -267,7 +274,33 @@ public class EmployeePageController {
         empAddressTxt.setText("");
 
     }
-}
 
+    @FXML
+    void SearchOnAction(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            String id = employeeIdTxt.getText();
+
+            var model = new EmployeeModel();
+            try {
+                EmployeeDto employeeDto = model.searchCustomer(id);
+//            System.out.println(customerDto);
+                if (employeeDto != null) {
+                    uidTxt.setValue(employeeDto.getUId());
+                    employeeIdTxt.setText(employeeDto.getEmployeeId());
+                    empGenderTxt.setText(employeeDto.getEmpGender());
+                    empbdTxt.setText(employeeDto.getEmpbd());
+                    empNameTxt.setText(employeeDto.getEmployeeName());
+                    empAddressTxt.setText(employeeDto.getEmpAddress());
+                    empContacTxt.setText(employeeDto.getEmpContac());
+                } else {
+                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
+            }
+        }
+    }
+
+}
 
 

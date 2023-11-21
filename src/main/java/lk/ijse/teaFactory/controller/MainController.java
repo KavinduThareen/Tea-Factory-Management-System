@@ -6,9 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.model.CustomerModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class MainController {
@@ -24,6 +29,8 @@ public class MainController {
 
     @FXML
     private TextField searchTxt;
+
+    private CustomerModel customerModel = new CustomerModel();
 
 
 
@@ -45,6 +52,19 @@ public class MainController {
     @FXML
     void dashboardOnAction(ActionEvent event) throws IOException {
         initializeDashboard();
+    }
+
+    @FXML
+    void searchOnAction(KeyEvent event) throws IOException, SQLException {
+        String id = searchTxt.getText();
+        if (event.getCode() == KeyCode.ENTER) {
+                if (id.equals("C001")) {
+                    customerModel.searchCustomer(id);
+                    dashbordRoot.getChildren().clear();
+                    dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customer_add_page.fxml"))));
+
+                }
+        }
     }
 
     @FXML

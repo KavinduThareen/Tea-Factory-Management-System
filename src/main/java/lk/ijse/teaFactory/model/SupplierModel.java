@@ -129,6 +129,27 @@ public class SupplierModel {
         return dtoList;
     }
 
+    public SupplierDto searchCustomer(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection ();
 
+        String sql = "SELECT * FROM supplier WHERE supplier_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        SupplierDto dto = null;
+
+        if(resultSet.next()) {
+            String sid = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String address = resultSet.getString(3);
+            String cantac = resultSet.getString(4);
+            String complete = resultSet.getString(5);
+
+            dto = new SupplierDto(sid, name, address , cantac,complete);
+        }
+        return dto;
+    }
 
 }

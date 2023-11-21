@@ -1,20 +1,19 @@
 package lk.ijse.teaFactory.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
+@Getter
+@Setter
 public class EmployeeDto {
+    private String uId;
     private String employeeId;
-    private String employeeName;
     private String empGender;
     private String empbd;
-    private String uId;
-    private String empContac;
+    private String employeeName;
     private String empAddress;
+    private String empContac;
     private String isCompleted;
 }

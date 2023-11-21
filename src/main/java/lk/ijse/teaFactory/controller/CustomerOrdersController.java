@@ -144,6 +144,7 @@ public class CustomerOrdersController {
 
 
         String Itemid = itemIdTxt.getValue();
+        String cusid = cIdTxt.getValue();
         String descreption = descreptionTxt.getText();
         String catagary = (String) catagaryTxt.getValue();
         String weigth = WeigthTxt.getText();
@@ -154,6 +155,10 @@ public class CustomerOrdersController {
 
          setRemoveBtnAction(btnDelete);
         btnDelete.setCursor(Cursor.HAND);
+        btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");
+
+        btnDelete.setPrefWidth(100);
+        btnDelete.setPrefHeight(30);
 
         if (!obList2.isEmpty()) {
             for (int i = 0; i < tbl.getItems().size(); i++) {
@@ -172,7 +177,7 @@ public class CustomerOrdersController {
                 }
             }
         }
-        var cartTm = new CartTm(Itemid, descreption, catagary, weigth, payment, date, btnDelete);
+        var cartTm = new CartTm(Itemid, cusid,descreption, catagary, weigth, payment, date, btnDelete);
 
         obList2.add(cartTm);
 
@@ -325,6 +330,8 @@ public class CustomerOrdersController {
     private void setCellValueFactory() {
 
         colId.setCellValueFactory(new PropertyValueFactory<>("itemId"));
+        colCId.setCellValueFactory(new PropertyValueFactory<>("cusid" +
+                ""));
         colDes.setCellValueFactory(new PropertyValueFactory<>("descreption"));
         colCatagary.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("catagary"));
         colweigth.setCellValueFactory(new PropertyValueFactory<>("weigth"));
@@ -377,7 +384,7 @@ public class CustomerOrdersController {
 
     private void printCustomer() throws JRException, SQLException {
 
-        InputStream resourceAsStream = getClass().getResourceAsStream("../report/bill.jrxml");
+        InputStream resourceAsStream = getClass().getResourceAsStream("../report/customerOrderBill.jrxml");
         JasperDesign load = JRXmlLoader.load(resourceAsStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(load);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,

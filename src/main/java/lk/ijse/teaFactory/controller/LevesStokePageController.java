@@ -7,12 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.LeavesStokeDto;
+import lk.ijse.teaFactory.dto.SupplierDto;
 import lk.ijse.teaFactory.dto.tm.CompleteTm;
 import lk.ijse.teaFactory.dto.tm.LeaveStokeTm;
 import lk.ijse.teaFactory.model.LeavesStokeModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
+import lk.ijse.teaFactory.model.SupplierModel;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -199,7 +203,30 @@ public class LevesStokePageController {
 
     }
 
+    @FXML
+    void searchOnAction(KeyEvent event) {
 
+        if (event.getCode() == KeyCode.ENTER) {
+            String id = idTxt.getText();
+
+            var model = new LeavesStokeModel();
+            try {
+                LeavesStokeDto leavesStokeDto = model.searchCustomer(id);
+//            System.out.println(customerDto);
+                if (leavesStokeDto != null) {
+                    idTxt.setText(leavesStokeDto.getId());
+                    WeigthTxt.setText(leavesStokeDto.getWeigth());
+                    sDateTxt.setText(leavesStokeDto.getSDate());
+                    eDateTxt.setText(leavesStokeDto.getEDate());
+
+                } else {
+                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }
+    }
 
 
 

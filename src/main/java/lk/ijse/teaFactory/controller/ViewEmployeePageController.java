@@ -100,13 +100,13 @@ public class ViewEmployeePageController {
 
                 obList.add(
                         new EmployeeTm(
-                               dto.getEmployeeId(),
-                                dto.getEmployeeName(),
+                                dto.getUId(),
+                                dto.getEmployeeId(),
                                 dto.getEmpGender(),
                                 dto.getEmpbd(),
-                                dto.getUId(),
-                                dto.getEmpContac(),
+                                dto.getEmployeeName(),
                                 dto.getEmpAddress(),
+                                dto.getEmpContac(),
                                 btnDelete
 
                         )

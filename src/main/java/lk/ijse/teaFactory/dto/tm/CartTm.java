@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Setter
 public class CartTm {
     private String itemId;
+    private String cusid;
     private String descreption;
     private String catagary;
     private String weigth;

@@ -1,6 +1,7 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
+import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 
 import java.sql.Connection;
@@ -79,7 +80,7 @@ public class EmployeeModel {
     public boolean update(final EmployeeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE customer SET user_id = ?, emp_gender = ?, emp_bd = ?,employee_name = ?,address = ?,contac = ?,delet = ?  WHERE employeeid = ?";
+        String sql = "UPDATE employee SET user_id = ?, emp_gender = ?, emp_bd = ?,employee_name = ?,address = ?,contac = ?,delet = ?  WHERE employeeid = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1,dto.getUId());
@@ -151,6 +152,31 @@ public class EmployeeModel {
         return "E001";
     }
 
+    public EmployeeDto searchCustomer(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection ();
+
+        String sql = "SELECT * FROM employee WHERE employeeid = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        EmployeeDto dto = null;
+
+        if(resultSet.next()) {
+            String uId = resultSet.getString(1);
+            String employeeId = resultSet.getString(2);
+            String empGender = resultSet.getString(3);
+            String empbd = resultSet.getString(4);
+            String employeeName = resultSet.getString(5);
+            String empAddress = resultSet.getString(6);
+            String empContac = resultSet.getString(7);
+            String complete = resultSet.getString(8);
+            dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac,complete);
+        }
+        return dto;
+    }
 
 
 }
+

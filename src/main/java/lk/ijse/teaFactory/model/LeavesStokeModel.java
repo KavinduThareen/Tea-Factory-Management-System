@@ -1,6 +1,7 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
+import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.tm.CompleteTm;
@@ -104,4 +105,28 @@ public class LeavesStokeModel {
         }
         return "L001";
     }
+
+    public LeavesStokeDto searchCustomer(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection ();
+
+        String sql = "SELECT * FROM leaves_stoke WHERE leaves_s_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        LeavesStokeDto dto = null;
+
+        if(resultSet.next()) {
+            String lid = resultSet.getString(1);
+            String weigth = resultSet.getString(2);
+            String sdate = resultSet.getString(3);
+            String edate = resultSet.getString(4);
+            String complete = resultSet.getString(5);
+
+            dto = new LeavesStokeDto(lid,weigth,sdate,edate,complete);
+        }
+        return dto;
+    }
+
 }

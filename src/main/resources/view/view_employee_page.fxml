@@ -13,14 +13,14 @@
       <TableView fx:id="tblEmployee" layoutX="24.0" layoutY="67.0" prefHeight="846.0" prefWidth="1446.0" stylesheets="@../style/tableCss.css">
         <columns>
           <TableColumn fx:id="colname" maxWidth="-Infinity" prefWidth="200.0" text="employee id" />
-          <TableColumn fx:id="coladdress" prefWidth="148.0" text="employee name" />
-            <TableColumn fx:id="colcantac" prefWidth="180.0" text="C2" />
-            <TableColumn fx:id="colUid" prefWidth="204.0" text="C2" />
-            <TableColumn fx:id="colEid" prefWidth="188.0" text="C2" />
-            <TableColumn fx:id="colbd" prefWidth="189.333251953125" text="C2" />
-            <TableColumn fx:id="colgender" maxWidth="1000.0" prefWidth="195.0" text="C2" />
-            <TableColumn fx:id="colname" maxWidth="1000.0" prefWidth="154.6666259765625" text="C2" />
-            <TableColumn fx:id="colDelete" maxWidth="1000.0" prefWidth="169.6666259765625" text="C2" />
+          <TableColumn fx:id="colEid" prefWidth="148.0" text="Employee ID" />
+            <TableColumn fx:id="colname" prefWidth="180.0" text="Employee Name" />
+            <TableColumn fx:id="colUid" prefWidth="204.0" text="Use ID " />
+            <TableColumn fx:id="colgender" prefWidth="188.0" text="Gender" />
+            <TableColumn fx:id="colbd" prefWidth="189.333251953125" text="BirthDay" />
+            <TableColumn fx:id="coladdress" maxWidth="1000.0" prefWidth="195.0" text="Address" />
+            <TableColumn fx:id="colcantac" maxWidth="1000.0" prefWidth="154.6666259765625" text="Contac" />
+            <TableColumn fx:id="colDelete" maxWidth="1000.0" prefWidth="169.6666259765625" text="Delete" />
         </columns>
       </TableView>
       <JFXButton fx:id="backBtnOnAction" layoutX="1357.0" layoutY="14.0" onAction="#backBtnOnAction" prefHeight="48.0" prefWidth="92.0" text="Back" />

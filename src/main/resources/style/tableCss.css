@@ -35,11 +35,11 @@
     -fx-padding: 2 0 2 10px;
 }
 .table-row-cell:hover {
-    -fx-background-color: #93f9b911;
+    -fx-background-color: rgba(2, 227, 90, 0.07);
     -fx-text-background-color: #3f2def;
 }
 .table-row-cell:odd{
-    -fx-background-color: #93f9b911;
+    -fx-background-color: white;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }

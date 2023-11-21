@@ -8,9 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.SupplierDto;
 import lk.ijse.teaFactory.dto.tm.SupplierTm;
+import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.EmployeeModel;
 import lk.ijse.teaFactory.model.SupplierModel;
 
@@ -256,6 +260,31 @@ public class SupplierPageController {
         Address .setText("");
         Contac.setText("");
     }
+
+    @FXML
+    void searchOnAction(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            String id = idTxt.getText();
+
+            var model = new SupplierModel();
+            try {
+                SupplierDto supplierDto = model.searchCustomer(id);
+//            System.out.println(customerDto);
+                if (supplierDto != null) {
+                    idTxt.setText(supplierDto.getId());
+                    nameTxt.setText(supplierDto.getName());
+                    Address.setText(supplierDto.getAddress());
+                    Contac.setText(supplierDto.getContac());
+
+                } else {
+                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }
+    }
+
 
 
 }

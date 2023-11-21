@@ -115,7 +115,7 @@
             <Image url="@../img/image%2090.png" />
          </image>
       </ImageView>
-      <TextField fx:id="searchTxt" layoutX="803.0" layoutY="4.0" prefHeight="29.0" prefWidth="403.0" promptText="Search" style="-fx-background-color: tra;" />
+      <TextField fx:id="searchTxt" layoutX="803.0" layoutY="4.0" onKeyPressed="#searchOnAction" prefHeight="29.0" prefWidth="403.0" promptText="Search" style="-fx-background-color: tra;" />
       <JFXButton layoutX="1796.0" layoutY="-1.0" onAction="#profileOnAction" prefHeight="43.0" prefWidth="119.0" text="You Profile" />
       <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="1804.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>

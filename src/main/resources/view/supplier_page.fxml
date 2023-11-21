@@ -33,7 +33,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="idTxt" layoutX="1054.0" layoutY="221.0" prefHeight="44.0" prefWidth="398.0" promptText="id" style="-fx-background-color: tra;">
+      <TextField fx:id="idTxt" layoutX="1054.0" layoutY="221.0" onKeyPressed="#searchOnAction" prefHeight="44.0" prefWidth="398.0" promptText="id" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>

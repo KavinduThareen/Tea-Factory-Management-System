@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CusOrderDto;
 import lk.ijse.teaFactory.dto.CustomerDto;
@@ -167,10 +169,6 @@ public class CustomerAddPageController {
     }
 
 
-
-
-
-
     @FXML
     void updateOnAction(ActionEvent event) {
 
@@ -210,7 +208,38 @@ public class CustomerAddPageController {
         cuscontacTxt.setText("");
     }
 
+    @FXML
+    void searchOnAction(ActionEvent event) {
+        searchCustomer();
+    }
 
+    public void searchCustomer(){
+
+        String id = cusidTxt.getText();
+
+       var model = new CustomerModel();
+        try {
+            CustomerDto customerDto = model.searchCustomer(id);
+//            System.out.println(customerDto);
+            if (customerDto != null) {
+                cusidTxt.setText(customerDto.getCusid());
+                empidTxt.setValue(customerDto.getEmpid());
+                cusnameTxt.setText(customerDto.getCusname());
+                cusAddressTxt.setText(customerDto.getCusAddress());
+                cuscontacTxt.setText(customerDto.getCusCantac());
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+    @FXML
+    void searchcusOnAction(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            searchCustomer();
+        }
+    }
 
 
 
