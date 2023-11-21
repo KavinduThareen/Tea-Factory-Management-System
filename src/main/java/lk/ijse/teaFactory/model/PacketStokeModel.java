@@ -3,6 +3,7 @@ package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
+import lk.ijse.teaFactory.dto.tm.CartTm;
 import lk.ijse.teaFactory.dto.tm.CusOrderTm;
 
 import java.sql.Connection;
@@ -16,14 +17,14 @@ public class PacketStokeModel {
     public boolean packetStokeSaved(PacketStokeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO packet_stoke VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO packet_stoke VALUES(?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getId());
         pstm.setString(2, dto.getCatagory());
         pstm.setString(3, dto.getWeigth());
         pstm.setString(4, dto.getDate());
-        pstm.setString(5, "0");
+
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
@@ -45,12 +46,35 @@ public class PacketStokeModel {
             String catagory = resultSet.getString(2);
             String weigth = resultSet.getString(3);
             String date = resultSet.getString(4);
-            String isCompleted = resultSet.getString(5);
 
-            var dto = new PacketStokeDto(id, catagory, weigth, date, isCompleted);
+
+            var dto = new PacketStokeDto(id, catagory, weigth, date);
             dtoList.add(dto);
         }
         return dtoList;
+    }
+
+
+
+    public static List<PacketStokeDto> loadAllItems() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM  packet_stoke";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        List<PacketStokeDto> itemList = new ArrayList<>();
+
+        ResultSet resultSet = pstm.executeQuery();
+        while (resultSet.next()) {
+            itemList.add(new PacketStokeDto(
+                   resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4)
+            ));
+        }
+
+        return itemList;
     }
 
     public static boolean delete(String id) throws SQLException {
@@ -118,8 +142,8 @@ public class PacketStokeModel {
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getString(5)
+                    resultSet.getString(4)
+
             );
 
             dtoList.add(dto);
@@ -128,31 +152,26 @@ public class PacketStokeModel {
         return dtoList;
     }
 
-    public boolean updateItem(List<CusOrderTm> cartTmList) throws SQLException {
-        Connection connection = null;
-        try {
-            connection = DbConnection.getInstance().getConnection();
-            for (CusOrderTm tm : cartTmList) {
-                System.out.println("Item: " + tm);
-                if (!updateQty(connection, tm.getId(), tm.getPayment())) {
-                    return false;
-                }
-            }
-            return true;
-        } finally {
-            if (connection != null) {
-                connection.close(); // Close the connection in the finally block
+    public boolean updateItem(List<CartTm> cartTmList) throws SQLException {
+        for(CartTm tm : cartTmList) {
+            System.out.println("Item: " + tm);
+            if(!updateQty(tm.getItemId(), tm.getWeigth())) {
+                return false;
             }
         }
+        return true;
     }
 
-    private boolean updateQty(Connection connection, String id, Double payment) throws SQLException {
-        String sql = "UPDATE packet_stoke SET s_weigth = s_weigth - ? WHERE packet_id = ?";
-        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-            pstm.setDouble(1, payment);
-            pstm.setString(2, id);
-            return pstm.executeUpdate() > 0;
-        }
+    public boolean updateQty(String code, String qty) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE packet_stoke SET s_weigth =  s_weigth - ? WHERE packet_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, qty);
+        pstm.setString(2, code);
+
+        return pstm.executeUpdate() > 0; //false
     }
 
 

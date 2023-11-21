@@ -4,11 +4,12 @@ import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.CusOrderDto;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CusOrderModel {
-
+/*
     public boolean cusOrdersSaved (CusOrderDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -29,6 +30,8 @@ public class CusOrderModel {
 
         return isSaved;
     }
+
+ */
 
 
 
@@ -126,24 +129,21 @@ public class CusOrderModel {
         return "O001";
     }
 
-    public boolean saveOrder(String orderId, String customerId, String catagary, String weigth, String date, String descreption, String payment) {
-        try (Connection connection = DbConnection.getInstance().getConnection();
-             PreparedStatement pstm = connection.prepareStatement("INSERT INTO orders VALUES (?, ?, ?, ?, ?, ?, ? ,?)")) {
+    public boolean saveOrder(String orderId, String customerId, String catagary, String weigth, LocalDate date, String descreption, String payment) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "INSERT INTO orders VALUES(?, ?, ?, ?, ?,?,?)";
+        PreparedStatement pstm = connection.prepareStatement(sql);
 
             pstm.setString(1, orderId);
             pstm.setString(2, customerId);
             pstm.setString(3, catagary);
             pstm.setString(4, weigth);
-            pstm.setString(5, date);
+            pstm.setString(5, String.valueOf(date));
             pstm.setString(6, descreption);
             pstm.setString(7, payment);
-            pstm.setString(8, "0");
 
-            return pstm.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace(); // Log or handle the exception
-            return false;
-        }
+        return pstm.executeUpdate() > 0;
     }
 
 }

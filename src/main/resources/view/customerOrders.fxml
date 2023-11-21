@@ -46,7 +46,7 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="paymentTxt" layoutX="98.0" layoutY="225.0" prefHeight="51.0" prefWidth="276.0" promptText="1Kg Price" style="-fx-background-color: tra;">
+      <TextField fx:id="paymentTxt" layoutX="98.0" layoutY="225.0" onAction="#paymentOnAction" prefHeight="51.0" prefWidth="276.0" promptText="1Kg Price" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
@@ -58,7 +58,7 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <JFXComboBox fx:id="cIdTxt" layoutX="393.0" layoutY="137.0" prefHeight="51.0" prefWidth="276.0" promptText="Customer ID" unFocusColor="WHITE" />
+      <JFXComboBox fx:id="cIdTxt" layoutX="393.0" layoutY="137.0" onAction="#cusidOnAction" prefHeight="51.0" prefWidth="276.0" promptText="Customer ID" unFocusColor="WHITE" />
       <JFXComboBox fx:id="catagaryTxt" layoutX="727.0" layoutY="135.0" prefHeight="51.0" prefWidth="335.0" promptText="Catagary" unFocusColor="WHITE" />
       <JFXButton layoutX="79.0" layoutY="393.0" onAction="#addOnAction" prefHeight="57.0" prefWidth="221.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Add Order">
          <font>
@@ -79,5 +79,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
+      <JFXComboBox fx:id="itemIdTxt" layoutX="90.0" layoutY="320.0" prefHeight="40.0" prefWidth="306.0" />
     </children>
 </AnchorPane>

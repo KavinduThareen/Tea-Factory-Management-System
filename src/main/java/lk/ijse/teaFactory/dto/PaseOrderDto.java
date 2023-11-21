@@ -1,5 +1,6 @@
 package lk.ijse.teaFactory.dto;
 
+import lk.ijse.teaFactory.dto.tm.CartTm;
 import lk.ijse.teaFactory.dto.tm.CusOrderTm;
 import lombok.*;
 
@@ -17,13 +18,13 @@ public class PaseOrderDto {
     private String cId;
     private String catagary;
     private String weigth;
-    private String date;
+    private LocalDate date;
     private String descreption;
     private double payment;
     private String isCompleted;
-    private List<CusOrderTm> cartTmList = new ArrayList<>();
+    private List<CartTm> cartTmList = new ArrayList<>();
 
-    public PaseOrderDto(String id, String cId, String catagary, String weigth, String  date, String descreption, Double payment,String isCompleted, List<CusOrderTm> cartTmList) {
+    public PaseOrderDto(String id, String cId, String catagary, String weigth, LocalDate  date, String descreption, Double payment, List<CartTm> cartTmList) {
 
         this.id = id;
         this.cId = cId;
@@ -32,7 +33,6 @@ public class PaseOrderDto {
         this.date = date;
         this.descreption = descreption;
         this.payment = payment;
-        this.isCompleted=isCompleted;
         this.cartTmList = cartTmList;
     }
 

@@ -5,6 +5,7 @@ import lk.ijse.teaFactory.dto.PaseOrderDto;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class PlaseOrderModel {
     private static CusOrderModel cusModel = new CusOrderModel();
@@ -13,51 +14,35 @@ public class PlaseOrderModel {
 
     public static boolean placeOrder(PaseOrderDto placeOrderDto) throws SQLException {
 
-        Connection connection = null;
-
-        try  {
-            connection = DbConnection.getInstance().getConnection();
-            connection.setAutoCommit(false);
-
             String orderId = placeOrderDto.getid();
             String customerId = placeOrderDto.getCId();
             String category = placeOrderDto.getCatagary();
             String weight = placeOrderDto.getWeigth();
-            String date = placeOrderDto.getDate();
+            LocalDate date = placeOrderDto.getDate();
             String description = placeOrderDto.getDescreption();
             double payment = placeOrderDto.getPayment();
 
-            System.out.println("Placing order: " + placeOrderDto);
+            Connection connection = null;
+            try {
+                connection = DbConnection.getInstance().getConnection();
+                connection.setAutoCommit(false);
 
-            // Save order details
-            boolean isOrderSaved = cusModel.saveOrder(orderId, customerId, category, weight, date, description, String.valueOf(payment));
-
-            if (isOrderSaved) {
-                // Update packet stoke
-                boolean isUpdated = packetStokeModel.updateItem(placeOrderDto.getCartTmList());
-
-                // Save order details
-                boolean isOrderDetailSaved = orderDetailModel.saveOrderDetails(orderId, placeOrderDto.getCartTmList());
-
-                if (isUpdated && isOrderDetailSaved) {
-                    connection.commit();
-                    System.out.println("Order successfully placed.");
-                } else {
-                    connection.rollback();
-                    System.out.println("Failed to update packet stoke or save order details. Rolling back.");
+                boolean isOrderSaved = cusModel.saveOrder(orderId,customerId,category,weight,date,description, String.valueOf(payment));
+                if (isOrderSaved) {
+                    boolean isUpdated = packetStokeModel.updateItem(placeOrderDto.getCartTmList());
+                    if (isUpdated) {
+                        boolean isOrderDetailSaved = orderDetailModel.saveOrderDetails(placeOrderDto.getid(), placeOrderDto.getCartTmList());
+                        if (isOrderDetailSaved) {
+                            connection.commit();
+                        }
+                    }
                 }
-            } else {
                 connection.rollback();
-                System.out.println("Failed to save order. Rolling back.");
+            } finally {
+                connection.setAutoCommit(true);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Log or handle the exception
-        } finally {
-            connection.setAutoCommit(true); // Set auto-commit back to true
+            return true;
         }
-        return true;
-    }
 }
 
 

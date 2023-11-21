@@ -14,7 +14,8 @@ public class PacketStokeDto {
     private String catagory;
     private String  weigth;
     private String date;
-    private String isCompleted;
+
+
 
 
 

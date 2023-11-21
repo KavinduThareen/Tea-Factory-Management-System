@@ -60,12 +60,11 @@ public class PacketStokePageController {
         String catagory = catagaryTxt.getText();
         String   weigth = weigthTxt.getText();
         String date = expirTxt.getText();
-        String complete = "0";
 
 
 
 
-        var dto = new PacketStokeDto(id,catagory,weigth,date,complete);
+        var dto = new PacketStokeDto(id,catagory,weigth,date);
         var model = new PacketStokeModel();
 
         try {
@@ -87,9 +86,9 @@ public class PacketStokePageController {
         String catagory = catagaryTxt.getText();
         String   weigth = weigthTxt.getText();
         String date = expirTxt.getText();
-        String complete = "0";
 
-        var dto = new PacketStokeDto(id,catagory,weigth,date,complete);
+
+        var dto = new PacketStokeDto(id,catagory,weigth,date);
         var model = new PacketStokeModel();
 
         try {
