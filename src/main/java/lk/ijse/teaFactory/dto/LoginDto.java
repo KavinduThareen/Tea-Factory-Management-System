@@ -1,4 +1,4 @@
-package lk.ijse.teaFactory.dto.tm;
+package lk.ijse.teaFactory.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-public class loginTm {
+public class LoginDto {
     private String username;
     private String password;
+
+
+
 }

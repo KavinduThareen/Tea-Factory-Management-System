@@ -75,9 +75,11 @@ public class UserProfileController {
             String Id = LoginModel.generateId();
             String pw = LoginModel.password();
             String username = RegisterModel.username();
+          /// String canatac =
             idTxt.setText(Id);
             pwTxt.setText(pw);
             uNameTxt.setText(username);
+            //cantcTxt.setText(contac);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

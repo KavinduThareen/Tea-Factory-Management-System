@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.loginDto;
+import lk.ijse.teaFactory.dto.LoginDto;
 import lk.ijse.teaFactory.model.LoginModel;
 
 
@@ -40,25 +40,24 @@ public class LoginPageController{
     @FXML
     void keyOnAction(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
-            loginroot.getChildren().clear();
-            loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
-          //  performLoginAction();
+           login();
         }
     }
 
     @FXML
-    void loginbtnOnAction(ActionEvent event) throws IOException {
+    void loginbtnOnAction(ActionEvent event) throws IOException, SQLException {
 
-        performLoginAction();
+     login();
     }
 
-    private void performLoginAction() throws IOException {
+
+    public void login(){
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
 
         var model = new LoginModel();
         try {
-            loginDto dto = model.finduserName();
+            LoginDto dto = model.finduserName();
 
             if (dto != null && dto.getUsername().equals(username) && dto.getPassword().equals(password)) {
                 // new Alert(Alert.AlertType.INFORMATION, "ok!").show();
@@ -73,6 +72,7 @@ public class LoginPageController{
             throw new RuntimeException(e);
         }
     }
+
 
     @FXML
     void registerbtnOnAction(ActionEvent event) throws IOException {

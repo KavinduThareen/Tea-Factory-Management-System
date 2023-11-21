@@ -2,6 +2,7 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
+import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.tm.CartTm;
 import lk.ijse.teaFactory.dto.tm.CusOrderTm;
@@ -164,13 +165,37 @@ public class PacketStokeModel {
     public boolean updateQty(String code, String qty) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE packet_stoke SET s_weigth =  s_weigth - ? WHERE packet_id = ?";
+        String sql = "UPDATE packet_stoke SET s_weigth = s_weigth - ? WHERE packet_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, qty);
         pstm.setString(2, code);
 
         return pstm.executeUpdate() > 0; //false
+    }
+
+
+    public PacketStokeDto searchCustomer(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection ();
+
+        String sql = "SELECT * FROM packet_stoke WHERE packet_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        PacketStokeDto dto = null;
+
+        if(resultSet.next()) {
+            String lid = resultSet.getString(1);
+            String catgary = resultSet.getString(2);
+            String weigth = resultSet.getString(3);
+            String edate = resultSet.getString(4);
+
+
+            dto = new PacketStokeDto(lid,catgary,weigth,edate);
+        }
+        return dto;
     }
 
 

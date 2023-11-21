@@ -8,16 +8,21 @@ import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.tm.CompleteTm;
 import lk.ijse.teaFactory.dto.tm.PacketStokeTm;
 import lk.ijse.teaFactory.model.CustomerModel;
+import lk.ijse.teaFactory.model.LeavesStokeModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class PacketStokePageController {
 
@@ -78,6 +83,45 @@ public class PacketStokePageController {
         }
 
     }
+
+    private boolean validate() {
+
+        String idText = idTxt.getText();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        if (!isIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+
+        String nameText = catagaryTxt.getText();
+//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        if (!isNameValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            return false;
+        }
+
+        String addressText = weigthTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        if (!isAddressValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
+
+        String cantacText = expirTxt.getText();
+//        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
+        if (!isCantacValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+            return false;
+        }
+
+        return true;
+    }
+
 
     @FXML
     void updateOnAction(ActionEvent event) {
@@ -207,5 +251,30 @@ public class PacketStokePageController {
         weigthTxt .setText("");
         expirTxt.setText("");
     }
+
+    @FXML
+    void searchOnAction(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            String id = idTxt.getText();
+
+            var model = new PacketStokeModel();
+            try {
+                PacketStokeDto packetStokeDto = model.searchCustomer(id);
+//            System.out.println(customerDto);
+                if (packetStokeDto != null) {
+                    idTxt.setText(packetStokeDto.getId());
+                    catagaryTxt.setText(packetStokeDto.getCatagory());
+                    weigthTxt.setText(packetStokeDto.getWeigth());
+                    expirTxt.setText(packetStokeDto.getDate());
+
+                } else {
+                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }
+    }
+
 
 }

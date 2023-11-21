@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -46,15 +45,15 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="paymentTxt" layoutX="98.0" layoutY="225.0" onAction="#paymentOnAction" prefHeight="51.0" prefWidth="276.0" promptText="1Kg Price" style="-fx-background-color: tra;">
+      <TextField fx:id="paymentTxt" layoutX="98.0" layoutY="224.0" onAction="#paymentOnAction" prefHeight="52.0" prefWidth="276.0" promptText="1Kg Price" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="WeigthTxt" layoutX="405.0" layoutY="225.0" prefHeight="51.0" prefWidth="306.0" promptText="Weigth" style="-fx-background-color: tra;">
+      <TextField fx:id="WeigthTxt" layoutX="421.0" layoutY="225.0" prefHeight="46.0" prefWidth="306.0" promptText="Weigth" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="dateTxt" layoutX="753.0" layoutY="225.0" prefHeight="51.0" prefWidth="285.0" promptText="Date" style="-fx-background-color: tra;">
+      <TextField fx:id="dateTxt" layoutX="785.0" layoutY="223.0" prefHeight="51.0" prefWidth="282.0" promptText="Date" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
@@ -70,15 +69,16 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <TextArea fx:id="descreptionTxt" layoutX="1097.0" layoutY="136.0" prefHeight="135.0" prefWidth="405.0" promptText="Descreption" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextArea>
       <JFXButton layoutX="579.0" layoutY="390.0" onAction="#plaseOrderOnAction" prefHeight="57.0" prefWidth="235.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Plase Order">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXComboBox fx:id="itemIdTxt" layoutX="90.0" layoutY="320.0" prefHeight="40.0" prefWidth="306.0" />
+      <JFXComboBox fx:id="itemIdTxt" focusColor="WHITE" layoutX="1137.0" layoutY="225.0" prefHeight="40.0" prefWidth="274.0" promptText="Packet ID" unFocusColor="WHITE" />
+      <TextField fx:id="descreptionTxt" layoutX="1100.0" layoutY="137.0" prefHeight="48.0" prefWidth="399.0" promptText="Descreption" style="-fx-background-color: tra;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
     </children>
 </AnchorPane>

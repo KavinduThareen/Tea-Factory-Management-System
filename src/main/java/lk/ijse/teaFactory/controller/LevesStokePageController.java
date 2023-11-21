@@ -21,6 +21,7 @@ import lk.ijse.teaFactory.model.SupplierModel;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class LevesStokePageController {
 
@@ -79,6 +80,45 @@ public class LevesStokePageController {
             throw new RuntimeException(e);
         }
     }
+
+    private boolean validate() {
+
+        String idText = idTxt.getText();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        if (!isIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+        String UidText = WeigthTxt.getText();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
+        if (!isUIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+
+        String nameText = sDateTxt.getText();
+//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        if (!isNameValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            return false;
+        }
+
+        String addressText = eDateTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        if (!isAddressValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
+
+        return true;
+    }
+
 
     public void loadAll(){
         var model = new LeavesStokeModel();

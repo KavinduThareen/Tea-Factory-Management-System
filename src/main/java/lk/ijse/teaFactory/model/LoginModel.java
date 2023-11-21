@@ -1,8 +1,9 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
-import lk.ijse.teaFactory.dto.PacketStokeDto;
-import lk.ijse.teaFactory.dto.loginDto;
+import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.dto.LoginDto;
+import lk.ijse.teaFactory.dto.tm.LoginTm;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class LoginModel {
 
-    public loginDto finduserName() throws SQLException {
+    public LoginDto finduserName() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         String cus_username1 = null;
         String cus_username2 = null;
@@ -26,21 +27,20 @@ public class LoginModel {
             ResultSet resultSet1 = pstm1.executeQuery();
             //  List<loginDto> dtoList = new ArrayList<>();
 
-            loginDto dto = null;
+            LoginDto dto = null;
 
             if (resultSet1.next()) {
                 cus_username1 = resultSet1.getString(1);
                 cus_username2 = resultSet1.getString(2);
 
 
-                dto = new loginDto(cus_username1, cus_username2);
+                dto = new LoginDto(cus_username1, cus_username2);
             //    dtoList.add(dto);
             }
 
             return dto;
 
         }
-
 
 
     public static String generateId() throws SQLException {

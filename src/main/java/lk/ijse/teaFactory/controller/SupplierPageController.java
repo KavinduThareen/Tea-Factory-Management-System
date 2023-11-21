@@ -97,7 +97,7 @@ public class SupplierPageController {
 
  //   }
 
-    /*
+
 
     private boolean validate() {
 
@@ -135,7 +135,7 @@ public class SupplierPageController {
 
     }
 
-     */
+
 
     private void generateNextSupId() {
         try {

@@ -28,7 +28,7 @@
             <TableColumn fx:id="colDelet" prefWidth="182.0" text="delete" />
         </columns>
       </TableView>
-      <TextField fx:id="idTxt" layoutX="1055.0" layoutY="190.0" prefHeight="44.0" prefWidth="415.0" promptText="PacketId" style="-fx-background-color: tra;">
+      <TextField fx:id="idTxt" layoutX="1055.0" layoutY="190.0" onKeyPressed="#searchOnAction" prefHeight="44.0" prefWidth="415.0" promptText="PacketId" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>

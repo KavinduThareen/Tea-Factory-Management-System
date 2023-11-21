@@ -78,10 +78,10 @@ public class CustomerAddPageController {
         var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac,complete);
 
         var model = new CustomerModel();
-     //   boolean isValidated = validate();
+      // boolean isValidated = validate();
 
-      //  if (isValidated) {
-          //  new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+     //   if (isValidated) {
+      //      new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
 
             try {
                 boolean isSaved = model.customerSaved(dto);
@@ -89,24 +89,25 @@ public class CustomerAddPageController {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                 }
             } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
                 throw new RuntimeException(e);
             }
         }
 
- //   }
+ //  }
 
-    /*
+
     private boolean validate() {
 
         String idText = cusidTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        boolean isIDValidated = Pattern.matches("[C][0-9]{3,}", idText);
         if (!isIDValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
         }
 
-        String UidText = empidTxt.get;
+        String UidText = empidTxt.getValue();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
         if (!isUIDValidated) {
@@ -142,7 +143,7 @@ public class CustomerAddPageController {
         return true;
     }
 
-     */
+
 
     private void loadEmpId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -150,7 +151,7 @@ public class CustomerAddPageController {
             List<EmployeeDto> empList = EmployeeModel.loadAllItems();
 
             for (EmployeeDto empDto : empList) {
-                obList.add(empDto.getEmployeeName());
+                obList.add(empDto.getEmployeeId());
             }
 
             empidTxt.setItems(obList);

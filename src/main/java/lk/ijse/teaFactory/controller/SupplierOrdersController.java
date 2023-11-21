@@ -20,6 +20,7 @@ import lk.ijse.teaFactory.model.SupplierModel;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class SupplierOrdersController {
 
@@ -89,6 +90,45 @@ public class SupplierOrdersController {
         }
 
     }
+
+    private boolean validate() {
+
+        String idText = sOidTxt.getText();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        if (!isIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+        String UidText = sIdTxt.getValue();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
+        if (!isUIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+
+        String nameText = dateTxt.getText();
+//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        if (!isNameValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            return false;
+        }
+
+        String addressText = weigthTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        if (!isAddressValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
+
+        return true;
+    }
+
 
     public void loadAll(){
         var model = new SupOrderModel();
@@ -174,31 +214,7 @@ public class SupplierOrdersController {
         generateNextId();
         loadSupId();
     }
-/*
-    private void setListener() {
-        tbl.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    var dto = new SupOrderDto(
-                            newValue.getId(),
-                            newValue.getSId(),
-                            newValue.getDate(),
-                            newValue.getWeigth()
 
-                    );
-                    setFields(dto);
-                });
-    }
-
- */
-/*
-    private void setFields(SupOrderDto dto) {
-        sOidTxt.setText(dto.getId());
-       // sIdTxt.setText(dto.getSId());
-        dateTxt.setText((dto.getDate()));
-        weigthTxt.setText((dto.getWeigth()));
-    }
-
- */
 
     private void clearFields() {
         sOidTxt.setText("");

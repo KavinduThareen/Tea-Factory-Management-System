@@ -26,14 +26,13 @@ public class SalaryModel {
 
         boolean isSaved = pstm.executeUpdate() >0;
 
-
         return isSaved;
     }
 
     public boolean updateSalary(final SalaryDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE salory SET e_id = ?, Date = ?, s_count = ?,delete = ?   WHERE salory_id = ?";
+        String sql = "UPDATE salory SET e_id = ?, Date = ?, s_count = ?,deleted = ?   WHERE salory_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getEmpId());

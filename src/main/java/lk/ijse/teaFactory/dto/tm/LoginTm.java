@@ -1,18 +1,16 @@
-package lk.ijse.teaFactory.dto;
+package lk.ijse.teaFactory.dto.tm;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.w3c.dom.ls.LSOutput;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 
-public class loginDto {
+public class LoginTm {
+    private String userid;
     private String username;
+    private String contac;
     private String password;
-
-
-
 }

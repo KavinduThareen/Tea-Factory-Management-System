@@ -17,14 +17,4 @@ public class SalaryTm {
     private JFXButton btnDelete;
 
 
-/*
-    public SalaryTm(String id, String empId, String date, String count) {
-
-        this.id = id;
-        this.empId = empId;
-        this.date = date;
-        this.count = count;
-    }
-
- */
 }

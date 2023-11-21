@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class PaymentController {
 
@@ -85,6 +86,45 @@ public class PaymentController {
 
     }
 
+    private boolean validate() {
+
+        String idText = idTxt.getText();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        if (!isIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+        String UidText = empIdTxt.getValue();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
+        if (!isUIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            return false;
+        }
+
+
+        String nameText = dateTxt.getText();
+//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        if (!isNameValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            return false;
+        }
+
+        String addressText = countTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        if (!isAddressValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
+
+        return true;
+    }
+
+
     @FXML
     void updateOnAction(ActionEvent event) {
 
@@ -102,7 +142,7 @@ public class PaymentController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
-                clearFields();
+               // clearFields();
                 //clearFields();
             }
         } catch (SQLException e) {
@@ -201,7 +241,7 @@ public class PaymentController {
             List<EmployeeDto> empList = EmployeeModel.loadAllItems();
 
             for (EmployeeDto empDto : empList) {
-                obList.add(empDto.getEmployeeName());
+                obList.add(empDto.getEmployeeId());
             }
 
             empIdTxt.setItems(obList);
