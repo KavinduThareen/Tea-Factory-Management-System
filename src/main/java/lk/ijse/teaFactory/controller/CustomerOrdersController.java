@@ -11,6 +11,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.CusOrderDto;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
@@ -22,13 +23,18 @@ import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
 import lk.ijse.teaFactory.model.PlaseOrderModel;
 
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
+
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 public class CustomerOrdersController {
     @FXML
@@ -141,6 +147,7 @@ public class CustomerOrdersController {
         String descreption = descreptionTxt.getText();
         String catagary = (String) catagaryTxt.getValue();
         String weigth = WeigthTxt.getText();
+        LocalDate date = LocalDate.parse(dateTxt.getText());
         Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
         JFXButton btnDelete = new JFXButton("Deleted");
 
@@ -165,7 +172,7 @@ public class CustomerOrdersController {
                 }
             }
         }
-        var cartTm = new CartTm(Itemid, descreption, catagary, weigth, payment, btnDelete);
+        var cartTm = new CartTm(Itemid, descreption, catagary, weigth, payment, date, btnDelete);
 
         obList2.add(cartTm);
 
@@ -263,6 +270,7 @@ public class CustomerOrdersController {
 
                 obList2.remove(focusedIndex);
                 tbl.refresh();
+                clearFields();
                 calculateTotal();
             }
         });
@@ -320,6 +328,7 @@ public class CustomerOrdersController {
         colDes.setCellValueFactory(new PropertyValueFactory<>("descreption"));
         colCatagary.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("catagary"));
         colweigth.setCellValueFactory(new PropertyValueFactory<>("weigth"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colPayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
         colDelete.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("btnDelete"));
 
@@ -353,12 +362,35 @@ public class CustomerOrdersController {
                 boolean isSuccess = plaseOrderModel.placeOrder(placeOrderDto);
                 if (isSuccess) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Success!").show();
+                    printCustomer();
                 }
             } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (JRException e) {
+                new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
                 throw new RuntimeException(e);
             }
 
     }
+
+/// jaspere repot genarater
+
+    private void printCustomer() throws JRException, SQLException {
+
+        InputStream resourceAsStream = getClass().getResourceAsStream("../report/bill.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
+                null,
+                DbConnection.getInstance().getConnection());
+
+
+        JasperViewer.viewReport(jasperPrint, false);
+    }
+
+
+
+
 
     @FXML
     void cusidOnAction(ActionEvent event) {

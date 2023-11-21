@@ -3,6 +3,8 @@ package lk.ijse.teaFactory.dto.tm;
 import com.jfoenix.controls.JFXButton;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -14,6 +16,7 @@ public class CartTm {
     private String catagary;
     private String weigth;
     private double payment;
+    private LocalDate date;
     private JFXButton btnDelete;
 
 
