@@ -71,15 +71,19 @@ public class PacketStokePageController {
 
         var dto = new PacketStokeDto(id,catagory,weigth,date);
         var model = new PacketStokeModel();
+        boolean isValidated = validate();
 
-        try {
-            boolean isSaved = model.packetStokeSaved(dto);
-            if (isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"saved").show();
-                clearFields();
+        if (isValidated) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+            try {
+                boolean isSaved = model.packetStokeSaved(dto);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    clearFields();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
 
     }
@@ -88,7 +92,7 @@ public class PacketStokePageController {
 
         String idText = idTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        boolean isIDValidated = Pattern.matches("[P][0-9]{3,}", idText);
         if (!isIDValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
@@ -105,7 +109,7 @@ public class PacketStokePageController {
 
         String addressText = weigthTxt.getText();
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        boolean isAddressValidated = Pattern.matches("\\b(([0-9]\\d|[0-9]\\d\\,\\d{1,2}|[1]\\d\\d|[1]\\d\\d\\,\\d{1,2})\\b", addressText);
         if (!isAddressValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
             return false;
@@ -113,7 +117,7 @@ public class PacketStokePageController {
 
         String cantacText = expirTxt.getText();
 //        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
+        boolean isCantacValidated = Pattern.matches("[0-9]{3,}", cantacText);
         if (!isCantacValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
             return false;

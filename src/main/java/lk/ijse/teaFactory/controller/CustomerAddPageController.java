@@ -78,10 +78,10 @@ public class CustomerAddPageController {
         var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac,complete);
 
         var model = new CustomerModel();
-      // boolean isValidated = validate();
+       boolean isValidated = validate();
 
-     //   if (isValidated) {
-      //      new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+        if (isValidated) {
+          new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
 
             try {
                 boolean isSaved = model.customerSaved(dto);
@@ -94,7 +94,7 @@ public class CustomerAddPageController {
             }
         }
 
- //  }
+   }
 
 
     private boolean validate() {
@@ -109,7 +109,7 @@ public class CustomerAddPageController {
 
         String UidText = empidTxt.getValue();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
+        boolean isUIDValidated = Pattern.matches("[E][0-9]{3,}", UidText);
         if (!isUIDValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;

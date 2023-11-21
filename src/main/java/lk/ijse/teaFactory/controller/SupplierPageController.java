@@ -78,10 +78,10 @@ public class SupplierPageController {
 
         var dto = new SupplierDto(id,name,address,contac,complete);
         var model = new SupplierModel();
-     //   boolean isValidated = validate();
+        boolean isValidated = validate();
 
-     //   if (isValidated) {
-    //        new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+        if (isValidated) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
 
             try {
                 boolean isSaved = model.supplierSaved(dto);
@@ -95,7 +95,7 @@ public class SupplierPageController {
             }
         }
 
- //   }
+    }
 
 
 

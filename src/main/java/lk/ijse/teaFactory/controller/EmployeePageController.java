@@ -104,10 +104,10 @@ public class EmployeePageController {
 
         var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac,delete);
          var model = new EmployeeModel();
-     //    boolean isValidated = validate();
+        boolean isValidated = validate();
 
-      //  if (isValidated) {
-         //   new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+        if (isValidated) {
+         new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
          try {
              boolean isSaved = model.employeeSave(dto);
 
@@ -124,7 +124,7 @@ public class EmployeePageController {
 
         }
 
-  //  }
+    }
 
     private void loadUserId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
@@ -150,62 +150,70 @@ public class EmployeePageController {
         }
     }
 
-    /*
+
     private boolean validate() {
 
-        String idText = employeeIdTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
-        if (!isIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+        String nameText = employeeIdTxt.getText();
+//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
+        boolean isNameValidated = Pattern.matches("[E][0-9]{3,}", nameText);
+        if (!isNameValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid employee name").show();
             return false;
         }
 
-        String nameText = empNameTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
-        if (!isNameValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+        String idText = uidTxt.getValue();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isIDValidated = Pattern.matches("[U][0-9]{3,}", idText);
+        if (!isIDValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid user ID!").show();
             return false;
         }
+
 
         String genderText = empGenderTxt.getText();
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isGenderValidated = Pattern.matches("(Male)|(Female)", genderText);
         if (!isGenderValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid gender name").show();
             return false;
         }
 
-        String UidText = employeeIdTxt.getText();
+        String UidText = empbdTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
+        boolean isUIDValidated = Pattern.matches("[0-9]{3,}", UidText);
         if (!isUIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid bd ID!").show();
             return false;
         }
+
+        String empname = empNameTxt.getText();
+//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
+        boolean isnameValidated = Pattern.matches("[A-Za-z]{3,}", empname);
+        if (!isnameValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid name ID!").show();
+            return false;
+        }
+        String addressText = empAddressTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        if (!isAddressValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid addrees address").show();
+            return false;
+        }
+
 
         String cantacText = empContacTxt.getText();
 //        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid con contac").show();
             return false;
         }
-
-        String addressText = empAddressTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
-        if (!isAddressValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
-            return false;
-        }
-
 
         return true;
     }
 
-     */
+
 
     public void initialize() {
         setCellValueFactory();

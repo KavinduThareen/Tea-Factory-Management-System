@@ -70,14 +70,19 @@ public class LevesStokePageController {
         var dto = new LeavesStokeDto(id,weigth,sDate,eDate,complete);
         var model = new LeavesStokeModel();
 
-        try {
-            boolean isSaved = model.addLeavesStoke(dto);
-            if (isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"saved").show();
-                clearFields();
+        boolean isValidated = validate();
+
+        if (isValidated) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+            try {
+                boolean isSaved = model.addLeavesStoke(dto);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    clearFields();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -85,7 +90,7 @@ public class LevesStokePageController {
 
         String idText = idTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        boolean isIDValidated = Pattern.matches("[L][0-9]{3,}", idText);
         if (!isIDValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
@@ -93,7 +98,7 @@ public class LevesStokePageController {
 
         String UidText = WeigthTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
+        boolean isUIDValidated = Pattern.matches("\\b(([6-9]\\d|[6-9]\\d\\,\\d{1,2}|[1]\\d\\d|[1]\\d\\d\\,\\d{1,2})kg)\\b", UidText);
         if (!isUIDValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
@@ -102,7 +107,7 @@ public class LevesStokePageController {
 
         String nameText = sDateTxt.getText();
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        boolean isNameValidated = Pattern.matches("^(0?[1-9]|1[0-2])[/](0?[1-9]|[12]\\d|3[01])[/](19|20)\\d{2}$", nameText);
         if (!isNameValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
             return false;

@@ -57,7 +57,10 @@ public class RegisterPagecontroller {
             var dto = new RegisterDto(userid, username, contac, password);
 
             var model = new RegisterModel();
+        boolean isValidated = validate();
 
+        if (isValidated) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.registerUser(dto);
                 if (isSaved) {
@@ -73,13 +76,14 @@ public class RegisterPagecontroller {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
     }
 
     private boolean validate() {
 
         String idText = useridTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        boolean isIDValidated = Pattern.matches("[U][0-9]{3,}", idText);
         if (!isIDValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
@@ -94,21 +98,23 @@ public class RegisterPagecontroller {
             return false;
         }
 
-        String addressText = contacTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
-        if (!isAddressValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
-            return false;
-        }
-
-        String cantacText = passwordTxt.getText();
+        String cantacText = contacTxt.getText();
 //        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
             return false;
         }
+
+
+        String addressText = passwordTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[0-5]{1,}", addressText);
+        if (!isAddressValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
+
 
         return true;
     }

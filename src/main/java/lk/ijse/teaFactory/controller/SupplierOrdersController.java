@@ -76,17 +76,21 @@ public class SupplierOrdersController {
 
        var dto = new SupOrderDto(id,sId,date,weigth,payment,isDelete);
         var model = new SupOrderModel();
+        boolean isValidated = validate();
 
-        try {
-            boolean isSaved = model.SupOrderSaved(dto);
-            if (isSaved){
-                tbl.refresh();
-                new Alert(Alert.AlertType.CONFIRMATION,"saved").show();
-                clearFields();
+        if (isValidated) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+            try {
+                boolean isSaved = model.SupOrderSaved(dto);
+                if (isSaved) {
+                    tbl.refresh();
+                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    clearFields();
 
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
 
     }
@@ -95,7 +99,7 @@ public class SupplierOrdersController {
 
         String idText = sOidTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
+        boolean isIDValidated = Pattern.matches("[s][0-9]{3,}", idText);
         if (!isIDValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
@@ -103,7 +107,7 @@ public class SupplierOrdersController {
 
         String UidText = sIdTxt.getValue();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
+        boolean isUIDValidated = Pattern.matches("[S][0-9]{3,}", UidText);
         if (!isUIDValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
@@ -112,7 +116,7 @@ public class SupplierOrdersController {
 
         String nameText = dateTxt.getText();
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        boolean isNameValidated = Pattern.matches("^(0?[1-9]|1[0-2])[/](0?[1-9]|[12]\\d|3[01])[/](19|20)\\d{2}$", nameText);
         if (!isNameValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
             return false;
@@ -120,7 +124,7 @@ public class SupplierOrdersController {
 
         String addressText = weigthTxt.getText();
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        boolean isAddressValidated = Pattern.matches("\\b(([6-9]\\d|[6-9]\\d\\,\\d{1,2}|[1]\\d\\d|[1]\\d\\d\\,\\d{1,2})kg)\\b", addressText);
         if (!isAddressValidated) {
             new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
             return false;
