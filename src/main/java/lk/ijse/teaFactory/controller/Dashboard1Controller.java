@@ -20,10 +20,14 @@ public class Dashboard1Controller {
     private Label lblordersTxt;
 
     @FXML
+    private Label lblCus;
+
+    @FXML
     public void initialize() {
         // Call the method to start updating the time
         generateRealTime();
         generateOrderCount();
+        generateCustemereCount();
     }
 
     private void generateRealTime() {
@@ -42,8 +46,13 @@ public class Dashboard1Controller {
    public void generateOrderCount(){
         var a = new CustomerOrdersController();
         lblordersTxt.setText(String.valueOf(a.count));
-
    }
+
+    public void generateCustemereCount(){
+        var a = new CustomerAddPageController();
+        lblCus.setText(String.valueOf(a.count));
+
+    }
 
 
 }

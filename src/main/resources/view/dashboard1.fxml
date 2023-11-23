@@ -63,7 +63,7 @@
             <Font name="System Bold" size="72.0" />
          </font>
       </Label>
-      <Label layoutX="593.0" layoutY="768.0" prefHeight="140.0" prefWidth="190.0" text="40">
+      <Label fx:id="lblCus" layoutX="593.0" layoutY="768.0" prefHeight="140.0" prefWidth="190.0">
          <font>
             <Font name="System Bold" size="72.0" />
          </font>

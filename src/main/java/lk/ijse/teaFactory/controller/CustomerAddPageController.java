@@ -7,16 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.CusOrderDto;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.EmployeeDto;
-import lk.ijse.teaFactory.dto.tm.CustomerTm;
-import lk.ijse.teaFactory.dto.tm.EmployeeTm;
 import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.EmployeeModel;
 
@@ -65,6 +61,11 @@ public class CustomerAddPageController {
 
     }
 
+
+
+
+    public int  count = 0;
+
     @FXML
     void cusSaveOnAction(ActionEvent event) {
 
@@ -87,7 +88,9 @@ public class CustomerAddPageController {
                 boolean isSaved = model.customerSaved(dto);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    count++;
                     clearFields();
+
                 }
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
@@ -96,6 +99,11 @@ public class CustomerAddPageController {
         }
 
    }
+
+
+
+
+
 
 
     private boolean validate() {
