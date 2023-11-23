@@ -7,10 +7,7 @@ import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.tm.CartTm;
 import lk.ijse.teaFactory.dto.tm.CusOrderTm;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class PacketStokeModel {
         pstm.setString(1, dto.getId());
         pstm.setString(2, dto.getCatagory());
         pstm.setString(3, dto.getWeigth());
-        pstm.setString(4, dto.getDate());
+        pstm.setDate(4, dto.getDate());
 
 
         boolean isSaved = pstm.executeUpdate() > 0;
@@ -46,7 +43,7 @@ public class PacketStokeModel {
             String id = resultSet.getString(1);
             String catagory = resultSet.getString(2);
             String weigth = resultSet.getString(3);
-            String date = resultSet.getString(4);
+            Date date = resultSet.getDate(4);
 
 
             var dto = new PacketStokeDto(id, catagory, weigth, date);
@@ -71,7 +68,7 @@ public class PacketStokeModel {
                    resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getString(4)
+                    resultSet.getDate(4)
             ));
         }
 
@@ -96,7 +93,7 @@ public class PacketStokeModel {
 
         pstm.setString(1, dto.getCatagory());
         pstm.setString(2, dto.getWeigth());
-        pstm.setString(3, dto.getDate());
+        pstm.setDate(3, dto.getDate());
         pstm.setString(4, dto.getId());
 
         return pstm.executeUpdate() > 0;
@@ -142,7 +139,7 @@ public class PacketStokeModel {
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getString(4)
+                    resultSet.getDate(4)
 
             );
 
@@ -190,10 +187,10 @@ public class PacketStokeModel {
             String lid = resultSet.getString(1);
             String catgary = resultSet.getString(2);
             String weigth = resultSet.getString(3);
-            String edate = resultSet.getString(4);
+            java.util.Date edate = resultSet.getDate(4);
 
 
-            dto = new PacketStokeDto(lid,catgary,weigth,edate);
+            dto = new PacketStokeDto(lid,catgary,weigth, (Date) edate);
         }
         return dto;
     }

@@ -18,7 +18,9 @@ import lk.ijse.teaFactory.model.LeavesStokeModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
 import lk.ijse.teaFactory.model.SupplierModel;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -44,7 +46,8 @@ public class LevesStokePageController {
     private TableColumn<?, ?> colid;
 
     @FXML
-    private TextField eDateTxt;
+    private DatePicker eDateTxt;
+
 
     @FXML
     private TextField idTxt;
@@ -53,7 +56,7 @@ public class LevesStokePageController {
     private AnchorPane root;
 
     @FXML
-    private TextField sDateTxt;
+    private DatePicker sDateTxt;
 
     @FXML
     private TableView<LeaveStokeTm> table;
@@ -63,8 +66,8 @@ public class LevesStokePageController {
 
         String id = idTxt.getText();
         String weigth = WeigthTxt.getText();
-        String   sDate = sDateTxt.getText();
-        String eDate = eDateTxt.getText();
+        Date sDate = Date.valueOf(sDateTxt.getValue());
+        Date eDate = Date.valueOf(eDateTxt.getValue());
         String complete = "0";
 
         var dto = new LeavesStokeDto(id,weigth,sDate,eDate,complete);
@@ -96,30 +99,7 @@ public class LevesStokePageController {
             return false;
         }
 
-        String UidText = WeigthTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isUIDValidated = Pattern.matches("\\b(([6-9]\\d|[6-9]\\d\\,\\d{1,2}|[1]\\d\\d|[1]\\d\\d\\,\\d{1,2})kg)\\b", UidText);
-        if (!isUIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
-            return false;
-        }
 
-
-        String nameText = sDateTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        boolean isNameValidated = Pattern.matches("^(0?[1-9]|1[0-2])[/](0?[1-9]|[12]\\d|3[01])[/](19|20)\\d{2}$", nameText);
-        if (!isNameValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
-            return false;
-        }
-
-        String addressText = eDateTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
-        if (!isAddressValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
-            return false;
-        }
 
         return true;
     }
@@ -219,8 +199,8 @@ public class LevesStokePageController {
     private void clearFields() {
         idTxt.setText("");
         WeigthTxt.setText("");
-        sDateTxt .setText("");
-        eDateTxt.setText("");
+       // sDateTxt .setText("");
+      //  eDateTxt.setText("");
     }
 
     @FXML
@@ -228,8 +208,8 @@ public class LevesStokePageController {
 
         String id = idTxt.getText();
         String weigth = WeigthTxt.getText();
-        String  sDate = sDateTxt.getText();
-        String eDate = eDateTxt.getText();
+        Date  sDate = Date.valueOf(sDateTxt.getValue());
+        Date eDate = Date.valueOf(eDateTxt.getValue());
         String complete = "0";
 
         var dto = new LeavesStokeDto(id,weigth,sDate,eDate,complete);
@@ -261,8 +241,8 @@ public class LevesStokePageController {
                 if (leavesStokeDto != null) {
                     idTxt.setText(leavesStokeDto.getId());
                     WeigthTxt.setText(leavesStokeDto.getWeigth());
-                    sDateTxt.setText(leavesStokeDto.getSDate());
-                    eDateTxt.setText(leavesStokeDto.getEDate());
+                    sDateTxt.setValue(leavesStokeDto.getSDate().toLocalDate());
+                    eDateTxt.setValue(leavesStokeDto.getEDate().toLocalDate());
 
                 } else {
                     new Alert(Alert.AlertType.INFORMATION, "customer not found").show();

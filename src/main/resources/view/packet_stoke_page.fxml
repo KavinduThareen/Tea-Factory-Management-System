@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -43,11 +44,6 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="expirTxt" layoutX="1055.0" layoutY="559.0" prefHeight="44.0" prefWidth="415.0" promptText="ExpairDate" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
       <JFXButton layoutX="1055.0" layoutY="651.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Packet">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -58,5 +54,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
+      <DatePicker fx:id="expirTxt" layoutX="1057.0" layoutY="558.0" prefHeight="48.0" prefWidth="408.0" promptText="Expaire Date" style="-fx-background-color: tra;" />
     </children>
 </AnchorPane>

@@ -415,6 +415,9 @@ public class CustomerOrdersController {
             // Load the JasperReport template
             InputStream resourceAsStream = getClass().getResourceAsStream("/report/bill.jrxml");
             JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JRDesignQuery jrDesignQuery = new JRDesignQuery();
+            jrDesignQuery.setText("SELECT * FROM orders WHERE order_id = "+"\""+idTxt.getText()+"\"");
+            load.setQuery(jrDesignQuery);
             JasperReport jasperReport = JasperCompileManager.compileReport(load);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
                     null,
@@ -427,7 +430,6 @@ public class CustomerOrdersController {
             throw new RuntimeException(e);
         }
     }
-
 
     @FXML
     void cusidOnAction(ActionEvent event) {

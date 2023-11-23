@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.LoginDto;
 import lk.ijse.teaFactory.model.LoginModel;
+import lk.ijse.teaFactory.model.RegisterModel;
 
 
 import java.io.IOException;
@@ -40,35 +41,34 @@ public class LoginPageController{
     @FXML
     void keyOnAction(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
-         // login();
+
         }
     }
 
     @FXML
     void loginbtnOnAction(ActionEvent event) throws IOException, SQLException {
 
-     login();
+   //  login();
 
-        /*String username = usernameTxt.getText();
+        String username = usernameTxt.getText();
         String password = passwordTxt.getText();
 
         try {
-            boolean isLogin = LoginModel.searchUser(username, password);
+            boolean isLogin = RegisterModel.searchUser(username, password);
             if (isLogin) {
-                new Alert(Alert.AlertType.WARNING, "Invalid Username Or Passowrd").show();
-                return;
-            } else {
                 loginroot.getChildren().clear();
                 loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
+
+               return;
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Invalid Username Or Passowrd").show();
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        } catch (IOException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }*/
+        }
     }
 
-
+/*
     public void login(){
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
@@ -90,6 +90,8 @@ public class LoginPageController{
             throw new RuntimeException(e);
         }
     }
+
+ */
 
 
     @FXML

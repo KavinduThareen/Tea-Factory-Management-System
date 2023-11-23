@@ -6,10 +6,7 @@ import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.tm.CompleteTm;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +20,8 @@ public class LeavesStokeModel {
 
         pstm.setString(1, dto.getId());
         pstm.setString(2, dto.getWeigth());
-        pstm.setString(3, dto.getSDate());
-        pstm.setString(4, dto.getEDate());
+        pstm.setDate(3, dto.getSDate());
+        pstm.setDate(4, dto.getEDate());
         pstm.setString(5,"0");
 
         boolean isSaved = pstm.executeUpdate() > 0;
@@ -44,8 +41,8 @@ public class LeavesStokeModel {
         while (resultSet.next()){
             String id = resultSet.getString(1);
             String weigth = resultSet.getString(2);
-            String sDate = resultSet.getString(3);
-            String eDate = resultSet.getString(4);
+            Date sDate = resultSet.getDate(3);
+            Date eDate = resultSet.getDate(4);
             String isCompleted = resultSet.getString(5);
 
             var dto = new LeavesStokeDto(id,weigth,sDate,eDate,isCompleted);
@@ -72,8 +69,8 @@ public class LeavesStokeModel {
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getWeigth());
-        pstm.setString(2, dto.getSDate());
-        pstm.setString(3, dto.getEDate());
+        pstm.setDate(2, dto.getSDate());
+        pstm.setDate(3, dto.getEDate());
         pstm.setString(4, "0");
         pstm.setString(5, dto.getId());
 
@@ -120,8 +117,8 @@ public class LeavesStokeModel {
         if(resultSet.next()) {
             String lid = resultSet.getString(1);
             String weigth = resultSet.getString(2);
-            String sdate = resultSet.getString(3);
-            String edate = resultSet.getString(4);
+            Date sdate = resultSet.getDate(3);
+            Date edate = resultSet.getDate(4);
             String complete = resultSet.getString(5);
 
             dto = new LeavesStokeDto(lid,weigth,sdate,edate,complete);

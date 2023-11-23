@@ -13,7 +13,7 @@ public class PacketStokeDto {
     private String id;
     private String catagory;
     private String  weigth;
-    private String date;
+    private java.sql.Date date;
 
 
 

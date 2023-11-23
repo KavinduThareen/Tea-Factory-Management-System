@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -13,8 +15,8 @@ public class LeaveStokeTm {
 
     private String id;
     private String weigth;
-    private String SDate;
-    private String EDate;
+    private java.sql.Date SDate;
+    private java.sql.Date EDate;
     private JFXButton btnDelete;
 
 
@@ -29,7 +31,7 @@ public class LeaveStokeTm {
         btnDelete.setPrefHeight(30);
     }
 
-    public LeaveStokeTm(String id,String weigth,String SDate,String EDate){
+    public LeaveStokeTm(String id,String weigth,Date SDate,Date EDate){
         this.id = id;
         this.weigth=weigth;
         this.SDate =SDate;

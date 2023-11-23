@@ -95,4 +95,19 @@ public boolean registerUser( RegisterDto dto) throws SQLException {
         return currentCusId;
     }
 
+    public static boolean searchUser(String username, String password) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM user WHERE username= ? AND password=?");
+
+        pstm.setString(1, username);
+        pstm.setString(2, password);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            return true;
+        }
+        return false;
+    }
+
 }

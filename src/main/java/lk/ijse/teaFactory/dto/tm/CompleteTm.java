@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.IdentityHashMap;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -14,7 +12,7 @@ public class CompleteTm {
     private String Id;
     private String catogary;
     private String weigth;
-    private String date;
+    private java.sql.Date date;
     private JFXButton btnDelete;
 
 

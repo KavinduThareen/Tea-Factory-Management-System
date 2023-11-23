@@ -19,6 +19,7 @@ import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.LeavesStokeModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +46,8 @@ public class PacketStokePageController {
     private TableColumn<?, ?> colid;
 
     @FXML
-    private TextField expirTxt;
+    private DatePicker expirTxt;
+
 
     @FXML
     private TextField idTxt;
@@ -64,7 +66,7 @@ public class PacketStokePageController {
         String id = idTxt.getText();
         String catagory = catagaryTxt.getText();
         String   weigth = weigthTxt.getText();
-        String date = expirTxt.getText();
+        Date date = Date.valueOf(expirTxt.getValue());
 
 
 
@@ -106,7 +108,7 @@ public class PacketStokePageController {
             new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
             return false;
         }
-
+/*
         String addressText = weigthTxt.getText();
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("\\b(([0-9]\\d|[0-9]\\d\\,\\d{1,2}|[1]\\d\\d|[1]\\d\\d\\,\\d{1,2})\\b", addressText);
@@ -115,13 +117,7 @@ public class PacketStokePageController {
             return false;
         }
 
-        String cantacText = expirTxt.getText();
-//        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isCantacValidated = Pattern.matches("[0-9]{3,}", cantacText);
-        if (!isCantacValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
-            return false;
-        }
+ */
 
         return true;
     }
@@ -133,7 +129,7 @@ public class PacketStokePageController {
         String id = idTxt.getText();
         String catagory = catagaryTxt.getText();
         String   weigth = weigthTxt.getText();
-        String date = expirTxt.getText();
+        Date date = Date.valueOf(expirTxt.getValue());
 
 
         var dto = new PacketStokeDto(id,catagory,weigth,date);
@@ -253,7 +249,7 @@ public class PacketStokePageController {
         idTxt.setText("");
         catagaryTxt.setText("");
         weigthTxt .setText("");
-        expirTxt.setText("");
+      ///  expirTxt.setValue("");
     }
 
     @FXML
@@ -269,7 +265,7 @@ public class PacketStokePageController {
                     idTxt.setText(packetStokeDto.getId());
                     catagaryTxt.setText(packetStokeDto.getCatagory());
                     weigthTxt.setText(packetStokeDto.getWeigth());
-                    expirTxt.setText(packetStokeDto.getDate());
+                    expirTxt.setValue(packetStokeDto.getDate().toLocalDate());
 
                 } else {
                     new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
