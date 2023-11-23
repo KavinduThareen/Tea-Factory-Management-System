@@ -101,4 +101,12 @@ public class LoginPageController{
 
     }
 
+    @FXML
+    void fogetpwOnAction(ActionEvent event) throws IOException {
+        loginroot.getChildren().clear();
+        loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/fogetpw.fxml"))));
+
+    }
+
+
 }

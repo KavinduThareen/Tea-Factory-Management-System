@@ -1,12 +1,19 @@
 package lk.ijse.teaFactory.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import lk.ijse.teaFactory.dto.RegisterDto;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.RegisterModel;
@@ -53,6 +60,7 @@ public class RegisterPagecontroller {
         String contac = contacTxt.getText();
         String password = passwordTxt.getText();
 
+        String conPw = confirmPasswordTxt.getText();
 
             var dto = new RegisterDto(userid, username, contac, password);
 
@@ -60,24 +68,55 @@ public class RegisterPagecontroller {
         boolean isValidated = validate();
 
         if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
-            try {
-                boolean isSaved = model.registerUser(dto);
-                if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "You are registerd!").show();
-                    clearFields();
-                    registerroot.getChildren().clear();
-                    registerroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
+            if (password.equals(conPw)) {
+                new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+                try {
+                    boolean isSaved = model.registerUser(dto);
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "You are registerd!").show();
 
+                        clearFields();
+                        registerroot.getChildren().clear();
+                        registerroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
+
+                    }
+
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
-
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            }
+            else {
+                new Alert(Alert.AlertType.CONFIRMATION, "Wrong password").show();
+                animateError(confirmPasswordTxt);
             }
         }
     }
+
+    public static void animateError(TextField textField) {
+        // Get the original border or use Border.EMPTY as a fallback
+        javafx.scene.layout.Border originalBorder = textField.getBorder() != null ? textField.getBorder() : javafx.scene.layout.Border.EMPTY;
+
+        // Create a Timeline for the animation
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(textField.borderProperty(), originalBorder)),
+                new KeyFrame(Duration.millis(500), new KeyValue(textField.borderProperty(), createRedBorder()))
+        );
+
+        // Play the animation
+        timeline.play();
+    }
+
+    private static javafx.scene.layout.Border createRedBorder() {
+        // Create a red border
+        return new javafx.scene.layout.Border(new javafx.scene.layout.BorderStroke(
+                Color.RED, javafx.scene.layout.BorderStrokeStyle.SOLID,
+                javafx.scene.layout.CornerRadii.EMPTY, javafx.scene.layout.BorderWidths.DEFAULT
+        ));
+    }
+
+
 
     private boolean validate() {
 
@@ -88,7 +127,6 @@ public class RegisterPagecontroller {
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
         }
-
 
         String nameText = usernameTxt.getText();
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
@@ -106,7 +144,7 @@ public class RegisterPagecontroller {
             return false;
         }
 
-
+/*
         String addressText = passwordTxt.getText();
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("[0-5]{1,}", addressText);
@@ -114,6 +152,8 @@ public class RegisterPagecontroller {
             new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
             return false;
         }
+
+ */
 
 
         return true;

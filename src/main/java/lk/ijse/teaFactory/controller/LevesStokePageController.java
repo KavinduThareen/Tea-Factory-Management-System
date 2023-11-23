@@ -16,6 +16,7 @@ import lk.ijse.teaFactory.dto.tm.CompleteTm;
 import lk.ijse.teaFactory.dto.tm.LeaveStokeTm;
 import lk.ijse.teaFactory.model.LeavesStokeModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
+import lk.ijse.teaFactory.model.StokeDetailModel;
 import lk.ijse.teaFactory.model.SupplierModel;
 
 import java.sql.Date;
@@ -72,6 +73,7 @@ public class LevesStokePageController {
 
         var dto = new LeavesStokeDto(id,weigth,sDate,eDate,complete);
         var model = new LeavesStokeModel();
+        var stokeModel = new StokeDetailModel();
 
         boolean isValidated = validate();
 
@@ -79,6 +81,7 @@ public class LevesStokePageController {
             new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.addLeavesStoke(dto);
+                stokeModel.saveId();
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();

@@ -2,23 +2,19 @@ package lk.ijse.teaFactory.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import javafx.animation.Animation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.db.DbConnection;
-import lk.ijse.teaFactory.dto.CusOrderDto;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.PaseOrderDto;
 import lk.ijse.teaFactory.dto.tm.CartTm;
-import lk.ijse.teaFactory.dto.tm.CusOrderTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
@@ -374,9 +370,12 @@ public class CustomerOrdersController {
 //        LocalDate now = LocalDate.now();
         dateTxt.setText(String.valueOf(LocalDate.now()));
     }
+    public int count = 0; // Class-level variable
+
     @FXML
     void plaseOrderOnAction(ActionEvent event) throws SQLException {
 
+           // int count = count;
             String id = idTxt.getText();
             String cId = cIdTxt.getValue();
             String catagary = catagaryTxt.getValue();
@@ -398,6 +397,7 @@ public class CustomerOrdersController {
                 boolean isSuccess = plaseOrderModel.placeOrder(placeOrderDto);
                 if (isSuccess) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Success!").show();
+                    count++; //
 
                 }
             } catch (SQLException e) {
@@ -406,6 +406,8 @@ public class CustomerOrdersController {
             }
 
     }
+
+
 
 /// jaspere repot genarater
 

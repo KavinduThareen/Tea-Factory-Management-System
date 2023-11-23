@@ -18,6 +18,7 @@ import lk.ijse.teaFactory.dto.tm.PacketStokeTm;
 import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.LeavesStokeModel;
 import lk.ijse.teaFactory.model.PacketStokeModel;
+import lk.ijse.teaFactory.model.StokeDetailModel;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -63,22 +64,21 @@ public class PacketStokePageController {
 
     @FXML
     void addOnAction(ActionEvent event) {
-        String id = idTxt.getText();
+        String pid = idTxt.getText();
         String catagory = catagaryTxt.getText();
         String   weigth = weigthTxt.getText();
         Date date = Date.valueOf(expirTxt.getValue());
 
-
-
-
-        var dto = new PacketStokeDto(id,catagory,weigth,date);
+        var dto = new PacketStokeDto(pid,catagory,weigth,date);
         var model = new PacketStokeModel();
         boolean isValidated = validate();
+        var setaiModel = new StokeDetailModel();
 
         if (isValidated) {
             new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.packetStokeSaved(dto);
+                setaiModel.saveId();
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();

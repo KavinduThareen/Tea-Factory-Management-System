@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,5 +26,6 @@
       </JFXButton>
       <TextField fx:id="usernameTxt" layoutX="1308.0" layoutY="356.0" prefHeight="49.0" prefWidth="396.0" style="-fx-background-color: tra;" />
       <TextField fx:id="passwordTxt" layoutX="1308.0" layoutY="469.0" prefHeight="49.0" prefWidth="392.0" style="-fx-background-color: tra;" />
+      <Button layoutX="1597.0" layoutY="529.0" mnemonicParsing="false" onAction="#fogetpwOnAction" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: tra;" text="Foget Password" />
    </children>
 </AnchorPane>

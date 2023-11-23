@@ -58,7 +58,7 @@
             <Font name="System Bold" size="72.0" />
          </font>
       </Label>
-      <Label layoutX="593.0" layoutY="570.0" prefHeight="140.0" prefWidth="196.0" text="80">
+      <Label fx:id="lblordersTxt" layoutX="593.0" layoutY="570.0" prefHeight="140.0" prefWidth="196.0">
          <font>
             <Font name="System Bold" size="72.0" />
          </font>

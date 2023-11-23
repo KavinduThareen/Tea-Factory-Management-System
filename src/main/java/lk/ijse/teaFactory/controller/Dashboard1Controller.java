@@ -17,9 +17,13 @@ public class Dashboard1Controller {
     private Label timeTxt;
 
     @FXML
+    private Label lblordersTxt;
+
+    @FXML
     public void initialize() {
         // Call the method to start updating the time
         generateRealTime();
+        generateOrderCount();
     }
 
     private void generateRealTime() {
@@ -33,4 +37,13 @@ public class Dashboard1Controller {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
+
+
+   public void generateOrderCount(){
+        var a = new CustomerOrdersController();
+        lblordersTxt.setText(String.valueOf(a.count));
+
+   }
+
+
 }

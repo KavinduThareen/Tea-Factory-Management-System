@@ -37,16 +37,6 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="152.0" layoutY="126.0" prefHeight="52.0" prefWidth="396.0" promptText="sD" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="162.0" layoutY="588.0" prefHeight="44.0" prefWidth="396.0" promptText="eD" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
       <JFXButton layoutX="152.0" layoutY="649.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Leves Stoke">
          <font>
             <Font name="System Bold" size="24.0" />
