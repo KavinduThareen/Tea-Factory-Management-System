@@ -14,33 +14,49 @@ import java.util.List;
 
 public class LoginModel {
 
+    /*public static boolean searchUser(String username, String password) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM user WHERE username= ? AND password=?");
+
+        pstm.setString(1, username);
+        pstm.setString(2, password);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            return true;
+        }
+        return false;
+    }*/
+
     public LoginDto finduserName() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         String cus_username1 = null;
         String cus_username2 = null;
 
-            String sql1 = "SELECT username,password FROM user";
+        String sql1 = "SELECT username,password FROM user";
 
-            PreparedStatement pstm1 = connection.prepareStatement(sql1);
-
-
-            ResultSet resultSet1 = pstm1.executeQuery();
-            //  List<loginDto> dtoList = new ArrayList<>();
-
-            LoginDto dto = null;
-
-            if (resultSet1.next()) {
-                cus_username1 = resultSet1.getString(1);
-                cus_username2 = resultSet1.getString(2);
+        PreparedStatement pstm1 = connection.prepareStatement(sql1);
 
 
-                dto = new LoginDto(cus_username1, cus_username2);
+        ResultSet resultSet1 = pstm1.executeQuery();
+        //  List<loginDto> dtoList = new ArrayList<>();
+
+        LoginDto dto = null;
+
+        if (resultSet1.next()) {
+            cus_username1 = resultSet1.getString(1);
+            cus_username2 = resultSet1.getString(2);
+
+
+            dto = new LoginDto(cus_username1, cus_username2);
             //    dtoList.add(dto);
-            }
-
-            return dto;
-
         }
+
+        return dto;
+
+    }
+
 
 
     public static String generateId() throws SQLException {

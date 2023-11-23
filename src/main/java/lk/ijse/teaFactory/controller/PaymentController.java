@@ -96,7 +96,7 @@ public class PaymentController {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[S][0-9]{3,}", idText);
         if (!isIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid Sid ID!").show();
             return false;
         }
 
@@ -104,24 +104,26 @@ public class PaymentController {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isUIDValidated = Pattern.matches("[E][0-9]{3,}", UidText);
         if (!isUIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid emp ID!").show();
             return false;
         }
 
 
-        String nameText = dateTxt.getText();
+      /*  String nameText = dateTxt.getText();
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isNameValidated = Pattern.matches("[0-9]", nameText);
         if (!isNameValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid date name").show();
             return false;
         }
+
+       */
 
         String addressText = countTxt.getText();
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("[0-9]{3,}", addressText);
         if (!isAddressValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid contac address").show();
             return false;
         }
 

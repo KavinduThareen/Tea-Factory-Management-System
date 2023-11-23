@@ -2,6 +2,7 @@ package lk.ijse.teaFactory.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import javafx.animation.Animation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,7 @@ import lk.ijse.teaFactory.model.PacketStokeModel;
 import lk.ijse.teaFactory.model.PlaseOrderModel;
 
 import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
@@ -334,36 +336,13 @@ public class CustomerOrdersController {
 
 
     @FXML
-    void updateOnAction(ActionEvent event) {
-
-        /*
-        String id = idTxt.getText();
-        String cId = (String) cIdTxt.getValue();
-        String catagary = (String) catagaryTxt.getValue();
-        String weigth =  WeigthTxt.getText();
-        String date = dateTxt.getText();
-        String descreption = descreptionTxt.getText();
-        Double payment = Double.valueOf(paymentTxt.getText());
-        String complete = "0";
-
-
-        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,payment,complete);
-        var model = new CusOrderModel();
-
+    void updateOnAction(ActionEvent event) throws JRException, SQLException {
         try {
-            boolean isUpdated = model.update(dto);
-            System.out.println(isUpdated);
-            if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
-                clearFields();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            printCustomer();
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
+            throw new RuntimeException(e);
         }
-
-         */
-
-
     }
 
     void clearFields() {
@@ -381,8 +360,7 @@ public class CustomerOrdersController {
     private void setCellValueFactory() {
 
         colId.setCellValueFactory(new PropertyValueFactory<>("itemId"));
-        colCId.setCellValueFactory(new PropertyValueFactory<>("cusid" +
-                ""));
+        colCId.setCellValueFactory(new PropertyValueFactory<>("cusid"));
         colDes.setCellValueFactory(new PropertyValueFactory<>("descreption"));
         colCatagary.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("catagary"));
         colweigth.setCellValueFactory(new PropertyValueFactory<>("weigth"));
@@ -420,11 +398,9 @@ public class CustomerOrdersController {
                 boolean isSuccess = plaseOrderModel.placeOrder(placeOrderDto);
                 if (isSuccess) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Success!").show();
-                    printCustomer();
+
                 }
             } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (JRException e) {
                 new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
                 throw new RuntimeException(e);
             }
@@ -435,19 +411,22 @@ public class CustomerOrdersController {
 
     private void printCustomer() throws JRException, SQLException {
 
-        InputStream resourceAsStream = getClass().getResourceAsStream("../report/customerOrderBill.jrxml");
-        JasperDesign load = JRXmlLoader.load(resourceAsStream);
-        JasperReport jasperReport = JasperCompileManager.compileReport(load);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
-                null,
-                DbConnection.getInstance().getConnection());
+        try {
+            // Load the JasperReport template
+            InputStream resourceAsStream = getClass().getResourceAsStream("/report/bill.jrxml");
+            JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
+                    null,
+                    DbConnection.getInstance().getConnection());
 
+            JasperViewer.viewReport(jasperPrint, false);
 
-        JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
+            throw new RuntimeException(e);
+        }
     }
-
-
-
 
 
     @FXML

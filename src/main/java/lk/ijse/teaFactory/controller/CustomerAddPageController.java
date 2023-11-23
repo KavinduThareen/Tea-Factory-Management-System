@@ -87,6 +87,7 @@ public class CustomerAddPageController {
                 boolean isSaved = model.customerSaved(dto);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    clearFields();
                 }
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();

@@ -40,7 +40,7 @@ public class LoginPageController{
     @FXML
     void keyOnAction(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
-           login();
+         // login();
         }
     }
 
@@ -48,6 +48,24 @@ public class LoginPageController{
     void loginbtnOnAction(ActionEvent event) throws IOException, SQLException {
 
      login();
+
+        /*String username = usernameTxt.getText();
+        String password = passwordTxt.getText();
+
+        try {
+            boolean isLogin = LoginModel.searchUser(username, password);
+            if (isLogin) {
+                new Alert(Alert.AlertType.WARNING, "Invalid Username Or Passowrd").show();
+                return;
+            } else {
+                loginroot.getChildren().clear();
+                loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }*/
     }
 
 
