@@ -17,8 +17,8 @@ import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.EmployeeModel;
 import lk.ijse.teaFactory.model.SalaryModel;
 
+import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -44,7 +44,8 @@ public class PaymentController {
     private TextField countTxt;
 
     @FXML
-    private TextField dateTxt;
+    private DatePicker dateTxt;
+
 
     @FXML
     private JFXComboBox<String > empIdTxt;
@@ -66,7 +67,7 @@ public class PaymentController {
     void addOnAction(ActionEvent event) {
          String id = idTxt.getText();
          String empId = (String) empIdTxt.getValue();
-         String date = dateTxt.getText();
+         Date date = Date.valueOf(dateTxt.getValue());
          String count = countTxt.getText();
          String delete = "0";
 
@@ -136,7 +137,7 @@ public class PaymentController {
 
         String id = idTxt.getText();
         String empId = (String) empIdTxt.getValue();
-        String date = dateTxt.getText();
+        Date date = Date.valueOf(dateTxt.getValue());
         String count = countTxt.getText();
         String delete = "0";
 
@@ -267,7 +268,7 @@ public class PaymentController {
 
     private void clearFields() {
         idTxt.setText("");
-        dateTxt.setText("");
+       // dateTxt.setText("");
         countTxt .setText("");
     }
 

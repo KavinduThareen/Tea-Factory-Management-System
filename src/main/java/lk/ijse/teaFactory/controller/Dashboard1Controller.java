@@ -6,7 +6,9 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import lk.ijse.teaFactory.model.CustomerModel;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -23,7 +25,7 @@ public class Dashboard1Controller {
     private Label lblCus;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         // Call the method to start updating the time
         generateRealTime();
         generateOrderCount();
@@ -48,9 +50,11 @@ public class Dashboard1Controller {
         lblordersTxt.setText(String.valueOf(a.count));
    }
 
-    public void generateCustemereCount(){
-        var a = new CustomerAddPageController();
-        lblCus.setText(String.valueOf(a.count));
+    public void generateCustemereCount() throws SQLException {
+        CustomerModel customerModel = new CustomerModel();
+        int a = customerModel.cusCount();
+
+        lblCus.setText(String.valueOf(a));
 
     }
 

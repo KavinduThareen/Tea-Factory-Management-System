@@ -4,10 +4,7 @@ import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.SalaryDto;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +17,7 @@ public class SalaryModel {
 
         pstm.setString(1, dto.getId());
         pstm.setString(2, dto.getEmpId());
-        pstm.setString(3, dto.getDate());
+        pstm.setDate(3, dto.getDate());
         pstm.setString(4, dto.getCount());
         pstm.setString(5,"0");
 
@@ -36,7 +33,7 @@ public class SalaryModel {
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getEmpId());
-        pstm.setString(2, dto.getDate());
+        pstm.setDate(2, dto.getDate());
         pstm.setString(3, dto.getCount());
         pstm.setString(4, "0");
         pstm.setString(5, dto.getId());
@@ -57,7 +54,7 @@ public class SalaryModel {
         while (resultSet.next()) {
             String id = resultSet.getString(1);
             String empId = resultSet.getString(2);
-            String date = resultSet.getString(3);
+            Date date = resultSet.getDate(3);
             String count = resultSet.getString(4);
             String delete = resultSet.getString(5);
 

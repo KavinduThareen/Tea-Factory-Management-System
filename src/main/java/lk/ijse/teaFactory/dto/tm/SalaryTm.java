@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import javafx.scene.Cursor;
 import lombok.*;
 
+import java.sql.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -12,7 +14,7 @@ import lombok.*;
 public class SalaryTm {
     private String id;
     private String empId;
-    private String date;
+    private Date date;
     private String count;
     private JFXButton btnDelete;
 

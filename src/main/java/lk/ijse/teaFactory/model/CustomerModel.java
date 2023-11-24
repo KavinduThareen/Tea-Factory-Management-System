@@ -175,7 +175,22 @@ public class CustomerModel {
         return dto;
     }
 
+     public int cusCount() throws SQLException {
+         int rowCount = 0;
+        Connection connection = DbConnection.getInstance().getConnection();
 
+         String sql = "SELECT COUNT(customer_id) AS row_count FROM customer";
+
+         try (PreparedStatement statement = connection.prepareStatement(sql);
+              ResultSet resultSet = statement.executeQuery()) {
+
+             if (resultSet.next()) {
+                  rowCount = resultSet.getInt("row_count");
+                 System.out.println("Number of rows: " + rowCount);
+             }
+         }
+         return rowCount;
+     }
 
 
 }

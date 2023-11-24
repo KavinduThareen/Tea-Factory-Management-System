@@ -66,6 +66,7 @@ public class CustomerAddPageController {
 
     public int  count = 0;
 
+
     @FXML
     void cusSaveOnAction(ActionEvent event) {
 
