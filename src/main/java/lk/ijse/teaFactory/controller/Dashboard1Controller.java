@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
 
 import java.sql.SQLException;
@@ -45,9 +46,10 @@ public class Dashboard1Controller {
     }
 
 
-   public void generateOrderCount(){
-        var a = new CustomerOrdersController();
-        lblordersTxt.setText(String.valueOf(a.count));
+   public void generateOrderCount() throws SQLException {
+      CusOrderModel order = new CusOrderModel();
+       int a = order.cusCount();
+        lblordersTxt.setText(String.valueOf(a));
    }
 
     public void generateCustemereCount() throws SQLException {

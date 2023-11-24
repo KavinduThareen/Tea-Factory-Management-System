@@ -146,4 +146,22 @@ public class CusOrderModel {
         return pstm.executeUpdate() > 0;
     }
 
+    public int cusCount() throws SQLException {
+        int rowCount = 0;
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT COUNT(order_id) AS row_count FROM orders";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+                rowCount = resultSet.getInt("row_count");
+                System.out.println("Number of rows: " + rowCount);
+            }
+        }
+        return rowCount;
+    }
+
+
 }

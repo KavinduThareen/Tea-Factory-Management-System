@@ -86,8 +86,8 @@ public class SupplierPageController {
             try {
                 boolean isSaved = model.supplierSaved(dto);
                 if (isSaved) {
-                    tbl.refresh();
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    tbl.refresh();
                     clearFields();
                 }
             } catch (Exception e) {
@@ -244,8 +244,8 @@ public class SupplierPageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                tbl.refresh();
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                tbl.refresh();
                 clearFields();
             }
         } catch (SQLException e) {

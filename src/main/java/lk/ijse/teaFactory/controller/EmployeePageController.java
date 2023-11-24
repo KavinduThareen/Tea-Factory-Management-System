@@ -303,6 +303,32 @@ public class EmployeePageController {
         }
     }
 
+    @FXML
+    void searchBtnOnAction(ActionEvent event) {
+
+        String id = employeeIdTxt.getText();
+
+        var model = new EmployeeModel();
+        try {
+            EmployeeDto employeeDto = model.searchCustomer(id);
+//            System.out.println(customerDto);
+            if (employeeDto != null) {
+                uidTxt.setValue(employeeDto.getUId());
+                employeeIdTxt.setText(employeeDto.getEmployeeId());
+                empGenderTxt.setText(employeeDto.getEmpGender());
+                empbdTxt.setValue(employeeDto.getEmpbd().toLocalDate());
+                empNameTxt.setText(employeeDto.getEmployeeName());
+                empAddressTxt.setText(employeeDto.getEmpAddress());
+                empContacTxt.setText(employeeDto.getEmpContac());
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
+        }
+    }
+
+
 }
 
 

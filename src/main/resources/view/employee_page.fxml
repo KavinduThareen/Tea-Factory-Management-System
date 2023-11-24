@@ -39,12 +39,12 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="170.0" layoutY="840.0" onAction="#saveEmployeeOnAction" prefHeight="81.0" prefWidth="263.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="save Employee">
+      <JFXButton layoutX="170.0" layoutY="840.0" onAction="#saveEmployeeOnAction" prefHeight="81.0" prefWidth="205.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="save Employee">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="510.0" layoutY="838.0" onAction="#updateOnAction" prefHeight="81.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/deletebtn.css" text="add Employee">
+      <JFXButton layoutX="383.0" layoutY="840.0" onAction="#updateOnAction" prefHeight="81.0" prefWidth="212.0" styleClass="button-with-style" stylesheets="@../style/deletebtn.css" text="Update">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -65,10 +65,15 @@
          </font></TextField>
       <TableView fx:id="tbl2" layoutX="1025.0" layoutY="35.0" prefHeight="856.0" prefWidth="524.0" stylesheets="@../style/employeenameTable.css">
         <columns>
-          <TableColumn fx:id="colSelectEmployeNmaes" prefWidth="571.0" text="Names" />
+          <TableColumn fx:id="colSelectEmployeNmaes" prefWidth="571.0" text="Employee Names" />
         </columns>
       </TableView>
       <JFXComboBox fx:id="uidTxt" layoutX="184.0" layoutY="429.0" prefHeight="53.0" prefWidth="594.0" stylesheets="@../style/comboBox.css" />
       <DatePicker fx:id="empbdTxt" layoutX="184.0" layoutY="327.0" prefHeight="53.0" prefWidth="279.0" />
+      <JFXButton layoutX="606.0" layoutY="840.0" onAction="#searchBtnOnAction" prefHeight="81.0" prefWidth="193.0" styleClass="button-with-style" stylesheets="@../style/clearbtn.css" text="Search">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>
