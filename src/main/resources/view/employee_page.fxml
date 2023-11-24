@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -58,10 +59,6 @@
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <TextField fx:id="empbdTxt" layoutX="192.0" layoutY="331.0" prefHeight="44.0" prefWidth="263.0" promptText="Birthday" style="-fx-background-color: tra;">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
       <TextField fx:id="empGenderTxt" layoutX="514.0" layoutY="331.0" prefHeight="44.0" prefWidth="263.0" promptText="Gender" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
@@ -72,5 +69,6 @@
         </columns>
       </TableView>
       <JFXComboBox fx:id="uidTxt" layoutX="184.0" layoutY="429.0" prefHeight="53.0" prefWidth="594.0" stylesheets="@../style/comboBox.css" />
+      <DatePicker fx:id="empbdTxt" layoutX="184.0" layoutY="327.0" prefHeight="53.0" prefWidth="279.0" />
     </children>
 </AnchorPane>

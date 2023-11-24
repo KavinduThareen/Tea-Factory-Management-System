@@ -4,10 +4,7 @@ import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class EmployeeModel {
         pstm.setString(1,dto.getUId());
         pstm.setString(2,dto.getEmployeeId());
         pstm.setString(3,dto.getEmpGender());
-        pstm.setString(4,dto.getEmpbd());
+        pstm.setDate(4,dto.getEmpbd());
         pstm.setString(5,dto.getEmployeeName());
         pstm.setString(6,dto.getEmpAddress());
         pstm.setString(7,dto.getEmpContac());
@@ -52,7 +49,7 @@ public class EmployeeModel {
             String uId = resultSet.getString(1);
             String employeeId = resultSet.getString(2);
             String empGender = resultSet.getString(3);
-            String empbd = resultSet.getString(4);
+            Date empbd = resultSet.getDate(4);
             String employeeName = resultSet.getString(5);
             String empAddress = resultSet.getString(6);
             String empContac = resultSet.getString(7);
@@ -85,7 +82,7 @@ public class EmployeeModel {
 
         pstm.setString(1,dto.getUId());
         pstm.setString(2,dto.getEmpGender());
-        pstm.setString(3,dto.getEmpbd());
+        pstm.setDate(3,dto.getEmpbd());
         pstm.setString(4,dto.getEmployeeName());
         pstm.setString(5,dto.getEmpAddress());
         pstm.setString(6,dto.getEmpContac());
@@ -112,7 +109,7 @@ public class EmployeeModel {
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getString(4),
+                    resultSet.getDate(4),
                     resultSet.getString(5),
                     resultSet.getString(6),
                     resultSet.getString(7),
@@ -167,7 +164,7 @@ public class EmployeeModel {
             String uId = resultSet.getString(1);
             String employeeId = resultSet.getString(2);
             String empGender = resultSet.getString(3);
-            String empbd = resultSet.getString(4);
+            Date empbd = resultSet.getDate(4);
             String employeeName = resultSet.getString(5);
             String empAddress = resultSet.getString(6);
             String empContac = resultSet.getString(7);

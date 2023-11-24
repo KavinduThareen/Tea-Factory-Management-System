@@ -5,13 +5,14 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.css.Size;
+import javafx.css.SizeUnits;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import lk.ijse.teaFactory.dto.RegisterDto;
@@ -88,7 +89,7 @@ public class RegisterPagecontroller {
                 }
             }
             else {
-                new Alert(Alert.AlertType.CONFIRMATION, "Wrong password").show();
+              //  new Alert(Alert.AlertType.CONFIRMATION, "Wrong password").show();
                 animateError(confirmPasswordTxt);
             }
         }
@@ -96,26 +97,39 @@ public class RegisterPagecontroller {
 
     public static void animateError(TextField textField) {
         // Get the original border or use Border.EMPTY as a fallback
-        javafx.scene.layout.Border originalBorder = textField.getBorder() != null ? textField.getBorder() : javafx.scene.layout.Border.EMPTY;
+        Border originalBorder = textField.getBorder() != null ? textField.getBorder() : Border.EMPTY;
 
         // Create a Timeline for the animation
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(textField.borderProperty(), originalBorder)),
-                new KeyFrame(Duration.millis(500), new KeyValue(textField.borderProperty(), createRedBorder()))
+                new KeyFrame(Duration.millis(500), new KeyValue(textField.borderProperty(), createRedBorder())),
+                new KeyFrame(Duration.millis(900), new KeyValue(textField.borderProperty(), originalBorder))
         );
 
+        // Add a translation animation for vibration effect
+        double originalTranslateX = textField.getTranslateX();
+        double vibrationDistance = 60.0; // Adjust the distance of the vibration
+        timeline.getKeyFrames().addAll(
+                new KeyFrame(Duration.millis(0), new KeyValue(textField.translateXProperty(), originalTranslateX)),
+                new KeyFrame(Duration.millis(50), new KeyValue(textField.translateXProperty(), originalTranslateX + vibrationDistance)),
+                new KeyFrame(Duration.millis(100), new KeyValue(textField.translateXProperty(), originalTranslateX - vibrationDistance)),
+                new KeyFrame(Duration.millis(150), new KeyValue(textField.translateXProperty(), originalTranslateX + vibrationDistance)),
+                new KeyFrame(Duration.millis(200), new KeyValue(textField.translateXProperty(), originalTranslateX))
+        );
+
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(210), event -> textField.clear()));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(50), new KeyValue(textField.borderProperty(), createRedBorder())));
         // Play the animation
         timeline.play();
     }
 
-    private static javafx.scene.layout.Border createRedBorder() {
+    private static Border createRedBorder() {
         // Create a red border
-        return new javafx.scene.layout.Border(new javafx.scene.layout.BorderStroke(
-                Color.RED, javafx.scene.layout.BorderStrokeStyle.SOLID,
+        return new Border(new BorderStroke(
+                Color.RED, BorderStrokeStyle.SOLID,
                 javafx.scene.layout.CornerRadii.EMPTY, javafx.scene.layout.BorderWidths.DEFAULT
         ));
     }
-
 
 
     private boolean validate() {
@@ -124,7 +138,8 @@ public class RegisterPagecontroller {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[U][0-9]{3,}", idText);
         if (!isIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            animateError(useridTxt);
+           // new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
         }
 
@@ -132,7 +147,8 @@ public class RegisterPagecontroller {
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
         if (!isNameValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            animateError(usernameTxt);
+          //  new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
             return false;
         }
 
@@ -140,7 +156,8 @@ public class RegisterPagecontroller {
 //        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+            animateError(contacTxt);
+         //   new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
             return false;
         }
 

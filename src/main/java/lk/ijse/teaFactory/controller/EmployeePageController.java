@@ -20,6 +20,7 @@ import lk.ijse.teaFactory.model.EmployeeModel;
 import lk.ijse.teaFactory.model.RegisterModel;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +48,7 @@ public class EmployeePageController {
     private TextField empGenderTxt;
 
     @FXML
-    private TextField empbdTxt;
+    private DatePicker empbdTxt;
 
     @FXML
     private AnchorPane employeeroot;
@@ -66,7 +67,7 @@ public class EmployeePageController {
         String uId =  uidTxt.getValue();
         String employeeId = employeeIdTxt.getText();
         String empGender = empGenderTxt.getText();
-        String empbd= empbdTxt.getText();
+        Date empbd= Date.valueOf(empbdTxt.getValue());
         String employeeName = empNameTxt.getText();
         String empAddress = empAddressTxt.getText();
         String empContac = empContacTxt.getText();
@@ -96,7 +97,7 @@ public class EmployeePageController {
         String uId =  uidTxt.getValue();
         String employeeId = employeeIdTxt.getText();
         String empGender = empGenderTxt.getText();
-        String empbd= empbdTxt.getText();
+        Date empbd= Date.valueOf(empbdTxt.getValue());
         String employeeName = empNameTxt.getText();
         String empAddress = empAddressTxt.getText();
         String empContac = empContacTxt.getText();
@@ -178,13 +179,6 @@ public class EmployeePageController {
             return false;
         }
 
-        String UidText = empbdTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isUIDValidated = Pattern.matches("[0-9]{3,}", UidText);
-        if (!isUIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid bd ID!").show();
-            return false;
-        }
 
         String empname = empNameTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
@@ -277,7 +271,7 @@ public class EmployeePageController {
         employeeIdTxt.setText("");
         empNameTxt.setText("");
         empGenderTxt.setText("");
-        empbdTxt.setText("");
+        //empbdTxt.setValue("");
         empContacTxt.setText("");
         empAddressTxt.setText("");
 
@@ -296,7 +290,7 @@ public class EmployeePageController {
                     uidTxt.setValue(employeeDto.getUId());
                     employeeIdTxt.setText(employeeDto.getEmployeeId());
                     empGenderTxt.setText(employeeDto.getEmpGender());
-                    empbdTxt.setText(employeeDto.getEmpbd());
+                    empbdTxt.setValue(employeeDto.getEmpbd().toLocalDate());
                     empNameTxt.setText(employeeDto.getEmployeeName());
                     empAddressTxt.setText(employeeDto.getEmpAddress());
                     empContacTxt.setText(employeeDto.getEmpContac());
