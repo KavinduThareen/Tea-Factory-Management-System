@@ -10,14 +10,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.EmployeeDto;
+import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.SupOrderDto;
 import lk.ijse.teaFactory.dto.SupplierDto;
 import lk.ijse.teaFactory.dto.tm.SupOrderTm;
 import lk.ijse.teaFactory.model.EmployeeModel;
+import lk.ijse.teaFactory.model.LeavesStokeModel;
 import lk.ijse.teaFactory.model.SupOrderModel;
 import lk.ijse.teaFactory.model.SupplierModel;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -67,6 +70,7 @@ public class SupplierOrdersController {
 
     @FXML
     void addOnAction(ActionEvent event) {
+
        String id = sOidTxt.getText();
        String sId = sIdTxt.getValue();
        String date = dateTxt.getText();
@@ -75,13 +79,16 @@ public class SupplierOrdersController {
        String isDelete = "0";
 
        var dto = new SupOrderDto(id,sId,date,weigth,payment,isDelete);
+
         var model = new SupOrderModel();
+
         boolean isValidated = validate();
 
         if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
+           // new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.SupOrderSaved(dto);
+             //   boolean isSaved2 = model2.addLeavesStoke2(dto2);
                 if (isSaved) {
                     tbl.refresh();
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
@@ -89,6 +96,7 @@ public class SupplierOrdersController {
 
                 }
             } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "Error occurred: " + e.getMessage()).show();
                 throw new RuntimeException(e);
             }
         }
@@ -114,21 +122,9 @@ public class SupplierOrdersController {
         }
 
 
-        String nameText = dateTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        boolean isNameValidated = Pattern.matches("^(0?[1-9]|1[0-2])[/](0?[1-9]|[12]\\d|3[01])[/](19|20)\\d{2}$", nameText);
-        if (!isNameValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
-            return false;
-        }
 
-        String addressText = weigthTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("\\b(([6-9]\\d|[6-9]\\d\\,\\d{1,2}|[1]\\d\\d|[1]\\d\\d\\,\\d{1,2})kg)\\b", addressText);
-        if (!isAddressValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
-            return false;
-        }
+
+
 
         return true;
     }

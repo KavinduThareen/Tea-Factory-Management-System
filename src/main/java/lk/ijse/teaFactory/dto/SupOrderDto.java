@@ -18,11 +18,5 @@ public class SupOrderDto {
     private String isDelete;
 
 
-    public SupOrderDto(String id, String sId, String date, String weigth) {
 
-        this.id = id;
-        this.sId = sId;
-        this.date = date;
-        this.weigth = weigth;
-    }
 }

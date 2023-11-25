@@ -29,6 +29,26 @@ public class LeavesStokeModel {
 
     }
 
+/*
+    public boolean addLeavesStoke2(LeavesStokeDto dto) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql =  "INSERT INTO leaves_stoke VALUES(?, ?, ?, ?,?)";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, dto.getId());
+        pstm.setString(2, dto.getWeigth());
+        pstm.setDate(3, dto.getSDate());
+        pstm.setDate(4, dto.getEDate());
+        pstm.setString(5,"0");
+
+        boolean isSaved = pstm.executeUpdate() > 0;
+        return isSaved;
+
+    }
+
+ */
+
     public List<LeavesStokeDto> loadAll() throws SQLException {
         Connection connection =DbConnection.getInstance().getConnection();
 

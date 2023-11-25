@@ -10,18 +10,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.LeavesStokeDto;
-import lk.ijse.teaFactory.dto.SupplierDto;
-import lk.ijse.teaFactory.dto.tm.CompleteTm;
+import lk.ijse.teaFactory.dto.SupOrderDto;
 import lk.ijse.teaFactory.dto.tm.LeaveStokeTm;
-import lk.ijse.teaFactory.model.LeavesStokeModel;
-import lk.ijse.teaFactory.model.PacketStokeModel;
-import lk.ijse.teaFactory.model.StokeDetailModel;
-import lk.ijse.teaFactory.model.SupplierModel;
+import lk.ijse.teaFactory.model.*;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -60,10 +56,15 @@ public class LevesStokePageController {
     private DatePicker sDateTxt;
 
     @FXML
+    private ComboBox<String > supplingidTxt;
+
+    @FXML
     private TableView<LeaveStokeTm> table;
 
     @FXML
     void addBtnOnAction(ActionEvent event) {
+
+        String sid = (String) supplingidTxt.getValue();
 
         String id = idTxt.getText();
         String weigth = WeigthTxt.getText();
@@ -72,8 +73,11 @@ public class LevesStokePageController {
         String complete = "0";
 
         var dto = new LeavesStokeDto(id,weigth,sDate,eDate,complete);
+
+
         var model = new LeavesStokeModel();
         var stokeModel = new StokeDetailModel();
+        var model2 = new SupOrderModel();
 
         boolean isValidated = validate();
 
@@ -81,8 +85,9 @@ public class LevesStokePageController {
             new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.addLeavesStoke(dto);
+                boolean isSaved2 = model2.dropid(sid);
                 stokeModel.saveId();
-                if (isSaved) {
+                if (isSaved && isSaved2) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();
                 }
@@ -106,6 +111,24 @@ public class LevesStokePageController {
 
         return true;
     }
+
+
+    private void loadSupplingId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<SupOrderDto> empList = SupOrderModel.loadAllItems();
+
+            for (SupOrderDto empDto : empList) {
+                obList.add(empDto.getId());
+            }
+
+            supplingidTxt.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 
     public void loadAll(){
@@ -187,6 +210,7 @@ public class LevesStokePageController {
         setCellValueFactory();
         loadAll();
         generateNextCusId();
+        loadSupplingId();
     }
 
     private void generateNextCusId() {

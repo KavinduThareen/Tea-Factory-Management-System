@@ -2,6 +2,8 @@ package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.dto.EmployeeDto;
+import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.SupOrderDto;
 
 import java.sql.Connection;
@@ -63,6 +65,16 @@ public class SupOrderModel {
         return pstm.executeUpdate() > 0;
     }
 
+    public static boolean dropid(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "DELETE FROM supplier_orders WHERE s_orders_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        return pstm.executeUpdate() > 0;
+    }
+
     public boolean update(final SupOrderDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -103,6 +115,35 @@ public class SupOrderModel {
         }
         return "s001";
     }
+
+
+    public static List<SupOrderDto> loadAllItems() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM supplier_orders";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<SupOrderDto> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            var dto = new SupOrderDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getInt(5),
+                    resultSet.getString(6)
+            );
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
+
 
 
 }

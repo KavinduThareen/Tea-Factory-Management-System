@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -37,16 +38,18 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="152.0" layoutY="649.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Leves Stoke">
+      <JFXButton layoutX="155.0" layoutY="733.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Leves Stoke">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
-      <JFXButton layoutX="152.0" layoutY="748.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Stoke">
+      <JFXButton layoutX="154.0" layoutY="824.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Stoke">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
       <DatePicker fx:id="sDateTxt" layoutX="154.0" layoutY="420.0" prefHeight="44.0" prefWidth="406.0" />
       <DatePicker fx:id="eDateTxt" layoutX="147.0" layoutY="524.0" prefHeight="44.0" prefWidth="415.0" />
+      <TextField fx:id="deleteTxt" layoutX="26.0" layoutY="12.0" prefHeight="26.0" prefWidth="159.0" />
+      <ComboBox fx:id="supplingidTxt" layoutX="149.0" layoutY="619.0" prefHeight="51.0" prefWidth="403.0" />
     </children>
 </AnchorPane>
