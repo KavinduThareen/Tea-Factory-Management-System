@@ -14,6 +14,7 @@ public class PlaseOrderModel {
 
     public static boolean placeOrder(PaseOrderDto placeOrderDto) throws SQLException {
 
+
             String orderId = placeOrderDto.getid();
             String customerId = placeOrderDto.getCId();
             String category = placeOrderDto.getCatagary();
@@ -30,7 +31,8 @@ public class PlaseOrderModel {
                 boolean isOrderSaved = cusModel.saveOrder(orderId,customerId,category,weight,date,description, String.valueOf(payment));
                 if (isOrderSaved) {
                     boolean isUpdated = packetStokeModel.updateItem(placeOrderDto.getCartTmList());
-                    if (isUpdated) {
+
+                    if (isUpdated  ) {
                         boolean isOrderDetailSaved = orderDetailModel.saveOrderDetails(placeOrderDto.getid(), placeOrderDto.getCartTmList());
                         if (isOrderDetailSaved) {
                             connection.commit();

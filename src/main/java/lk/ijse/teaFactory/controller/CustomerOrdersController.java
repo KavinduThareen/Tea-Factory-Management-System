@@ -154,6 +154,7 @@ public class CustomerOrdersController {
         JFXButton btnDelete = new JFXButton("Deleted");
 
 
+
          setRemoveBtnAction(btnDelete);
         btnDelete.setCursor(Cursor.HAND);
         btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");

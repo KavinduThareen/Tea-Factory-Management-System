@@ -1,14 +1,20 @@
 package lk.ijse.teaFactory.controller;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.model.CustomerModel;
 
@@ -69,10 +75,39 @@ public class MainController {
 
     @FXML
     void profileOnAction(ActionEvent event) throws IOException {
-        dashbordRoot.getChildren().clear();
-        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/userProfile.fxml"))));
+        try {
+            Node newContent = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/userProfile.fxml")));
 
+            // Create a fade transition for the new content
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), newContent);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setInterpolator(Interpolator.DISCRETE);
+
+            // Create a translation transition for the new content
+            TranslateTransition translateIn = new TranslateTransition(Duration.seconds(0.5), newContent);
+            translateIn.setFromY(-50);
+            translateIn.setToY(0);
+            translateIn.setInterpolator(Interpolator.EASE_BOTH);
+
+            // Combine the fade and translation animations in parallel
+            ParallelTransition parallelTransition = new ParallelTransition(fadeIn, translateIn);
+
+            // Set an event handler to clear the root and play the animations
+            parallelTransition.setOnFinished(e -> {
+                dashbordRoot.getChildren().clear();
+                dashbordRoot.getChildren().add(newContent);
+            });
+
+            // Play the animations
+            parallelTransition.play();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        }
     }
+
+
 
 
 

@@ -1,3 +1,33 @@
-.txt-with-style{
-    background-color: brown;
+/* TextField Animation CSS */
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(10px); }
+    50% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+.text-field-animated {
+    -fx-background-color: red;
+    -fx-border-color: #bdbdbd;
+    -fx-border-width: 10px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+    -fx-border-radius: 5px;
+}
+
+.text-field-animated:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.text-field-animated:focus {
+    -fx-border-color: #2196F3;
+}
+
+.text-field-animated.error {
+    animation: shake 5.5s;
 }

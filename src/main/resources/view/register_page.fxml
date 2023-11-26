@@ -27,7 +27,7 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </JFXButton>
-        <TextField fx:id="usernameTxt" layoutX="1288.0" layoutY="300.0" prefHeight="54.0" prefWidth="399.0" promptText="User Name" style="-fx-background-color: tra;">
+        <TextField fx:id="usernameTxt" layoutX="1288.0" layoutY="300.0" prefHeight="54.0" prefWidth="399.0" promptText="User Name" stylesheets="@../style/textfield.css">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></TextField>
