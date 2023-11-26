@@ -1,6 +1,7 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
+import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.RegisterDto;
 
@@ -108,6 +109,19 @@ public boolean registerUser( RegisterDto dto) throws SQLException {
             return true;
         }
         return false;
+    }
+
+    //delete this
+    public static boolean updatepw(String id, String pw) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE user SET password = ?  WHERE userid = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, pw);
+        pstm.setString(2, id);
+
+        return pstm.executeUpdate() > 0;
     }
 
 }

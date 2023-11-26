@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.VerifiedPageController">
    <children>
@@ -12,5 +14,13 @@
             <Image url="@../img/verified%20Pw.png" />
          </image>
       </ImageView>
+      <TextField fx:id="newpwTxt" layoutX="235.0" layoutY="556.0" prefHeight="63.0" prefWidth="541.0" />
+      <TextField fx:id="confimepwTxt" layoutX="234.0" layoutY="695.0" prefHeight="63.0" prefWidth="541.0" />
+      <JFXButton layoutX="235.0" layoutY="874.0" onAction="#pwSaveOnAction" prefHeight="69.0" prefWidth="541.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Save Password">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="uidTxt" layoutX="582.0" layoutY="451.0" prefHeight="44.0" prefWidth="350.0" promptText="userid" />
    </children>
 </AnchorPane>

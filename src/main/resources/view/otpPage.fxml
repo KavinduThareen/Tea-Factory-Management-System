@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.OtpPageController">
    <children>
@@ -12,5 +13,8 @@
             <Image url="@../img/otpPage.png" />
          </image>
       </ImageView>
+      <TextField fx:id="otpTxt" layoutX="769.0" layoutY="544.0" prefHeight="63.0" prefWidth="417.0" style="-fx-background-color: tra;" />
+      <JFXButton layoutX="1246.0" layoutY="546.0" onAction="#okOnAction" prefHeight="74.0" prefWidth="142.0" text="sent" />
+      <JFXButton layoutX="1520.0" layoutY="231.0" onAction="#tOnAction" prefHeight="25.0" prefWidth="102.0" text="tempary" />
    </children>
 </AnchorPane>

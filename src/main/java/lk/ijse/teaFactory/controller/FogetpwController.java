@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.OtpDto;
 import lk.ijse.teaFactory.gmail.Gmailer;
 
 import java.util.Objects;
@@ -16,23 +17,26 @@ public class FogetpwController {
     private TextField emailTxt;
 
      //"kavindutharin@gmail.com"
+
     @FXML
     private AnchorPane root;
     private String email;
     public int otp;
+
+     int otp2;
+
+
     @FXML
     void emailOnAction(ActionEvent event) throws Exception {
-        email = emailTxt.getText();
+    //    email = emailTxt.getText();
         otp = generateNewOtp();
-        sendOtp();
+       // sendOtp();
 
 
         root.getChildren().clear();
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/otpPage.fxml"))));
 
     }
-
-
 
 
     public void sendOtp() {
@@ -52,13 +56,26 @@ public class FogetpwController {
         }
     }
 
+
     public int generateNewOtp() {
-        int otp;
+      //  int otp;
+
+        var addtype = new OtpPageController();
+
         do {
             Random random = new Random();
-            otp = random.nextInt(9999);
-            if (otp > 1000) return otp;
+            otp2 = random.nextInt(9999);
+            if (otp2 > 1000){
+               var otpDto = new OtpDto(otp2);
+               addtype.save(otpDto);
+
+                System.out.println(otp2);
+
+                return otp2;
+            }
         }while (true);
     }
+
+
 
 }
