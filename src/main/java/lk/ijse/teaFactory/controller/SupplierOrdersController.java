@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.SupOrderDto;
@@ -18,9 +19,15 @@ import lk.ijse.teaFactory.model.EmployeeModel;
 import lk.ijse.teaFactory.model.LeavesStokeModel;
 import lk.ijse.teaFactory.model.SupOrderModel;
 import lk.ijse.teaFactory.model.SupplierModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.InputStream;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -47,7 +54,8 @@ public class SupplierOrdersController {
 
 
     @FXML
-    private TextField dateTxt;
+    private DatePicker dateTxt;
+
 
     @FXML
     private TextField paymentTxt;
@@ -73,7 +81,7 @@ public class SupplierOrdersController {
 
        String id = sOidTxt.getText();
        String sId = sIdTxt.getValue();
-       String date = dateTxt.getText();
+       Date date = Date.valueOf(dateTxt.getValue());
        String weigth = weigthTxt.getText();
        int payment = (int) (Double.valueOf(paymentTxt.getText()) * Double.valueOf(weigthTxt.getText()));
        String isDelete = "0";
@@ -90,6 +98,7 @@ public class SupplierOrdersController {
                 boolean isSaved = model.SupOrderSaved(dto);
              //   boolean isSaved2 = model2.addLeavesStoke2(dto2);
                 if (isSaved) {
+                    printCustomer();
                     tbl.refresh();
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();
@@ -219,7 +228,7 @@ public class SupplierOrdersController {
     private void clearFields() {
         sOidTxt.setText("");
        // sIdTxt  .setText("");
-        dateTxt .setText("");
+       // dateTxt .setText("");
         weigthTxt.setText("");
     }
 
@@ -229,7 +238,7 @@ public class SupplierOrdersController {
     void updateOnAction(ActionEvent event) {
         String id = sOidTxt.getText();
         String sId = sIdTxt.getValue();
-        String date = dateTxt.getText();
+        Date date = Date.valueOf(dateTxt.getValue());
         String weigth = weigthTxt.getText();
         int payment = Integer.parseInt(paymentTxt.getText());
         String isDelete = "0";
@@ -249,6 +258,29 @@ public class SupplierOrdersController {
         }
 
     }
+
+    private void printCustomer() throws JRException, SQLException {
+
+        try {
+            // Load the JasperReport template
+            InputStream resourceAsStream = getClass().getResourceAsStream("/report/supplierbill.jrxml");
+            JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JRDesignQuery jrDesignQuery = new JRDesignQuery();
+            jrDesignQuery.setText("SELECT * FROM supplier_orders WHERE s_orders_id = "+"\""+sOidTxt.getText()+"\"");
+            load.setQuery(jrDesignQuery);
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
+                    null,
+                    DbConnection.getInstance().getConnection());
+
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
+            throw new RuntimeException(e);
+        }
+    }
+
 
     private void generateNextId() {
         try {

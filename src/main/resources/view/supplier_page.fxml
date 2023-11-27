@@ -33,22 +33,22 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="idTxt" layoutX="1054.0" layoutY="221.0" onKeyPressed="#searchOnAction" prefHeight="44.0" prefWidth="398.0" promptText="id" style="-fx-background-color: tra;">
+      <TextField fx:id="idTxt" layoutX="1044.0" layoutY="211.0" onKeyPressed="#searchOnAction" prefHeight="64.0" prefWidth="426.0" promptText="id" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="nameTxt" layoutX="1054.0" layoutY="339.0" prefHeight="54.0" prefWidth="398.0" promptText="name" style="-fx-background-color: tra;">
+      <TextField fx:id="nameTxt" layoutX="1043.0" layoutY="339.0" prefHeight="54.0" prefWidth="426.0" promptText="name" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="Contac" layoutX="1054.0" layoutY="462.0" prefHeight="54.0" prefWidth="398.0" promptText="no" style="-fx-background-color: tra;">
+      <TextField fx:id="Contac" layoutX="1044.0" layoutY="462.0" prefHeight="54.0" prefWidth="426.0" promptText="no" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="Address" layoutX="1061.0" layoutY="590.0" prefHeight="44.0" prefWidth="398.0" promptText="addres" style="-fx-background-color: tra;">
+      <TextField fx:id="Address" layoutX="1044.0" layoutY="586.0" prefHeight="54.0" prefWidth="426.0" promptText="addres" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>

@@ -42,11 +42,15 @@ public class LoginPageController{
     void keyOnAction(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
 
+            loginroot.getChildren().clear();
+            loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
+
         }
     }
 
     @FXML
     void loginbtnOnAction(ActionEvent event) throws IOException, SQLException {
+        /*
 
    //  login();
 
@@ -66,7 +70,10 @@ public class LoginPageController{
         } catch (SQLException | IOException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+
+         */
     }
+
 
 /*
     public void login(){

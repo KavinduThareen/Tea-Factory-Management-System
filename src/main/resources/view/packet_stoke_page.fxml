@@ -29,17 +29,17 @@
             <TableColumn fx:id="colDelet" prefWidth="182.0" text="delete" />
         </columns>
       </TableView>
-      <TextField fx:id="idTxt" layoutX="1055.0" layoutY="190.0" onKeyPressed="#searchOnAction" prefHeight="44.0" prefWidth="415.0" promptText="PacketId" style="-fx-background-color: tra;">
+      <TextField fx:id="idTxt" layoutX="1044.0" layoutY="183.0" onKeyPressed="#searchOnAction" prefHeight="55.0" prefWidth="432.0" promptText="PacketId" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="catagaryTxt" layoutX="1055.0" layoutY="313.0" prefHeight="44.0" prefWidth="415.0" promptText="Catogary" style="-fx-background-color: tra;">
+      <TextField fx:id="catagaryTxt" layoutX="1045.0" layoutY="306.0" prefHeight="55.0" prefWidth="432.0" promptText="Catogary" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="weigthTxt" layoutX="1055.0" layoutY="436.0" prefHeight="44.0" prefWidth="415.0" promptText="Weigth" style="-fx-background-color: tra;">
+      <TextField fx:id="weigthTxt" layoutX="1044.0" layoutY="429.0" prefHeight="55.0" prefWidth="432.0" promptText="Weigth" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
@@ -54,6 +54,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <DatePicker fx:id="expirTxt" layoutX="1057.0" layoutY="558.0" prefHeight="48.0" prefWidth="408.0" promptText="Expaire Date" style="-fx-background-color: tra;" />
+      <DatePicker fx:id="expirTxt" layoutX="1048.0" layoutY="558.0" prefHeight="55.0" prefWidth="424.0" promptText="Expaire Date" stylesheets="@../style/datePiker.css" />
     </children>
 </AnchorPane>

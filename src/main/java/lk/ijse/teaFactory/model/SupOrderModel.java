@@ -6,10 +6,7 @@ import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.SupOrderDto;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +19,7 @@ public class SupOrderModel {
 
         pstm.setString(1, dto.getId());
         pstm.setString(2, dto.getSId());
-        pstm.setString(3, dto.getDate());
+        pstm.setDate(3, dto.getDate());
         pstm.setString(4, dto.getWeigth());
         pstm.setInt(5,dto.getPayment());
         pstm.setString(6, "0");
@@ -44,7 +41,7 @@ public class SupOrderModel {
         while (resultSet.next()) {
             String id = resultSet.getString(1);
             String sId = resultSet.getString(2);
-            String date = resultSet.getString(3);
+            Date date = resultSet.getDate(3);
             String weigth = resultSet.getString(4);
             int payment = resultSet.getInt(5);
             String isCompleted = resultSet.getString(6);
@@ -82,7 +79,7 @@ public class SupOrderModel {
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getSId());
-        pstm.setString(2, dto.getDate());
+        pstm.setDate(2, dto.getDate());
         pstm.setString(3, dto.getWeigth());
         pstm.setInt(4, dto.getPayment());
         pstm.setString(5, "0");
@@ -131,7 +128,7 @@ public class SupOrderModel {
             var dto = new SupOrderDto(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getString(3),
+                    resultSet.getDate(3),
                     resultSet.getString(4),
                     resultSet.getInt(5),
                     resultSet.getString(6)

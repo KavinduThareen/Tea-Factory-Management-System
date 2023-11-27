@@ -60,14 +60,20 @@ public class FogetpwController {
     public int generateNewOtp() {
       //  int otp;
 
-        var addtype = new OtpPageController();
+
 
         do {
             Random random = new Random();
+
+            var type = new OtpPageController();
+
             otp2 = random.nextInt(9999);
             if (otp2 > 1000){
                var otpDto = new OtpDto(otp2);
-               addtype.save(otpDto);
+               type.save(otpDto);
+
+             //   var dto = new OtpDto(otp2);
+
 
                 System.out.println(otp2);
 

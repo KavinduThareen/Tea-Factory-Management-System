@@ -172,6 +172,8 @@ public class PacketStokeModel {
     }
 
 
+
+
     public PacketStokeDto searchCustomer(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection ();
 
@@ -194,6 +196,34 @@ public class PacketStokeModel {
         }
         return dto;
     }
+
+
+  // this type is correct but illigal
+
+
+    /*
+    public boolean deleteItem(List<CartTm> cartTmList) throws SQLException {
+        for(CartTm tm : cartTmList) {
+            System.out.println("Item: " + tm);
+            if(!updateQty(tm.getItemId())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean updateQty(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "DELETE FROM packet_stoke WHERE packet_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        return pstm.executeUpdate() > 0;
+    }
+
+     */
+
 
 
 

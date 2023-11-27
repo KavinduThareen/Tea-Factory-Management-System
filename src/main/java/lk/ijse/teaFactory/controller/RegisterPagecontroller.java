@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import lk.ijse.teaFactory.dto.ErrorAnimation;
 import lk.ijse.teaFactory.dto.RegisterDto;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.RegisterModel;
@@ -51,7 +52,7 @@ public class RegisterPagecontroller {
     @FXML
     private AnchorPane registerroot;
 
-
+    ErrorAnimation errora = new ErrorAnimation();
 
     @FXML
     void createAccountBtnOnAction(ActionEvent event) {
@@ -90,10 +91,13 @@ public class RegisterPagecontroller {
             }
             else {
               //  new Alert(Alert.AlertType.CONFIRMATION, "Wrong password").show();
-                animateError(confirmPasswordTxt);
+              //  animateError(confirmPasswordTxt);
+                errora.animateError(confirmPasswordTxt);
             }
         }
     }
+
+    /*
 
     public static void animateError(TextField textField) {
         // Get the original border or use Border.EMPTY as a fallback
@@ -131,6 +135,8 @@ public class RegisterPagecontroller {
         ));
     }
 
+     */
+
 
     private boolean validate() {
 
@@ -138,8 +144,9 @@ public class RegisterPagecontroller {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[U][0-9]{3,}", idText);
         if (!isIDValidated) {
-            animateError(useridTxt);
+           // animateError(useridTxt);
            // new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            errora.animateError(useridTxt);
             return false;
         }
 
@@ -147,8 +154,9 @@ public class RegisterPagecontroller {
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
         if (!isNameValidated) {
-            animateError(usernameTxt);
+          //  animateError(usernameTxt);
           //  new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            errora.animateError(usernameTxt);
             return false;
         }
 
@@ -156,8 +164,9 @@ public class RegisterPagecontroller {
 //        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
-            animateError(contacTxt);
+           // animateError(contacTxt);
          //   new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+            errora.animateError(contacTxt);
             return false;
         }
 

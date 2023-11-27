@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -21,7 +22,6 @@
          </image>
       </ImageView>
       <TextField fx:id="sOidTxt" layoutX="1013.0" layoutY="178.0" prefHeight="44.0" prefWidth="407.0" promptText="id" style="-fx-background-color: tra;" />
-      <TextField fx:id="dateTxt" layoutX="1013.0" layoutY="418.0" prefHeight="44.0" prefWidth="407.0" promptText="d" style="-fx-background-color: tra;" />
       <TextField fx:id="weigthTxt" layoutX="1013.0" layoutY="540.0" prefHeight="44.0" prefWidth="407.0" promptText="w" style="-fx-background-color: tra;" />
       <JFXButton layoutX="1009.0" layoutY="751.0" onAction="#addOnAction" prefHeight="54.0" prefWidth="429.0" styleClass="button-with-style" stylesheets="@../style/loginbutton.css" text="Add Supply Orders">
          <font>
@@ -45,5 +45,6 @@
       </TableView>
       <JFXComboBox fx:id="sIdTxt" layoutX="1011.0" layoutY="293.0" prefHeight="44.0" prefWidth="407.0" />
       <TextField fx:id="paymentTxt" layoutX="1025.0" layoutY="658.0" prefHeight="44.0" prefWidth="388.0" promptText="Payment" style="-fx-background-color: tra;" />
+      <DatePicker fx:id="dateTxt" layoutX="1024.0" layoutY="420.0" prefHeight="44.0" prefWidth="394.0" />
     </children>
 </AnchorPane>

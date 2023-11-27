@@ -1,100 +1,87 @@
 package lk.ijse.teaFactory.controller;
 
-import com.sun.javafx.logging.Logger;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.RegisterDto;
-import lk.ijse.teaFactory.dto.tm.CustomerTm;
-import lk.ijse.teaFactory.dto.tm.RegisterTm;
-import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
-import lk.ijse.teaFactory.model.LoginModel;
 import lk.ijse.teaFactory.model.RegisterModel;
+import lk.ijse.teaFactory.model.SupplierModel;
 
-import javax.security.auth.spi.LoginModule;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.Objects;
 
 public class UserProfileController {
 
     @FXML
-    private TextField cantcTxt;
+    private TextField contacTxt;
 
     @FXML
-    private TableColumn<?, ?> colDate;
-
-    @FXML
-    private TableColumn<?, ?> colId;
-
-    @FXML
-    private TableColumn<?, ?> colIntime;
-
-    @FXML
-    private TableColumn<?, ?> colOutTime;
+    private PasswordField cpwTxt;
 
     @FXML
     private TextField idTxt;
 
     @FXML
-    private TextField pwTxt;
-
+    private PasswordField pwTxt;
 
     @FXML
     private AnchorPane root;
 
     @FXML
-    private TableView<?> tbl;
+    private TextField usernameTxt;
 
     @FXML
-    private TextField uNameTxt;
+    void addnewaccOnAction(ActionEvent event) throws IOException {
 
+    }
 
-    private void generateId() {
+    @FXML
+    void deleteaccOnAction(ActionEvent event) {
+        String id = idTxt.getText();
+        deleteItem(id);
+    }
+
+    private void deleteItem(String id) {
         try {
-            String Id = LoginModel.generateId();
-            String pw = LoginModel.password();
-            String username = RegisterModel.username();
-          /// String canatac =
-            idTxt.setText(Id);
-            pwTxt.setText(pw);
-            uNameTxt.setText(username);
-            //cantcTxt.setText(contac);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            boolean isDeleted = RegisterModel.delete(id);
+            if(isDeleted)
+                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+        } catch (SQLException ex) {
+            new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
 
 
-    public void initialize() {
-        generateId();
+    @FXML
+    void updateOnAction(ActionEvent event) {
+
+        String id = idTxt.getText();
+        String name =  usernameTxt.getText();
+        String contac = contacTxt.getText();
+        String password = pwTxt.getText();
+        String comfimepw = cpwTxt.getText();
+
+
+        var dto = new RegisterDto(id,name,contac,password);
+
+        var model = new RegisterModel();
+        try {
+            boolean isUpdated = model.updateuser(dto);
+            System.out.println(isUpdated);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                //clearFields();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
-
-
-     @FXML
-    void UpdateOnAction(ActionEvent event) {
-
-    }
-
 
 }

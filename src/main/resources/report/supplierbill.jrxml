@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="supplierbill" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="35ebc535-bbdb-4e18-bdde-521f8bb39f6b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="new teafactory adopter"/>
+	<queryString language="SQL">
+		<![CDATA[select*from supplier_orders]]>
+	</queryString>
+	<field name="s_orders_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="s_orders_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="s_orders_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="supplier_orders"/>
+	</field>
+	<field name="sup_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="sup_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="sup_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="supplier_orders"/>
+	</field>
+	<field name="sup_stoke_weigth" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="sup_stoke_weigth"/>
+		<property name="com.jaspersoft.studio.field.label" value="sup_stoke_weigth"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="supplier_orders"/>
+	</field>
+	<field name="payment" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="payment"/>
+		<property name="com.jaspersoft.studio.field.label" value="payment"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="supplier_orders"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="-10" y="5" width="100" height="30" uuid="15762a1e-0306-4e10-967f-732522ab1da0"/>
+				<text><![CDATA[s_orders_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="2" width="100" height="30" uuid="77cf4621-529d-46a5-8335-5c08c854e977"/>
+				<text><![CDATA[sup_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="2" width="100" height="30" uuid="b6f45075-2350-40fa-83ac-b86d9e9ed4f3"/>
+				<text><![CDATA[sup_stoke_weigth]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="5" width="100" height="30" uuid="77f2c933-859f-487b-8db8-1b4641a4b760"/>
+				<text><![CDATA[payment]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="83" splitType="Stretch">
+			<textField>
+				<reportElement x="-20" y="40" width="100" height="30" uuid="1fe4ede6-9562-49bd-8d54-e2fa65d87953"/>
+				<textFieldExpression><![CDATA[$F{s_orders_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="40" width="100" height="30" uuid="7f9e72af-cb61-48a0-bc6a-f761b9477796"/>
+				<textFieldExpression><![CDATA[$F{sup_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="40" width="100" height="30" uuid="8b156096-4461-44d9-ba77-57cb04212bc6"/>
+				<textFieldExpression><![CDATA[$F{sup_stoke_weigth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="40" width="100" height="30" uuid="7acde64c-8a30-4478-bc70-0907cea9eab0"/>
+				<textFieldExpression><![CDATA[$F{payment}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

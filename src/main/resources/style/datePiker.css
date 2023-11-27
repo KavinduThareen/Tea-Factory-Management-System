@@ -1,0 +1,73 @@
+/* styles.css */
+
+.date-picker {
+    /* Background color */
+    -fx-background-color: lightgray;
+
+    /* Text color */
+    -fx-text-fill: darkblue;
+
+    /* Font size and style */
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+
+    /* Border */
+    -fx-border-color: darkgray;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+
+    /* Padding */
+    -fx-padding: 5px;
+}
+
+/* Popup showing the available dates */
+.date-picker-popup {
+    /* Background color of the popup */
+    -fx-background-color: lightgray;
+}
+
+/* Highlighted date cell */
+.date-cell {
+    /* Background color of the highlighted date */
+    -fx-background-color: lightblue;
+
+    /* Text color of the highlighted date */
+    -fx-text-fill: darkblue;
+}
+
+/* Arrows for navigating through months */
+.arrow-button {
+    /* Color of the arrow */
+    -fx-background-color: darkblue;
+
+    /* Arrow icon color */
+    -fx-mark-color: white;
+}
+
+/* Month and year label */
+.date-picker .month-year-pane {
+    /* Text color of the month and year label */
+    -fx-text-fill: darkblue;
+}
+
+/* Week number cell */
+.week-number-cell {
+    /* Background color of the week number cell */
+    -fx-background-color: lightgray;
+
+    /* Text color of the week number */
+    -fx-text-fill: darkblue;
+}
+
+/* Day cell in the month view */
+.day-cell {
+    /* Background color of the day cell */
+    -fx-background-color: lightgray;
+
+    /* Text color of the day */
+    -fx-text-fill: darkblue;
+
+    /* Border color of the day cell */
+    -fx-border-color: darkgray;
+    -fx-border-width: 1px;
+}

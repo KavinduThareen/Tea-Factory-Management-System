@@ -19,26 +19,12 @@ public class OtpPageController {
     @FXML
     private AnchorPane root;
 
- //   private OtpDto otpDto = new OtpDto();
-
-   // private FogetpwController fogetpwController=new FogetpwController();
-
-
     private int otp;
-
-/*
-    @FXML
-    void initialize() {
-        // Assuming you want to get the initial value from OtpDto
-      // otp = otpDto.getOtp();
-
-
-    }
-
- */
 
     public void save(final OtpDto dto) {
         otp = dto.getOtp();
+        System.out.println("Saved OTP value: " + otp);
+        // Note: Calling isCorrect here might not be necessary, depending on your use case.
     }
 
     @FXML
@@ -55,20 +41,15 @@ public class OtpPageController {
     public void isCorrect(int enteredOtp) {
         if (otp == enteredOtp) {
             System.out.println("ok");
-            System.out.println(otp);
+            System.out.println("Entered OTP: " + enteredOtp);
         } else {
             System.out.println("wrong");
         }
     }
 
-
     @FXML
     void tOnAction(ActionEvent event) throws IOException {
-
         root.getChildren().clear();
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/verifiedPage.fxml"))));
-
-
     }
-
 }

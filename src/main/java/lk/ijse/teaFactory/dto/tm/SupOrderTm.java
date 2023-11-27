@@ -3,6 +3,8 @@ package lk.ijse.teaFactory.dto.tm;
 import com.jfoenix.controls.JFXButton;
 import lombok.*;
 
+import java.sql.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -11,7 +13,7 @@ import lombok.*;
 public class SupOrderTm {
     private String id;
     private String sId;
-    private String date;
+    private Date date;
     private String weigth;
     private int payment;
     private JFXButton btnDelete;

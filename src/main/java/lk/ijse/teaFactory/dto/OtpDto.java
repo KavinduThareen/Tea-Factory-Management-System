@@ -7,6 +7,9 @@ import lombok.*;
 @Data
 @Getter
 @Setter
+
+
 public class OtpDto {
     private int otp;
+
 }

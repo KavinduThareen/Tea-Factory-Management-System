@@ -31,9 +31,12 @@ public class PlaseOrderModel {
                 boolean isOrderSaved = cusModel.saveOrder(orderId,customerId,category,weight,date,description, String.valueOf(payment));
                 if (isOrderSaved) {
                     boolean isUpdated = packetStokeModel.updateItem(placeOrderDto.getCartTmList());
+                  //  boolean isUpdated = packetStokeModel.deleteItem(placeOrderDto.getCartTmList());
 
                     if (isUpdated  ) {
-                        boolean isOrderDetailSaved = orderDetailModel.saveOrderDetails(placeOrderDto.getid(), placeOrderDto.getCartTmList());
+                       boolean isOrderDetailSaved = orderDetailModel.saveOrderDetails(placeOrderDto.getid(), placeOrderDto.getCartTmList());
+
+
                         if (isOrderDetailSaved) {
                             connection.commit();
                         }
@@ -44,7 +47,46 @@ public class PlaseOrderModel {
                 connection.setAutoCommit(true);
             }
             return true;
+
+ //  this type is correct but illigal
+
+        /*
+        String orderId = placeOrderDto.getid();
+        String customerId = placeOrderDto.getCId();
+        String category = placeOrderDto.getCatagary();
+        String weight = placeOrderDto.getWeigth();
+        LocalDate date = placeOrderDto.getDate();
+        String description = placeOrderDto.getDescreption();
+        double payment = placeOrderDto.getPayment();
+
+        Connection connection = null;
+        try {
+            connection = DbConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
+
+            boolean isOrderSaved = cusModel.saveOrder(orderId,customerId,category,weight,date,description, String.valueOf(payment));
+            if (isOrderSaved) {
+               // boolean isUpdated = packetStokeModel.updateItem(placeOrderDto.getCartTmList());
+                boolean isOrderDetailSaved = orderDetailModel.saveOrderDetails(placeOrderDto.getid(), placeOrderDto.getCartTmList());
+
+                if (isOrderDetailSaved  ) {
+
+                    boolean isUpdated = packetStokeModel.deleteItem(placeOrderDto.getCartTmList());
+
+                    if (isUpdated) {
+                        connection.commit();
+                    }
+                }
+            }
+            connection.rollback();
+        } finally {
+            connection.setAutoCommit(true);
         }
+        return true;
+
+         */
+
+    }
 }
 
 

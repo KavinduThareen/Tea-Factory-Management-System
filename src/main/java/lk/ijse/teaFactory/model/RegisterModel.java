@@ -124,4 +124,29 @@ public boolean registerUser( RegisterDto dto) throws SQLException {
         return pstm.executeUpdate() > 0;
     }
 
+    public boolean updateuser(final RegisterDto dto) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE user SET username = ?, contac = ?, password = ?   WHERE userid = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, dto.getUsername());
+        pstm.setString(2, dto.getContac());
+        pstm.setString(3, dto.getPassword());
+        pstm.setString(4, dto.getUserid());
+
+        return pstm.executeUpdate() > 0;
+    }
+
+
+    public static boolean delete(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "DELETE FROM user WHERE userid = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        return pstm.executeUpdate() > 0;
+    }
+
 }

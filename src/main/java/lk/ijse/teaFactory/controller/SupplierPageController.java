@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.dto.ErrorAnimation;
 import lk.ijse.teaFactory.dto.SupplierDto;
 import lk.ijse.teaFactory.dto.tm.SupplierTm;
 import lk.ijse.teaFactory.model.CustomerModel;
@@ -60,6 +61,8 @@ public class SupplierPageController {
     @FXML
     private TableColumn<?, ?> coldelte;
 
+    ErrorAnimation errora = new ErrorAnimation();
+
     @FXML
     void addSDetailOnAction(ActionEvent event) throws IOException {
         root.getChildren().clear();
@@ -90,6 +93,8 @@ public class SupplierPageController {
                     tbl.refresh();
                     clearFields();
                 }
+                else{
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -105,6 +110,7 @@ public class SupplierPageController {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[S][0-9]{3,}", idText);
         if (!isIDValidated) {
+            errora.animateError(idTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
         }
@@ -113,6 +119,7 @@ public class SupplierPageController {
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
         if (!isNameValidated) {
+            errora.animateError(nameTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
             return false;
         }
@@ -120,6 +127,7 @@ public class SupplierPageController {
 //        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
+            errora.animateError(Contac);
             new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
             return false;
         }
@@ -128,6 +136,7 @@ public class SupplierPageController {
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
         if (!isAddressValidated) {
+            errora.animateError(Address);
             new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
             return false;
         }
