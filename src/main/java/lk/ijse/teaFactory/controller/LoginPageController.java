@@ -136,5 +136,7 @@ public class LoginPageController{
 
     }
 
+    // delete login detail replase otp table
+
 
 }

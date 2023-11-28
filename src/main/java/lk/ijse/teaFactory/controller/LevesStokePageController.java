@@ -86,7 +86,7 @@ public class LevesStokePageController {
             try {
                 boolean isSaved = model.addLeavesStoke(dto);
                 boolean isSaved2 = model2.dropid(sid);
-                stokeModel.saveId();
+                stokeModel.saveId2(id);
                 if (isSaved && isSaved2) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();

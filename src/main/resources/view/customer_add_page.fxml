@@ -18,38 +18,38 @@
             <Image url="@../img/Frame%2021.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="732.0" layoutY="693.0" onAction="#cusSaveOnAction" prefHeight="55.0" prefWidth="458.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="Save Customer">
+      <JFXButton layoutX="630.0" layoutY="697.0" onAction="#cusSaveOnAction" prefHeight="55.0" prefWidth="458.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="Save Customer">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="732.0" layoutY="780.0" onAction="#updateOnAction" prefHeight="55.0" prefWidth="458.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Customer">
+      <JFXButton layoutX="630.0" layoutY="798.0" onAction="#updateOnAction" prefHeight="55.0" prefWidth="458.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Customer">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="1263.0" layoutY="201.0" onAction="#addcusBackeBtn" prefHeight="34.0" prefWidth="73.0" text="Back">
+      <JFXButton layoutX="1175.0" layoutY="190.0" onAction="#addcusBackeBtn" prefHeight="34.0" prefWidth="73.0" text="Back">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="cusidTxt" layoutX="737.0" layoutY="254.0" onKeyPressed="#searchcusOnAction" prefHeight="44.0" prefWidth="445.0" promptText="Customer Id" style="-fx-background-color: tra;">
+      <TextField fx:id="cusidTxt" layoutX="630.0" layoutY="245.0" onKeyPressed="#searchcusOnAction" prefHeight="62.0" prefWidth="458.0" promptText="Customer Id" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="cusnameTxt" layoutX="739.0" layoutY="427.0" prefHeight="44.0" prefWidth="445.0" promptText="Customer name" style="-fx-background-color: tra;">
+      <TextField fx:id="cusnameTxt" layoutX="630.0" layoutY="427.0" prefHeight="62.0" prefWidth="458.0" promptText="Customer name" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="cuscontacTxt" layoutX="738.0" layoutY="518.0" prefHeight="44.0" prefWidth="445.0" promptText="Customer Contac" style="-fx-background-color: tra;">
+      <TextField fx:id="cuscontacTxt" layoutX="630.0" layoutY="515.0" prefHeight="62.0" prefWidth="458.0" promptText="Customer Contac" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="cusAddressTxt" layoutX="739.0" layoutY="600.0" prefHeight="44.0" prefWidth="445.0" promptText="Customer Address" style="-fx-background-color: tra;">
+      <TextField fx:id="cusAddressTxt" layoutX="630.0" layoutY="605.0" prefHeight="62.0" prefWidth="458.0" promptText="Customer Address" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <JFXComboBox fx:id="empidTxt" layoutX="734.0" layoutY="334.0" prefHeight="55.0" prefWidth="451.0" stylesheets="@../style/comboBox.css" />
+      <JFXComboBox fx:id="empidTxt" focusColor="#ffffff00" layoutX="630.0" layoutY="337.0" prefHeight="62.0" prefWidth="458.0" stylesheets="@../style/comboBox.css" unFocusColor="#4d4d4d00" />
       <JFXButton layoutX="680.0" layoutY="875.0" onAction="#searchOnAction" prefHeight="34.0" prefWidth="299.0" text="search" />
     </children>
 </AnchorPane>

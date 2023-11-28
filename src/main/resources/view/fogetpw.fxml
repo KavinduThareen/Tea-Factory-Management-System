@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.teaFactory.controller.FogetpwController">
    <children>
@@ -13,7 +14,13 @@
             <Image url="@../img/fogotpw%20page.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="234.0" layoutY="598.0" onAction="#emailOnAction" prefHeight="76.0" prefWidth="203.0" text="Email" />
-      <TextField fx:id="emailTxt" layoutX="261.0" layoutY="531.0" prefHeight="50.0" prefWidth="463.0" />
+      <JFXButton layoutX="697.0" layoutY="517.0" onAction="#emailOnAction" prefHeight="53.0" prefWidth="192.0" text="Sent">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></JFXButton>
+      <TextField fx:id="emailTxt" layoutX="258.0" layoutY="515.0" prefHeight="53.0" prefWidth="432.0" promptText="Email" stylesheets="@../style/textfield.css">
+         <font>
+            <Font name="System Bold" size="72.0" />
+         </font></TextField>
    </children>
 </AnchorPane>

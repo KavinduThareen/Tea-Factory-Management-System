@@ -38,6 +38,8 @@ public class OtpPageController implements Initializable {
     @FXML
     private TextField otpField4Txt;
 
+    FogetpwController fogetpwController = new FogetpwController();
+
     /*
     public void save(final OtpDto dto) {
         this.otp = dto.getOtp();
@@ -147,6 +149,13 @@ public class OtpPageController implements Initializable {
 
     @FXML
     void tOnAction(ActionEvent event) throws IOException {
+
+    }
+
+    @FXML
+    void resentOtpOnAction(ActionEvent event) throws SQLException {
+
+        fogetpwController.generateNewOtp();
 
     }
 

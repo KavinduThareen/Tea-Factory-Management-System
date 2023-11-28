@@ -14,7 +14,9 @@ public class PlaseOrderModel {
 
     public static boolean placeOrder(PaseOrderDto placeOrderDto) throws SQLException {
 
+        // legal
 
+/*
             String orderId = placeOrderDto.getid();
             String customerId = placeOrderDto.getCId();
             String category = placeOrderDto.getCatagary();
@@ -47,10 +49,11 @@ public class PlaseOrderModel {
                 connection.setAutoCommit(true);
             }
             return true;
+            */
 
  //  this type is correct but illigal
 
-        /*
+
         String orderId = placeOrderDto.getid();
         String customerId = placeOrderDto.getCId();
         String category = placeOrderDto.getCatagary();
@@ -84,7 +87,7 @@ public class PlaseOrderModel {
         }
         return true;
 
-         */
+
 
     }
 }

@@ -36,10 +36,10 @@
 }
 .table-row-cell:hover {
     -fx-background-color: rgba(2, 227, 90, 0.07);
-    -fx-text-background-color: #3f2def;
+    -fx-text-background-color: #8379e7;
 }
 .table-row-cell:odd{
-    -fx-background-color: white;
+    -fx-background-color: #706e6e;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }

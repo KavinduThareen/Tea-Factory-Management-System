@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
+import lk.ijse.teaFactory.model.EmployeeModel;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -23,6 +24,9 @@ public class Dashboard1Controller {
     private Label lblordersTxt;
 
     @FXML
+    private Label lblemp;
+
+    @FXML
     private Label lblCus;
 
     @FXML
@@ -31,6 +35,7 @@ public class Dashboard1Controller {
         generateRealTime();
         generateOrderCount();
         generateCustemereCount();
+        generatempCount();
     }
 
     private void generateRealTime() {
@@ -43,6 +48,12 @@ public class Dashboard1Controller {
 
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+    }
+
+    public void generatempCount() throws SQLException {
+        EmployeeModel order = new EmployeeModel();
+        int a = order.empCount();
+        lblemp.setText(String.valueOf(a));
     }
 
 

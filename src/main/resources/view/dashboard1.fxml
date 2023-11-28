@@ -53,7 +53,7 @@
          </font>
       </Label>
       <Label layoutX="734.0" layoutY="319.0" prefHeight="17.0" prefWidth="52.0" text="Summery" />
-      <Label layoutX="597.0" layoutY="390.0" prefHeight="140.0" prefWidth="168.0" text="68">
+      <Label fx:id="lblemp" layoutX="597.0" layoutY="390.0" prefHeight="140.0" prefWidth="168.0">
          <font>
             <Font name="System Bold" size="72.0" />
          </font>
@@ -78,5 +78,6 @@
             <Font name="System Bold" size="72.0" />
          </font>
       </Label>
+      <Button layoutX="890.0" layoutY="366.0" mnemonicParsing="false" prefHeight="581.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/clearbtn.css" text="Button" />
    </children>
 </AnchorPane>

@@ -149,6 +149,9 @@ public class PacketStokeModel {
         return dtoList;
     }
 
+    // legal
+
+/*
     public boolean updateItem(List<CartTm> cartTmList) throws SQLException {
         for(CartTm tm : cartTmList) {
             System.out.println("Item: " + tm);
@@ -170,6 +173,8 @@ public class PacketStokeModel {
 
         return pstm.executeUpdate() > 0; //false
     }
+
+ */
 
 
 
@@ -201,7 +206,7 @@ public class PacketStokeModel {
   // this type is correct but illigal
 
 
-    /*
+
     public boolean deleteItem(List<CartTm> cartTmList) throws SQLException {
         for(CartTm tm : cartTmList) {
             System.out.println("Item: " + tm);
@@ -222,7 +227,7 @@ public class PacketStokeModel {
         return pstm.executeUpdate() > 0;
     }
 
-     */
+
 
 
 

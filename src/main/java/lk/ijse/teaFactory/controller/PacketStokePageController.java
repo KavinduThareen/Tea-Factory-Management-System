@@ -78,7 +78,7 @@ public class PacketStokePageController {
             new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.packetStokeSaved(dto);
-                setaiModel.saveId();
+                setaiModel.saveId(pid);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();
