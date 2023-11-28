@@ -14,13 +14,13 @@
             <Image url="@../img/verified%20Pw.png" />
          </image>
       </ImageView>
-      <TextField fx:id="newpwTxt" layoutX="235.0" layoutY="556.0" prefHeight="63.0" prefWidth="541.0" />
-      <TextField fx:id="confimepwTxt" layoutX="234.0" layoutY="695.0" prefHeight="63.0" prefWidth="541.0" />
-      <JFXButton layoutX="235.0" layoutY="874.0" onAction="#pwSaveOnAction" prefHeight="69.0" prefWidth="541.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Save Password">
+      <TextField fx:id="newpwTxt" layoutX="242.0" layoutY="604.0" prefHeight="55.0" prefWidth="435.0" stylesheets="@../style/textfield.css" />
+      <TextField fx:id="confimepwTxt" layoutX="242.0" layoutY="764.0" prefHeight="55.0" prefWidth="435.0" stylesheets="@../style/textfield.css" />
+      <JFXButton layoutX="242.0" layoutY="876.0" onAction="#pwSaveOnAction" prefHeight="69.0" prefWidth="443.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Save Password">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="uidTxt" layoutX="582.0" layoutY="451.0" prefHeight="44.0" prefWidth="350.0" promptText="userid" />
+      <TextField fx:id="uidTxt" layoutX="242.0" layoutY="462.0" prefHeight="55.0" prefWidth="435.0" stylesheets="@../style/textfield.css" />
    </children>
 </AnchorPane>

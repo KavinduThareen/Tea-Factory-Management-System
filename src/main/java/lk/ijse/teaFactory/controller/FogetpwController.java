@@ -7,7 +7,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.OtpDto;
 import lk.ijse.teaFactory.gmail.Gmailer;
+import lk.ijse.teaFactory.model.LoginDetailModel;
+import lk.ijse.teaFactory.model.OtpModel;
 
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Random;
 
@@ -28,9 +31,9 @@ public class FogetpwController {
 
     @FXML
     void emailOnAction(ActionEvent event) throws Exception {
-    //    email = emailTxt.getText();
+     //  email = emailTxt.getText();
         otp = generateNewOtp();
-       // sendOtp();
+     //   sendOtp();
 
 
         root.getChildren().clear();
@@ -57,20 +60,25 @@ public class FogetpwController {
     }
 
 
-    public int generateNewOtp() {
+    public int generateNewOtp() throws SQLException {
       //  int otp;
-
-
-
         do {
             Random random = new Random();
 
-            var type = new OtpPageController();
+          //  var type = new OtpPageController();
+            var model = new OtpModel();
+
 
             otp2 = random.nextInt(9999);
             if (otp2 > 1000){
                var otpDto = new OtpDto(otp2);
-               type.save(otpDto);
+             //  type.save(otpDto);
+             boolean a =  model.save(otpDto);
+
+             if (a){
+                 System.out.println("ok ok");
+             }
+
 
              //   var dto = new OtpDto(otp2);
 

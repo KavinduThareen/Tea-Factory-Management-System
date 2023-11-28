@@ -15,7 +15,9 @@ import lk.ijse.teaFactory.model.RegisterModel;
 
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 public class LoginPageController{
@@ -41,6 +43,8 @@ public class LoginPageController{
     @FXML
     void keyOnAction(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
+
+            log();
 
             loginroot.getChildren().clear();
             loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
@@ -73,6 +77,21 @@ public class LoginPageController{
 
          */
     }
+
+    public void log(){
+        long startTime = System.nanoTime();
+
+        long timestamp = startTime;
+        Date date = new Date(timestamp);
+
+        // Format the date using SimpleDateFormat
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = sdf.format(date);
+
+        System.out.println("Timestamp: " + timestamp + " milliseconds");
+        System.out.println("Formatted Date: " + formattedDate);
+    }
+
 
 
 /*
