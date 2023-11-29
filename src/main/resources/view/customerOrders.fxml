@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXClippedPane?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -80,5 +81,9 @@
             <Font size="18.0" />
          </font>
       </TextField>
+      <Label fx:id="tolLbl" layoutX="99.0" layoutY="311.0" prefHeight="40.0" prefWidth="244.0" text="Total">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
     </children>
 </AnchorPane>

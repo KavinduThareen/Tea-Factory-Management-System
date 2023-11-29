@@ -27,7 +27,7 @@ public class OrderDetailModel {
 
         pstm.setString(1, orderId);
         pstm.setString(2, tm.getItemId());
-        pstm.setString(3, tm.getWeigth());
+        pstm.setDouble(3, tm.getWeigth());
         pstm.setDouble(4, tm.getPayment());
 
         return pstm.executeUpdate() > 0;

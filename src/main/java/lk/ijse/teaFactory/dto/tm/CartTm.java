@@ -15,7 +15,7 @@ public class CartTm {
     private String cusid;
     private String descreption;
     private String catagary;
-    private String weigth;
+    private double weigth;
     private double payment;
     private LocalDate date;
     private JFXButton btnDelete;

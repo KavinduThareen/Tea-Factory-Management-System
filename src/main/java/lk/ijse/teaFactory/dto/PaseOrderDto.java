@@ -17,14 +17,14 @@ public class PaseOrderDto {
     private static String id;
     private String cId;
     private String catagary;
-    private String weigth;
+    private double weigth;
     private LocalDate date;
     private String descreption;
     private double payment;
     private String isCompleted;
     private List<CartTm> cartTmList = new ArrayList<>();
 
-    public PaseOrderDto(String id, String cId, String catagary, String weigth, LocalDate  date, String descreption, Double payment, List<CartTm> cartTmList) {
+    public PaseOrderDto(String id, String cId, String catagary, double weigth, LocalDate  date, String descreption, Double payment, List<CartTm> cartTmList) {
 
         this.id = id;
         this.cId = cId;

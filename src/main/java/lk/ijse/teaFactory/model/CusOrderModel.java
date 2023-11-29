@@ -129,7 +129,7 @@ public class CusOrderModel {
         return "O001";
     }
 
-    public boolean saveOrder(String orderId, String customerId, String catagary, String weigth, LocalDate date, String descreption, String payment) throws SQLException {
+    public boolean saveOrder(String orderId, String customerId, String catagary, double weigth, LocalDate date, String descreption, String payment) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "INSERT INTO orders VALUES(?, ?, ?, ?, ?,?,?)";
@@ -138,7 +138,7 @@ public class CusOrderModel {
             pstm.setString(1, orderId);
             pstm.setString(2, customerId);
             pstm.setString(3, catagary);
-            pstm.setString(4, weigth);
+            pstm.setDouble( 4, weigth);
             pstm.setString(5, String.valueOf(date));
             pstm.setString(6, descreption);
             pstm.setString(7, payment);

@@ -94,6 +94,9 @@ public class CustomerOrdersController {
     @FXML
     private JFXComboBox<String> itemIdTxt;
 
+    @FXML
+    private  Label tolLbl;
+
     private CustomerModel customerModel = new CustomerModel();
     private PacketStokeModel packetStokeModel = new PacketStokeModel();
     private CusOrderModel cusOrderModel = new CusOrderModel();
@@ -148,9 +151,11 @@ public class CustomerOrdersController {
         String cusid = cIdTxt.getValue();
         String descreption = descreptionTxt.getText();
         String catagary = (String) catagaryTxt.getValue();
-        String weigth = WeigthTxt.getText();
+        Double weigth = Double.valueOf(WeigthTxt.getText());
         LocalDate date = LocalDate.parse(dateTxt.getText());
-        Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
+        Double payment = Double.valueOf(paymentTxt.getText());
+        tolLbl.setText(String.valueOf(weigth * payment));
+      //  Double total =  Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
         JFXButton btnDelete = new JFXButton("Deleted");
 
 
@@ -376,14 +381,18 @@ public class CustomerOrdersController {
     @FXML
     void plaseOrderOnAction(ActionEvent event) throws SQLException {
 
+
            // int count = count;
             String id = idTxt.getText();
             String cId = cIdTxt.getValue();
             String catagary = catagaryTxt.getValue();
-            String weigth = WeigthTxt.getText();
+            Double weigth = Double.valueOf(WeigthTxt.getText());
             LocalDate date = LocalDate.parse(dateTxt.getText());
             String descreption = descreptionTxt.getText();
             Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
+
+                    //Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
+
 
             List<CartTm> cartTmList = new ArrayList<>();
             for (int i = 0; i < tbl.getItems().size(); i++) {

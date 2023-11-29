@@ -1,9 +1,6 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
-import lk.ijse.teaFactory.dto.CustomerDto;
-import lk.ijse.teaFactory.dto.EmployeeDto;
-import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.SupOrderDto;
 
 import java.sql.*;
@@ -62,12 +59,13 @@ public class SupOrderModel {
         return pstm.executeUpdate() > 0;
     }
 
-    public static boolean dropid(String id) throws SQLException {
+    public static boolean dropid(String id, String weigth) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "DELETE FROM supplier_orders WHERE s_orders_id = ?";
+        String sql = "UPDATE supplier_orders SET sup_stoke_weigth = sup_stoke_weigth - ? WHERE s_orders_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, id);
+        pstm.setString(1, weigth);
+        pstm.setString(2, id);
 
         return pstm.executeUpdate() > 0;
     }

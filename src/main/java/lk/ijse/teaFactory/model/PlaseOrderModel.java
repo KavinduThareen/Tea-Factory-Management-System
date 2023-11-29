@@ -16,11 +16,11 @@ public class PlaseOrderModel {
 
         // legal
 
-/*
+
             String orderId = placeOrderDto.getid();
             String customerId = placeOrderDto.getCId();
             String category = placeOrderDto.getCatagary();
-            String weight = placeOrderDto.getWeigth();
+            double weight = placeOrderDto.getWeigth();
             LocalDate date = placeOrderDto.getDate();
             String description = placeOrderDto.getDescreption();
             double payment = placeOrderDto.getPayment();
@@ -49,10 +49,10 @@ public class PlaseOrderModel {
                 connection.setAutoCommit(true);
             }
             return true;
-            */
+
 
  //  this type is correct but illigal
-
+/*
 
         String orderId = placeOrderDto.getid();
         String customerId = placeOrderDto.getCId();
@@ -86,6 +86,8 @@ public class PlaseOrderModel {
             connection.setAutoCommit(true);
         }
         return true;
+
+ */
 
 
 
