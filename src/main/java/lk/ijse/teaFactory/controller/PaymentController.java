@@ -8,8 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.EmployeeDto;
+import lk.ijse.teaFactory.dto.ErrorAnimation;
 import lk.ijse.teaFactory.dto.SalaryDto;
 import lk.ijse.teaFactory.dto.tm.SalaryTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
@@ -59,7 +63,7 @@ public class PaymentController {
     @FXML
     private AnchorPane root;
 
-
+    ErrorAnimation errora = new ErrorAnimation();
 
 
 
@@ -93,37 +97,21 @@ public class PaymentController {
 
     private boolean validate() {
 
+
         String idText = idTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[S][0-9]{3,}", idText);
         if (!isIDValidated) {
+            errora.animateError(idTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid Sid ID!").show();
             return false;
         }
-
-        String UidText = empIdTxt.getValue();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isUIDValidated = Pattern.matches("[E][0-9]{3,}", UidText);
-        if (!isUIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid emp ID!").show();
-            return false;
-        }
-
-
-      /*  String nameText = dateTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        boolean isNameValidated = Pattern.matches("[0-9]", nameText);
-        if (!isNameValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid date name").show();
-            return false;
-        }
-
-       */
 
         String addressText = countTxt.getText();
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("[0-9]{3,}", addressText);
         if (!isAddressValidated) {
+            errora.animateError(countTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid contac address").show();
             return false;
         }
@@ -273,6 +261,31 @@ public class PaymentController {
     }
 
 
+    @FXML
+    void searchOnAction(KeyEvent event) {
+
+        if (event.getCode() == KeyCode.ENTER) {
+
+            String id = idTxt.getText();
+
+            var model = new SalaryModel();
+            try {
+                SalaryDto salaryDto = model.searchPayment(id);
+//            System.out.println(customerDto);
+                if (salaryDto != null) {
+                    idTxt.setText(salaryDto.getId());
+                    empIdTxt.setValue(salaryDto.getEmpId());
+                    dateTxt.setValue(salaryDto.getDate().toLocalDate());
+                    countTxt.setText(salaryDto.getCount());
+
+                } else {
+                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }
+    }
 
 
 }

@@ -134,21 +134,21 @@ public class CustomerAddPageController {
             return false;
         }
 
-        String addressText = cusAddressTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
-        if (!isAddressValidated) {
-            errorAnimation.animateError(cusAddressTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
-            return false;
-        }
-
         String cantacText = cuscontacTxt.getText();
 //        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
             errorAnimation.animateError(cuscontacTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+            return false;
+        }
+
+        String addressText = cusAddressTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        if (!isAddressValidated) {
+            errorAnimation.animateError(cusAddressTxt);
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
             return false;
         }
 

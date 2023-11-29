@@ -15,7 +15,7 @@
 
 .table-view .corner {
     -fx-background-radius: 10;
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(220, 39, 39, 0);
 }
 
 .table-view .column-header-background{
@@ -35,16 +35,16 @@
     -fx-padding: 2 0 2 10px;
 }
 .table-row-cell:hover {
-    -fx-background-color: rgba(2, 227, 90, 0.07);
+    -fx-background-color: rgb(255, 255, 255);
     -fx-text-background-color: #8379e7;
 }
 .table-row-cell:odd{
-    -fx-background-color: #706e6e;
+    -fx-background-color: #ffffff;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 .table-row-cell:even{
-    -fx-background-color: #1dbbdd11;
+    -fx-background-color: rgba(255, 255, 255, 0.6);
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding:0.0em;
 }

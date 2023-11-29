@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.dto.ErrorAnimation;
 import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.tm.CompleteTm;
@@ -62,6 +63,8 @@ public class PacketStokePageController {
     @FXML
     private TextField weigthTxt;
 
+    ErrorAnimation errorAnimation = new ErrorAnimation();
+
     @FXML
     void addOnAction(ActionEvent event) {
         String pid = idTxt.getText();
@@ -96,6 +99,7 @@ public class PacketStokePageController {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[P][0-9]{3,}", idText);
         if (!isIDValidated) {
+            errorAnimation.animateError(idTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
         }
@@ -105,19 +109,21 @@ public class PacketStokePageController {
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
         if (!isNameValidated) {
+            errorAnimation.animateError(catagaryTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
             return false;
         }
-/*
+
         String addressText = weigthTxt.getText();
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("\\b(([0-9]\\d|[0-9]\\d\\,\\d{1,2}|[1]\\d\\d|[1]\\d\\d\\,\\d{1,2})\\b", addressText);
+        boolean isAddressValidated = Pattern.matches("\\d+(\\.\\d+)?", addressText);
         if (!isAddressValidated) {
+            errorAnimation.animateError(weigthTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
             return false;
         }
 
- */
+
 
         return true;
     }

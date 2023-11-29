@@ -10,10 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.db.DbConnection;
-import lk.ijse.teaFactory.dto.EmployeeDto;
-import lk.ijse.teaFactory.dto.LeavesStokeDto;
-import lk.ijse.teaFactory.dto.SupOrderDto;
-import lk.ijse.teaFactory.dto.SupplierDto;
+import lk.ijse.teaFactory.dto.*;
 import lk.ijse.teaFactory.dto.tm.SupOrderTm;
 import lk.ijse.teaFactory.model.EmployeeModel;
 import lk.ijse.teaFactory.model.LeavesStokeModel;
@@ -76,6 +73,8 @@ public class SupplierOrdersController {
     @FXML
     private TextField weigthTxt;
 
+    ErrorAnimation errora = new ErrorAnimation();
+
     @FXML
     void addOnAction(ActionEvent event) {
 
@@ -118,6 +117,7 @@ public class SupplierOrdersController {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[s][0-9]{3,}", idText);
         if (!isIDValidated) {
+            errora.animateError(sOidTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
         }
@@ -126,13 +126,19 @@ public class SupplierOrdersController {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isUIDValidated = Pattern.matches("[S][0-9]{3,}", UidText);
         if (!isUIDValidated) {
+            errora.animateError(sOidTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
         }
 
-
-
-
+        String addressText = weigthTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("\\d+(\\.\\d+)?", addressText);
+        if (!isAddressValidated) {
+            errora.animateError(weigthTxt);
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
 
 
         return true;

@@ -21,7 +21,7 @@
             <Image url="@../img/salorypage.png" />
          </image>
       </ImageView>
-      <TextField fx:id="idTxt" layoutX="1058.0" layoutY="183.0" prefHeight="44.0" prefWidth="403.0" promptText="d" style="-fx-background-color: tra;" />
+      <TextField fx:id="idTxt" layoutX="1058.0" layoutY="183.0" onKeyPressed="#searchOnAction" prefHeight="44.0" prefWidth="403.0" promptText="d" style="-fx-background-color: tra;" />
       <TextField fx:id="countTxt" layoutX="1058.0" layoutY="555.0" prefHeight="44.0" prefWidth="403.0" promptText="s" style="-fx-background-color: tra;" />
       <JFXButton layoutX="1053.0" layoutY="652.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory">
          <font>

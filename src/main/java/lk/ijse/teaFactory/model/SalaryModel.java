@@ -99,5 +99,29 @@ public class SalaryModel {
         return "S001";
     }
 
+    public SalaryDto searchPayment(String searchId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM salory WHERE salory_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, searchId); // Use the parameter name instead of 'id'
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        SalaryDto dto = null;
+
+        if (resultSet.next()) {
+            String resultId = resultSet.getString(1);  // Use a different variable name
+            String empid = resultSet.getString(2);
+            Date date = resultSet.getDate(3);
+            String contac = resultSet.getString(4);
+            String delete = resultSet.getString(5);
+
+            dto = new SalaryDto(resultId, empid, date, contac, delete);
+        }
+
+        return dto;
+    }
+
 
 }

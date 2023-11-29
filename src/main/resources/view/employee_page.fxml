@@ -19,22 +19,22 @@
             <Image url="@../img/Frame%2018.png" />
          </image>
       </ImageView>
-      <TextField fx:id="employeeIdTxt" layoutX="204.0" layoutY="123.0" onKeyPressed="#SearchOnAction" prefHeight="53.0" prefWidth="551.0" promptText="Employee Id" style="-fx-background-color: tra;">
+      <TextField fx:id="employeeIdTxt" layoutX="176.0" layoutY="116.0" onKeyPressed="#SearchOnAction" prefHeight="60.0" prefWidth="611.0" promptText="Employee Id" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="empNameTxt" layoutX="192.0" layoutY="229.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Name " style="-fx-background-color: tra;">
+      <TextField fx:id="empNameTxt" layoutX="175.0" layoutY="222.0" prefHeight="60.0" prefWidth="611.0" promptText="Employee Name " stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="empContacTxt" layoutX="193.0" layoutY="531.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee Contac" style="-fx-background-color: tra;">
+      <TextField fx:id="empContacTxt" layoutX="176.0" layoutY="531.0" prefHeight="60.0" prefWidth="611.0" promptText="Employee Contac" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="empAddressTxt" layoutX="192.0" layoutY="635.0" prefHeight="44.0" prefWidth="574.0" promptText="Employee address" style="-fx-background-color: tra;">
+      <TextField fx:id="empAddressTxt" layoutX="175.0" layoutY="628.0" prefHeight="60.0" prefWidth="611.0" promptText="Employee address" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
@@ -59,7 +59,7 @@
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <TextField fx:id="empGenderTxt" layoutX="514.0" layoutY="331.0" prefHeight="44.0" prefWidth="263.0" promptText="Gender" style="-fx-background-color: tra;">
+      <TextField fx:id="empGenderTxt" layoutX="498.0" layoutY="324.0" prefHeight="60.0" prefWidth="288.0" promptText="Gender" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font></TextField>
@@ -68,7 +68,7 @@
           <TableColumn fx:id="colSelectEmployeNmaes" prefWidth="571.0" text="Employee Names" />
         </columns>
       </TableView>
-      <JFXComboBox fx:id="uidTxt" layoutX="184.0" layoutY="429.0" prefHeight="53.0" prefWidth="594.0" stylesheets="@../style/comboBox.css" />
+      <JFXComboBox fx:id="uidTxt" focusColor="#405aa800" layoutX="175.0" layoutY="429.0" prefHeight="60.0" prefWidth="611.0" stylesheets="@../style/comboBox.css" unFocusColor="#4d4d4d00" />
       <DatePicker fx:id="empbdTxt" layoutX="184.0" layoutY="327.0" prefHeight="53.0" prefWidth="279.0" />
       <JFXButton layoutX="606.0" layoutY="840.0" onAction="#searchBtnOnAction" prefHeight="81.0" prefWidth="193.0" styleClass="button-with-style" stylesheets="@../style/clearbtn.css" text="Search">
          <font>

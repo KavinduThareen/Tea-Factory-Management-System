@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.EmployeeDto;
+import lk.ijse.teaFactory.dto.ErrorAnimation;
 import lk.ijse.teaFactory.dto.RegisterDto;
 import lk.ijse.teaFactory.dto.tm.EmployeeTm;
 import lk.ijse.teaFactory.model.CustomerModel;
@@ -61,6 +62,8 @@ public class EmployeePageController {
 
     @FXML
     private TableView<EmployeeTm> tbl2;
+
+    ErrorAnimation errora = new ErrorAnimation();
 
     @FXML
     void updateOnAction(ActionEvent event) {
@@ -158,15 +161,17 @@ public class EmployeePageController {
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isNameValidated = Pattern.matches("[E][0-9]{3,}", nameText);
         if (!isNameValidated) {
+            errora.animateError(employeeIdTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid employee name").show();
             return false;
         }
 
-        String idText = uidTxt.getValue();
+        String empname = empNameTxt.getText();
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isIDValidated = Pattern.matches("[U][0-9]{3,}", idText);
-        if (!isIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid user ID!").show();
+        boolean isnameValidated = Pattern.matches("[A-Za-z]{3,}", empname);
+        if (!isnameValidated) {
+            errora.animateError(empNameTxt);
+            new Alert(Alert.AlertType.ERROR, "Invalid name ID!").show();
             return false;
         }
 
@@ -175,32 +180,27 @@ public class EmployeePageController {
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isGenderValidated = Pattern.matches("(Male)|(Female)", genderText);
         if (!isGenderValidated) {
+            errora.animateError(empGenderTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid gender name").show();
             return false;
         }
-
-
-        String empname = empNameTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isnameValidated = Pattern.matches("[A-Za-z]{3,}", empname);
-        if (!isnameValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid name ID!").show();
-            return false;
-        }
-        String addressText = empAddressTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
-        if (!isAddressValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid addrees address").show();
-            return false;
-        }
-
 
         String cantacText = empContacTxt.getText();
 //        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
+            errora.animateError(empContacTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid con contac").show();
+            return false;
+        }
+
+
+        String addressText = empAddressTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        if (!isAddressValidated) {
+            errora.animateError(empAddressTxt);
+            new Alert(Alert.AlertType.ERROR, "Invalid addrees address").show();
             return false;
         }
 
