@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.dto.ErrorAnimation;
 import lk.ijse.teaFactory.dto.PacketStokeDto;
 import lk.ijse.teaFactory.dto.PaseOrderDto;
 import lk.ijse.teaFactory.dto.tm.CartTm;
@@ -97,6 +98,8 @@ public class CustomerOrdersController {
     @FXML
     private  Label tolLbl;
 
+    ErrorAnimation errorAnimation = new ErrorAnimation();
+
     private CustomerModel customerModel = new CustomerModel();
     private PacketStokeModel packetStokeModel = new PacketStokeModel();
     private CusOrderModel cusOrderModel = new CusOrderModel();
@@ -167,58 +170,50 @@ public class CustomerOrdersController {
         btnDelete.setPrefWidth(100);
         btnDelete.setPrefHeight(30);
 
-        if (!obList2.isEmpty()) {
-            for (int i = 0; i < tbl.getItems().size(); i++) {
-                if (colId.getCellData(i).equals(Itemid)) {
-                    int col_qty = (int) colPayment.getCellData(i);
-                    weigth += col_qty;
-                    payment = payment * Double.valueOf(weigth);
+        boolean isValidated = validate();
+
+        if (isValidated) {
+            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
 
 
-                    obList2.get(i).setWeigth(weigth);
-                    obList2.get(i).setPayment(payment);
+            if (!obList2.isEmpty()) {
+                for (int i = 0; i < tbl.getItems().size(); i++) {
+                    if (colId.getCellData(i).equals(Itemid)) {
+                        int col_qty = (int) colPayment.getCellData(i);
+                        weigth += col_qty;
+                        payment = payment * Double.valueOf(weigth);
 
-                    calculateTotal();
-                    tbl.refresh();
-                    return;
+
+                        obList2.get(i).setWeigth(weigth);
+                        obList2.get(i).setPayment(payment);
+
+                        calculateTotal();
+                        tbl.refresh();
+                        return;
+                    }
                 }
             }
+
+            var cartTm = new CartTm(Itemid, cusid, descreption, catagary, weigth, payment, date, btnDelete);
+
+            obList2.add(cartTm);
+
+            tbl.setItems(obList2);
+            calculateTotal();
+            // we.clear();
         }
-
-        var cartTm = new CartTm(Itemid, cusid,descreption, catagary, weigth, payment, date, btnDelete);
-
-        obList2.add(cartTm);
-
-        tbl.setItems(obList2);
-        calculateTotal();
-        // we.clear();
 
     }
 
     //   add now
     private boolean validate() {
 
-        String idText = itemIdTxt.getValue();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isIDValidated = Pattern.matches("[E][0-9]{3,}", idText);
-        if (!isIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
-            return false;
-        }
-
-        String UidText = cIdTxt.getValue();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isUIDValidated = Pattern.matches("[U][0-9]{3,}", UidText);
-        if (!isUIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
-            return false;
-        }
-
 
         String nameText = descreptionTxt.getText();
 //        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
         if (!isNameValidated) {
+            errorAnimation.animateError(descreptionTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
             return false;
         }
@@ -231,11 +226,12 @@ public class CustomerOrdersController {
             return false;
         }
 
-        String cantacText = WeigthTxt.getText();
-//        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
-        if (!isCantacValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+        String weight = WeigthTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isweightValidated = Pattern.matches("\\d+(\\.\\d+)?", weight);
+        if (!isweightValidated) {
+            errorAnimation.animateError(WeigthTxt);
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
             return false;
         }
 

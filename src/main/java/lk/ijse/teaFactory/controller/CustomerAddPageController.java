@@ -78,9 +78,9 @@ public class CustomerAddPageController {
         String cusname = cusnameTxt.getText();
         String cusAddress = cusAddressTxt.getText();
         String cusCantac = cuscontacTxt.getText();
-        String complete = "0";
+      //  String complete = "0";
 
-        var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac,complete);
+        var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac);
 
         var model = new CustomerModel();
        boolean isValidated = validate();
@@ -190,9 +190,9 @@ public class CustomerAddPageController {
         String cusname = cusnameTxt.getText();
         String cusAddress = cusAddressTxt.getText();
         String cusCantac = cuscontacTxt.getText();
-        String complete = "0";
+       // String complete = "0";
 
-        var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac,complete);
+        var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac);
 
         var model = new CustomerModel();
         try {

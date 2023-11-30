@@ -28,28 +28,28 @@
             <TableColumn fx:id="colDelete" prefWidth="131.0" text="delete" />
         </columns>
       </TableView>
-      <TextField fx:id="idTxt" layoutX="142.0" layoutY="221.0" onKeyPressed="#searchOnAction" prefHeight="44.0" prefWidth="415.0" promptText="id" style="-fx-background-color: tra;">
+      <TextField fx:id="idTxt" layoutX="137.0" layoutY="213.0" onKeyPressed="#searchOnAction" prefHeight="59.0" prefWidth="433.0" promptText="id" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="WeigthTxt" layoutX="152.0" layoutY="318.0" prefHeight="52.0" prefWidth="396.0" promptText="kg" style="-fx-background-color: tra;">
+      <TextField fx:id="WeigthTxt" layoutX="134.0" layoutY="318.0" prefHeight="59.0" prefWidth="433.0" promptText="kg" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="155.0" layoutY="733.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Leves Stoke">
+      <JFXButton layoutX="146.0" layoutY="718.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Leves Stoke">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
-      <JFXButton layoutX="154.0" layoutY="824.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Stoke">
+      <JFXButton layoutX="146.0" layoutY="800.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Stoke">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <DatePicker fx:id="sDateTxt" layoutX="154.0" layoutY="420.0" prefHeight="44.0" prefWidth="406.0" />
-      <DatePicker fx:id="eDateTxt" layoutX="147.0" layoutY="524.0" prefHeight="44.0" prefWidth="415.0" />
+      <DatePicker fx:id="sDateTxt" layoutX="140.0" layoutY="419.0" prefHeight="52.0" prefWidth="426.0" stylesheets="@../style/datePiker.css" />
+      <DatePicker fx:id="eDateTxt" layoutX="140.0" layoutY="520.0" prefHeight="51.0" prefWidth="426.0" stylesheets="@../style/datePiker.css" />
       <TextField fx:id="deleteTxt" layoutX="26.0" layoutY="12.0" prefHeight="26.0" prefWidth="159.0" />
-      <ComboBox fx:id="supplingidTxt" layoutX="149.0" layoutY="619.0" prefHeight="51.0" prefWidth="403.0" />
+      <ComboBox fx:id="supplingidTxt" layoutX="140.0" layoutY="618.0" prefHeight="52.0" prefWidth="426.0" stylesheets="@../style/comboBox.css" />
     </children>
 </AnchorPane>

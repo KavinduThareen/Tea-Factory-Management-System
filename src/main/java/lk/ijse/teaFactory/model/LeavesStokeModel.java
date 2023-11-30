@@ -15,14 +15,14 @@ public class LeavesStokeModel {
     public boolean addLeavesStoke(LeavesStokeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql =  "INSERT INTO leaves_stoke VALUES(?, ?, ?, ?,?)";
+        String sql =  "INSERT INTO leaves_stoke VALUES(?, ?, ?, ?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getId());
         pstm.setString(2, dto.getWeigth());
         pstm.setDate(3, dto.getSDate());
         pstm.setDate(4, dto.getEDate());
-        pstm.setString(5,"0");
+      //  pstm.setString(5,"0");
 
         boolean isSaved = pstm.executeUpdate() > 0;
         return isSaved;
@@ -63,9 +63,9 @@ public class LeavesStokeModel {
             String weigth = resultSet.getString(2);
             Date sDate = resultSet.getDate(3);
             Date eDate = resultSet.getDate(4);
-            String isCompleted = resultSet.getString(5);
+         //   String isCompleted = resultSet.getString(5);
 
-            var dto = new LeavesStokeDto(id,weigth,sDate,eDate,isCompleted);
+            var dto = new LeavesStokeDto(id,weigth,sDate,eDate);
             dtoList.add(dto);
         }
 
@@ -85,14 +85,14 @@ public class LeavesStokeModel {
     public boolean update(final LeavesStokeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE leaves_stoke SET l_weigth = ?, l_suppli_date = ?, l_s_expiredate = ?, isCompleted = ? WHERE leaves_s_id = ?";
+        String sql = "UPDATE leaves_stoke SET l_weigth = ?, l_suppli_date = ?, l_s_expiredate = ? WHERE leaves_s_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getWeigth());
         pstm.setDate(2, dto.getSDate());
         pstm.setDate(3, dto.getEDate());
-        pstm.setString(4, "0");
-        pstm.setString(5, dto.getId());
+       // pstm.setString(4, "0");
+        pstm.setString(4, dto.getId());
 
 
         return pstm.executeUpdate() > 0;
@@ -139,9 +139,9 @@ public class LeavesStokeModel {
             String weigth = resultSet.getString(2);
             Date sdate = resultSet.getDate(3);
             Date edate = resultSet.getDate(4);
-            String complete = resultSet.getString(5);
+         //   String complete = resultSet.getString(5);
 
-            dto = new LeavesStokeDto(lid,weigth,sdate,edate,complete);
+            dto = new LeavesStokeDto(lid,weigth,sdate,edate);
         }
         return dto;
     }

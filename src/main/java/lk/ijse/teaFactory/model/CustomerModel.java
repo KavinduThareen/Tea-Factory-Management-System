@@ -16,7 +16,7 @@ public class CustomerModel {
     public boolean customerSaved(final CustomerDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO customer VALUES(?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO customer VALUES(?, ?, ?, ?, ?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getCusid());
@@ -24,7 +24,7 @@ public class CustomerModel {
         pstm.setString(3, dto.getCusname());
         pstm.setString(4, dto.getCusAddress());
         pstm.setString(5, dto.getCusCantac());
-        pstm.setString(6,"0");
+       // pstm.setString(6,"0");
 
         boolean isSaved = pstm.executeUpdate() >0;
 
@@ -48,9 +48,9 @@ public class CustomerModel {
             String cusname = resultSet.getString(3);
             String cusaddress = resultSet.getString(4);
             String contac = resultSet.getString(5);
-            String isCompleted = resultSet.getString(6);
+           // String isCompleted = resultSet.getString(6);
 
-            var dto = new CustomerDto(cusid,empId,cusname,cusaddress,contac,isCompleted);
+            var dto = new CustomerDto(cusid,empId,cusname,cusaddress,contac);
             dtoList.add(dto);
         }
         return dtoList;
@@ -69,15 +69,15 @@ public class CustomerModel {
     public boolean updateCustomer(final CustomerDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE customer SET emp_id = ?, cus_name = ?, cus_address = ? ,cus_cantac = ?, isCompleted = ?   WHERE customer_id = ?";
+        String sql = "UPDATE customer SET emp_id = ?, cus_name = ?, cus_address = ? ,cus_cantac = ?  WHERE customer_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getEmpid());
         pstm.setString(2, dto.getCusname());
         pstm.setString(3, dto.getCusAddress());
         pstm.setString(4, dto.getCusCantac());
-        pstm.setString(5, "0");
-        pstm.setString(6, dto.getCusid());
+     //   pstm.setString(5, "0");
+        pstm.setString(5, dto.getCusid());
 
         return pstm.executeUpdate() > 0;
     }
@@ -124,9 +124,7 @@ public class CustomerModel {
                     resultSet.getString(2),
                     resultSet.getString(3),
                     resultSet.getString(4),
-                    resultSet.getString(5),
-                    resultSet.getString(6)
-
+                    resultSet.getString(5)
 
             );
 
@@ -169,8 +167,8 @@ public class CustomerModel {
             String name = resultSet.getString(3);
             String address = resultSet.getString(4);
             String cantac = resultSet.getString(5);
-            String complete = resultSet.getString(6);
-            dto = new CustomerDto(cus_id, empid, name , address,cantac,complete);
+         //   String complete = resultSet.getString(6);
+            dto = new CustomerDto(cus_id, empid, name , address,cantac);
         }
         return dto;
     }

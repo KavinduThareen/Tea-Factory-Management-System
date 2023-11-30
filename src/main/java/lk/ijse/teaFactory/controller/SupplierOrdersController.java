@@ -83,9 +83,9 @@ public class SupplierOrdersController {
        Date date = Date.valueOf(dateTxt.getValue());
        String weigth = weigthTxt.getText();
        int payment = (int) (Double.valueOf(paymentTxt.getText()) * Double.valueOf(weigthTxt.getText()));
-       String isDelete = "0";
 
-       var dto = new SupOrderDto(id,sId,date,weigth,payment,isDelete);
+
+       var dto = new SupOrderDto(id,sId,date,weigth,payment);
 
         var model = new SupOrderModel();
 
@@ -247,9 +247,9 @@ public class SupplierOrdersController {
         Date date = Date.valueOf(dateTxt.getValue());
         String weigth = weigthTxt.getText();
         int payment = Integer.parseInt(paymentTxt.getText());
-        String isDelete = "0";
 
-        var dto = new SupOrderDto(id,sId,date,weigth,payment,isDelete);
+
+        var dto = new SupOrderDto(id,sId,date,weigth,payment);
         var model = new SupOrderModel();
 
         try {

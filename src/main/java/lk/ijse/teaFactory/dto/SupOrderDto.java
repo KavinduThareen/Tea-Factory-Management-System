@@ -17,8 +17,5 @@ public class SupOrderDto {
     private Date date;
     private String weigth;
     private int payment;
-    private String isDelete;
-
-
 
 }

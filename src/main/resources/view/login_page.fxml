@@ -24,8 +24,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="usernameTxt" layoutX="1308.0" layoutY="356.0" prefHeight="49.0" prefWidth="396.0" style="-fx-background-color: tra;" />
-      <TextField fx:id="passwordTxt" layoutX="1308.0" layoutY="469.0" prefHeight="49.0" prefWidth="392.0" style="-fx-background-color: tra;" />
+      <TextField fx:id="usernameTxt" layoutX="1301.0" layoutY="356.0" prefHeight="55.0" prefWidth="424.0" stylesheets="@../style/textfield.css" />
+      <TextField fx:id="passwordTxt" layoutX="1302.0" layoutY="463.0" prefHeight="55.0" prefWidth="417.0" stylesheets="@../style/textfield.css" />
       <Button layoutX="1597.0" layoutY="529.0" mnemonicParsing="false" onAction="#fogetpwOnAction" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: tra;" text="Foget Password" />
    </children>
 </AnchorPane>

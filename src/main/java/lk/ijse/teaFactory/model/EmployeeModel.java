@@ -14,7 +14,7 @@ public class EmployeeModel {
 
         boolean isSaved = false;
 
-        String sql =  "INSERT INTO employee VALUES(?, ?, ?, ?,?,? ,?,?)";
+        String sql =  "INSERT INTO employee VALUES(?, ?, ?, ?,?,? ,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1,dto.getUId());
@@ -24,7 +24,7 @@ public class EmployeeModel {
         pstm.setString(5,dto.getEmployeeName());
         pstm.setString(6,dto.getEmpAddress());
         pstm.setString(7,dto.getEmpContac());
-        pstm.setString(8, "0");
+      //  pstm.setString(8, "0");
 
 
 
@@ -53,10 +53,10 @@ public class EmployeeModel {
             String employeeName = resultSet.getString(5);
             String empAddress = resultSet.getString(6);
             String empContac = resultSet.getString(7);
-            String delete = resultSet.getString(8);
+          //  String delete = resultSet.getString(8);
 
 
-            var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac,delete);
+            var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac);
             dtoList.add(dto);
         }
 
@@ -77,7 +77,7 @@ public class EmployeeModel {
     public boolean update(final EmployeeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE employee SET user_id = ?, emp_gender = ?, emp_bd = ?,employee_name = ?,address = ?,contac = ?,delet = ?  WHERE employeeid = ?";
+        String sql = "UPDATE employee SET user_id = ?, emp_gender = ?, emp_bd = ?,employee_name = ?,address = ?,contac = ? WHERE employeeid = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1,dto.getUId());
@@ -86,8 +86,8 @@ public class EmployeeModel {
         pstm.setString(4,dto.getEmployeeName());
         pstm.setString(5,dto.getEmpAddress());
         pstm.setString(6,dto.getEmpContac());
-        pstm.setString(7,"0");
-        pstm.setString(8, dto.getEmployeeId());
+      //  pstm.setString(7,"0");
+        pstm.setString(7, dto.getEmployeeId());
 
 
         return pstm.executeUpdate() > 0;
@@ -112,8 +112,7 @@ public class EmployeeModel {
                     resultSet.getDate(4),
                     resultSet.getString(5),
                     resultSet.getString(6),
-                    resultSet.getString(7),
-                    resultSet.getString(8)
+                    resultSet.getString(7)
 
 
             );
@@ -168,8 +167,8 @@ public class EmployeeModel {
             String employeeName = resultSet.getString(5);
             String empAddress = resultSet.getString(6);
             String empContac = resultSet.getString(7);
-            String complete = resultSet.getString(8);
-            dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac,complete);
+          //  String complete = resultSet.getString(8);
+            dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac);
         }
         return dto;
     }

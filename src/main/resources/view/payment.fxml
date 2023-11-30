@@ -21,8 +21,8 @@
             <Image url="@../img/salorypage.png" />
          </image>
       </ImageView>
-      <TextField fx:id="idTxt" layoutX="1058.0" layoutY="183.0" onKeyPressed="#searchOnAction" prefHeight="44.0" prefWidth="403.0" promptText="d" style="-fx-background-color: tra;" />
-      <TextField fx:id="countTxt" layoutX="1058.0" layoutY="555.0" prefHeight="44.0" prefWidth="403.0" promptText="s" style="-fx-background-color: tra;" />
+      <TextField fx:id="idTxt" layoutX="1045.0" layoutY="176.0" onKeyPressed="#searchOnAction" prefHeight="59.0" prefWidth="426.0" promptText="d" stylesheets="@../style/textfield.css" />
+      <TextField fx:id="countTxt" layoutX="1046.0" layoutY="547.0" prefHeight="59.0" prefWidth="426.0" promptText="s" stylesheets="@../style/textfield.css" />
       <JFXButton layoutX="1052.0" layoutY="637.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -40,8 +40,8 @@
             <TableColumn fx:id="coldelete" prefWidth="144.3333740234375" text="delete" />
         </columns>
       </TableView>
-      <JFXComboBox fx:id="empIdTxt" layoutX="1058.0" layoutY="307.0" prefHeight="44.0" prefWidth="403.0" />
-      <DatePicker fx:id="dateTxt" layoutX="1062.0" layoutY="433.0" prefHeight="44.0" prefWidth="397.0" />
+      <JFXComboBox fx:id="empIdTxt" focusColor="#405aa800" layoutX="1045.0" layoutY="302.0" prefHeight="52.0" prefWidth="426.0" stylesheets="@../style/comboBox.css" unFocusColor="#4d4d4d00" />
+      <DatePicker fx:id="dateTxt" layoutX="1045.0" layoutY="425.0" prefHeight="52.0" prefWidth="426.0" stylesheets="@../style/datePiker.css" />
       <JFXButton layoutX="1050.0" layoutY="763.0" onAction="#repoateOnAction" prefHeight="52.0" prefWidth="416.0" styleClass="button-with-style" stylesheets="@../style/clearbtn.css" text="Salary Repote">
          <font>
             <Font name="System Bold" size="18.0" />

@@ -15,5 +15,5 @@ public class CustomerDto {
     private String cusname;
     private String cusAddress;
     private String cusCantac;
-    private String isCompleted;
+ //   private String isCompleted;
 }

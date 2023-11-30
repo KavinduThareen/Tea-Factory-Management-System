@@ -15,5 +15,5 @@ public class LeavesStokeDto {
     private String weigth;
     private java.sql.Date sDate;
     private java.sql.Date eDate;
-    private String isCompleted;
+   // private String isCompleted;
 }

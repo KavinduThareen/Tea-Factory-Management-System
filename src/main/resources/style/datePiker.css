@@ -5,7 +5,7 @@
     -fx-background-color: lightgray;
 
     /* Text color */
-    -fx-text-fill: darkblue;
+    -fx-text-fill: #b5c7e3;
 
     /* Font size and style */
     -fx-font-size: 14px;
@@ -32,13 +32,13 @@
     -fx-background-color: lightblue;
 
     /* Text color of the highlighted date */
-    -fx-text-fill: darkblue;
+    -fx-text-fill: #b2b2f8;
 }
 
 /* Arrows for navigating through months */
 .arrow-button {
     /* Color of the arrow */
-    -fx-background-color: darkblue;
+    -fx-background-color: #9595e7;
 
     /* Arrow icon color */
     -fx-mark-color: white;
@@ -47,7 +47,7 @@
 /* Month and year label */
 .date-picker .month-year-pane {
     /* Text color of the month and year label */
-    -fx-text-fill: darkblue;
+    -fx-text-fill: #aeaeef;
 }
 
 /* Week number cell */
@@ -56,7 +56,7 @@
     -fx-background-color: lightgray;
 
     /* Text color of the week number */
-    -fx-text-fill: darkblue;
+    -fx-text-fill: #6666f6;
 }
 
 /* Day cell in the month view */
@@ -65,7 +65,7 @@
     -fx-background-color: lightgray;
 
     /* Text color of the day */
-    -fx-text-fill: darkblue;
+    -fx-text-fill: #b4b4f5;
 
     /* Border color of the day cell */
     -fx-border-color: darkgray;

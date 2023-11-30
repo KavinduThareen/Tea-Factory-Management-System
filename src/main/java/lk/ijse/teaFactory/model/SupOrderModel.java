@@ -11,7 +11,7 @@ public class SupOrderModel {
     public boolean SupOrderSaved(SupOrderDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO supplier_orders VALUES(?, ?, ?, ?,?,?)";
+        String sql = "INSERT INTO supplier_orders VALUES(?, ?, ?, ?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getId());
@@ -19,7 +19,6 @@ public class SupOrderModel {
         pstm.setDate(3, dto.getDate());
         pstm.setString(4, dto.getWeigth());
         pstm.setInt(5,dto.getPayment());
-        pstm.setString(6, "0");
 
         boolean isSaved = pstm.executeUpdate() > 0;
         return isSaved;
@@ -41,9 +40,8 @@ public class SupOrderModel {
             Date date = resultSet.getDate(3);
             String weigth = resultSet.getString(4);
             int payment = resultSet.getInt(5);
-            String isCompleted = resultSet.getString(6);
 
-            var dto = new SupOrderDto(id, sId, date, weigth,payment, isCompleted);
+            var dto = new SupOrderDto(id, sId, date, weigth,payment);
             dtoList.add(dto);
         }
         return dtoList;
@@ -73,15 +71,14 @@ public class SupOrderModel {
     public boolean update(final SupOrderDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE supplier_orders SET sup_id = ?, sup_date = ?, sup_stoke_weigth = ?,payment = ?, deleted = ? WHERE s_orders_id = ?";
+        String sql = "UPDATE supplier_orders SET sup_id = ?, sup_date = ?, sup_stoke_weigth = ?,payment = ? WHERE s_orders_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getSId());
         pstm.setDate(2, dto.getDate());
         pstm.setString(3, dto.getWeigth());
         pstm.setInt(4, dto.getPayment());
-        pstm.setString(5, "0");
-        pstm.setString(6, dto.getId());
+        pstm.setString(5, dto.getId());
 
         return pstm.executeUpdate() > 0;
     }
@@ -128,8 +125,7 @@ public class SupOrderModel {
                     resultSet.getString(2),
                     resultSet.getDate(3),
                     resultSet.getString(4),
-                    resultSet.getInt(5),
-                    resultSet.getString(6)
+                    resultSet.getInt(5)
             );
 
             dtoList.add(dto);

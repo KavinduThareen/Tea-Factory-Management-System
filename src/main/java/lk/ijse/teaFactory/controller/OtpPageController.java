@@ -47,23 +47,26 @@ public class OtpPageController implements Initializable {
     }
 
      */
-
+    int otp=0;
 
     @FXML
     void textOnAction(ActionEvent event) throws SQLException, IOException {
 
 
-        int otp=0;
+       // int otp=0;
 
         var model = new OtpModel();
         otp = model.load();
-        System.out.println("pakaya" + otp);
+
 
         boolean a = verifyOto(otp);
         if (a){
             delete(otp);
             root.getChildren().clear();
             root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/verifiedPage.fxml"))));
+        }
+        else {
+            new Alert(Alert.AlertType.CONFIRMATION, "Otp is wrong").show();
         }
 
         /*
@@ -155,6 +158,7 @@ public class OtpPageController implements Initializable {
     @FXML
     void resentOtpOnAction(ActionEvent event) throws SQLException {
 
+        delete(otp);
         fogetpwController.generateNewOtp();
 
     }

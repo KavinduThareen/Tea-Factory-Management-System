@@ -50,7 +50,7 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="WeigthTxt" layoutX="525.0" layoutY="219.0" prefHeight="57.0" prefWidth="276.0" promptText="Weigth" style="-fx-background-color: tra;">
+      <TextField fx:id="WeigthTxt" layoutX="525.0" layoutY="219.0" prefHeight="57.0" prefWidth="276.0" promptText="Weigth" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font></TextField>
@@ -76,7 +76,7 @@
          </font>
       </JFXButton>
       <JFXComboBox fx:id="itemIdTxt" focusColor="WHITE" layoutX="1179.0" layoutY="219.0" prefHeight="57.0" prefWidth="306.0" promptText="Packet ID" unFocusColor="WHITE" />
-      <TextField fx:id="descreptionTxt" layoutX="1090.0" layoutY="132.0" prefHeight="57.0" prefWidth="420.0" promptText="Descreption" style="-fx-background-color: tra;">
+      <TextField fx:id="descreptionTxt" layoutX="1090.0" layoutY="132.0" prefHeight="57.0" prefWidth="420.0" promptText="Descreption" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>

@@ -75,36 +75,10 @@ public class MainController {
 
     @FXML
     void profileOnAction(ActionEvent event) throws IOException {
-        try {
-            Node newContent = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/userProfile.fxml")));
 
-            // Create a fade transition for the new content
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), newContent);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(1);
-            fadeIn.setInterpolator(Interpolator.DISCRETE);
+        dashbordRoot.getChildren().clear();
+        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/userProfile.fxml"))));
 
-            // Create a translation transition for the new content
-            TranslateTransition translateIn = new TranslateTransition(Duration.seconds(0.5), newContent);
-            translateIn.setFromY(-50);
-            translateIn.setToY(0);
-            translateIn.setInterpolator(Interpolator.EASE_BOTH);
-
-            // Combine the fade and translation animations in parallel
-            ParallelTransition parallelTransition = new ParallelTransition(fadeIn, translateIn);
-
-            // Set an event handler to clear the root and play the animations
-            parallelTransition.setOnFinished(e -> {
-                dashbordRoot.getChildren().clear();
-                dashbordRoot.getChildren().add(newContent);
-            });
-
-            // Play the animations
-            parallelTransition.play();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle the exception appropriately
-        }
     }
 
 
@@ -114,8 +88,7 @@ public class MainController {
     @FXML
     void SupplierOnAction(ActionEvent event) throws IOException {
         dashbordRoot.getChildren().clear();
-        dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/supplier_page.fxml"))));
-
+       dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/supplier_page.fxml"))));
 
     }
 

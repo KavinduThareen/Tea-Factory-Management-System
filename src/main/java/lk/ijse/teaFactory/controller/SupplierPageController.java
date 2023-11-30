@@ -77,9 +77,9 @@ public class SupplierPageController {
         String name = nameTxt.getText();
         String address = Address.getText();
         String contac= Contac.getText();
-        String complete = "0";
+      //  String complete = "0";
 
-        var dto = new SupplierDto(id,name,address,contac,complete);
+        var dto = new SupplierDto(id,name,address,contac);
         var model = new SupplierModel();
         boolean isValidated = validate();
 
@@ -244,9 +244,9 @@ public class SupplierPageController {
         String name = nameTxt.getText();
         String address = Address.getText();
         String contac= Contac.getText();
-        String complete = "0";
+     //   String complete = "0";
 
-        var dto = new SupplierDto(id,name,address,contac,complete);
+        var dto = new SupplierDto(id,name,address,contac);
         var model = new SupplierModel();
 
         try {

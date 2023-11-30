@@ -11,6 +11,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.EmployeeDto;
+import lk.ijse.teaFactory.dto.ErrorAnimation;
 import lk.ijse.teaFactory.dto.LeavesStokeDto;
 import lk.ijse.teaFactory.dto.SupOrderDto;
 import lk.ijse.teaFactory.dto.tm.LeaveStokeTm;
@@ -58,6 +59,8 @@ public class LevesStokePageController {
     @FXML
     private ComboBox<String > supplingidTxt;
 
+    ErrorAnimation errorAnimation = new ErrorAnimation();
+
     @FXML
     private TableView<LeaveStokeTm> table;
 
@@ -70,9 +73,9 @@ public class LevesStokePageController {
         String weigth = WeigthTxt.getText();
         Date sDate = Date.valueOf(sDateTxt.getValue());
         Date eDate = Date.valueOf(eDateTxt.getValue());
-        String complete = "0";
+       // String complete = "0";
 
-        var dto = new LeavesStokeDto(id,weigth,sDate,eDate,complete);
+        var dto = new LeavesStokeDto(id,weigth,sDate,eDate);
 
 
         var model = new LeavesStokeModel();
@@ -103,11 +106,19 @@ public class LevesStokePageController {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[L][0-9]{3,}", idText);
         if (!isIDValidated) {
+            errorAnimation.animateError(WeigthTxt);
             new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
         }
 
-
+        String addressText = WeigthTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isAddressValidated = Pattern.matches("\\d+(\\.\\d+)?", addressText);
+        if (!isAddressValidated) {
+                errorAnimation.animateError(WeigthTxt);
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
 
         return true;
     }
@@ -237,9 +248,9 @@ public class LevesStokePageController {
         String weigth = WeigthTxt.getText();
         Date  sDate = Date.valueOf(sDateTxt.getValue());
         Date eDate = Date.valueOf(eDateTxt.getValue());
-        String complete = "0";
+       // String complete = "0";
 
-        var dto = new LeavesStokeDto(id,weigth,sDate,eDate,complete);
+        var dto = new LeavesStokeDto(id,weigth,sDate,eDate);
         var model = new LeavesStokeModel();
 
         try {

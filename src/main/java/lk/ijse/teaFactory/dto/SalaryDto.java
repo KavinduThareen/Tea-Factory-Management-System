@@ -14,5 +14,4 @@ public class SalaryDto {
     private String empId;
     private Date date;
     private String count;
-    private String delete;
 }

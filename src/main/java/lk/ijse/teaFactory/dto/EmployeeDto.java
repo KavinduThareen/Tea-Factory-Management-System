@@ -17,5 +17,5 @@ public class EmployeeDto {
     private String employeeName;
     private String empAddress;
     private String empContac;
-    private String isCompleted;
+  //  private String isCompleted;
 }

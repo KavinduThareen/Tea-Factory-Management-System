@@ -80,9 +80,9 @@ public class PaymentController {
          String empId = (String) empIdTxt.getValue();
          Date date = Date.valueOf(dateTxt.getValue());
          String count = countTxt.getText();
-         String delete = "0";
 
-        var dto = new SalaryDto(id,empId,date,count,delete);
+
+        var dto = new SalaryDto(id,empId,date,count);
 
         var model = new SalaryModel();
         boolean isValidated = validate();
@@ -134,9 +134,9 @@ public class PaymentController {
         String empId = (String) empIdTxt.getValue();
         Date date = Date.valueOf(dateTxt.getValue());
         String count = countTxt.getText();
-        String delete = "0";
 
-        var dto = new SalaryDto(id,empId,date,count,delete);
+
+        var dto = new SalaryDto(id,empId,date,count);
 
         var model = new SalaryModel();
         try {

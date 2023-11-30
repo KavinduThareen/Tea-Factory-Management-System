@@ -74,9 +74,9 @@ public class EmployeePageController {
         String employeeName = empNameTxt.getText();
         String empAddress = empAddressTxt.getText();
         String empContac = empContacTxt.getText();
-        String delete = "0";
+       // String delete = "0";
 
-        var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac,delete);
+        var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac);
         var model = new EmployeeModel();
 
         try {
@@ -104,9 +104,9 @@ public class EmployeePageController {
         String employeeName = empNameTxt.getText();
         String empAddress = empAddressTxt.getText();
         String empContac = empContacTxt.getText();
-        String delete = "0";
+       // String delete = "0";
 
-        var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac,delete);
+        var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac);
          var model = new EmployeeModel();
         boolean isValidated = validate();
 

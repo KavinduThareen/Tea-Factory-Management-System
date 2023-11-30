@@ -17,14 +17,14 @@ public class SupplierModel {
     public boolean supplierSaved(SupplierDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO supplier VALUES(?, ?, ?, ?,?)";
+        String sql = "INSERT INTO supplier VALUES(?, ?, ?, ?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, dto.getId());
         pstm.setString(2, dto.getName());
         pstm.setString(3, dto.getAddress());
         pstm.setString(4, dto.getContac());
-        pstm.setString(5, "0");
+     //   pstm.setString(5, "0");
 
         boolean isSaved = pstm.executeUpdate() > 0;
         return isSaved;
@@ -45,9 +45,9 @@ public class SupplierModel {
             String name = resultSet.getString(2);
             String address = resultSet.getString(3);
             String contac = resultSet.getString(4);
-            String isCompleted = resultSet.getString(5);
+          //  String isCompleted = resultSet.getString(5);
 
-            var dto = new SupplierDto(id, name, address, contac, isCompleted);
+            var dto = new SupplierDto(id, name, address, contac);
             dtoList.add(dto);
         }
         return dtoList;
@@ -65,15 +65,15 @@ public class SupplierModel {
     public boolean update(final SupplierDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE supplier SET sup_name = ?, sup_address = ?, sup_contac = ?,isCompleted = ? WHERE supplier_id = ?";
+        String sql = "UPDATE supplier SET sup_name = ?, sup_address = ?, sup_contac = ? WHERE supplier_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
 
         pstm.setString(1, dto.getName());
         pstm.setString(2, dto.getAddress());
         pstm.setString(3, dto.getContac());
-        pstm.setString(4, "0");
-        pstm.setString(5, dto.getId());
+       // pstm.setString(4, "0");
+        pstm.setString(4, dto.getId());
 
         return pstm.executeUpdate() > 0;
     }
@@ -118,8 +118,8 @@ public class SupplierModel {
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getString(5)
+                    resultSet.getString(4)
+                  //  resultSet.getString(5)
 
             );
 
@@ -145,9 +145,9 @@ public class SupplierModel {
             String name = resultSet.getString(2);
             String address = resultSet.getString(3);
             String cantac = resultSet.getString(4);
-            String complete = resultSet.getString(5);
+          //  String complete = resultSet.getString(5);
 
-            dto = new SupplierDto(sid, name, address , cantac,complete);
+            dto = new SupplierDto(sid, name, address , cantac);
         }
         return dto;
     }

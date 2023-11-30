@@ -44,8 +44,6 @@ public class LoginPageController{
     void keyOnAction(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
 
-            log();
-
             loginroot.getChildren().clear();
             loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
 
@@ -54,9 +52,7 @@ public class LoginPageController{
 
     @FXML
     void loginbtnOnAction(ActionEvent event) throws IOException, SQLException {
-        /*
 
-   //  login();
 
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
@@ -67,7 +63,7 @@ public class LoginPageController{
                 loginroot.getChildren().clear();
                 loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
 
-               return;
+                return;
             } else {
                 new Alert(Alert.AlertType.WARNING, "Invalid Username Or Passowrd").show();
             }
@@ -75,22 +71,10 @@ public class LoginPageController{
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
-         */
+
     }
 
-    public void log(){
-        long startTime = System.nanoTime();
 
-        long timestamp = startTime;
-        Date date = new Date(timestamp);
-
-        // Format the date using SimpleDateFormat
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String formattedDate = sdf.format(date);
-
-        System.out.println("Timestamp: " + timestamp + " milliseconds");
-        System.out.println("Formatted Date: " + formattedDate);
-    }
 
 
 
