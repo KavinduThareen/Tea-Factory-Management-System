@@ -55,5 +55,6 @@
          </font>
       </JFXButton>
       <DatePicker fx:id="expirTxt" layoutX="1048.0" layoutY="558.0" prefHeight="55.0" prefWidth="424.0" promptText="Expaire Date" stylesheets="@../style/datePiker.css" />
+      <TextField fx:id="leavesId" layoutX="1073.0" layoutY="68.0" prefHeight="25.0" prefWidth="263.0" />
     </children>
 </AnchorPane>

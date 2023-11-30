@@ -63,6 +63,11 @@ public class PacketStokePageController {
     @FXML
     private TextField weigthTxt;
 
+    @FXML
+    private TextField leavesId;
+
+    LeavesStokeModel leavesStokeModel = new LeavesStokeModel();
+
     ErrorAnimation errorAnimation = new ErrorAnimation();
 
     @FXML
@@ -71,6 +76,8 @@ public class PacketStokePageController {
         String catagory = catagaryTxt.getText();
         String   weigth = weigthTxt.getText();
         Date date = Date.valueOf(expirTxt.getValue());
+        String leavesStokeId = leavesId.getText();
+
 
         var dto = new PacketStokeDto(pid,catagory,weigth,date);
         var model = new PacketStokeModel();
@@ -81,6 +88,7 @@ public class PacketStokePageController {
             new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.packetStokeSaved(dto);
+                boolean drop = leavesStokeModel.drop(leavesStokeId,weigth);
                 setaiModel.saveId(pid);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();

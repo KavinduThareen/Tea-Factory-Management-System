@@ -42,23 +42,23 @@
             <Image url="@../img/customerOrders.png" />
          </image>
       </ImageView>
-      <TextField fx:id="idTxt" layoutX="90.0" layoutY="141.0" prefHeight="40.0" prefWidth="261.0" promptText="ID" style="-fx-background-color: tra;">
+      <TextField fx:id="idTxt" layoutX="90.0" layoutY="135.0" prefHeight="52.0" prefWidth="265.0" promptText="ID" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="paymentTxt" layoutX="98.0" layoutY="224.0" onAction="#paymentOnAction" prefHeight="52.0" prefWidth="276.0" promptText="1Kg Price" style="-fx-background-color: tra;">
+      <TextField fx:id="paymentTxt" layoutX="366.0" layoutY="219.0" onAction="#paymentOnAction" prefHeight="57.0" prefWidth="133.0" promptText="1Kg Price" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="WeigthTxt" layoutX="421.0" layoutY="225.0" prefHeight="46.0" prefWidth="306.0" promptText="Weigth" style="-fx-background-color: tra;">
+      <TextField fx:id="WeigthTxt" layoutX="525.0" layoutY="219.0" prefHeight="57.0" prefWidth="276.0" promptText="Weigth" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="dateTxt" layoutX="785.0" layoutY="223.0" prefHeight="51.0" prefWidth="282.0" promptText="Date" style="-fx-background-color: tra;">
+      <TextField fx:id="dateTxt" layoutX="829.0" layoutY="224.0" prefHeight="52.0" prefWidth="319.0" promptText="Date" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <JFXComboBox fx:id="cIdTxt" layoutX="393.0" layoutY="137.0" onAction="#cusidOnAction" prefHeight="51.0" prefWidth="276.0" promptText="Customer ID" unFocusColor="WHITE" />
+      <JFXComboBox fx:id="cIdTxt" layoutX="393.0" layoutY="131.0" onAction="#cusidOnAction" prefHeight="57.0" prefWidth="282.0" promptText="Customer ID" unFocusColor="WHITE" />
       <JFXComboBox fx:id="catagaryTxt" layoutX="727.0" layoutY="135.0" prefHeight="51.0" prefWidth="335.0" promptText="Catagary" unFocusColor="WHITE" />
       <JFXButton layoutX="79.0" layoutY="393.0" onAction="#addOnAction" prefHeight="57.0" prefWidth="221.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Add Order">
          <font>
@@ -75,15 +75,25 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXComboBox fx:id="itemIdTxt" focusColor="WHITE" layoutX="1137.0" layoutY="225.0" prefHeight="40.0" prefWidth="274.0" promptText="Packet ID" unFocusColor="WHITE" />
-      <TextField fx:id="descreptionTxt" layoutX="1100.0" layoutY="137.0" prefHeight="48.0" prefWidth="399.0" promptText="Descreption" style="-fx-background-color: tra;">
+      <JFXComboBox fx:id="itemIdTxt" focusColor="WHITE" layoutX="1179.0" layoutY="219.0" prefHeight="57.0" prefWidth="306.0" promptText="Packet ID" unFocusColor="WHITE" />
+      <TextField fx:id="descreptionTxt" layoutX="1090.0" layoutY="132.0" prefHeight="57.0" prefWidth="420.0" promptText="Descreption" style="-fx-background-color: tra;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label fx:id="tolLbl" layoutX="99.0" layoutY="311.0" prefHeight="40.0" prefWidth="244.0" text="Total">
+      <Label fx:id="tolLbl" layoutX="87.0" layoutY="219.0" prefHeight="57.0" prefWidth="210.0" text="Total">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Label>
+      <Label layoutX="727.0" layoutY="222.0" prefHeight="51.0" prefWidth="58.0" text="Kg">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="329.0" layoutY="221.0" prefHeight="57.0" prefWidth="33.0" text="Rs">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

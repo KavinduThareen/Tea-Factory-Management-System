@@ -29,6 +29,7 @@ public class Dashboard1Controller {
     @FXML
     private Label lblCus;
 
+
     @FXML
     public void initialize() throws SQLException {
         // Call the method to start updating the time

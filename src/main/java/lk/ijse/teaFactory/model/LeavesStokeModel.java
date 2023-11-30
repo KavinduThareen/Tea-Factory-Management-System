@@ -146,4 +146,15 @@ public class LeavesStokeModel {
         return dto;
     }
 
+    public static boolean drop(String id, String weigth) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "UPDATE leaves_stoke SET l_weigth = l_weigth - ? WHERE leaves_s_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, weigth);
+        pstm.setString(2, id);
+
+        return pstm.executeUpdate() > 0;
+    }
+
 }

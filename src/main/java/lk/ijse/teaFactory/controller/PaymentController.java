@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.ErrorAnimation;
@@ -20,7 +21,13 @@ import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.EmployeeModel;
 import lk.ijse.teaFactory.model.SalaryModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.InputStream;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
@@ -284,6 +291,28 @@ public class PaymentController {
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
+        }
+    }
+
+    @FXML
+    void repoateOnAction(ActionEvent event) {
+
+        try {
+            // Load the JasperReport template
+            InputStream resourceAsStream = getClass().getResourceAsStream("/report/SalaryRepoat.jrxml");
+            JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
+                    null,
+                    DbConnection.getInstance().getConnection());
+
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

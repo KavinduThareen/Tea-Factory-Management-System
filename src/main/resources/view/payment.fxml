@@ -23,11 +23,11 @@
       </ImageView>
       <TextField fx:id="idTxt" layoutX="1058.0" layoutY="183.0" onKeyPressed="#searchOnAction" prefHeight="44.0" prefWidth="403.0" promptText="d" style="-fx-background-color: tra;" />
       <TextField fx:id="countTxt" layoutX="1058.0" layoutY="555.0" prefHeight="44.0" prefWidth="403.0" promptText="s" style="-fx-background-color: tra;" />
-      <JFXButton layoutX="1053.0" layoutY="652.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory">
+      <JFXButton layoutX="1052.0" layoutY="637.0" onAction="#addOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add salory">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
-      <JFXButton layoutX="1053.0" layoutY="739.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="414.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="update">
+      <JFXButton layoutX="1050.0" layoutY="699.0" onAction="#updateOnAction" prefHeight="52.0" prefWidth="416.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="update">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
@@ -42,5 +42,10 @@
       </TableView>
       <JFXComboBox fx:id="empIdTxt" layoutX="1058.0" layoutY="307.0" prefHeight="44.0" prefWidth="403.0" />
       <DatePicker fx:id="dateTxt" layoutX="1062.0" layoutY="433.0" prefHeight="44.0" prefWidth="397.0" />
+      <JFXButton layoutX="1050.0" layoutY="763.0" onAction="#repoateOnAction" prefHeight="52.0" prefWidth="416.0" styleClass="button-with-style" stylesheets="@../style/clearbtn.css" text="Salary Repote">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

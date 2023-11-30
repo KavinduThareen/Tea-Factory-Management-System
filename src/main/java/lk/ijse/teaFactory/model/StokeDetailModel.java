@@ -22,12 +22,13 @@ public class StokeDetailModel {
         } // The try-with-resources statement automatically closes the PreparedStatement and Connection
     }
 
-    public void saveId2(String id) throws SQLException {
+    public void saveId2(LeavesStokeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "INSERT INTO stoke_detailse (l_id) VALUES (?)";
         try (PreparedStatement pstm = connection.prepareStatement(sql)) {
-            pstm.setString(1, id);
+            pstm.setString(1,dto.getId());
+            System.out.println(dto.getId());
 
             // Execute the query
             pstm.executeUpdate();
