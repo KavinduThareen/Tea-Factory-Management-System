@@ -83,7 +83,7 @@ public class CustomerModel {
     }
 
 
-    public static String generateNextOrderId() throws SQLException {
+    public static String generateNextcusId() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT customer_id FROM customer ORDER BY  customer_id DESC LIMIT 1";

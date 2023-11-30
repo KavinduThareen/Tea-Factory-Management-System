@@ -67,19 +67,23 @@ public class LevesStokePageController {
     @FXML
     void addBtnOnAction(ActionEvent event) {
 
-        String sid = (String) supplingidTxt.getValue();
+       leavesAdd();
+    }
 
+    public String  leavesAdd(){
+
+        String sid = (String) supplingidTxt.getValue();
         String id = idTxt.getText();
         String weigth = WeigthTxt.getText();
         Date sDate = Date.valueOf(sDateTxt.getValue());
         Date eDate = Date.valueOf(eDateTxt.getValue());
-       // String complete = "0";
+        // String complete = "0";
 
         var dto = new LeavesStokeDto(id,weigth,sDate,eDate);
 
 
         var model = new LeavesStokeModel();
-        var stokeModel = new StokeDetailModel();
+      //  var stokeModel = new StokeDetailModel();
         var model2 = new SupOrderModel();
 
         boolean isValidated = validate();
@@ -89,7 +93,7 @@ public class LevesStokePageController {
             try {
                 boolean isSaved = model.addLeavesStoke(dto);
                 boolean isSaved2 = model2.dropid(sid,weigth);
-                stokeModel.saveId2(dto);
+
                 if (isSaved && isSaved2) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();
@@ -98,7 +102,10 @@ public class LevesStokePageController {
                 throw new RuntimeException(e);
             }
         }
+        return id;
     }
+
+
 
     private boolean validate() {
 

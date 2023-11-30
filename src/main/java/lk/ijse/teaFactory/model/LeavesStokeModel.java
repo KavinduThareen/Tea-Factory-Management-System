@@ -49,7 +49,7 @@ public class LeavesStokeModel {
 
  */
 
-    public List<LeavesStokeDto> loadAll() throws SQLException {
+    public static List<LeavesStokeDto> loadAll() throws SQLException {
         Connection connection =DbConnection.getInstance().getConnection();
 
         String sql =  "SELECT * FROM leaves_stoke";
@@ -155,6 +155,35 @@ public class LeavesStokeModel {
         pstm.setString(2, id);
 
         return pstm.executeUpdate() > 0;
+    }
+
+    public static List<EmployeeDto> loadAllItems() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM employee";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        List<EmployeeDto> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            var dto = new EmployeeDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getDate(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6),
+                    resultSet.getString(7)
+
+
+            );
+
+            dtoList.add(dto);
+        }
+
+        return dtoList;
     }
 
 }

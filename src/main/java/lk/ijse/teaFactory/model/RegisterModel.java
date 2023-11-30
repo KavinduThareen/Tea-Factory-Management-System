@@ -149,4 +149,25 @@ public boolean registerUser( RegisterDto dto) throws SQLException {
         return pstm.executeUpdate() > 0;
     }
 
+    public String findUserIdByUsername(String username) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT userid FROM user WHERE username = ?";
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setString(1, username);
+
+            try (ResultSet resultSet = pstm.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("userid");
+                } else {
+                    // Handle the case when the username is not found
+                    return null; // You can return a special value or throw an exception
+                }
+            }
+        }
+    }
+
+
+
+
 }

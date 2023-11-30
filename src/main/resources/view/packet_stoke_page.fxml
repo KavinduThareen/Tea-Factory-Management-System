@@ -2,7 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXClippedPane?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -29,32 +31,37 @@
             <TableColumn fx:id="colDelet" prefWidth="182.0" text="delete" />
         </columns>
       </TableView>
-      <TextField fx:id="idTxt" layoutX="1044.0" layoutY="183.0" onKeyPressed="#searchOnAction" prefHeight="55.0" prefWidth="432.0" promptText="PacketId" style="-fx-background-color: tra;">
+      <TextField fx:id="idTxt" layoutX="1044.0" layoutY="309.0" onKeyPressed="#searchOnAction" prefHeight="55.0" prefWidth="432.0" promptText="PacketId" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="catagaryTxt" layoutX="1045.0" layoutY="306.0" prefHeight="55.0" prefWidth="432.0" promptText="Catogary" style="-fx-background-color: tra;">
+      <TextField fx:id="catagaryTxt" layoutX="1044.0" layoutY="432.0" prefHeight="55.0" prefWidth="432.0" promptText="Catogary" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="weigthTxt" layoutX="1044.0" layoutY="429.0" prefHeight="55.0" prefWidth="432.0" promptText="Weigth" style="-fx-background-color: tra;">
+      <TextField fx:id="weigthTxt" layoutX="1044.0" layoutY="555.0" prefHeight="55.0" prefWidth="432.0" promptText="Weigth" stylesheets="@../style/textfield.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="1055.0" layoutY="651.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Packet">
+      <JFXButton layoutX="1062.0" layoutY="766.0" onAction="#addOnAction" prefHeight="64.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Packet">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="1055.0" layoutY="749.0" onAction="#updateOnAction" prefHeight="64.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Packet">
+      <JFXButton layoutX="1055.0" layoutY="853.0" onAction="#updateOnAction" prefHeight="64.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Update Packet">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <DatePicker fx:id="expirTxt" layoutX="1048.0" layoutY="558.0" prefHeight="55.0" prefWidth="424.0" promptText="Expaire Date" stylesheets="@../style/datePiker.css" />
-      <TextField fx:id="leavesId" layoutX="1073.0" layoutY="68.0" prefHeight="25.0" prefWidth="263.0" />
+      <DatePicker fx:id="expirTxt" layoutX="1048.0" layoutY="680.0" prefHeight="55.0" prefWidth="424.0" promptText="Expaire Date" stylesheets="@../style/datePiker.css" />
+      <Label layoutX="1385.0" layoutY="557.0" prefHeight="55.0" prefWidth="52.0" text="Kg">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="leavesId" focusColor="#405aa800" layoutX="1048.0" layoutY="184.0" prefHeight="55.0" prefWidth="424.0" stylesheets="@../style/comboBox.css" unFocusColor="#4d4d4d00" />
     </children>
 </AnchorPane>

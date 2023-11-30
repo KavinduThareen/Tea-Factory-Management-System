@@ -9,15 +9,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.LoginDto;
-import lk.ijse.teaFactory.model.LoginModel;
+import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.dto.LoginDetailsDto;
+import lk.ijse.teaFactory.model.LoginDetailModel;
 import lk.ijse.teaFactory.model.RegisterModel;
 
 
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class LoginPageController{
@@ -38,6 +41,7 @@ public class LoginPageController{
     private TextField usernameTxt;
 
 
+    RegisterModel registerModel = new RegisterModel();
 
 
     @FXML
@@ -63,6 +67,23 @@ public class LoginPageController{
                 loginroot.getChildren().clear();
                 loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
 
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+                String  inTime = ((LocalDateTime.now().format(formatter)));
+               // System.out.println(inTime);
+
+                Date date = Date.valueOf((LocalDate.now().toString()));
+               // System.out.println(date);
+
+                String uid = registerModel.findUserIdByUsername(username);
+              //  System.out.println(uid);
+
+                loginDetail(inTime , date ,uid);
+
+
+
+
+
+
                 return;
             } else {
                 new Alert(Alert.AlertType.WARNING, "Invalid Username Or Passowrd").show();
@@ -70,6 +91,22 @@ public class LoginPageController{
         } catch (SQLException | IOException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    public void loginDetail(String inTime, Date date, String uid) throws SQLException {
+
+        LoginDetailModel model = new LoginDetailModel();
+        String userid = uid;
+        String intime = inTime;
+        Date loginDate = date;
+
+        var dto = new LoginDetailsDto(userid,intime,loginDate);
+        boolean isSaved = model.logdetail(dto);
+
+        if (isSaved){
+            System.out.println("saved");
+        }
+
 
 
     }

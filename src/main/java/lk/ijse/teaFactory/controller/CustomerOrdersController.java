@@ -161,9 +161,7 @@ public class CustomerOrdersController {
       //  Double total =  Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
         JFXButton btnDelete = new JFXButton("Deleted");
 
-
-
-         setRemoveBtnAction(btnDelete);
+        setRemoveBtnAction(btnDelete);
         btnDelete.setCursor(Cursor.HAND);
         btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");
 
@@ -173,8 +171,7 @@ public class CustomerOrdersController {
         boolean isValidated = validate();
 
         if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
-
+            new Alert(Alert.AlertType.INFORMATION, "Order Saved Successfully!").show();
 
             if (!obList2.isEmpty()) {
                 for (int i = 0; i < tbl.getItems().size(); i++) {
@@ -251,9 +248,9 @@ public class CustomerOrdersController {
     private void loadCusOrdersId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<CustomerDto> empList = CustomerModel.loadAllItems();
+            List<CustomerDto> cusList = CustomerModel.loadAllItems();
 
-            for (CustomerDto cusODto : empList) {
+            for (CustomerDto cusODto : cusList) {
                 obList.add(cusODto.getCusid());
             }
 

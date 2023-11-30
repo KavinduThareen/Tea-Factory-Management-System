@@ -1,6 +1,7 @@
 package lk.ijse.teaFactory.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,15 +12,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.ErrorAnimation;
-import lk.ijse.teaFactory.dto.LeavesStokeDto;
-import lk.ijse.teaFactory.dto.PacketStokeDto;
+import lk.ijse.teaFactory.dto.*;
 import lk.ijse.teaFactory.dto.tm.CompleteTm;
 import lk.ijse.teaFactory.dto.tm.PacketStokeTm;
-import lk.ijse.teaFactory.model.CustomerModel;
-import lk.ijse.teaFactory.model.LeavesStokeModel;
-import lk.ijse.teaFactory.model.PacketStokeModel;
-import lk.ijse.teaFactory.model.StokeDetailModel;
+import lk.ijse.teaFactory.model.*;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -63,8 +59,11 @@ public class PacketStokePageController {
     @FXML
     private TextField weigthTxt;
 
+    LevesStokePageController levesStokePageController = new LevesStokePageController();
+
+
     @FXML
-    private TextField leavesId;
+    private JFXComboBox<String > leavesId;
 
     LeavesStokeModel leavesStokeModel = new LeavesStokeModel();
 
@@ -76,21 +75,26 @@ public class PacketStokePageController {
         String catagory = catagaryTxt.getText();
         String   weigth = weigthTxt.getText();
         Date date = Date.valueOf(expirTxt.getValue());
-        String leavesStokeId = leavesId.getText();
+        String leavesStokeId = leavesId.getValue();
 
 
         var dto = new PacketStokeDto(pid,catagory,weigth,date);
         var model = new PacketStokeModel();
         boolean isValidated = validate();
-        var setaiModel = new StokeDetailModel();
+        var stokemodel = new StokeDetailModel();
 
         if (isValidated) {
             new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.packetStokeSaved(dto);
                 boolean drop = leavesStokeModel.drop(leavesStokeId,weigth);
-                setaiModel.saveId(pid);
-                if (isSaved) {
+
+              String lid = levesStokePageController.leavesAdd();
+
+                var dto2 = new StokeDeatailDto(pid,lid);
+                boolean saved = stokemodel.stokedetail(dto2);
+
+                if (isSaved && saved ) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();
                 }
@@ -121,7 +125,6 @@ public class PacketStokePageController {
             new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
             return false;
         }
-
         String addressText = weigthTxt.getText();
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("\\d+(\\.\\d+)?", addressText);
@@ -134,6 +137,21 @@ public class PacketStokePageController {
 
 
         return true;
+    }
+
+    private void loadLeavesId() {
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        try {
+            List<LeavesStokeDto> empList = LeavesStokeModel.loadAll();
+
+            for (LeavesStokeDto leavesDto : empList) {
+                obList.add(leavesDto.getId());
+            }
+
+            leavesId.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -237,6 +255,7 @@ public class PacketStokePageController {
         setCellValueFactory();
         loadAll();
         generateNextCusId();
+        loadLeavesId();
     }
 
     private void generateNextCusId() {

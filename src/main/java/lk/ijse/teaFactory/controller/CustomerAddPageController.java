@@ -112,7 +112,7 @@ public class CustomerAddPageController {
         boolean isIDValidated = Pattern.matches("[C][0-9]{3,}", idText);
         if (!isIDValidated) {
             errorAnimation.animateError(cusidTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+           // new Alert(Alert.AlertType.ERROR, "Invalid  ID!").show();
             return false;
         }
 
@@ -120,7 +120,7 @@ public class CustomerAddPageController {
 //        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isUIDValidated = Pattern.matches("[E][0-9]{3,}", UidText);
         if (!isUIDValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+          //  new Alert(Alert.AlertType.ERROR, "Invalid  ID!").show();
             return false;
         }
 
@@ -139,7 +139,7 @@ public class CustomerAddPageController {
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
             errorAnimation.animateError(cuscontacTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+           // new Alert(Alert.AlertType.ERROR, "Invalid contac").show();
             return false;
         }
 
@@ -148,7 +148,7 @@ public class CustomerAddPageController {
         boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
         if (!isAddressValidated) {
             errorAnimation.animateError(cusAddressTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+          //  new Alert(Alert.AlertType.ERROR, "Invalid  address").show();
             return false;
         }
 
@@ -174,8 +174,8 @@ public class CustomerAddPageController {
 
     private void generateNextCusId() {
         try {
-            String orderId = CustomerModel.generateNextOrderId();
-            cusidTxt.setText(orderId);
+            String cusId = CustomerModel.generateNextcusId();
+            cusidTxt.setText(cusId);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
