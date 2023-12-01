@@ -2,20 +2,15 @@ package lk.ijse.teaFactory.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.RegisterDto;
-import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.RegisterModel;
-import lk.ijse.teaFactory.model.SupplierModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Objects;
 
 public class UserProfileController {
 
@@ -44,8 +39,18 @@ public class UserProfileController {
 
     @FXML
     void deleteaccOnAction(ActionEvent event) {
-        String id = idTxt.getText();
-        deleteItem(id);
+        if (idTxt == null) {
+            new Alert(Alert.AlertType.CONFIRMATION, " enter user id").show();
+        }
+        else {
+            String id = idTxt.getText();
+            deleteItem(id);
+        }
+    }
+
+    public void deleteid(String uid){
+
+
     }
 
     private void deleteItem(String id) {

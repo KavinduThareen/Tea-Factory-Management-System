@@ -143,25 +143,12 @@ public class OtpPageController implements Initializable {
     private void delete(int otp) {
         try {
             boolean isDeleted = OtpModel.delete(otp);
-            if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
 
-    @FXML
-    void tOnAction(ActionEvent event) throws IOException {
-
-    }
-
-    @FXML
-    void resentOtpOnAction(ActionEvent event) throws SQLException {
-
-        delete(otp);
-        fogetpwController.generateNewOtp();
-
-    }
 
 
     @Override

@@ -56,7 +56,7 @@ public class Gmailer {
     }
 
     public static boolean setEmailCom(String email, int randNum) throws Exception {
-        boolean b = new Gmailer().sendMail("Your, OptimaxVisions new account OTP", "<!DOCTYPE html>\n" +
+        boolean b = new Gmailer().sendMail("Your, GreenLeaf Tea new account OTP", "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<head>\n" +
                 "    <style>\n" +

@@ -202,8 +202,26 @@ public class PacketStokeModel {
         return dto;
     }
 
+    public int stokeCount() throws SQLException {
+        int rowCount = 0;
+        Connection connection = DbConnection.getInstance().getConnection();
 
-  // this type is correct but illigal
+        String sql = "SELECT SUM(s_weigth) AS total_weight FROM packet_stoke";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+                rowCount = resultSet.getInt("total_weight");
+                System.out.println("Number of rows: " + rowCount);
+            }
+        }
+        return rowCount;
+    }
+
+
+
+    // this type is correct but illigal
 
 
 /*

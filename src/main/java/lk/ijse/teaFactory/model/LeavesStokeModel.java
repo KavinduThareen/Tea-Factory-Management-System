@@ -186,4 +186,21 @@ public class LeavesStokeModel {
         return dtoList;
     }
 
+    public int stokeCount() throws SQLException {
+        int rowCount = 0;
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT SUM(l_weigth) AS total_weight FROM leaves_stoke";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+                rowCount = resultSet.getInt("total_weight");
+                System.out.println("Number of rows: " + rowCount);
+            }
+        }
+        return rowCount;
+    }
+
 }

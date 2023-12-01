@@ -21,6 +21,7 @@ public class FogetpwController {
 
      //"kavindutharin@gmail.com"
 
+
     @FXML
     private AnchorPane root;
     private String email;
@@ -31,9 +32,9 @@ public class FogetpwController {
 
     @FXML
     void emailOnAction(ActionEvent event) throws Exception {
-     //  email = emailTxt.getText();
+        email = emailTxt.getText();
         otp = generateNewOtp();
-     //   sendOtp();
+        sendOtp();
 
 
         root.getChildren().clear();

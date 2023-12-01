@@ -39,9 +39,10 @@ public class LoginPageController{
 
     @FXML
     private TextField usernameTxt;
+     private RegisterModel registerModel = new RegisterModel();
 
 
-    RegisterModel registerModel = new RegisterModel();
+
 
 
     @FXML
@@ -75,7 +76,8 @@ public class LoginPageController{
                // System.out.println(date);
 
                 String uid = registerModel.findUserIdByUsername(username);
-              //  System.out.println(uid);
+
+
 
                 loginDetail(inTime , date ,uid);
 
