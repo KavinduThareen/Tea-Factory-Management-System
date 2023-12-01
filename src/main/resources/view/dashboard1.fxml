@@ -122,9 +122,9 @@
             <Font name="System Bold" size="64.0" />
          </font>
       </Label>
-      <Label layoutX="984.0" layoutY="684.0" prefHeight="50.0" prefWidth="161.0" text="Packet Sell">
+      <Label layoutX="972.0" layoutY="683.0" prefHeight="50.0" prefWidth="161.0" text="Packet Selling">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font></Label>
       <Label layoutX="1074.0" layoutY="763.0" prefHeight="64.0" prefWidth="39.0" text="Kg">
          <font>
@@ -135,9 +135,9 @@
          <font>
             <Font name="System Bold" size="48.0" />
          </font></Label>
-      <Label layoutX="1251.0" layoutY="679.0" prefHeight="57.0" prefWidth="202.0" text="Employee Attendent">
+      <Label layoutX="1241.0" layoutY="679.0" prefHeight="57.0" prefWidth="234.0" text="Employee Attendent">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font></Label>
       <JFXButton layoutX="910.0" layoutY="884.0" onAction="#qrOnAction" prefHeight="64.0" prefWidth="575.0" styleClass="button-with-style" stylesheets="@../style/Savebtn.css" text="Attendent">
          <font>

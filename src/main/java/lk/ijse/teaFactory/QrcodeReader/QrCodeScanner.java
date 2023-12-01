@@ -15,9 +15,13 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class QrCodeScanner {
-    public static ArrayList<Integer> scannedValues = new ArrayList<>();
+
+   // public static ArrayList<Integer> scannedValues = new ArrayList<>();
+    public static ArrayList<String> scannedValues = new ArrayList<>();
     //String[][] details = JDBC.getDetails("ticket",4);
     public static void qrCodeScan() {
+
+
         Webcam webcam = Webcam.getDefault();   //Generate Webcam Object
         webcam.setViewSize(new Dimension(320,240));
         WebcamPanel webcamPanel = new WebcamPanel(webcam);
@@ -37,7 +41,8 @@ public class QrCodeScanner {
                 Result result = new MultiFormatReader().decode(bitmap);
                 if(result.getText() != null) {
                     System.out.println(result.getText());
-                    int value = Integer.parseInt(result.getText());
+                  //  int value = Integer.parseInt(result.getText());
+                    String value = result.getText();
 
                     LocalDate date = LocalDate.now();
                     LocalTime time = LocalTime.now();
@@ -47,6 +52,8 @@ public class QrCodeScanner {
                     } else {
                         scannedValues.remove(Integer.valueOf(value));
                     }
+
+
 
                    // JDBC.setDetails("INSERT INTO turtlescare.ticket (issueDate, issueTime, code) VALUES ('"+ date +"', '"+ time +"', '" + value +"')");
                     try {
