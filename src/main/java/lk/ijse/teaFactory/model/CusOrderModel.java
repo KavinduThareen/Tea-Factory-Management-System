@@ -9,36 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CusOrderModel {
-/*
-    public boolean cusOrdersSaved (CusOrderDto dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "INSERT INTO orders VALUES(?, ?, ?, ?, ?,?,?,?)";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        pstm.setString(1, dto.getId());
-        pstm.setString(2, dto.getCId());
-        pstm.setString(3, dto.getCatagary());
-        pstm.setString(4, dto.getWeigth());
-        pstm.setString(5, dto.getDate());
-        pstm.setString(6, dto.getDescreption());
-        pstm.setDouble(7,dto.getPayment());
-        pstm.setString(8,"0");
-
-        boolean isSaved = pstm.executeUpdate() >0;
-
-
-        return isSaved;
-    }
-
- */
-
-
-
-
-
-
-
     public List<CusOrderDto> loadAll() throws SQLException {
         Connection connection =DbConnection.getInstance().getConnection();
 
@@ -65,8 +35,6 @@ public class CusOrderModel {
         return dtoList;
     }
 
-
-
     public static boolean deleteItem(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -76,33 +44,6 @@ public class CusOrderModel {
 
         return pstm.executeUpdate() > 0;
     }
-
-/*
-    public boolean update (final CusOrderDto dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "UPDATE customer SET cus_id = ?, o_catogary = ?, o_weigth, o_date = ?, descrreption = ?,payment = ?, isCompleted = ? WHERE order_id = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-
-        pstm.setString(1, dto.getCId());
-        pstm.setString(2, dto.getCatagary());
-        pstm.setString(3, dto.getWeigth());
-        pstm.setString(4, dto.getDate());
-        pstm.setString(5, dto.getDescreption());
-        pstm.setDouble(6,dto.getPayment());
-        pstm.setString(7, "0");
-        pstm.setString(8, dto.getId());
-
-
-        return pstm.executeUpdate() > 0;
-    }
-
- */
-
-
-
-
-
 
     public static String generateNextOrderId() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();

@@ -15,18 +15,7 @@ public class SupOrderTm {
     private String sId;
     private Date date;
     private String weigth;
-    private int payment;
+    private double payment;
     private JFXButton btnDelete;
 
-    /*
-
-    public SupOrderTm(String id, String sId, String date, String weigth) {
-
-        this.id = id;
-        this.sId = sId;
-        this.date = date;
-        this.weigth = weigth;
-    }
-
-     */
 }

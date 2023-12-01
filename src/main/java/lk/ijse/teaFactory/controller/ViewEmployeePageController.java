@@ -52,8 +52,6 @@ public class ViewEmployeePageController {
     @FXML
     private AnchorPane root;
 
-
-
     public void initialize() {
         setCellValueFactory();
         loadAllEmployees();
@@ -76,9 +74,6 @@ public class ViewEmployeePageController {
                 btnDelete.setPrefWidth(100);
                 btnDelete.setPrefHeight(30);
 
-                //   CusOrderTm tm = new CusOrderTm();
-
-                //   tm.getBtnDelete()
                 btnDelete .setOnAction((e) -> {
                     ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -95,9 +90,6 @@ public class ViewEmployeePageController {
                         tblEmployee.refresh();
                     }
                 });
-
-
-
                 obList.add(
                         new EmployeeTm(
                                 dto.getUId(),
@@ -114,13 +106,9 @@ public class ViewEmployeePageController {
 
             }
             tblEmployee.setItems(obList);
-
-
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private void deleteItem(String id) {
@@ -132,11 +120,6 @@ public class ViewEmployeePageController {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
-
-
-
-
-
 
     private void setCellValueFactory() {
 
@@ -157,10 +140,5 @@ public class ViewEmployeePageController {
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/employee_page.fxml"))));
 
     }
-  
-
-
-
-
 
 }

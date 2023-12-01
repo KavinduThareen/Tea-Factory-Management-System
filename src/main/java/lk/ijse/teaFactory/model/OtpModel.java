@@ -20,13 +20,10 @@ public class OtpModel {
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setInt(1, dto.getOtp());
-
         boolean isSaved = pstm.executeUpdate() >0;
-
 
         return isSaved;
     }
-
 
     public int load() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
@@ -35,13 +32,10 @@ public class OtpModel {
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         ResultSet resultSet = pstm.executeQuery();
-
         int otp = 0;
 
         while (resultSet.next()) {
              otp = resultSet.getInt(1);
-
-
         }
         return otp;
     }

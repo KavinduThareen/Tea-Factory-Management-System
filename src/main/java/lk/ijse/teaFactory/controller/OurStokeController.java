@@ -14,18 +14,10 @@ public class OurStokeController {
     private AnchorPane root;
 
     @FXML
-    void backOnAction(ActionEvent event) throws IOException {
-
-        root.getChildren().clear();
-        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/dashboard.fxml"))));
-    }
-
-    @FXML
     void levesStokeBtnOnAction(ActionEvent event) throws IOException {
 
         root.getChildren().clear();
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/leves_stoke_page.fxml"))));
-
 
     }
 

@@ -68,7 +68,6 @@ public class SupplierPageController {
         root.getChildren().clear();
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/supplier_orders.fxml"))));
 
-
     }
 
     @FXML
@@ -77,7 +76,6 @@ public class SupplierPageController {
         String name = nameTxt.getText();
         String address = Address.getText();
         String contac= Contac.getText();
-      //  String complete = "0";
 
         var dto = new SupplierDto(id,name,address,contac);
         var model = new SupplierModel();
@@ -102,48 +100,41 @@ public class SupplierPageController {
 
     }
 
-
-
     private boolean validate() {
 
         String idText = idTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[S][0-9]{3,}", idText);
         if (!isIDValidated) {
             errora.animateError(idTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid ID!").show();
             return false;
         }
 
         String nameText = nameTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
         if (!isNameValidated) {
             errora.animateError(nameTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid name").show();
             return false;
         }
         String cantacText = Contac.getText();
-//        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
             errora.animateError(Contac);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer contac").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid contac").show();
             return false;
         }
 
         String addressText = Address.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
         if (!isAddressValidated) {
             errora.animateError(Address);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid address").show();
             return false;
         }
         return true;
 
     }
-
 
 
     private void generateNextSupId() {
@@ -154,7 +145,6 @@ public class SupplierPageController {
             throw new RuntimeException(e);
         }
     }
-
 
     public void loadAll(){
         var model =new SupplierModel();
@@ -172,9 +162,6 @@ public class SupplierPageController {
             btnDelete.setPrefWidth(100);
             btnDelete.setPrefHeight(30);
 
-            //   CusOrderTm tm = new CusOrderTm();
-
-            //   tm.getBtnDelete()
             btnDelete .setOnAction((e) -> {
                 ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
                 ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -206,9 +193,7 @@ public class SupplierPageController {
     } catch (Exception e) {
         throw new RuntimeException(e);
     }
-
         tbl.setItems(obList);
-
     }
 
     private void deleteItem(String id) {
@@ -220,7 +205,6 @@ public class SupplierPageController {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
-
 
     private void setCellValueFactory() {
 
@@ -244,7 +228,6 @@ public class SupplierPageController {
         String name = nameTxt.getText();
         String address = Address.getText();
         String contac= Contac.getText();
-     //   String complete = "0";
 
         var dto = new SupplierDto(id,name,address,contac);
         var model = new SupplierModel();
@@ -278,7 +261,6 @@ public class SupplierPageController {
             var model = new SupplierModel();
             try {
                 SupplierDto supplierDto = model.searchCustomer(id);
-//            System.out.println(customerDto);
                 if (supplierDto != null) {
                     idTxt.setText(supplierDto.getId());
                     nameTxt.setText(supplierDto.getName());
@@ -293,7 +275,4 @@ public class SupplierPageController {
             }
         }
     }
-
-
-
 }

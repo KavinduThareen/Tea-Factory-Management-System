@@ -46,7 +46,6 @@ public class PacketStokePageController {
     @FXML
     private DatePicker expirTxt;
 
-
     @FXML
     private TextField idTxt;
 
@@ -58,9 +57,6 @@ public class PacketStokePageController {
 
     @FXML
     private TextField weigthTxt;
-
-
-
 
     @FXML
     private JFXComboBox<String > leavesId;
@@ -77,7 +73,6 @@ public class PacketStokePageController {
         Date date = Date.valueOf(expirTxt.getValue());
         String leavesStokeId = leavesId.getValue();
 
-
         var dto = new PacketStokeDto(pid,catagory,weigth,date);
         var model = new PacketStokeModel();
         boolean isValidated = validate();
@@ -88,11 +83,9 @@ public class PacketStokePageController {
             try {
                 boolean isSaved = model.packetStokeSaved(dto);
                 boolean drop = leavesStokeModel.drop(leavesStokeId,weigth);
+                boolean saved1 = stokemodel.detail(pid,leavesStokeId,date);
 
-                var dto2 = new StokeDeatailDto(pid,leavesStokeId);
-                boolean saved = stokemodel.stokedetail(dto2);
-
-                if (isSaved && saved) {
+                if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();
                 }
@@ -106,34 +99,28 @@ public class PacketStokePageController {
     private boolean validate() {
 
         String idText = idTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[P][0-9]{3,}", idText);
         if (!isIDValidated) {
             errorAnimation.animateError(idTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid ID!").show();
             return false;
         }
 
-
-        String nameText = catagaryTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        String catagaryTxtText = catagaryTxt.getText();
+        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", catagaryTxtText);
         if (!isNameValidated) {
             errorAnimation.animateError(catagaryTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid catagary").show();
             return false;
         }
-        String addressText = weigthTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("\\d+(\\.\\d+)?", addressText);
+
+        String weigthTxtText = weigthTxt.getText();
+        boolean isAddressValidated = Pattern.matches("\\d+(\\.\\d+)?", weigthTxtText);
         if (!isAddressValidated) {
             errorAnimation.animateError(weigthTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid weight").show();
             return false;
         }
-
-
-
         return true;
     }
 
@@ -152,7 +139,6 @@ public class PacketStokePageController {
         }
     }
 
-
     @FXML
     void updateOnAction(ActionEvent event) {
 
@@ -160,7 +146,6 @@ public class PacketStokePageController {
         String catagory = catagaryTxt.getText();
         String   weigth = weigthTxt.getText();
         Date date = Date.valueOf(expirTxt.getValue());
-
 
         var dto = new PacketStokeDto(id,catagory,weigth,date);
         var model = new PacketStokeModel();
@@ -194,9 +179,6 @@ public class PacketStokePageController {
                 btnDelete.setPrefWidth(100);
                 btnDelete.setPrefHeight(30);
 
-                //   CusOrderTm tm = new CusOrderTm();
-
-                //   tm.getBtnDelete()
                 btnDelete .setOnAction((e) -> {
                     ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -213,8 +195,6 @@ public class PacketStokePageController {
                         tblView .refresh();
                     }
                 });
-
-
                 obList.add(
                         new CompleteTm(
                                 dto.getId(),
@@ -222,22 +202,15 @@ public class PacketStokePageController {
                                 dto.getWeigth(),
                                 dto.getDate(),
                                 btnDelete
-
-
                         )
                 );
             }
-
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
         tblView.setItems(obList);
 
     }
-
 
     private void setCellValueFactory() {
 
@@ -265,7 +238,6 @@ public class PacketStokePageController {
         }
     }
 
-
     private void deleteItem(String id) {
         try {
             boolean isDeleted = PacketStokeModel.delete(id);
@@ -280,7 +252,7 @@ public class PacketStokePageController {
         idTxt.setText("");
         catagaryTxt.setText("");
         weigthTxt .setText("");
-      ///  expirTxt.setValue("");
+     //   expirTxt.setDa("");
     }
 
     @FXML
@@ -291,7 +263,7 @@ public class PacketStokePageController {
             var model = new PacketStokeModel();
             try {
                 PacketStokeDto packetStokeDto = model.searchCustomer(id);
-//            System.out.println(customerDto);
+
                 if (packetStokeDto != null) {
                     idTxt.setText(packetStokeDto.getId());
                     catagaryTxt.setText(packetStokeDto.getCatagory());

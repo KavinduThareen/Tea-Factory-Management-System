@@ -52,12 +52,8 @@ public class OtpPageController implements Initializable {
     @FXML
     void textOnAction(ActionEvent event) throws SQLException, IOException {
 
-
-       // int otp=0;
-
         var model = new OtpModel();
         otp = model.load();
-
 
         boolean a = verifyOto(otp);
         if (a){
@@ -69,75 +65,6 @@ public class OtpPageController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION, "Otp is wrong").show();
         }
 
-        /*
-        try {
-
-            int enteredOtp = Integer.parseInt(otpTxt.getText());
-            checkEnteredOtp(enteredOtp);
-        } catch (NumberFormatException e) {
-            new Alert(Alert.AlertType.ERROR, "Please enter a valid number for OTP").show();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-         */
-
-    }
-
-
-
-
-    @FXML
-    void okOnAction(ActionEvent event) throws SQLException, IOException {
-
-
-
-
-       /*
-
-        try {
-
-            int enteredOtp = Integer.parseInt(otpTxt.getText());
-            checkEnteredOtp(enteredOtp);
-        } catch (NumberFormatException e) {
-            new Alert(Alert.AlertType.ERROR, "Please enter a valid number for OTP").show();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        */
-
-
-    }
-
-    public void checkEnteredOtp(int enteredOtp) throws SQLException, IOException {
-
-        /*
-
-        int otp=0;
-
-        var model = new OtpModel();
-         otp = model.load();
-        System.out.println("pakaya" + otp);
-
-        if (otp == enteredOtp) {
-            verifyOto(otp);
-            root.getChildren().clear();
-            root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/verifiedPage.fxml"))));
-            delete(otp);
-            System.out.println("ok");
-            System.out.println("Entered OTP: " + enteredOtp);
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Please enter a valid OTP").show();
-            System.out.println("wrong");
-        }
-
-         */
-
     }
 
     private void delete(int otp) {
@@ -148,8 +75,6 @@ public class OtpPageController implements Initializable {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
     }
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -203,7 +128,6 @@ public class OtpPageController implements Initializable {
             event.consume();
         }
     };
-
 
     public boolean verifyOto(int otp){
         int num1 = Integer.parseInt(otpField1Txt.getText());

@@ -7,7 +7,6 @@ import lk.ijse.teaFactory.dto.SalaryDto;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 public class SalaryModel {
     public boolean salarySaved(final SalaryDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
@@ -19,10 +18,8 @@ public class SalaryModel {
         pstm.setString(2, dto.getEmpId());
         pstm.setDate(3, dto.getDate());
         pstm.setString(4, dto.getCount());
-       // pstm.setString(5,"0");
 
         boolean isSaved = pstm.executeUpdate() >0;
-
         return isSaved;
     }
 
@@ -35,7 +32,6 @@ public class SalaryModel {
         pstm.setString(1, dto.getEmpId());
         pstm.setDate(2, dto.getDate());
         pstm.setString(3, dto.getCount());
-       // pstm.setString(4, "0");
         pstm.setString(4, dto.getId());
 
         return pstm.executeUpdate() > 0;
@@ -119,7 +115,6 @@ public class SalaryModel {
 
             dto = new SalaryDto(resultId, empid, date, contac);
         }
-
         return dto;
     }
 

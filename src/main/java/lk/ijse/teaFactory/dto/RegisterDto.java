@@ -9,14 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class RegisterDto {
 
-
     private String userid;
     private String username;
     private String contac;
     private String password;
-   // private String confirmpassword;
-
-
-
 
 }

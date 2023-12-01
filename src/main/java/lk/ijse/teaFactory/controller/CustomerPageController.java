@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
 public class CustomerPageController {
 
     @FXML
@@ -69,9 +68,6 @@ public class CustomerPageController {
                 btnDelete.setPrefWidth(100);
                 btnDelete.setPrefHeight(30);
 
-                //   CusOrderTm tm = new CusOrderTm();
-
-                //   tm.getBtnDelete()
                 btnDelete .setOnAction((e) -> {
                     ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);

@@ -21,15 +21,12 @@ public class OrdersController {
         root.getChildren().clear();
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customerOrders.fxml"))));
 
-
     }
 
     @FXML
     void supOrderOnAction(ActionEvent event) throws IOException {
         root.getChildren().clear();
-
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/supplier_orders.fxml"))));
-
 
     }
 

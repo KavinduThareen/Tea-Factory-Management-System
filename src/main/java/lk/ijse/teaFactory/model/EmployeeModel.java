@@ -24,11 +24,8 @@ public class EmployeeModel {
         pstm.setString(5,dto.getEmployeeName());
         pstm.setString(6,dto.getEmpAddress());
         pstm.setString(7,dto.getEmpContac());
-      //  pstm.setString(8, "0");
 
-
-
-            isSaved = pstm.executeUpdate() > 0;
+        isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
 
@@ -53,13 +50,10 @@ public class EmployeeModel {
             String employeeName = resultSet.getString(5);
             String empAddress = resultSet.getString(6);
             String empContac = resultSet.getString(7);
-          //  String delete = resultSet.getString(8);
-
 
             var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac);
             dtoList.add(dto);
         }
-
         return dtoList;
     }
 
@@ -73,7 +67,6 @@ public class EmployeeModel {
         return pstm.executeUpdate() > 0;
     }
 
-
     public boolean update(final EmployeeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -86,13 +79,11 @@ public class EmployeeModel {
         pstm.setString(4,dto.getEmployeeName());
         pstm.setString(5,dto.getEmpAddress());
         pstm.setString(6,dto.getEmpContac());
-      //  pstm.setString(7,"0");
         pstm.setString(7, dto.getEmployeeId());
 
 
         return pstm.executeUpdate() > 0;
     }
-
 
     public static List<EmployeeDto> loadAllItems() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
@@ -113,13 +104,9 @@ public class EmployeeModel {
                     resultSet.getString(5),
                     resultSet.getString(6),
                     resultSet.getString(7)
-
-
             );
-
             dtoList.add(dto);
         }
-
         return dtoList;
     }
 

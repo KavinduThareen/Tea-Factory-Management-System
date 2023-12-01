@@ -19,7 +19,7 @@ public class SupOrderModel {
         pstm.setString(2, dto.getSId());
         pstm.setDate(3, dto.getDate());
         pstm.setString(4, dto.getWeigth());
-        pstm.setInt(5,dto.getPayment());
+        pstm.setDouble(5,dto.getPayment());
 
         boolean isSaved = pstm.executeUpdate() > 0;
         return isSaved;
@@ -40,7 +40,7 @@ public class SupOrderModel {
             String sId = resultSet.getString(2);
             Date date = resultSet.getDate(3);
             String weigth = resultSet.getString(4);
-            int payment = resultSet.getInt(5);
+            double payment = resultSet.getDouble(5);
 
             var dto = new SupOrderDto(id, sId, date, weigth,payment);
             dtoList.add(dto);
@@ -78,7 +78,7 @@ public class SupOrderModel {
         pstm.setString(1, dto.getSId());
         pstm.setDate(2, dto.getDate());
         pstm.setString(3, dto.getWeigth());
-        pstm.setInt(4, dto.getPayment());
+        pstm.setDouble(4, dto.getPayment());
         pstm.setString(5, dto.getId());
 
         return pstm.executeUpdate() > 0;
@@ -126,7 +126,7 @@ public class SupOrderModel {
                     resultSet.getString(2),
                     resultSet.getDate(3),
                     resultSet.getString(4),
-                    resultSet.getInt(5)
+                    resultSet.getDouble(5)
             );
 
             dtoList.add(dto);
@@ -151,14 +151,10 @@ public class SupOrderModel {
             String sid = resultSet.getString(2);
             Date date = resultSet.getDate(3);
             String weight = resultSet.getString(4);
-            int payment = resultSet.getInt(5);
+            double payment = resultSet.getDouble(5);
             //   String complete = resultSet.getString(6);
             dto = new SupOrderDto(oid, sid, date , weight,payment);
         }
         return dto;
     }
-
-
-
-
 }

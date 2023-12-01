@@ -11,5 +11,4 @@ public class RegisterTm {
     private String username;
     private String contac;
     private String password;
-   // private String confirmpassword;
 }

@@ -23,9 +23,7 @@ public class PacketStokeModel {
         pstm.setString(3, dto.getWeigth());
         pstm.setDate(4, dto.getDate());
 
-
         boolean isSaved = pstm.executeUpdate() > 0;
-
         return isSaved;
     }
 
@@ -36,7 +34,6 @@ public class PacketStokeModel {
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         List<PacketStokeDto> dtoList = new ArrayList<>();
-
         ResultSet resultSet = pstm.executeQuery();
 
         while (resultSet.next()) {
@@ -45,14 +42,11 @@ public class PacketStokeModel {
             String weigth = resultSet.getString(3);
             Date date = resultSet.getDate(4);
 
-
             var dto = new PacketStokeDto(id, catagory, weigth, date);
             dtoList.add(dto);
         }
         return dtoList;
     }
-
-
 
     public static List<PacketStokeDto> loadAllItems() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
@@ -61,7 +55,6 @@ public class PacketStokeModel {
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         List<PacketStokeDto> itemList = new ArrayList<>();
-
         ResultSet resultSet = pstm.executeQuery();
         while (resultSet.next()) {
             itemList.add(new PacketStokeDto(
@@ -140,17 +133,11 @@ public class PacketStokeModel {
                     resultSet.getString(2),
                     resultSet.getString(3),
                     resultSet.getDate(4)
-
             );
-
             dtoList.add(dto);
         }
-
         return dtoList;
     }
-
-    // legal
-
 
     public boolean updateItem(List<CartTm> cartTmList) throws SQLException {
         for(CartTm tm : cartTmList) {
@@ -173,11 +160,6 @@ public class PacketStokeModel {
 
         return pstm.executeUpdate() > 0; //false
     }
-
-
-
-
-
 
     public PacketStokeDto searchCustomer(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection ();
@@ -218,38 +200,6 @@ public class PacketStokeModel {
         }
         return rowCount;
     }
-
-
-
-    // this type is correct but illigal
-
-
-/*
-    public boolean deleteItem(List<CartTm> cartTmList) throws SQLException {
-        for(CartTm tm : cartTmList) {
-            System.out.println("Item: " + tm);
-            if(!updateQty(tm.getItemId())) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static boolean updateQty(String id) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "DELETE FROM packet_stoke WHERE packet_id = ?";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, id);
-
-        return pstm.executeUpdate() > 0;
-    }
-
- */
-
-
-
-
 
 
 }

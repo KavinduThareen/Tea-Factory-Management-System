@@ -46,7 +46,6 @@ public class LevesStokePageController {
     @FXML
     private DatePicker eDateTxt;
 
-
     @FXML
     private TextField idTxt;
 
@@ -67,28 +66,24 @@ public class LevesStokePageController {
     @FXML
     void addBtnOnAction(ActionEvent event) {
 
-
         String sid = supplingidTxt.getValue();
         String id = idTxt.getText();
         String weigth = WeigthTxt.getText();
         Date sDate = Date.valueOf(sDateTxt.getValue());
         Date eDate = Date.valueOf(eDateTxt.getValue());
 
-
+        var supliDetail = new SupplingDetailModel();
         var dto = new LeavesStokeDto(id,weigth,sDate,eDate);
-
-
         var model = new LeavesStokeModel();
-        //  var stokeModel = new StokeDetailModel();
         var model2 = new SupOrderModel();
-
         boolean isValidated = validate();
 
         if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.addLeavesStoke(dto);
                 boolean isSaved2 = model2.dropid(sid,weigth);
+
+                boolean a = supliDetail.detail(sid,id,sDate);
 
                 if (isSaved && isSaved2) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
@@ -101,49 +96,40 @@ public class LevesStokePageController {
 
     }
 
-
-
     private boolean validate() {
 
         String idText = idTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[L][0-9]{3,}", idText);
         if (!isIDValidated) {
-            errorAnimation.animateError(WeigthTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            errorAnimation.animateError(idTxt);
+            new Alert(Alert.AlertType.ERROR, "Invalid  ID!").show();
             return false;
         }
 
-        String addressText = WeigthTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("\\d+(\\.\\d+)?", addressText);
+        String weigthTxtText = WeigthTxt.getText();
+        boolean isAddressValidated = Pattern.matches("\\d+(\\.\\d+)?", weigthTxtText);
         if (!isAddressValidated) {
                 errorAnimation.animateError(WeigthTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid weight").show();
             return false;
         }
 
         return true;
     }
 
-
     private void loadSupplingId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<SupOrderDto> empList = SupOrderModel.loadAllItems();
+            List<SupOrderDto> supList = SupOrderModel.loadAllItems();
 
-            for (SupOrderDto empDto : empList) {
-                obList.add(empDto.getId());
+            for (SupOrderDto supDto : supList) {
+                obList.add(supDto.getId());
             }
-
             supplingidTxt.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
-
-
 
     public void loadAll(){
         var model = new LeavesStokeModel();
@@ -160,9 +146,6 @@ public class LevesStokePageController {
                 btnDelete.setPrefWidth(100);
                 btnDelete.setPrefHeight(30);
 
-                //   CusOrderTm tm = new CusOrderTm();
-
-                //   tm.getBtnDelete()
                 btnDelete .setOnAction((e) -> {
                     ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -179,8 +162,6 @@ public class LevesStokePageController {
                         table.refresh();
                     }
                 });
-
-
                 obList.add(
                         new LeaveStokeTm(
                                 dto.getId(),
@@ -191,12 +172,9 @@ public class LevesStokePageController {
                         )
                 );
             }
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
         table.setItems(obList);
     }
 
@@ -204,7 +182,7 @@ public class LevesStokePageController {
         try {
             boolean isDeleted = LeavesStokeModel.delete(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "deleted!").show();
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -240,7 +218,7 @@ public class LevesStokePageController {
     private void clearFields() {
         idTxt.setText("");
         WeigthTxt.setText("");
-       // sDateTxt .setText("");
+       // sDateTxt .setValue("");
       //  eDateTxt.setText("");
     }
 
@@ -251,7 +229,6 @@ public class LevesStokePageController {
         String weigth = WeigthTxt.getText();
         Date  sDate = Date.valueOf(sDateTxt.getValue());
         Date eDate = Date.valueOf(eDateTxt.getValue());
-       // String complete = "0";
 
         var dto = new LeavesStokeDto(id,weigth,sDate,eDate);
         var model = new LeavesStokeModel();
@@ -260,13 +237,12 @@ public class LevesStokePageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
              clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
     }
 
     @FXML
@@ -278,7 +254,7 @@ public class LevesStokePageController {
             var model = new LeavesStokeModel();
             try {
                 LeavesStokeDto leavesStokeDto = model.searchCustomer(id);
-//            System.out.println(customerDto);
+
                 if (leavesStokeDto != null) {
                     idTxt.setText(leavesStokeDto.getId());
                     WeigthTxt.setText(leavesStokeDto.getWeigth());
@@ -286,15 +262,13 @@ public class LevesStokePageController {
                     eDateTxt.setValue(leavesStokeDto.getEDate().toLocalDate());
 
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                    new Alert(Alert.AlertType.INFORMATION, "Leavestoke not found").show();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
         }
     }
-
-
 
 
 }

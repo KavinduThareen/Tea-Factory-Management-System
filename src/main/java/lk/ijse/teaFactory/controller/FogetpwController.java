@@ -19,16 +19,12 @@ public class FogetpwController {
     @FXML
     private TextField emailTxt;
 
-     //"kavindutharin@gmail.com"
-
-
     @FXML
     private AnchorPane root;
     private String email;
     public int otp;
 
-     int otp2;
-
+    private int otp2;
 
     @FXML
     void emailOnAction(ActionEvent event) throws Exception {
@@ -36,12 +32,10 @@ public class FogetpwController {
         otp = generateNewOtp();
         sendOtp();
 
-
         root.getChildren().clear();
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/otpPage.fxml"))));
 
     }
-
 
     public void sendOtp() {
         boolean b1 = false;
@@ -60,32 +54,16 @@ public class FogetpwController {
         }
     }
 
-
     public int generateNewOtp() throws SQLException {
-      //  int otp;
         do {
             Random random = new Random();
-
-          //  var type = new OtpPageController();
             var model = new OtpModel();
-
-
             otp2 = random.nextInt(9999);
+
             if (otp2 > 1000){
                var otpDto = new OtpDto(otp2);
-             //  type.save(otpDto);
-             boolean a =  model.save(otpDto);
-
-             if (a){
-                 System.out.println("ok ok");
-             }
-
-
-             //   var dto = new OtpDto(otp2);
-
-
-                System.out.println(otp2);
-
+               boolean a =  model.save(otpDto);
+              //  System.out.println(otp2);
                 return otp2;
             }
         }while (true);

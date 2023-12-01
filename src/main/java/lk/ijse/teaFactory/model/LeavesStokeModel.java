@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeavesStokeModel {
-
     public boolean addLeavesStoke(LeavesStokeDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -177,12 +176,9 @@ public class LeavesStokeModel {
                     resultSet.getString(6),
                     resultSet.getString(7)
 
-
             );
-
             dtoList.add(dto);
         }
-
         return dtoList;
     }
 

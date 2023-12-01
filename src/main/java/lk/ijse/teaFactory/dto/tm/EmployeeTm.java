@@ -21,8 +21,6 @@ public class EmployeeTm {
    private String empContac;
    private JFXButton btnDelete;
 
-
-
    public EmployeeTm(String uId, String employeeId, String empGender, Date empbd, String employeeName, String empAddress, String empContac) {
       this.uId = uId;
       this.employeeId = employeeId;

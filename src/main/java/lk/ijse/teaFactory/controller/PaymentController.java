@@ -57,7 +57,6 @@ public class PaymentController {
     @FXML
     private DatePicker dateTxt;
 
-
     @FXML
     private JFXComboBox<String > empIdTxt;
 
@@ -72,15 +71,12 @@ public class PaymentController {
 
     ErrorAnimation errora = new ErrorAnimation();
 
-
-
     @FXML
     void addOnAction(ActionEvent event) {
          String id = idTxt.getText();
          String empId = (String) empIdTxt.getValue();
          Date date = Date.valueOf(dateTxt.getValue());
          String count = countTxt.getText();
-
 
         var dto = new SalaryDto(id,empId,date,count);
 
@@ -106,26 +102,23 @@ public class PaymentController {
 
 
         String idText = idTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[S][0-9]{3,}", idText);
         if (!isIDValidated) {
             errora.animateError(idTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid Sid ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid ID!").show();
             return false;
         }
 
         String addressText = countTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("[0-9]{3,}", addressText);
         if (!isAddressValidated) {
             errora.animateError(countTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid contac address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid address").show();
             return false;
         }
 
         return true;
     }
-
 
     @FXML
     void updateOnAction(ActionEvent event) {
@@ -144,8 +137,8 @@ public class PaymentController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
-               // clearFields();
-                //clearFields();
+
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -177,9 +170,6 @@ public class PaymentController {
                 btnDelete.setPrefWidth(100);
                 btnDelete.setPrefHeight(30);
 
-                //   CusOrderTm tm = new CusOrderTm();
-
-                //   tm.getBtnDelete()
                 btnDelete .setOnAction((e) -> {
                     ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -204,13 +194,11 @@ public class PaymentController {
                                 dto.getDate(),
                                 dto.getCount(),
                                 btnDelete
-
                         )
                 );
 
             }
             tbl.setItems(obList);
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -267,7 +255,6 @@ public class PaymentController {
         countTxt .setText("");
     }
 
-
     @FXML
     void searchOnAction(KeyEvent event) {
 
@@ -278,7 +265,6 @@ public class PaymentController {
             var model = new SalaryModel();
             try {
                 SalaryDto salaryDto = model.searchPayment(id);
-//            System.out.println(customerDto);
                 if (salaryDto != null) {
                     idTxt.setText(salaryDto.getId());
                     empIdTxt.setValue(salaryDto.getEmpId());
@@ -315,6 +301,5 @@ public class PaymentController {
             throw new RuntimeException(e);
         }
     }
-
 
 }

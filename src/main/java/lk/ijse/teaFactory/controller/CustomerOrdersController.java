@@ -35,7 +35,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.Pattern;
-
 public class CustomerOrdersController {
     @FXML
     private TableColumn<?, ?> colCId;
@@ -61,7 +60,6 @@ public class CustomerOrdersController {
     @FXML
     private TableColumn<?, ?> colPayment;
 
-
     @FXML
     private AnchorPane root;
 
@@ -74,14 +72,11 @@ public class CustomerOrdersController {
     @FXML
     private TextField dateTxt;
 
-
     @FXML
     private TextField descreptionTxt;
 
-
     @FXML
     private TextField WeigthTxt;
-
 
     @FXML
     private TextField idTxt;
@@ -100,55 +95,15 @@ public class CustomerOrdersController {
 
     ErrorAnimation errorAnimation = new ErrorAnimation();
 
-    private CustomerModel customerModel = new CustomerModel();
-    private PacketStokeModel packetStokeModel = new PacketStokeModel();
-    private CusOrderModel cusOrderModel = new CusOrderModel();
+  //  private CustomerModel customerModel = new CustomerModel();
+  //  private PacketStokeModel packetStokeModel = new PacketStokeModel();
+   // private CusOrderModel cusOrderModel = new CusOrderModel();
     private PlaseOrderModel plaseOrderModel = new PlaseOrderModel();
 
     private ObservableList<CartTm> obList2 = FXCollections.observableArrayList();
 
     @FXML
-    void addOrderOnAction(ActionEvent event) throws IOException {
-        /*
-        root.getChildren();
-        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/Customer_orders_add.fxml"))));
-
-         */
-
-    }
-
-    @FXML
     void addOnAction(ActionEvent event) {
-
-/*
-        String id = idTxt.getText();
-        String cId = (String) cIdTxt.getValue();
-        String catagary = (String) catagaryTxt.getValue();
-        String weigth =  WeigthTxt.getText();
-        String date = dateTxt.getText();
-        String descreption = descreptionTxt.getText();
-        Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
-        String complete = "0";
-
-        var dto = new CusOrderDto(id,cId,catagary,weigth,date,descreption,payment,complete);
-
-        var model = new CusOrderModel();
-        //   boolean isValidated = validate();
-
-        //  if (isValidated) {
-        //  new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
-
-        try {
-            boolean isSaved = model.cusOrdersSaved(dto);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
- */
-
 
         String Itemid = itemIdTxt.getValue();
         String cusid = cIdTxt.getValue();
@@ -197,45 +152,35 @@ public class CustomerOrdersController {
 
             tbl.setItems(obList2);
             calculateTotal();
-            // we.clear();
         }
-
     }
 
-    //   add now
     private boolean validate() {
 
-
-        String nameText = descreptionTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        String descreptionTxtText = descreptionTxt.getText();
+        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", descreptionTxtText);
         if (!isNameValidated) {
             errorAnimation.animateError(descreptionTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid descreption").show();
             return false;
         }
 
-        String addressText = catagaryTxt.getValue();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
+        String catagaryTxtValue = catagaryTxt.getValue();
+        boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", catagaryTxtValue);
         if (!isAddressValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid catagary").show();
             return false;
         }
 
         String weight = WeigthTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isweightValidated = Pattern.matches("\\d+(\\.\\d+)?", weight);
         if (!isweightValidated) {
             errorAnimation.animateError(WeigthTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid weight").show();
             return false;
         }
-
         return true;
     }
-
-
 
     private void calculateTotal() {
         double total = 0;
@@ -269,13 +214,11 @@ public class CustomerOrdersController {
         }
     }
 
-
     public void initialize() {
         loadCusOrdersId();
         generateNextCusOrderId();
         loadCatagary();
         setCellValueFactory();
-        //   loadAll();
         loadItemCodes();
         setDate();
 
@@ -289,7 +232,6 @@ public class CustomerOrdersController {
             for (PacketStokeDto cusODto : empList) {
                 obList.add(cusODto.getCatagory());
             }
-
             catagaryTxt.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -329,7 +271,6 @@ public class CustomerOrdersController {
         });
     }
 
-
     @FXML
     void updateOnAction(ActionEvent event) throws JRException, SQLException {
         try {
@@ -343,7 +284,7 @@ public class CustomerOrdersController {
     void clearFields() {
 
         idTxt.setText("");
-        //  catagaryTxt.setText("");
+        catagaryTxt.setValue("");
         WeigthTxt.setText("");
         dateTxt.setText("");
         descreptionTxt.setText("");
@@ -366,16 +307,13 @@ public class CustomerOrdersController {
     }
 
     private void setDate() {
-//        LocalDate now = LocalDate.now();
         dateTxt.setText(String.valueOf(LocalDate.now()));
     }
-    public int count = 0; // Class-level variable
+    public int count = 0;
 
     @FXML
     void plaseOrderOnAction(ActionEvent event) throws SQLException {
 
-
-           // int count = count;
             String id = idTxt.getText();
             String cId = cIdTxt.getValue();
             String catagary = catagaryTxt.getValue();
@@ -383,9 +321,6 @@ public class CustomerOrdersController {
             LocalDate date = LocalDate.parse(dateTxt.getText());
             String descreption = descreptionTxt.getText();
             Double payment = Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
-
-                    //Double.valueOf(paymentTxt.getText()) * Double.valueOf(WeigthTxt.getText());
-
 
             List<CartTm> cartTmList = new ArrayList<>();
             for (int i = 0; i < tbl.getItems().size(); i++) {
@@ -400,8 +335,7 @@ public class CustomerOrdersController {
                 boolean isSuccess = plaseOrderModel.placeOrder(placeOrderDto);
                 if (isSuccess) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Order Success!").show();
-                    count++; //
-
+                    count++;
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
@@ -410,12 +344,9 @@ public class CustomerOrdersController {
 
     }
 
-
-
-/// jaspere repot genarater
+// jaspere repot genarater
 
     private void printCustomer() throws JRException, SQLException {
-
         try {
             // Load the JasperReport template
             InputStream resourceAsStream = getClass().getResourceAsStream("/report/ordersBill.jrxml");

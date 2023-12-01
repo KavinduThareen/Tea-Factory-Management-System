@@ -44,7 +44,6 @@ public class Dashboard1Controller {
     @FXML
     private Label lblDate;
 
-
     @FXML
     public void initialize() throws SQLException {
         // Call the method to start updating the time
@@ -183,9 +182,5 @@ public class Dashboard1Controller {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
 
 }

@@ -44,7 +44,6 @@ public class EmployeePageController {
     @FXML
     private JFXComboBox<String> uidTxt;
 
-
     @FXML
     private TextField empGenderTxt;
 
@@ -74,7 +73,6 @@ public class EmployeePageController {
         String employeeName = empNameTxt.getText();
         String empAddress = empAddressTxt.getText();
         String empContac = empContacTxt.getText();
-       // String delete = "0";
 
         var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac);
         var model = new EmployeeModel();
@@ -86,7 +84,6 @@ public class EmployeePageController {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
                 clearFields();
                 tabl.refresh();
-
 
             }
         } catch (SQLException e) {
@@ -104,7 +101,6 @@ public class EmployeePageController {
         String employeeName = empNameTxt.getText();
         String empAddress = empAddressTxt.getText();
         String empContac = empContacTxt.getText();
-       // String delete = "0";
 
         var dto = new EmployeeDto(uId,employeeId,empGender,empbd,employeeName,empAddress,empContac);
          var model = new EmployeeModel();
@@ -114,7 +110,6 @@ public class EmployeePageController {
          new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
          try {
              boolean isSaved = model.employeeSave(dto);
-
 
                  if (isSaved) {
 
@@ -157,57 +152,48 @@ public class EmployeePageController {
 
     private boolean validate() {
 
-        String nameText = employeeIdTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
-        boolean isNameValidated = Pattern.matches("[E][0-9]{3,}", nameText);
+        String employeeIdTxtText = employeeIdTxt.getText();
+        boolean isNameValidated = Pattern.matches("[E][0-9]{3,}", employeeIdTxtText);
         if (!isNameValidated) {
             errora.animateError(employeeIdTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid employee name").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid employee id").show();
             return false;
         }
 
         String empname = empNameTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isnameValidated = Pattern.matches("[A-Za-z]{3,}", empname);
         if (!isnameValidated) {
             errora.animateError(empNameTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid name ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid name!").show();
             return false;
         }
 
-
         String genderText = empGenderTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isGenderValidated = Pattern.matches("(Male)|(Female)", genderText);
         if (!isGenderValidated) {
             errora.animateError(empGenderTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid gender name").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid gender").show();
             return false;
         }
 
         String cantacText = empContacTxt.getText();
-//        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
             errora.animateError(empContacTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid con contac").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid contac").show();
             return false;
         }
 
-
         String addressText = empAddressTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
         if (!isAddressValidated) {
             errora.animateError(empAddressTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid addrees address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid addrees").show();
             return false;
         }
 
         return true;
     }
-
-
 
     public void initialize() {
         setCellValueFactory();
@@ -243,8 +229,6 @@ public class EmployeePageController {
             }
             tbl2.setItems(obList);
 
-
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -255,15 +239,11 @@ public class EmployeePageController {
         colSelectEmployeNmaes.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
     }
 
-
-
     @FXML
     void viewempOnAction(ActionEvent event) throws IOException {
 
         employeeroot.getChildren().clear();
         employeeroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/view_employee_page.fxml"))));
-
-
     }
 
     void clearFields() {
@@ -271,7 +251,6 @@ public class EmployeePageController {
         employeeIdTxt.setText("");
         empNameTxt.setText("");
         empGenderTxt.setText("");
-        //empbdTxt.setValue("");
         empContacTxt.setText("");
         empAddressTxt.setText("");
 
@@ -285,7 +264,6 @@ public class EmployeePageController {
             var model = new EmployeeModel();
             try {
                 EmployeeDto employeeDto = model.searchCustomer(id);
-//            System.out.println(customerDto);
                 if (employeeDto != null) {
                     uidTxt.setValue(employeeDto.getUId());
                     employeeIdTxt.setText(employeeDto.getEmployeeId());
@@ -311,7 +289,7 @@ public class EmployeePageController {
         var model = new EmployeeModel();
         try {
             EmployeeDto employeeDto = model.searchCustomer(id);
-//            System.out.println(customerDto);
+
             if (employeeDto != null) {
                 uidTxt.setValue(employeeDto.getUId());
                 employeeIdTxt.setText(employeeDto.getEmployeeId());

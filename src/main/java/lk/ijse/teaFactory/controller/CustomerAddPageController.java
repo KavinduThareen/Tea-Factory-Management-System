@@ -22,7 +22,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
-
 public class CustomerAddPageController {
 
     @FXML
@@ -37,13 +36,6 @@ public class CustomerAddPageController {
     @FXML
     private TextField cusidTxt;
 
-
-/*
-    @FXML
-    private Label cusidTxt;
-
- */
-
     @FXML
     private TextField cusnameTxt;
 
@@ -53,22 +45,13 @@ public class CustomerAddPageController {
     ErrorAnimation errorAnimation = new ErrorAnimation();
 
     @FXML
-    void addNewCusOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void addcusBackeBtn(ActionEvent event) throws IOException {
         root.getChildren().clear();
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customer_page.fxml"))));
 
     }
 
-
-
-
     public int  count = 0;
-
 
     @FXML
     void cusSaveOnAction(ActionEvent event) {
@@ -104,57 +87,49 @@ public class CustomerAddPageController {
 
    }
 
-
     private boolean validate() {
 
         String idText = cusidTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[C][0-9]{3,}", idText);
         if (!isIDValidated) {
             errorAnimation.animateError(cusidTxt);
-           // new Alert(Alert.AlertType.ERROR, "Invalid  ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
             return false;
         }
 
-        String UidText = empidTxt.getValue();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
-        boolean isUIDValidated = Pattern.matches("[E][0-9]{3,}", UidText);
+        String empText = empidTxt.getValue();
+        boolean isUIDValidated = Pattern.matches("[E][0-9]{3,}", empText);
         if (!isUIDValidated) {
-          //  new Alert(Alert.AlertType.ERROR, "Invalid  ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid employee ID!").show();
             return false;
         }
-
 
         String nameText = cusnameTxt.getText();
-//        boolean isCustomerNameValidated = Pattern.compile("[A-Za-z]{3,}").matcher(nameText).matches();
         boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
         if (!isNameValidated) {
             errorAnimation.animateError(cusnameTxt);
-           // new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid customer name").show();
             return false;
         }
 
         String cantacText = cuscontacTxt.getText();
-//        boolean isCustomerAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isCantacValidated = Pattern.matches("[0-9]{10}", cantacText);
         if (!isCantacValidated) {
             errorAnimation.animateError(cuscontacTxt);
-           // new Alert(Alert.AlertType.ERROR, "Invalid contac").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid contac").show();
             return false;
         }
 
         String addressText = cusAddressTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("[A-Za-z0-9/.\\s]{3,}", addressText);
         if (!isAddressValidated) {
             errorAnimation.animateError(cusAddressTxt);
-          //  new Alert(Alert.AlertType.ERROR, "Invalid  address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid  address").show();
             return false;
         }
 
         return true;
     }
-
 
 
     private void loadEmpId() {
@@ -181,7 +156,6 @@ public class CustomerAddPageController {
         }
     }
 
-
     @FXML
     void updateOnAction(ActionEvent event) {
 
@@ -190,7 +164,6 @@ public class CustomerAddPageController {
         String cusname = cusnameTxt.getText();
         String cusAddress = cusAddressTxt.getText();
         String cusCantac = cuscontacTxt.getText();
-       // String complete = "0";
 
         var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac);
 
@@ -205,7 +178,6 @@ public class CustomerAddPageController {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
     }
 
     public void initialize() {
@@ -229,11 +201,10 @@ public class CustomerAddPageController {
     public void searchCustomer(){
 
         String id = cusidTxt.getText();
-
-       var model = new CustomerModel();
+         var model = new CustomerModel();
         try {
             CustomerDto customerDto = model.searchCustomer(id);
-//            System.out.println(customerDto);
+
             if (customerDto != null) {
                 cusidTxt.setText(customerDto.getCusid());
                 empidTxt.setValue(customerDto.getEmpid());

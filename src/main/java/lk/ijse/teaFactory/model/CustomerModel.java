@@ -11,8 +11,6 @@ import java.util.List;
 
 public class CustomerModel {
 
-    // not complet countiniue this
-
     public boolean customerSaved(final CustomerDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -24,10 +22,8 @@ public class CustomerModel {
         pstm.setString(3, dto.getCusname());
         pstm.setString(4, dto.getCusAddress());
         pstm.setString(5, dto.getCusCantac());
-       // pstm.setString(6,"0");
 
         boolean isSaved = pstm.executeUpdate() >0;
-
 
         return isSaved;
     }
@@ -82,7 +78,6 @@ public class CustomerModel {
         return pstm.executeUpdate() > 0;
     }
 
-
     public static String generateNextcusId() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -130,25 +125,8 @@ public class CustomerModel {
 
             dtoList.add(dto);
         }
-
         return dtoList;
     }
-
-    /*
-    public boolean saveOrder(String orderId, String customerId, LocalDate date) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
-
-        String sql = "INSERT INTO orders VALUES(?, ?, ?)";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1, orderId);
-        pstm.setString(2, customerId);
-        pstm.setDate(3, Date.valueOf(date));
-
-        return pstm.executeUpdate() > 0;
-    }
-
-     */
-
 
     public CustomerDto searchCustomer(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection ();
@@ -167,7 +145,6 @@ public class CustomerModel {
             String name = resultSet.getString(3);
             String address = resultSet.getString(4);
             String cantac = resultSet.getString(5);
-         //   String complete = resultSet.getString(6);
             dto = new CustomerDto(cus_id, empid, name , address,cantac);
         }
         return dto;

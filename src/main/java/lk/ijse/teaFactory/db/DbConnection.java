@@ -15,7 +15,6 @@ public class DbConnection {
                 "Kavi@2003"
         );
     }
-
     public static DbConnection getInstance() throws SQLException {
         return (null == dbConnection) ? dbConnection = new DbConnection() : dbConnection;
     }

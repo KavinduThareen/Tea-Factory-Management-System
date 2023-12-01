@@ -18,23 +18,4 @@ public class CustomerTm {
     private String cusCantac;
     private JFXButton btnDelete;
 
-    {
-        btnDelete = new JFXButton("Delete");
-
-        // Set button styles
-        btnDelete.setCursor(javafx.scene.Cursor.HAND);
-        btnDelete.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff");
-
-        btnDelete.setPrefWidth(100);
-        btnDelete.setPrefHeight(30);
-    }
-
-    public CustomerTm(String cusid,String empid,String cusname,String cusAddress,String cusCantac){
-        this.cusid=cusid;
-        this.empid=empid;
-        this.cusname=cusname;
-        this.cusAddress=cusAddress;
-        this.cusCantac=cusCantac;
-    }
-
 }

@@ -1,30 +1,26 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
-import lk.ijse.teaFactory.dto.LeavesStokeDto;
-import lk.ijse.teaFactory.dto.LoginDetailsDto;
-import lk.ijse.teaFactory.dto.PacketStokeDto;
-import lk.ijse.teaFactory.dto.StokeDeatailDto;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class StokeDetailModel {
-    public boolean stokedetail(final StokeDeatailDto dto) throws SQLException {
+    public boolean detail(String pid, String lid, Date date) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO stoke_detailse VALUES(?, ?)";
+        String sql = "INSERT INTO stoke_detailse VALUES(?, ?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
-        pstm.setString(1, dto.getPid());
-        pstm.setString(2, dto.getLid());
-
+        pstm.setString(1,pid );
+        pstm.setString(2, lid);
+        pstm.setDate(3, date);
 
         boolean isSaved = pstm.executeUpdate() >0;
-
-
         return isSaved;
     }
+
 
 }

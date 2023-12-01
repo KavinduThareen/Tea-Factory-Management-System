@@ -13,5 +13,5 @@ public class SupplierDto {
     private String name;
     private String address;
     private String contac;
- //   private String isCompleted;
+
 }

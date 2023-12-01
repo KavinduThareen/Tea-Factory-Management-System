@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
-
 public class OrderDetailModel {
     public boolean saveOrderDetails(String orderId, List<CartTm> cartTmList) throws SQLException {
         for(CartTm tm : cartTmList) {
@@ -32,6 +31,5 @@ public class OrderDetailModel {
 
         return pstm.executeUpdate() > 0;
     }
-
 
 }

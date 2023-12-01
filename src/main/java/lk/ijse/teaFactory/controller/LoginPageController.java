@@ -45,9 +45,6 @@ public class LoginPageController{
      private RegisterModel registerModel = new RegisterModel();
      private ErrorAnimation errorAnimation = new ErrorAnimation();
 
-
-
-
     @FXML
     void keyOnAction(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
@@ -60,7 +57,6 @@ public class LoginPageController{
 
     @FXML
     void loginbtnOnAction(ActionEvent event) throws IOException, SQLException {
-
 
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
@@ -76,18 +72,11 @@ public class LoginPageController{
 
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
                     String inTime = ((LocalDateTime.now().format(formatter)));
-                    // System.out.println(inTime);
-
                     Date date = Date.valueOf((LocalDate.now().toString()));
-                    // System.out.println(date);
-
                     String uid = registerModel.findUserIdByUsername(username);
-
 
                     loginDetail(inTime, date, uid);
 
-
-                    return;
                 } else {
                    new Alert(Alert.AlertType.WARNING, "Invalid Username Or Passowrd").show();
                 }
@@ -118,54 +107,23 @@ public class LoginPageController{
         boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
         if (!isNameValidated) {
             errorAnimation.animateError(usernameTxt);
-
             return false;
         }
 
         String passwordText = passwordTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isPwValidated = Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", passwordText);
         if (!isPwValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
             return false;
         }
-
-
-
-
         return true;
     }
 
-
-
-/*
-    public void login(){
-        String username = usernameTxt.getText();
-        String password = passwordTxt.getText();
-
-        var model = new LoginModel();
-        try {
-            LoginDto dto = model.finduserName();
-
-            if (dto != null && dto.getUsername().equals(username) && dto.getPassword().equals(password)) {
-                // new Alert(Alert.AlertType.INFORMATION, "ok!").show();
-                loginroot.getChildren().clear();
-                loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
-            } else {
-                new Alert(Alert.AlertType.INFORMATION, "User not found or invalid credentials!").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
- */
-
-
     @FXML
     void registerbtnOnAction(ActionEvent event) throws IOException {
+      register();
+    }
+
+    public void register() throws IOException {
         loginroot.getChildren().clear();
         loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/register_page.fxml"))));
 
@@ -177,10 +135,6 @@ public class LoginPageController{
             loginroot.getChildren().clear();
             loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/fogetpw.fxml"))));
 
-
     }
-
-    // delete login detail replase otp table
-
 
 }

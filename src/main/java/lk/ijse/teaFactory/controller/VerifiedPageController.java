@@ -16,16 +16,15 @@ public class VerifiedPageController {
 
     @FXML
     private TextField confimepwTxt;
+
     @FXML
     private AnchorPane root;
-
 
     @FXML
     private TextField newpwTxt;
 
     @FXML
     private TextField uidTxt;
-
 
     @FXML
     void pwSaveOnAction(ActionEvent event) {
@@ -39,8 +38,6 @@ public class VerifiedPageController {
                 if (isLogin) {
                     root.getChildren().clear();
                     root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/login_page.fxml"))));
-
-
                     return;
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Invalid Username Or Passowrd").show();
@@ -54,9 +51,5 @@ public class VerifiedPageController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
-
-
 }

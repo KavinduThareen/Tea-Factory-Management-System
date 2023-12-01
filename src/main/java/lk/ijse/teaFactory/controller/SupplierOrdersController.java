@@ -46,14 +46,11 @@ public class SupplierOrdersController {
     @FXML
     private TableColumn<?, ?> colPayment;
 
-
     @FXML
     private DatePicker dateTxt;
 
-
     @FXML
     private TextField paymentTxt;
-
 
     @FXML
     private AnchorPane root;
@@ -74,74 +71,68 @@ public class SupplierOrdersController {
 
     @FXML
     void addOnAction(ActionEvent event) {
-       // (int) (Double.parseDouble(paymentTxt.getText()) * Double.parseDouble(weigthTxt.getText()));
+        String id = sOidTxt.getText();
+        String sId = sIdTxt.getValue();
+        Date date = Date.valueOf(dateTxt.getValue());
+        String weigth = weigthTxt.getText();
+        String payment = paymentTxt.getText();
 
-       String id = sOidTxt.getText();
-       String sId = sIdTxt.getValue();
-       Date date = Date.valueOf(dateTxt.getValue());
-       String weigth = weigthTxt.getText();
-       int payment = (int) (Double.parseDouble(paymentTxt.getText()) * Double.parseDouble(weigthTxt.getText()));
+        try {
+            Double weigthValue = Double.parseDouble(weigth);
+            Double paymentValue = Double.parseDouble(payment);
+            double total = weigthValue * paymentValue;
 
+            var dto = new SupOrderDto(id, sId, date, weigth, total);
+            var model = new SupOrderModel();
 
-       var dto = new SupOrderDto(id,sId,date,weigth,payment);
+            boolean isValidated = validate();
 
-        var model = new SupOrderModel();
-
-        boolean isValidated = validate();
-
-        if (isValidated) {
-           // new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
-            try {
-                boolean isSaved = model.SupOrderSaved(dto);
-             //   boolean isSaved2 = model2.addLeavesStoke2(dto2);
-                if (isSaved) {
-                    printCustomer();
-                    tbl.refresh();
-                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
-                    clearFields();
-
+            if (isValidated) {
+                try {
+                    boolean isSaved = model.SupOrderSaved(dto);
+                    if (isSaved) {
+                        printCustomer();
+                        tbl.refresh();
+                        new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                        clearFields();
+                    }
+                } catch (Exception e) {
+                    new Alert(Alert.AlertType.ERROR, "Error occurred: " + e.getMessage()).show();
+                    throw new RuntimeException(e);
                 }
-            } catch (Exception e) {
-                new Alert(Alert.AlertType.ERROR, "Error occurred: " + e.getMessage()).show();
-                throw new RuntimeException(e);
             }
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "Please enter valid numeric values for weight and payment").show();
         }
-
     }
 
     private boolean validate() {
 
         String idText = sOidTxt.getText();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isIDValidated = Pattern.matches("[s][0-9]{3,}", idText);
         if (!isIDValidated) {
             errora.animateError(sOidTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid ID!").show();
             return false;
         }
 
         String UidText = sIdTxt.getValue();
-//        boolean isCustomerIDValidated = Pattern.compile("[C][0-9]{3,}").matcher(idText).matches();
         boolean isUIDValidated = Pattern.matches("[S][0-9]{3,}", UidText);
         if (!isUIDValidated) {
             errora.animateError(sOidTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid Customer ID!").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid supplier ID!").show();
             return false;
         }
 
         String addressText = weigthTxt.getText();
-//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
         boolean isAddressValidated = Pattern.matches("\\d+(\\.\\d+)?", addressText);
         if (!isAddressValidated) {
             errora.animateError(weigthTxt);
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid address").show();
             return false;
         }
-
-
         return true;
     }
-
 
     public void loadAll(){
         var model = new SupOrderModel();
@@ -159,9 +150,6 @@ public class SupplierOrdersController {
                 btnDelete.setPrefWidth(100);
                 btnDelete.setPrefHeight(30);
 
-                //   CusOrderTm tm = new CusOrderTm();
-
-                //   tm.getBtnDelete()
                 btnDelete .setOnAction((e) -> {
                     ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
                     ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -186,8 +174,6 @@ public class SupplierOrdersController {
                                 dto.getWeigth(),
                                 dto.getPayment(),
                                 btnDelete
-
-
                         )
                 );
             }
@@ -195,7 +181,6 @@ public class SupplierOrdersController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
         tbl.setItems(obList);
     }
 
@@ -228,15 +213,12 @@ public class SupplierOrdersController {
         loadSupId();
     }
 
-
     private void clearFields() {
         sOidTxt.setText("");
        // sIdTxt  .setText("");
        // dateTxt .setText("");
         weigthTxt.setText("");
     }
-
-
 
     @FXML
     void updateOnAction(ActionEvent event) {
@@ -245,7 +227,6 @@ public class SupplierOrdersController {
         Date date = Date.valueOf(dateTxt.getValue());
         String weigth = weigthTxt.getText();
         int payment = Integer.parseInt(paymentTxt.getText());
-
 
         var dto = new SupOrderDto(id,sId,date,weigth,payment);
         var model = new SupOrderModel();
@@ -285,7 +266,6 @@ public class SupplierOrdersController {
         }
     }
 
-
     private void generateNextId() {
         try {
             String orderId = SupOrderModel.generateNextOrderId();
@@ -310,17 +290,15 @@ public class SupplierOrdersController {
         }
     }
 
-
     @FXML
     void searchOnAction(ActionEvent event) {
-
 
         String id = sOidTxt.getText();
 
         var model = new SupOrderModel();
         try {
             SupOrderDto supOrderDto = model.searchSuppli(id);
-//            System.out.println(customerDto);
+
             if (supOrderDto != null) {
                 sOidTxt.setText(supOrderDto.getId());
                 sIdTxt.setValue(supOrderDto.getSId());
@@ -334,6 +312,5 @@ public class SupplierOrdersController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
-
 
 }

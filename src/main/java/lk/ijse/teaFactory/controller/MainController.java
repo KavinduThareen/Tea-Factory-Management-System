@@ -28,16 +28,12 @@ public class MainController {
     @FXML
     private AnchorPane root;
 
-    @FXML
-    private TextField searchTxt;
-
     private CustomerModel customerModel = new CustomerModel();
-
-
-
+    /*
     public AnchorPane getDashbordRoot() {
         return dashbordRoot;
     }
+     */
 
     public void initialize() throws IOException {
         initializeDashboard();
@@ -56,29 +52,12 @@ public class MainController {
     }
 
     @FXML
-    void searchOnAction(KeyEvent event) throws IOException, SQLException {
-        String id = searchTxt.getText();
-        if (event.getCode() == KeyCode.ENTER) {
-                if (id.equals("C001")) {
-                    customerModel.searchCustomer(id);
-                    dashbordRoot.getChildren().clear();
-                    dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customer_add_page.fxml"))));
-
-                }
-        }
-    }
-
-    @FXML
     void profileOnAction(ActionEvent event) throws IOException {
 
         dashbordRoot.getChildren().clear();
         dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/userProfile.fxml"))));
 
     }
-
-
-
-
 
     @FXML
     void SupplierOnAction(ActionEvent event) throws IOException {
@@ -107,7 +86,6 @@ public class MainController {
         dashbordRoot.getChildren().clear();
         dashbordRoot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/customerOrders.fxml"))));
 
-
     }
 
     @FXML
@@ -123,8 +101,6 @@ public class MainController {
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
 
     }
-
-
 
     @FXML
     void stokebtnOnAction(ActionEvent event) throws IOException {

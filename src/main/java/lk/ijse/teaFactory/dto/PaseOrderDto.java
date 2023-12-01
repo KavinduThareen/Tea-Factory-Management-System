@@ -36,14 +36,8 @@ public class PaseOrderDto {
         this.cartTmList = cartTmList;
     }
 
-
     public String getid() {
         return id;
     }
-/*
-    public List<CusOrderTm> setCartTmList() {
-        return cartTmList;
-    }
 
- */
 }
