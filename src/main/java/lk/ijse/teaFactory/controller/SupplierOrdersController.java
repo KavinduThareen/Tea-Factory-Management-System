@@ -77,12 +77,13 @@ public class SupplierOrdersController {
 
     @FXML
     void addOnAction(ActionEvent event) {
+       // (int) (Double.parseDouble(paymentTxt.getText()) * Double.parseDouble(weigthTxt.getText()));
 
        String id = sOidTxt.getText();
        String sId = sIdTxt.getValue();
        Date date = Date.valueOf(dateTxt.getValue());
        String weigth = weigthTxt.getText();
-       int payment = (int) (Double.valueOf(paymentTxt.getText()) * Double.valueOf(weigthTxt.getText()));
+       int payment = (int) (Double.parseDouble(paymentTxt.getText()) * Double.parseDouble(weigthTxt.getText()));
 
 
        var dto = new SupOrderDto(id,sId,date,weigth,payment);
@@ -269,7 +270,7 @@ public class SupplierOrdersController {
 
         try {
             // Load the JasperReport template
-            InputStream resourceAsStream = getClass().getResourceAsStream("/report/supplierbill.jrxml");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/report/SupplingBill.jrxml");
             JasperDesign load = JRXmlLoader.load(resourceAsStream);
             JRDesignQuery jrDesignQuery = new JRDesignQuery();
             jrDesignQuery.setText("SELECT * FROM supplier_orders WHERE s_orders_id = "+"\""+sOidTxt.getText()+"\"");

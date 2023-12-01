@@ -59,7 +59,7 @@ public class PacketStokePageController {
     @FXML
     private TextField weigthTxt;
 
-    LevesStokePageController levesStokePageController = new LevesStokePageController();
+
 
 
     @FXML
@@ -89,12 +89,10 @@ public class PacketStokePageController {
                 boolean isSaved = model.packetStokeSaved(dto);
                 boolean drop = leavesStokeModel.drop(leavesStokeId,weigth);
 
-              String lid = levesStokePageController.leavesAdd();
-
-                var dto2 = new StokeDeatailDto(pid,lid);
+                var dto2 = new StokeDeatailDto(pid,leavesStokeId);
                 boolean saved = stokemodel.stokedetail(dto2);
 
-                if (isSaved && saved ) {
+                if (isSaved && saved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     clearFields();
                 }
