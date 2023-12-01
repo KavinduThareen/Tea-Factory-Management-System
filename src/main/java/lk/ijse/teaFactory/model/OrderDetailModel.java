@@ -6,6 +6,7 @@ import lk.ijse.teaFactory.dto.tm.CusOrderTm;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 public class OrderDetailModel {
@@ -30,6 +31,23 @@ public class OrderDetailModel {
         pstm.setDouble(4, tm.getPayment());
 
         return pstm.executeUpdate() > 0;
+    }
+
+    public int ordersCount() throws SQLException {
+        int rowCount = 0;
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT SUM(weigth) AS total_weight FROM order_detailse";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+                rowCount = resultSet.getInt("total_weight");
+                System.out.println("Number of rows: " + rowCount);
+            }
+        }
+        return rowCount;
     }
 
 }

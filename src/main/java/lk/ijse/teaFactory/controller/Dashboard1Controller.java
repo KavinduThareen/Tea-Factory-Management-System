@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import lk.ijse.teaFactory.QrcodeReader.QrCodeScanner;
 import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.model.*;
 import net.sf.jasperreports.engine.*;
@@ -20,6 +21,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Dashboard1Controller {
 
@@ -45,6 +48,11 @@ public class Dashboard1Controller {
     private Label lblDate;
 
     @FXML
+    private Label lblPacketSalles;
+
+    private ExecutorService qrScannerExecutor;
+
+    @FXML
     public void initialize() throws SQLException {
         // Call the method to start updating the time
         generateRealTime();
@@ -54,6 +62,7 @@ public class Dashboard1Controller {
         generatestokeCount();
         generatePacketstokeCount();
         generateRealDate();
+        generateordersCount();
     }
 
     private void generateRealTime() {
@@ -106,6 +115,14 @@ public class Dashboard1Controller {
         int a = leavesStokeModel.stokeCount();
 
         lblstokeCount.setText(String.valueOf(a));
+
+    }
+
+    public void generateordersCount() throws SQLException {
+        OrderDetailModel orderDetailModel = new OrderDetailModel()          ;
+        int a = orderDetailModel.ordersCount();
+
+        lblPacketSalles.setText(String.valueOf(a));
 
     }
 
@@ -181,6 +198,19 @@ public class Dashboard1Controller {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void qrOnAction(ActionEvent event) {
+
+        startQRScanner();
+    }
+
+    private void startQRScanner() {
+        qrScannerExecutor = Executors.newSingleThreadExecutor();
+        qrScannerExecutor.execute(() -> {
+            QrCodeScanner.qrCodeScan(); // Run the QR code scanning process continuously
+        });
     }
 
 }
