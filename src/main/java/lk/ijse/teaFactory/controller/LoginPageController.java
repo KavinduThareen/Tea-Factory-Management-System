@@ -5,11 +5,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CustomerDto;
+import lk.ijse.teaFactory.dto.ErrorAnimation;
 import lk.ijse.teaFactory.dto.LoginDetailsDto;
 import lk.ijse.teaFactory.model.LoginDetailModel;
 import lk.ijse.teaFactory.model.RegisterModel;
@@ -22,6 +24,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class LoginPageController{
 
@@ -32,7 +35,7 @@ public class LoginPageController{
     private AnchorPane loginroot;
 
     @FXML
-    private TextField passwordTxt;
+    private PasswordField passwordTxt;
 
     @FXML
     private JFXButton registerbtn;
@@ -40,7 +43,7 @@ public class LoginPageController{
     @FXML
     private TextField usernameTxt;
      private RegisterModel registerModel = new RegisterModel();
-
+     private ErrorAnimation errorAnimation = new ErrorAnimation();
 
 
 
@@ -62,36 +65,35 @@ public class LoginPageController{
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
 
-        try {
-            boolean isLogin = RegisterModel.searchUser(username, password);
-            if (isLogin) {
-                loginroot.getChildren().clear();
-                loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
+        boolean isValidated = validate();
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
-                String  inTime = ((LocalDateTime.now().format(formatter)));
-               // System.out.println(inTime);
+        if (isValidated) {
+            try {
+                boolean isLogin = RegisterModel.searchUser(username, password);
+                if (isLogin) {
+                    loginroot.getChildren().clear();
+                    loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
 
-                Date date = Date.valueOf((LocalDate.now().toString()));
-               // System.out.println(date);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+                    String inTime = ((LocalDateTime.now().format(formatter)));
+                    // System.out.println(inTime);
 
-                String uid = registerModel.findUserIdByUsername(username);
+                    Date date = Date.valueOf((LocalDate.now().toString()));
+                    // System.out.println(date);
 
-
-
-                loginDetail(inTime , date ,uid);
-
+                    String uid = registerModel.findUserIdByUsername(username);
 
 
+                    loginDetail(inTime, date, uid);
 
 
-
-                return;
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Invalid Username Or Passowrd").show();
+                    return;
+                } else {
+                   new Alert(Alert.AlertType.WARNING, "Invalid Username Or Passowrd").show();
+                }
+            } catch (SQLException | IOException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException | IOException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -108,12 +110,31 @@ public class LoginPageController{
         if (isSaved){
             System.out.println("saved");
         }
-
-
-
     }
 
+    private boolean validate() {
 
+        String nameText = usernameTxt.getText();
+        boolean isNameValidated = Pattern.matches("[A-Za-z]{3,}", nameText);
+        if (!isNameValidated) {
+            errorAnimation.animateError(usernameTxt);
+
+            return false;
+        }
+
+        String passwordText = passwordTxt.getText();
+//        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
+        boolean isPwValidated = Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", passwordText);
+        if (!isPwValidated) {
+            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            return false;
+        }
+
+
+
+
+        return true;
+    }
 
 
 

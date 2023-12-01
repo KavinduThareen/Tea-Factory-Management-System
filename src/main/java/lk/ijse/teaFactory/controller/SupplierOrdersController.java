@@ -12,10 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.db.DbConnection;
 import lk.ijse.teaFactory.dto.*;
 import lk.ijse.teaFactory.dto.tm.SupOrderTm;
-import lk.ijse.teaFactory.model.EmployeeModel;
-import lk.ijse.teaFactory.model.LeavesStokeModel;
-import lk.ijse.teaFactory.model.SupOrderModel;
-import lk.ijse.teaFactory.model.SupplierModel;
+import lk.ijse.teaFactory.model.*;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -310,6 +307,31 @@ public class SupplierOrdersController {
             sIdTxt.setItems(obList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+
+    @FXML
+    void searchOnAction(ActionEvent event) {
+
+
+        String id = sOidTxt.getText();
+
+        var model = new SupOrderModel();
+        try {
+            SupOrderDto supOrderDto = model.searchSuppli(id);
+//            System.out.println(customerDto);
+            if (supOrderDto != null) {
+                sOidTxt.setText(supOrderDto.getId());
+                sIdTxt.setValue(supOrderDto.getSId());
+                dateTxt.setValue(supOrderDto.getDate().toLocalDate());
+                weigthTxt.setText(supOrderDto.getWeigth());
+                paymentTxt.setText(String.valueOf(supOrderDto.getPayment()));
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

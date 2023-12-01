@@ -1,6 +1,7 @@
 package lk.ijse.teaFactory.model;
 
 import lk.ijse.teaFactory.db.DbConnection;
+import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.SupOrderDto;
 
 import java.sql.*;
@@ -132,6 +133,29 @@ public class SupOrderModel {
         }
 
         return dtoList;
+    }
+
+    public SupOrderDto searchSuppli(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection ();
+
+        String sql = "SELECT * FROM supplier_orders WHERE s_orders_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        SupOrderDto dto = null;
+
+        if(resultSet.next()) {
+            String oid = resultSet.getString(1);
+            String sid = resultSet.getString(2);
+            Date date = resultSet.getDate(3);
+            String weight = resultSet.getString(4);
+            int payment = resultSet.getInt(5);
+            //   String complete = resultSet.getString(6);
+            dto = new SupOrderDto(oid, sid, date , weight,payment);
+        }
+        return dto;
     }
 
 

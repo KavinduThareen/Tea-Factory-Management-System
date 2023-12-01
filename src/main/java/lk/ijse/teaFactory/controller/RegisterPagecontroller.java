@@ -170,16 +170,16 @@ public class RegisterPagecontroller {
             return false;
         }
 
-/*
+
         String addressText = passwordTxt.getText();
 //        boolean isAddressValidated = Pattern.compile("[A-Za-z0-9]{3,}").matcher(addressText).matches();
-        boolean isAddressValidated = Pattern.matches("[0-5]{1,}", addressText);
+        boolean isAddressValidated = Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", addressText);
         if (!isAddressValidated) {
-            new Alert(Alert.AlertType.ERROR, "Invalid customer address").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid password at least 8 characters").show();
             return false;
         }
 
- */
+
 
 
         return true;
