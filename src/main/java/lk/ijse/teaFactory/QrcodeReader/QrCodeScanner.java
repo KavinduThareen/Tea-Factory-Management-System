@@ -2,25 +2,34 @@ package lk.ijse.teaFactory.QrcodeReader;
 
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import lk.ijse.teaFactory.model.EmpAttendensModel;
 
 
 import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class QrCodeScanner {
 
    // public static ArrayList<Integer> scannedValues = new ArrayList<>();
     public static ArrayList<String> scannedValues = new ArrayList<>();
     //String[][] details = JDBC.getDetails("ticket",4);
-    public static void qrCodeScan() {
 
+
+    public static void qrCodeScan() {
+        EmpAttendensModel empAttendensModel = new EmpAttendensModel();
+        String[] stringArray = new String[5];
 
         Webcam webcam = Webcam.getDefault();   //Generate Webcam Object
         webcam.setViewSize(new Dimension(320,240));
@@ -52,6 +61,27 @@ public class QrCodeScanner {
                     } else {
                         scannedValues.remove(Integer.valueOf(value));
                     }
+                  /*
+                    for (int i = 0; i < stringArray.length; i++) {
+                        stringArray[i]=value;
+
+                    }
+
+                   */
+                    // Print the array
+                  //  System.out.println("Original Array: " + Arrays.toString(stringArray));
+
+
+
+
+                  boolean a = empAttendensModel.markAttendent(value,date,time);
+                   if (a){
+
+                      //  webcam.close();
+                        System.out.println("qr working");
+
+                    }
+
 
 
 
@@ -61,14 +91,16 @@ public class QrCodeScanner {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-//                    jFrame.setVisible(false);
-//                    jFrame.dispose();
-//                    webcam.close();
-//                    break;
+     //               jFrame.setVisible(false);
+      //              jFrame.dispose();
+      //              webcam.close();
+       //             break;
                 }
 
             }catch (NotFoundException e ) {
-                //pass
+               // pass
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
 
         } while(true);

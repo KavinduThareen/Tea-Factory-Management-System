@@ -14,22 +14,24 @@ import java.util.Scanner;
 public class ReadQrCode {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-//
-//        // Step 1: Scan a QR code
-//        System.out.println("Scan a QR code (provide the path to the image):");
-//        String qrCodeImagePath = scanner.nextLine();
-//
-//        try {
-//            String scannedData = scanQRCode(qrCodeImagePath);
-//            if (scannedData != null) {
-//                System.out.println("Scanned QR code data: " + scannedData);
-//            } else {
-//                System.out.println("No QR code found or could not decode the QR code.");
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
+/*
+       // Step 1: Scan a QR code
+        System.out.println("Scan a QR code (provide the path to the image):");
+       String qrCodeImagePath = scanner.nextLine();
+
+        try {
+            String scannedData = scanQRCode(qrCodeImagePath);
+            if (scannedData != null) {
+                System.out.println("Scanned QR code data: " + scannedData);
+            } else {
+                System.out.println("No QR code found or could not decode the QR code.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+ */
+
 //        // Step 2: Generate a new QR code
         System.out.println("Enter data to generate a new QR code:");
         String newData = scanner.nextLine();

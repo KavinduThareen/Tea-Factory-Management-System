@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.model.CustomerModel;
+import lk.ijse.teaFactory.model.EmpAttendensModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -96,9 +97,13 @@ public class MainController {
     }
 
     @FXML
-    void singoutbtnOnAction(ActionEvent event) throws IOException {
-        root.getChildren().clear();
-        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
+    void singoutbtnOnAction(ActionEvent event) throws IOException, SQLException {
+        EmpAttendensModel empAttendensModel = new EmpAttendensModel();
+         boolean a = empAttendensModel.delete();
+
+             root.getChildren().clear();
+             root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
+
 
     }
 

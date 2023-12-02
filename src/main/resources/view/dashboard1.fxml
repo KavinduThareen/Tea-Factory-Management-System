@@ -82,7 +82,7 @@
       <Button layoutX="901.0" layoutY="406.0" mnemonicParsing="false" onAction="#leavesStokeRepoteOnAction" prefHeight="210.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" />
       <Button layoutX="1212.0" layoutY="402.0" mnemonicParsing="false" onAction="#packetRepoteOnAction" prefHeight="210.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" />
       <Button layoutX="907.0" layoutY="656.0" mnemonicParsing="false" prefHeight="210.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" />
-      <Button layoutX="1219.0" layoutY="654.0" mnemonicParsing="false" prefHeight="210.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" />
+      <Button layoutX="1219.0" layoutY="654.0" mnemonicParsing="false" onAction="#attendentRepotOnAction" prefHeight="210.0" prefWidth="270.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" />
       <Label fx:id="lblstokeCount" layoutX="991.0" layoutY="521.0" prefHeight="66.0" prefWidth="83.0" text="Label">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -131,7 +131,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="1314.0" layoutY="732.0" prefHeight="92.0" prefWidth="76.0" text="30">
+      <Label fx:id="lblqrAttendent" layoutX="1314.0" layoutY="732.0" prefHeight="92.0" prefWidth="76.0" text="30">
          <font>
             <Font name="System Bold" size="48.0" />
          </font></Label>

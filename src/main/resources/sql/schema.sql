@@ -12,6 +12,13 @@ create table user
     password varchar(8)  null
 );
 
+create table otp
+(
+    otp int not null
+        primary key
+);
+
+
 
 create table login_details
 (
@@ -36,6 +43,15 @@ create table employee
     constraint foreign key (user_id) references user (userid)
             on update cascade on delete cascade
 );
+
+create table emp_attendens
+(
+    attendent varchar(50) not null
+        primary key,
+    date      date        null,
+    time      varchar(20) null
+);
+
 
 
 create table customer

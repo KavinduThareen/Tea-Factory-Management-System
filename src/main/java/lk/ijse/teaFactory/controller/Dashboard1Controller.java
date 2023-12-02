@@ -48,6 +48,10 @@ public class Dashboard1Controller {
     private Label lblDate;
 
     @FXML
+    private Label lblqrAttendent;
+
+
+    @FXML
     private Label lblPacketSalles;
 
     private ExecutorService qrScannerExecutor;
@@ -63,6 +67,7 @@ public class Dashboard1Controller {
         generatePacketstokeCount();
         generateRealDate();
         generateordersCount();
+       generateEmpAttendens();
     }
 
     private void generateRealTime() {
@@ -134,6 +139,18 @@ public class Dashboard1Controller {
 
     }
 
+    public void generateEmpAttendens() throws SQLException {
+        EmpAttendensModel empAttendensModel = new EmpAttendensModel();
+        int a = empAttendensModel.empAttendes();
+
+        lblqrAttendent.setText(String.valueOf(a));
+
+    }
+
+
+
+
+
     @FXML
     void leavesStokeRepoteOnAction(ActionEvent event) {
 
@@ -198,6 +215,28 @@ public class Dashboard1Controller {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void attendentRepotOnAction(ActionEvent event) {
+        try {
+            // Load the JasperReport template
+            InputStream resourceAsStream = getClass().getResourceAsStream("/report/empAttendens.jrxml");
+            JasperDesign load = JRXmlLoader.load(resourceAsStream);
+            JasperReport jasperReport = JasperCompileManager.compileReport(load);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
+                    null,
+                    DbConnection.getInstance().getConnection());
+
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @FXML

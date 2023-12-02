@@ -49,8 +49,8 @@ public class LoginPageController{
     void keyOnAction(KeyEvent event) throws IOException {
         if (event.getCode() == KeyCode.ENTER) {
 
-           // loginroot.getChildren().clear();
-          //  loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
+            loginroot.getChildren().clear();
+           loginroot.getChildren().add(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/dashboard.fxml"))));
 
         }
     }
