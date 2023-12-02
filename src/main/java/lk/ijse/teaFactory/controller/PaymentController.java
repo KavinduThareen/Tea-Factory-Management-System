@@ -87,7 +87,6 @@ public class PaymentController {
         boolean isValidated = validate();
 
         if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.salarySaved(dto);
                 if (isSaved) {
@@ -139,7 +138,7 @@ public class PaymentController {
             boolean isUpdated = model.updateSalary(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
 
                 clearFields();
             }
@@ -222,7 +221,7 @@ public class PaymentController {
         try {
             boolean isDeleted = SalaryModel.deleteItem(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, " deleted!").show();
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -275,7 +274,7 @@ public class PaymentController {
                     countTxt.setText(salaryDto.getCount());
 
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                    new Alert(Alert.AlertType.INFORMATION, "salary not found").show();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

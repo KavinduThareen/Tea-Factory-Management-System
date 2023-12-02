@@ -82,8 +82,6 @@ public class SupplierPageController {
         boolean isValidated = validate();
 
         if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
-
             try {
                 boolean isSaved = model.supplierSaved(dto);
                 if (isSaved) {
@@ -200,7 +198,7 @@ public class SupplierPageController {
         try {
             boolean isDeleted = SupplierModel.deleteItem(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, " deleted!").show();
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -236,7 +234,7 @@ public class SupplierPageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
                 tbl.refresh();
                 clearFields();
             }
@@ -268,7 +266,7 @@ public class SupplierPageController {
                     Contac.setText(supplierDto.getContac());
 
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                    new Alert(Alert.AlertType.INFORMATION, "stoke not found").show();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

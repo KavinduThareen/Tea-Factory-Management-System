@@ -9,7 +9,7 @@
 }
 
 .table-view .column-header-background .filler {
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(220, 50, 50, 0);
     -fx-background-radius: 10;
 }
 
@@ -36,10 +36,10 @@
 }
 .table-row-cell:hover {
     -fx-background-color: rgb(255, 255, 255);
-    -fx-text-background-color: #8379e7;
+    -fx-text-background-color: #ee2222;
 }
 .table-row-cell:odd{
-    -fx-background-color: #ffffff;
+    -fx-background-color: rgba(255, 255, 255, 0.6);
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }

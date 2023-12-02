@@ -69,15 +69,12 @@ public class CustomerAddPageController {
        boolean isValidated = validate();
 
         if (isValidated) {
-          new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
-
             try {
                 boolean isSaved = model.customerSaved(dto);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
                     count++;
                     clearFields();
-
                 }
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
@@ -172,7 +169,7 @@ public class CustomerAddPageController {
             boolean isUpdated = model.updateCustomer(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
                 clearFields();
             }
         } catch (SQLException e) {

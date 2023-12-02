@@ -81,7 +81,7 @@ public class EmployeePageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
                 clearFields();
                 tabl.refresh();
 
@@ -107,7 +107,6 @@ public class EmployeePageController {
         boolean isValidated = validate();
 
         if (isValidated) {
-         new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
          try {
              boolean isSaved = model.employeeSave(dto);
 
@@ -273,7 +272,7 @@ public class EmployeePageController {
                     empAddressTxt.setText(employeeDto.getEmpAddress());
                     empContacTxt.setText(employeeDto.getEmpContac());
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                    new Alert(Alert.AlertType.INFORMATION, "Employee not found").show();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
@@ -299,7 +298,7 @@ public class EmployeePageController {
                 empAddressTxt.setText(employeeDto.getEmpAddress());
                 empContacTxt.setText(employeeDto.getEmpContac());
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                new Alert(Alert.AlertType.INFORMATION, "Employee not found").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();

@@ -79,7 +79,6 @@ public class PacketStokePageController {
         var stokemodel = new StokeDetailModel();
 
         if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Customer Saved Successfully!").show();
             try {
                 boolean isSaved = model.packetStokeSaved(dto);
                 boolean drop = leavesStokeModel.drop(leavesStokeId,weigth);
@@ -154,7 +153,7 @@ public class PacketStokePageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
                 clearFields();
             }
         } catch (SQLException e) {
@@ -242,7 +241,7 @@ public class PacketStokePageController {
         try {
             boolean isDeleted = PacketStokeModel.delete(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, " deleted!").show();
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -271,7 +270,7 @@ public class PacketStokePageController {
                     expirTxt.setValue(packetStokeDto.getDate().toLocalDate());
 
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                    new Alert(Alert.AlertType.INFORMATION, "stoke not found").show();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

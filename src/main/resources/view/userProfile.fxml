@@ -35,5 +35,10 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
+      <JFXButton layoutX="167.0" layoutY="308.0" prefHeight="59.0" prefWidth="362.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Upload new photo">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

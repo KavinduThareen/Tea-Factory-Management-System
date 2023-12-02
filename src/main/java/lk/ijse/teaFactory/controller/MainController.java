@@ -99,12 +99,10 @@ public class MainController {
     @FXML
     void singoutbtnOnAction(ActionEvent event) throws IOException, SQLException {
         EmpAttendensModel empAttendensModel = new EmpAttendensModel();
-         boolean a = empAttendensModel.delete();
+        boolean a = empAttendensModel.delete();
 
-             root.getChildren().clear();
-             root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
-
-
+        root.getChildren().clear();
+        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
     }
 
     @FXML
