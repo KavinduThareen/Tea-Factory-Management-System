@@ -73,12 +73,15 @@ public class PaymentController {
 
     @FXML
     void addOnAction(ActionEvent event) {
-         String id = idTxt.getText();
-         String empId = (String) empIdTxt.getValue();
-         Date date = Date.valueOf(dateTxt.getValue());
-         String count = countTxt.getText();
+        String id = idTxt.getText();
+        String empId = String.valueOf(empIdTxt.getValue());
+        Date date = Date.valueOf(dateTxt.getValue().toString());
+        int count = Integer.parseInt(countTxt.getText());
+        String payment = String.valueOf(count * 30);
 
-        var dto = new SalaryDto(id,empId,date,count);
+
+
+        var dto = new SalaryDto(id,empId,date,payment);
 
         var model = new SalaryModel();
         boolean isValidated = validate();

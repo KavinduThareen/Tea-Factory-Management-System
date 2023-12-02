@@ -59,7 +59,7 @@ public class QrCodeScanner {
                     if (!scannedValues.contains(value)) {
                         scannedValues.add(value);
                     } else {
-                        scannedValues.remove(Integer.valueOf(value));
+                        scannedValues.remove(String.valueOf(value));
                     }
                   /*
                     for (int i = 0; i < stringArray.length; i++) {

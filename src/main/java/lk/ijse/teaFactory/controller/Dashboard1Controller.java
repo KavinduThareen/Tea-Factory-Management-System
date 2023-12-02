@@ -247,9 +247,10 @@ public class Dashboard1Controller {
 
     private void startQRScanner() {
         qrScannerExecutor = Executors.newSingleThreadExecutor();
-        qrScannerExecutor.execute(() -> {
-            QrCodeScanner.qrCodeScan(); // Run the QR code scanning process continuously
-        });
+        // Run the QR code scanning process continuously
+        qrScannerExecutor.execute(QrCodeScanner::qrCodeScan);
     }
 
 }
+
+//  QrCodeScanner.qrCodeScan();
