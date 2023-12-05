@@ -12,10 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.db.DbConnection;
-import lk.ijse.teaFactory.dto.CustomerDto;
-import lk.ijse.teaFactory.dto.EmployeeDto;
-import lk.ijse.teaFactory.dto.ErrorAnimation;
-import lk.ijse.teaFactory.dto.SalaryDto;
+import lk.ijse.teaFactory.dto.*;
 import lk.ijse.teaFactory.dto.tm.SalaryTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
@@ -70,6 +67,7 @@ public class PaymentController {
     private AnchorPane root;
 
     ErrorAnimation errora = new ErrorAnimation();
+    NotificationAnimation notifi = new NotificationAnimation();
 
     @FXML
     void addOnAction(ActionEvent event) {
@@ -90,7 +88,7 @@ public class PaymentController {
             try {
                 boolean isSaved = model.salarySaved(dto);
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                   notifi.showNotification("Saved");
                     loadAllEmployees();
                     clearFields();
                 }
@@ -139,7 +137,7 @@ public class PaymentController {
             boolean isUpdated = model.updateSalary(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
+                notifi.showNotification("Update");
 
                 loadAllEmployees();
                 clearFields();
@@ -223,7 +221,7 @@ public class PaymentController {
         try {
             boolean isDeleted = SalaryModel.deleteItem(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, " deleted!").show();
+                notifi.showNotification("Delete");
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -276,7 +274,7 @@ public class PaymentController {
                     countTxt.setText(salaryDto.getCount());
 
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "salary not found").show();
+                    notifi.showNotification("salary not found");
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

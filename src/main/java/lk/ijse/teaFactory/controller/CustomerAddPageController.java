@@ -6,16 +6,22 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.EmployeeDto;
 import lk.ijse.teaFactory.dto.ErrorAnimation;
+import lk.ijse.teaFactory.dto.NotificationAnimation;
 import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.EmployeeModel;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -43,6 +49,7 @@ public class CustomerAddPageController {
     private JFXComboBox<String> empidTxt;
 
     ErrorAnimation errorAnimation = new ErrorAnimation();
+    NotificationAnimation notification = new NotificationAnimation();
 
     @FXML
     void addcusBackeBtn(ActionEvent event) throws IOException {
@@ -61,7 +68,6 @@ public class CustomerAddPageController {
         String cusname = cusnameTxt.getText();
         String cusAddress = cusAddressTxt.getText();
         String cusCantac = cuscontacTxt.getText();
-      //  String complete = "0";
 
         var dto = new CustomerDto(cusid,empid,cusname,cusAddress,cusCantac);
 
@@ -72,7 +78,7 @@ public class CustomerAddPageController {
             try {
                 boolean isSaved = model.customerSaved(dto);
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    notification.showNotification("saved");
                     count++;
                     clearFields();
                 }
@@ -169,13 +175,15 @@ public class CustomerAddPageController {
             boolean isUpdated = model.updateCustomer(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
+                notification.showNotification("update");
                 clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+
+
 
     public void initialize() {
         loadEmpId();

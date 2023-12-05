@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.CustomerDto;
 import lk.ijse.teaFactory.dto.ErrorAnimation;
+import lk.ijse.teaFactory.dto.NotificationAnimation;
 import lk.ijse.teaFactory.dto.SupplierDto;
 import lk.ijse.teaFactory.dto.tm.SupplierTm;
 import lk.ijse.teaFactory.model.CustomerModel;
@@ -62,6 +63,7 @@ public class SupplierPageController {
     private TableColumn<?, ?> coldelte;
 
     ErrorAnimation errora = new ErrorAnimation();
+    NotificationAnimation notifi = new NotificationAnimation();
 
     @FXML
     void addSDetailOnAction(ActionEvent event) throws IOException {
@@ -85,7 +87,7 @@ public class SupplierPageController {
             try {
                 boolean isSaved = model.supplierSaved(dto);
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                     notifi.showNotification("Saved");
                     loadAll();
                     tbl.refresh();
                     clearFields();
@@ -199,7 +201,7 @@ public class SupplierPageController {
         try {
             boolean isDeleted = SupplierModel.deleteItem(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, " deleted!").show();
+                notifi.showNotification("Delete");
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -235,7 +237,7 @@ public class SupplierPageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
+                notifi.showNotification("Update");
                 tbl.refresh();
                 clearFields();
             }
@@ -267,7 +269,7 @@ public class SupplierPageController {
                     Contac.setText(supplierDto.getContac());
 
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "stoke not found").show();
+                    notifi.showNotification("Supplier not found");
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

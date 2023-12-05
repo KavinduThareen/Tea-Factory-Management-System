@@ -64,6 +64,7 @@ public class PacketStokePageController {
     LeavesStokeModel leavesStokeModel = new LeavesStokeModel();
 
     ErrorAnimation errorAnimation = new ErrorAnimation();
+    NotificationAnimation notifi = new NotificationAnimation();
 
     @FXML
     void addOnAction(ActionEvent event) {
@@ -85,7 +86,7 @@ public class PacketStokePageController {
                 boolean saved1 = stokemodel.detail(pid,leavesStokeId,date);
 
                 if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    notifi.showNotification("Saved");
                     loadAll();
                     clearFields();
                 }
@@ -154,7 +155,7 @@ public class PacketStokePageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
+                notifi.showNotification("Update");
                 loadAll();
                 clearFields();
             }
@@ -243,7 +244,7 @@ public class PacketStokePageController {
         try {
             boolean isDeleted = PacketStokeModel.delete(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, " deleted!").show();
+                notifi.showNotification("Delete");
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -272,7 +273,7 @@ public class PacketStokePageController {
                     expirTxt.setValue(packetStokeDto.getDate().toLocalDate());
 
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "stoke not found").show();
+                    notifi.showNotification("stoke not found");
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -11,10 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.db.DbConnection;
-import lk.ijse.teaFactory.dto.CustomerDto;
-import lk.ijse.teaFactory.dto.ErrorAnimation;
-import lk.ijse.teaFactory.dto.PacketStokeDto;
-import lk.ijse.teaFactory.dto.PaseOrderDto;
+import lk.ijse.teaFactory.dto.*;
 import lk.ijse.teaFactory.dto.tm.CartTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.CustomerModel;
@@ -94,6 +91,7 @@ public class CustomerOrdersController {
     private  Label tolLbl;
 
     ErrorAnimation errorAnimation = new ErrorAnimation();
+    NotificationAnimation noti = new NotificationAnimation();
 
   //  private CustomerModel customerModel = new CustomerModel();
   //  private PacketStokeModel packetStokeModel = new PacketStokeModel();
@@ -126,7 +124,7 @@ public class CustomerOrdersController {
         boolean isValidated = validate();
 
         if (isValidated) {
-            new Alert(Alert.AlertType.INFORMATION, "Order Saved Successfully!").show();
+                noti.showNotification("Order Saved Successfully!");
 
             if (!obList2.isEmpty()) {
                 for (int i = 0; i < tbl.getItems().size(); i++) {
@@ -334,7 +332,7 @@ public class CustomerOrdersController {
             try {
                 boolean isSuccess = plaseOrderModel.placeOrder(placeOrderDto);
                 if (isSuccess) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "Order Success!").show();
+                    noti.showNotification("Order Success!");
                     count++;
                 }
             } catch (SQLException e) {

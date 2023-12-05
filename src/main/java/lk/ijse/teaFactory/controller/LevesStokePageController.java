@@ -10,10 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.EmployeeDto;
-import lk.ijse.teaFactory.dto.ErrorAnimation;
-import lk.ijse.teaFactory.dto.LeavesStokeDto;
-import lk.ijse.teaFactory.dto.SupOrderDto;
+import lk.ijse.teaFactory.dto.*;
 import lk.ijse.teaFactory.dto.tm.LeaveStokeTm;
 import lk.ijse.teaFactory.model.*;
 
@@ -59,6 +56,7 @@ public class LevesStokePageController {
     private ComboBox<String > supplingidTxt;
 
     ErrorAnimation errorAnimation = new ErrorAnimation();
+    NotificationAnimation notifi = new NotificationAnimation();
 
     @FXML
     private TableView<LeaveStokeTm> table;
@@ -86,7 +84,7 @@ public class LevesStokePageController {
                 boolean a = supliDetail.detail(sid,id,sDate);
 
                 if (isSaved && isSaved2) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                        notifi.showNotification("saved");
                     loadAll();
                     clearFields();
                 }
@@ -183,7 +181,7 @@ public class LevesStokePageController {
         try {
             boolean isDeleted = LeavesStokeModel.delete(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, "deleted!").show();
+                notifi.showNotification("Deleted");
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -238,7 +236,7 @@ public class LevesStokePageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
+                notifi.showNotification("update");
                 loadAll();
              clearFields();
             }
@@ -264,7 +262,7 @@ public class LevesStokePageController {
                     eDateTxt.setValue(leavesStokeDto.getEDate().toLocalDate());
 
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "Leavestoke not found").show();
+                    notifi.showNotification("Leavestoke not found");
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

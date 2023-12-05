@@ -9,6 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.ErrorAnimation;
+import lk.ijse.teaFactory.dto.NotificationAnimation;
 import lk.ijse.teaFactory.dto.RegisterDto;
 import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.RegisterModel;
@@ -42,6 +43,7 @@ public class UserProfileController{
     private TextField usernameTxt;
 
     private ErrorAnimation errorAnimation = new ErrorAnimation();
+    NotificationAnimation notifi = new NotificationAnimation();
 
     @FXML
     void addnewaccOnAction(ActionEvent event) throws IOException, SQLException {
@@ -66,7 +68,7 @@ public class UserProfileController{
         try {
             boolean isDeleted = RegisterModel.delete(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, " deleted!").show();
+              notifi.showNotification("Delete");
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -91,7 +93,7 @@ public class UserProfileController{
                     boolean isUpdated = model.updateuser(dto);
                     System.out.println(isUpdated);
                     if (isUpdated) {
-                        new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
+                        notifi.showNotification("Update");
                         //clearFields();
                     }
                 } catch (SQLException e) {

@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.teaFactory.dto.EmployeeDto;
+import lk.ijse.teaFactory.dto.NotificationAnimation;
 import lk.ijse.teaFactory.dto.tm.EmployeeTm;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.EmployeeModel;
@@ -48,6 +49,8 @@ public class ViewEmployeePageController {
 
     @FXML
     private TableView<EmployeeTm> tblEmployee;
+
+    NotificationAnimation notifi = new NotificationAnimation();
 
     @FXML
     private AnchorPane root;
@@ -115,7 +118,7 @@ public class ViewEmployeePageController {
         try {
             boolean isDeleted = EmployeeModel.deleteItem(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, " deleted!").show();
+                notifi.showNotification("Delete");
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }

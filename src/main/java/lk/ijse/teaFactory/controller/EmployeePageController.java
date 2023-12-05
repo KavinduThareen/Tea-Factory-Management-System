@@ -11,10 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.teaFactory.dto.CustomerDto;
-import lk.ijse.teaFactory.dto.EmployeeDto;
-import lk.ijse.teaFactory.dto.ErrorAnimation;
-import lk.ijse.teaFactory.dto.RegisterDto;
+import lk.ijse.teaFactory.dto.*;
 import lk.ijse.teaFactory.dto.tm.EmployeeTm;
 import lk.ijse.teaFactory.model.CustomerModel;
 import lk.ijse.teaFactory.model.EmployeeModel;
@@ -63,6 +60,7 @@ public class EmployeePageController {
     private TableView<EmployeeTm> tbl2;
 
     ErrorAnimation errora = new ErrorAnimation();
+    NotificationAnimation notifi = new NotificationAnimation();
 
     @FXML
     void updateOnAction(ActionEvent event) {
@@ -81,7 +79,7 @@ public class EmployeePageController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
+              notifi.showNotification("update");
                 clearFields();
                 tabl.refresh();
 
@@ -111,8 +109,7 @@ public class EmployeePageController {
              boolean isSaved = model.employeeSave(dto);
 
                  if (isSaved) {
-
-                     new Alert(Alert.AlertType.CONFIRMATION, "Emplooyee Saved").show();
+                     notifi.showNotification("update");
                      clearFields();
                  }
 
@@ -272,7 +269,7 @@ public class EmployeePageController {
                     empAddressTxt.setText(employeeDto.getEmpAddress());
                     empContacTxt.setText(employeeDto.getEmpContac());
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "Employee not found").show();
+                    notifi.showNotification("Employee not found");
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();

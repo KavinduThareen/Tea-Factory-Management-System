@@ -143,6 +143,7 @@ public class Dashboard1Controller {
         EmpAttendensModel empAttendensModel = new EmpAttendensModel();
         int a = empAttendensModel.empAttendes();
 
+
         lblqrAttendent.setText(String.valueOf(a));
 
     }

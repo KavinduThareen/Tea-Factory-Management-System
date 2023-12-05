@@ -16,6 +16,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import lk.ijse.teaFactory.dto.ErrorAnimation;
+import lk.ijse.teaFactory.dto.NotificationAnimation;
 import lk.ijse.teaFactory.dto.RegisterDto;
 import lk.ijse.teaFactory.model.CusOrderModel;
 import lk.ijse.teaFactory.model.RegisterModel;
@@ -51,6 +52,7 @@ public class RegisterPagecontroller {
     private AnchorPane registerroot;
 
     ErrorAnimation errora = new ErrorAnimation();
+    NotificationAnimation notifi = new NotificationAnimation();
 
     @FXML
     void createAccountBtnOnAction(ActionEvent event) {
@@ -72,7 +74,7 @@ public class RegisterPagecontroller {
                 try {
                     boolean isSaved = model.registerUser(dto);
                     if (isSaved) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "You are registerd!").show();
+                        notifi.showNotification("You are registerd!");
 
                         clearFields();
                         registerroot.getChildren().clear();

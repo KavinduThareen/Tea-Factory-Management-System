@@ -62,7 +62,7 @@ public class OtpPageController implements Initializable {
             root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/verifiedPage.fxml"))));
         }
         else {
-            new Alert(Alert.AlertType.CONFIRMATION, "Otp is wrong").show();
+            new Alert(Alert.AlertType.ERROR, "Otp is wrong").show();
         }
 
     }

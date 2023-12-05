@@ -6,6 +6,8 @@ import com.github.sarxos.webcam.WebcamResolution;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import javafx.scene.control.Alert;
+import lk.ijse.teaFactory.dto.NotificationAnimation;
 import lk.ijse.teaFactory.model.EmpAttendensModel;
 
 
@@ -22,7 +24,7 @@ import java.util.Set;
 
 public class QrCodeScanner {
 
-   // public static ArrayList<Integer> scannedValues = new ArrayList<>();
+
     public static ArrayList<String> scannedValues = new ArrayList<>();
     //String[][] details = JDBC.getDetails("ticket",4);
 
@@ -61,31 +63,12 @@ public class QrCodeScanner {
                     } else {
                         scannedValues.remove(String.valueOf(value));
                     }
-                  /*
-                    for (int i = 0; i < stringArray.length; i++) {
-                        stringArray[i]=value;
-
-                    }
-
-                   */
-                    // Print the array
-                  //  System.out.println("Original Array: " + Arrays.toString(stringArray));
-
-
-
 
                   boolean a = empAttendensModel.markAttendent(value,date,time);
                    if (a){
-
-                      //  webcam.close();
                         System.out.println("qr working");
-
                     }
 
-
-
-
-                   // JDBC.setDetails("INSERT INTO turtlescare.ticket (issueDate, issueTime, code) VALUES ('"+ date +"', '"+ time +"', '" + value +"')");
                     try {
                         Thread.sleep(5000);
                     } catch (InterruptedException e) {

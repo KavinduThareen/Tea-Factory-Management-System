@@ -68,6 +68,7 @@ public class SupplierOrdersController {
     private TextField weigthTxt;
 
     ErrorAnimation errora = new ErrorAnimation();
+    NotificationAnimation notifi = new NotificationAnimation();
 
     @FXML
     void addOnAction(ActionEvent event) {
@@ -92,7 +93,7 @@ public class SupplierOrdersController {
                     boolean isSaved = model.SupOrderSaved(dto);
                     if (isSaved) {
                         printCustomer();
-                        new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                         notifi.showNotification("Saved");
                         loadAll();
                         clearFields();
                     }
@@ -188,7 +189,7 @@ public class SupplierOrdersController {
         try {
             boolean isDeleted = SupOrderModel.deleteItem(id);
             if(isDeleted)
-                new Alert(Alert.AlertType.CONFIRMATION, "item deleted!").show();
+                notifi.showNotification("Delete");
         } catch (SQLException ex) {
             new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
         }
@@ -235,7 +236,7 @@ public class SupplierOrdersController {
             boolean isUpdated = model.update(dto);
             System.out.println(isUpdated);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                notifi.showNotification("Update");
                 loadAll();
                 clearFields();
             }
@@ -307,7 +308,7 @@ public class SupplierOrdersController {
                 weigthTxt.setText(supOrderDto.getWeigth());
                 paymentTxt.setText(String.valueOf(supOrderDto.getPayment()));
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                notifi.showNotification("Supplier not found");
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
