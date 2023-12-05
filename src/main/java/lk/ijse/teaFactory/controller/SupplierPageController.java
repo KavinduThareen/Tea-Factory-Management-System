@@ -86,6 +86,7 @@ public class SupplierPageController {
                 boolean isSaved = model.supplierSaved(dto);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    loadAll();
                     tbl.refresh();
                     clearFields();
                 }

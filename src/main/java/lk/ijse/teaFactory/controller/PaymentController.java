@@ -91,6 +91,7 @@ public class PaymentController {
                 boolean isSaved = model.salarySaved(dto);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    loadAllEmployees();
                     clearFields();
                 }
             } catch (Exception e) {
@@ -140,6 +141,7 @@ public class PaymentController {
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
 
+                loadAllEmployees();
                 clearFields();
             }
         } catch (SQLException e) {

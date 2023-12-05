@@ -92,8 +92,8 @@ public class SupplierOrdersController {
                     boolean isSaved = model.SupOrderSaved(dto);
                     if (isSaved) {
                         printCustomer();
-                        tbl.refresh();
                         new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                        loadAll();
                         clearFields();
                     }
                 } catch (Exception e) {
@@ -236,6 +236,7 @@ public class SupplierOrdersController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                loadAll();
                 clearFields();
             }
         } catch (SQLException e) {

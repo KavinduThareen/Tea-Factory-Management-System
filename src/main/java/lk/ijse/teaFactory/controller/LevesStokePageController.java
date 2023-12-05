@@ -87,6 +87,7 @@ public class LevesStokePageController {
 
                 if (isSaved && isSaved2) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    loadAll();
                     clearFields();
                 }
             } catch (SQLException e) {
@@ -238,6 +239,7 @@ public class LevesStokePageController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, " updated!").show();
+                loadAll();
              clearFields();
             }
         } catch (SQLException e) {

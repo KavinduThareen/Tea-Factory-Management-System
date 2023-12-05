@@ -86,6 +86,7 @@ public class PacketStokePageController {
 
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "saved").show();
+                    loadAll();
                     clearFields();
                 }
             } catch (SQLException e) {
@@ -154,6 +155,7 @@ public class PacketStokePageController {
             System.out.println(isUpdated);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "updated!").show();
+                loadAll();
                 clearFields();
             }
         } catch (SQLException e) {
