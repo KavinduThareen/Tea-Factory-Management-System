@@ -23,6 +23,6 @@
             <TableColumn fx:id="colDelete" maxWidth="1000.0" prefWidth="169.6666259765625" text="Delete" />
         </columns>
       </TableView>
-      <JFXButton fx:id="backBtnOnAction" layoutX="1357.0" layoutY="14.0" onAction="#backBtnOnAction" prefHeight="48.0" prefWidth="92.0" text="Back" />
+      <JFXButton layoutX="1357.0" layoutY="14.0" onAction="#backBtnOnAction" prefHeight="48.0" prefWidth="92.0" text="Back" />
     </children>
 </AnchorPane>

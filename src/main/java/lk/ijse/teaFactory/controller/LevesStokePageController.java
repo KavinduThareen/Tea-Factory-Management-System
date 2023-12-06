@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
@@ -14,9 +15,11 @@ import lk.ijse.teaFactory.dto.*;
 import lk.ijse.teaFactory.dto.tm.LeaveStokeTm;
 import lk.ijse.teaFactory.model.*;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -268,6 +271,14 @@ public class LevesStokePageController {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
         }
+    }
+
+
+    @FXML
+    void backOnAction(ActionEvent event) throws IOException {
+        root.getChildren().clear();
+        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/ourStoke.fxml"))));
+
     }
 
 

@@ -39,7 +39,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="146.0" layoutY="718.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Leves Stoke">
+      <JFXButton layoutX="146.0" layoutY="718.0" onAction="#addBtnOnAction" prefHeight="52.0" prefWidth="415.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Add Stoke">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></JFXButton>
@@ -50,12 +50,16 @@
       </JFXButton>
       <DatePicker fx:id="sDateTxt" layoutX="140.0" layoutY="419.0" prefHeight="52.0" prefWidth="426.0" stylesheets="@../style/datePiker.css" />
       <DatePicker fx:id="eDateTxt" layoutX="140.0" layoutY="520.0" prefHeight="51.0" prefWidth="426.0" stylesheets="@../style/datePiker.css" />
-      <TextField fx:id="deleteTxt" layoutX="26.0" layoutY="12.0" prefHeight="26.0" prefWidth="159.0" />
       <ComboBox fx:id="supplingidTxt" layoutX="140.0" layoutY="618.0" prefHeight="52.0" prefWidth="426.0" stylesheets="@../style/comboBox.css" />
       <Label layoutX="508.0" layoutY="322.0" prefHeight="51.0" prefWidth="53.0" text="Kg">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <JFXButton layoutX="14.0" layoutY="28.0" onAction="#backOnAction" prefHeight="52.0" prefWidth="123.0" text="Back">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

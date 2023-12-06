@@ -38,7 +38,7 @@
 /* Arrows for navigating through months */
 .arrow-button {
     /* Color of the arrow */
-    -fx-background-color: #090606;
+    -fx-background-color: #8f8c8c;
 
     /* Arrow icon color */
     -fx-mark-color: white;

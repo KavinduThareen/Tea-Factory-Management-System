@@ -63,5 +63,10 @@
          </font>
       </Label>
       <JFXComboBox fx:id="leavesId" focusColor="#405aa800" layoutX="1048.0" layoutY="184.0" prefHeight="55.0" prefWidth="424.0" stylesheets="@../style/comboBox.css" unFocusColor="#4d4d4d00" />
+      <JFXButton layoutX="1483.0" layoutY="29.0" onAction="#backOnAction" prefHeight="37.0" prefWidth="92.0" text="Back">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

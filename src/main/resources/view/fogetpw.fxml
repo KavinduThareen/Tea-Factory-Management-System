@@ -22,5 +22,10 @@
          <font>
             <Font name="System Bold" size="72.0" />
          </font></TextField>
+      <JFXButton layoutX="1640.0" layoutY="137.0" onAction="#backOnAction" prefHeight="32.0" prefWidth="75.0" text="Back">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -10,6 +10,7 @@ import lk.ijse.teaFactory.gmail.Gmailer;
 import lk.ijse.teaFactory.model.LoginDetailModel;
 import lk.ijse.teaFactory.model.OtpModel;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Random;
@@ -35,6 +36,12 @@ public class FogetpwController {
         root.getChildren().clear();
         root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/otpPage.fxml"))));
 
+    }
+
+    @FXML
+    void backOnAction(ActionEvent event) throws IOException {
+        root.getChildren().clear();
+        root.getChildren().add(FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("/view/login_page.fxml"))));
     }
 
     public void sendOtp() {
