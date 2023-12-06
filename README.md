@@ -26,13 +26,12 @@ The Tea Factory Management System is a standalone Java application designed to m
 2. **Install Dependencies:**
 
     ```bash
-    # Assuming you are using a specific package manager
-    npm install  # or yarn install
+         https://mvnrepository.com/
     ```
 
 3. **Database Setup:**
 
-    - Create a database and configure the connection details in `config/database.config.js`.
+    - Create a database and configure the connection details in `config/database.config.mysql`.
 
 ### Usage
 
