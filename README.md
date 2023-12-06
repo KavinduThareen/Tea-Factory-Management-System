@@ -21,7 +21,7 @@ The Tea Factory Management System is a standalone Java application designed to m
 
 1. **Clone the Repository:**
 
-    Download the latest release of the Tea Factory Management System from the [Releases](https://github.com/KavinduThareen/Tea-Factory-Management-System) page.
+    Download the latest release of the Tea Factory Management System from the [Releases](https://github.com/KavinduThareen/Tea-Fcatory-Management-System) page.
 
 2. **Run the Application:**
 
