@@ -60,17 +60,17 @@
          </font></TextField>
       <JFXComboBox fx:id="cIdTxt" layoutX="393.0" layoutY="131.0" onAction="#cusidOnAction" prefHeight="57.0" prefWidth="282.0" promptText="Customer ID" unFocusColor="WHITE" />
       <JFXComboBox fx:id="catagaryTxt" layoutX="727.0" layoutY="135.0" prefHeight="51.0" prefWidth="335.0" promptText="Catagary" unFocusColor="WHITE" />
-      <JFXButton layoutX="79.0" layoutY="393.0" onAction="#addOnAction" prefHeight="57.0" prefWidth="221.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Add Order">
+      <JFXButton layoutX="79.0" layoutY="393.0" onAction="#addOnAction" prefHeight="57.0" prefWidth="221.0" styleClass="button-with-style" stylesheets="@../style/viewStokeButton.css" text="Add Orders">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="1246.0" layoutY="865.0" onAction="#updateOnAction" prefHeight="57.0" prefWidth="229.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Order Repote">
+      <JFXButton layoutX="1246.0" layoutY="865.0" onAction="#updateOnAction" prefHeight="57.0" prefWidth="229.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Order Bill">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="331.0" layoutY="392.0" onAction="#plaseOrderOnAction" prefHeight="57.0" prefWidth="235.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Plase Order">
+      <JFXButton layoutX="331.0" layoutY="392.0" onAction="#plaseOrderOnAction" prefHeight="57.0" prefWidth="235.0" styleClass="button-with-style" stylesheets="@../style/registerbutton.css" text="Plase Orders">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -85,7 +85,7 @@
          <font>
             <Font name="System Bold" size="36.0" />
          </font></Label>
-      <Label layoutX="505.0" layoutY="233.0" prefHeight="51.0" prefWidth="58.0" text="Kg">
+      <Label layoutX="505.0" layoutY="231.0" prefHeight="51.0" prefWidth="58.0" text="Kg">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
