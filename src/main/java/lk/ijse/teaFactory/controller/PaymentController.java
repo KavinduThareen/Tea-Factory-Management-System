@@ -274,7 +274,7 @@ public class PaymentController {
                     countTxt.setText(salaryDto.getCount());
 
                 } else {
-                    notifi.showNotification("salary not found");
+                    notifi.showNotification("salary not Found");
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
