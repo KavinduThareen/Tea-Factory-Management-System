@@ -34,7 +34,7 @@ public class CusOrderModel {
         }
         return dtoList;
     }
-
+/*
     public static boolean deleteItem(String id) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -45,6 +45,8 @@ public class CusOrderModel {
         return pstm.executeUpdate() > 0;
     }
 
+
+ */
     public static String generateNextOrderId() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
